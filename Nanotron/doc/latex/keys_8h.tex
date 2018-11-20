@@ -1,0 +1,272 @@
+\hypertarget{keys_8h}{
+\section{include/keys.h File Reference}
+\label{keys_8h}\index{include/keys.h@{include/keys.h}}
+}
+Macros for key handling. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{keys_8h_67eb31cc225a019e46a500a48e61490b}{key\_\-k1}()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}0\mbox{]}
+\item 
+\#define \hyperlink{keys_8h_b5225b7be588c6b54873cdeff85a46f3}{key\_\-k2}()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}1\mbox{]}
+\item 
+\#define \hyperlink{keys_8h_ee440f69febfbe2fa7c1899143c4a092}{key\_\-k3}()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}2\mbox{]}
+\item 
+\#define \hyperlink{keys_8h_42819d478612ef90666b18dfacd44ea6}{KEY\_\-NOT\_\-PRESSED}~0x00
+\item 
+\#define \hyperlink{keys_8h_8386b89daf8ec3a1805554fd95b80a9e}{KEY\_\-PRESSED}~0x80
+\item 
+\#define \hyperlink{keys_8h_8264ff33541be69d92196213278ddb81}{KEY\_\-PRESSED\_\-FOR\_\-1S}~0x81
+\item 
+\#define \hyperlink{keys_8h_fdaced0342c2f56dec53f5c812099e34}{KEY\_\-PRESSED\_\-FOR\_\-2S}~0x82
+\item 
+\#define \hyperlink{keys_8h_075d288eef80f71635ec499fca34b3f9}{KEY\_\-PRESSED\_\-FOR\_\-3S}~0x83
+\item 
+\#define \hyperlink{keys_8h_04389585c80c4c5fee943cb48fe308e5}{KEY\_\-PRESSED\_\-FOR\_\-4S}~0x84
+\item 
+\#define \hyperlink{keys_8h_43ef75877ab3ce6a0b268cfbe22d0360}{KEY\_\-PRESSED\_\-FOR\_\-5S}~0x85
+\item 
+\#define \hyperlink{keys_8h_7289f1ae18cb4742bf9f4e1965b63071}{KEY\_\-REL\_\-AFTER\_\-10MS}~0x0A
+\item 
+\#define \hyperlink{keys_8h_9e9346747ee34398968a604b6a88f08e}{KEY\_\-REL\_\-AFTER\_\-1S}~0x01
+\item 
+\#define \hyperlink{keys_8h_28bca403d46afffd63c71bc9b977dc8b}{KEY\_\-REL\_\-AFTER\_\-2S}~0x02
+\item 
+\#define \hyperlink{keys_8h_69d7b969c4fc42011d96809a89bf1fb0}{KEY\_\-REL\_\-AFTER\_\-3S}~0x03
+\item 
+\#define \hyperlink{keys_8h_06307b2b74026911d5fa8c789ed081ef}{KEY\_\-REL\_\-AFTER\_\-4S}~0x04
+\item 
+\#define \hyperlink{keys_8h_b2aa33ea89b96412698f3e087dba5596}{KEY\_\-REL\_\-AFTER\_\-5S}~0x05
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+uint8\_\-t \hyperlink{keys_8h_8caf96f2cb44c74717d932fb6b5fa611}{Get\-Key\-State} (uint8\_\-t key\_\-index)
+\begin{CompactList}\small\item\em Gets the state of the key given by index. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+volatile \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{keys_8h_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags} \mbox{[}$\,$\mbox{]}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Macros for key handling. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Rohdemann, S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the macros for nano\-LOC devkit board for accessing the keys. \end{Desc}
+
+
+Definition in file \hyperlink{keys_8h-source}{keys.h}.
+
+\subsection{Define Documentation}
+\hypertarget{keys_8h_67eb31cc225a019e46a500a48e61490b}{
+\index{keys.h@{keys.h}!key_k1@{key\_\-k1}}
+\index{key_k1@{key\_\-k1}!keys.h@{keys.h}}
+\subsubsection[key\_\-k1]{\setlength{\rightskip}{0pt plus 5cm}\#define key\_\-k1()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}0\mbox{]}}}
+\label{keys_8h_67eb31cc225a019e46a500a48e61490b}
+
+
+
+
+Definition at line 20 of file keys.h.\hypertarget{keys_8h_b5225b7be588c6b54873cdeff85a46f3}{
+\index{keys.h@{keys.h}!key_k2@{key\_\-k2}}
+\index{key_k2@{key\_\-k2}!keys.h@{keys.h}}
+\subsubsection[key\_\-k2]{\setlength{\rightskip}{0pt plus 5cm}\#define key\_\-k2()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}1\mbox{]}}}
+\label{keys_8h_b5225b7be588c6b54873cdeff85a46f3}
+
+
+
+
+Definition at line 21 of file keys.h.\hypertarget{keys_8h_ee440f69febfbe2fa7c1899143c4a092}{
+\index{keys.h@{keys.h}!key_k3@{key\_\-k3}}
+\index{key_k3@{key\_\-k3}!keys.h@{keys.h}}
+\subsubsection[key\_\-k3]{\setlength{\rightskip}{0pt plus 5cm}\#define key\_\-k3()~\hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}2\mbox{]}}}
+\label{keys_8h_ee440f69febfbe2fa7c1899143c4a092}
+
+
+
+
+Definition at line 22 of file keys.h.\hypertarget{keys_8h_42819d478612ef90666b18dfacd44ea6}{
+\index{keys.h@{keys.h}!KEY_NOT_PRESSED@{KEY\_\-NOT\_\-PRESSED}}
+\index{KEY_NOT_PRESSED@{KEY\_\-NOT\_\-PRESSED}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-NOT\_\-PRESSED]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-NOT\_\-PRESSED~0x00}}
+\label{keys_8h_42819d478612ef90666b18dfacd44ea6}
+
+
+
+
+Definition at line 29 of file keys.h.\hypertarget{keys_8h_8386b89daf8ec3a1805554fd95b80a9e}{
+\index{keys.h@{keys.h}!KEY_PRESSED@{KEY\_\-PRESSED}}
+\index{KEY_PRESSED@{KEY\_\-PRESSED}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED~0x80}}
+\label{keys_8h_8386b89daf8ec3a1805554fd95b80a9e}
+
+
+
+
+Definition at line 37 of file keys.h.\hypertarget{keys_8h_8264ff33541be69d92196213278ddb81}{
+\index{keys.h@{keys.h}!KEY_PRESSED_FOR_1S@{KEY\_\-PRESSED\_\-FOR\_\-1S}}
+\index{KEY_PRESSED_FOR_1S@{KEY\_\-PRESSED\_\-FOR\_\-1S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED\_\-FOR\_\-1S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED\_\-FOR\_\-1S~0x81}}
+\label{keys_8h_8264ff33541be69d92196213278ddb81}
+
+
+
+
+Definition at line 38 of file keys.h.\hypertarget{keys_8h_fdaced0342c2f56dec53f5c812099e34}{
+\index{keys.h@{keys.h}!KEY_PRESSED_FOR_2S@{KEY\_\-PRESSED\_\-FOR\_\-2S}}
+\index{KEY_PRESSED_FOR_2S@{KEY\_\-PRESSED\_\-FOR\_\-2S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED\_\-FOR\_\-2S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED\_\-FOR\_\-2S~0x82}}
+\label{keys_8h_fdaced0342c2f56dec53f5c812099e34}
+
+
+
+
+Definition at line 39 of file keys.h.\hypertarget{keys_8h_075d288eef80f71635ec499fca34b3f9}{
+\index{keys.h@{keys.h}!KEY_PRESSED_FOR_3S@{KEY\_\-PRESSED\_\-FOR\_\-3S}}
+\index{KEY_PRESSED_FOR_3S@{KEY\_\-PRESSED\_\-FOR\_\-3S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED\_\-FOR\_\-3S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED\_\-FOR\_\-3S~0x83}}
+\label{keys_8h_075d288eef80f71635ec499fca34b3f9}
+
+
+
+
+Definition at line 40 of file keys.h.\hypertarget{keys_8h_04389585c80c4c5fee943cb48fe308e5}{
+\index{keys.h@{keys.h}!KEY_PRESSED_FOR_4S@{KEY\_\-PRESSED\_\-FOR\_\-4S}}
+\index{KEY_PRESSED_FOR_4S@{KEY\_\-PRESSED\_\-FOR\_\-4S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED\_\-FOR\_\-4S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED\_\-FOR\_\-4S~0x84}}
+\label{keys_8h_04389585c80c4c5fee943cb48fe308e5}
+
+
+
+
+Definition at line 41 of file keys.h.\hypertarget{keys_8h_43ef75877ab3ce6a0b268cfbe22d0360}{
+\index{keys.h@{keys.h}!KEY_PRESSED_FOR_5S@{KEY\_\-PRESSED\_\-FOR\_\-5S}}
+\index{KEY_PRESSED_FOR_5S@{KEY\_\-PRESSED\_\-FOR\_\-5S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-PRESSED\_\-FOR\_\-5S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-PRESSED\_\-FOR\_\-5S~0x85}}
+\label{keys_8h_43ef75877ab3ce6a0b268cfbe22d0360}
+
+
+
+
+Definition at line 42 of file keys.h.\hypertarget{keys_8h_7289f1ae18cb4742bf9f4e1965b63071}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_10MS@{KEY\_\-REL\_\-AFTER\_\-10MS}}
+\index{KEY_REL_AFTER_10MS@{KEY\_\-REL\_\-AFTER\_\-10MS}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-10MS]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-10MS~0x0A}}
+\label{keys_8h_7289f1ae18cb4742bf9f4e1965b63071}
+
+
+
+
+Definition at line 30 of file keys.h.\hypertarget{keys_8h_9e9346747ee34398968a604b6a88f08e}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_1S@{KEY\_\-REL\_\-AFTER\_\-1S}}
+\index{KEY_REL_AFTER_1S@{KEY\_\-REL\_\-AFTER\_\-1S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-1S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-1S~0x01}}
+\label{keys_8h_9e9346747ee34398968a604b6a88f08e}
+
+
+
+
+Definition at line 31 of file keys.h.\hypertarget{keys_8h_28bca403d46afffd63c71bc9b977dc8b}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_2S@{KEY\_\-REL\_\-AFTER\_\-2S}}
+\index{KEY_REL_AFTER_2S@{KEY\_\-REL\_\-AFTER\_\-2S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-2S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-2S~0x02}}
+\label{keys_8h_28bca403d46afffd63c71bc9b977dc8b}
+
+
+
+
+Definition at line 32 of file keys.h.\hypertarget{keys_8h_69d7b969c4fc42011d96809a89bf1fb0}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_3S@{KEY\_\-REL\_\-AFTER\_\-3S}}
+\index{KEY_REL_AFTER_3S@{KEY\_\-REL\_\-AFTER\_\-3S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-3S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-3S~0x03}}
+\label{keys_8h_69d7b969c4fc42011d96809a89bf1fb0}
+
+
+
+
+Definition at line 33 of file keys.h.\hypertarget{keys_8h_06307b2b74026911d5fa8c789ed081ef}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_4S@{KEY\_\-REL\_\-AFTER\_\-4S}}
+\index{KEY_REL_AFTER_4S@{KEY\_\-REL\_\-AFTER\_\-4S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-4S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-4S~0x04}}
+\label{keys_8h_06307b2b74026911d5fa8c789ed081ef}
+
+
+
+
+Definition at line 34 of file keys.h.\hypertarget{keys_8h_b2aa33ea89b96412698f3e087dba5596}{
+\index{keys.h@{keys.h}!KEY_REL_AFTER_5S@{KEY\_\-REL\_\-AFTER\_\-5S}}
+\index{KEY_REL_AFTER_5S@{KEY\_\-REL\_\-AFTER\_\-5S}!keys.h@{keys.h}}
+\subsubsection[KEY\_\-REL\_\-AFTER\_\-5S]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-REL\_\-AFTER\_\-5S~0x05}}
+\label{keys_8h_b2aa33ea89b96412698f3e087dba5596}
+
+
+
+
+Definition at line 35 of file keys.h.
+
+\subsection{Function Documentation}
+\hypertarget{keys_8h_8caf96f2cb44c74717d932fb6b5fa611}{
+\index{keys.h@{keys.h}!GetKeyState@{GetKeyState}}
+\index{GetKeyState@{GetKeyState}!keys.h@{keys.h}}
+\subsubsection[GetKeyState]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t Get\-Key\-State (uint8\_\-t {\em key\_\-index})}}
+\label{keys_8h_8caf96f2cb44c74717d932fb6b5fa611}
+
+
+Gets the state of the key given by index. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em key\_\-index}]Index number of the key. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]One of the following values will be returned as long as the given key is pressed/not pressed: \begin{TabularC}{3}
+\hline
+{\bf Value}&{\bf Description} \\\hline
+\hyperlink{keys_8h_42819d478612ef90666b18dfacd44ea6}{KEY\_\-NOT\_\-PRESSED} &if the key is currently not pressed,&\\\hline
+\hyperlink{keys_8h_8386b89daf8ec3a1805554fd95b80a9e}{KEY\_\-PRESSED} &key has been pressed for $<$ 1 sec, \\\hline
+\hyperlink{keys_8h_8264ff33541be69d92196213278ddb81}{KEY\_\-PRESSED\_\-FOR\_\-1S} &if the key has been pressed for 1..2 sec, \\\hline
+\hyperlink{keys_8h_fdaced0342c2f56dec53f5c812099e34}{KEY\_\-PRESSED\_\-FOR\_\-2S} &if the key has been pressed for 2..3 sec, \\\hline
+\hyperlink{keys_8h_075d288eef80f71635ec499fca34b3f9}{KEY\_\-PRESSED\_\-FOR\_\-3S} &if the key has been pressed for 3..4 sec, \\\hline
+\hyperlink{keys_8h_04389585c80c4c5fee943cb48fe308e5}{KEY\_\-PRESSED\_\-FOR\_\-4S} &if the key has been pressed for 4..5 sec, \\\hline
+\hyperlink{keys_8h_43ef75877ab3ce6a0b268cfbe22d0360}{KEY\_\-PRESSED\_\-FOR\_\-5S} &if the key has been pressed for $>$ 5 sec, \\\hline
+\end{TabularC}
+There is a special behaviour {\em once\/} after key release. The function will then return one of these values: \begin{TabularC}{3}
+\hline
+{\bf Value}&{\bf Description} \\\hline
+\hyperlink{keys_8h_7289f1ae18cb4742bf9f4e1965b63071}{KEY\_\-REL\_\-AFTER\_\-10MS} &if the key was released after $<$ 1 sec,&\\\hline
+\hyperlink{keys_8h_9e9346747ee34398968a604b6a88f08e}{KEY\_\-REL\_\-AFTER\_\-1S} &if the key was released after 1..2 sec, \\\hline
+\hyperlink{keys_8h_28bca403d46afffd63c71bc9b977dc8b}{KEY\_\-REL\_\-AFTER\_\-2S} &if the key was released after 2..3 sec, \\\hline
+\hyperlink{keys_8h_69d7b969c4fc42011d96809a89bf1fb0}{KEY\_\-REL\_\-AFTER\_\-3S} &if the key was released after 3..4 sec, \\\hline
+\hyperlink{keys_8h_06307b2b74026911d5fa8c789ed081ef}{KEY\_\-REL\_\-AFTER\_\-4S} &if the key was released after 4..5 sec, \\\hline
+\hyperlink{keys_8h_b2aa33ea89b96412698f3e087dba5596}{KEY\_\-REL\_\-AFTER\_\-5S} &if the key was released after $>$ 5 sec, \\\hline
+\end{TabularC}
+\end{Desc}
+\begin{Desc}
+\item[Note:]To find out if the key is currently pressed this sentence must be true: (Get\-Key\-State(mykey) \& KEY\_\-PRESSED) == KEY\_\-PRESSED \end{Desc}
+
+
+Definition at line 29 of file keys.c.
+
+\subsection{Variable Documentation}
+\hypertarget{keys_8h_96e75ef48ff2fb57ef7f566563bb5887}{
+\index{keys.h@{keys.h}!key_flags@{key\_\-flags}}
+\index{key_flags@{key\_\-flags}!keys.h@{keys.h}}
+\subsubsection[key\_\-flags]{\setlength{\rightskip}{0pt plus 5cm}volatile \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}$\,$\mbox{]}}}
+\label{keys_8h_96e75ef48ff2fb57ef7f566563bb5887}
+
+
+
+
+Definition at line 54 of file hwclock.c.

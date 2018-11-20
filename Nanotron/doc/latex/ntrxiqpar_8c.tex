@@ -1,0 +1,131 @@
+\hypertarget{ntrxiqpar_8c}{
+\section{phy/ntrxiqpar.c File Reference}
+\label{ntrxiqpar_8c}\index{phy/ntrxiqpar.c@{phy/ntrxiqpar.c}}
+}
+Functions to confiure to nano\-LOC transceiver modes. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}portation.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxiqpar.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{ntrxiqpar_8c_f755eef3bbb9b3f1990d8754679a5695}{NTRXSet\-Agc\-Values} (uint8\_\-t bandwidth, uint8\_\-t symbol\-Dur, uint8\_\-t symbol\-Rate)
+\begin{CompactList}\small\item\em Initializing the AGC values. \item\end{CompactList}\item 
+void \hyperlink{ntrxiqpar_8c_59949d54cc28e3dd2cbef880a688fb82}{NTRXSet\-Corr\-Threshold} (uint8\_\-t bandwidth, uint8\_\-t symbol\-Dur)
+\begin{CompactList}\small\item\em Initializing of correlator threshold values for a specific mode. \item\end{CompactList}\item 
+void \hyperlink{ntrxiqpar_8c_8a4de89a7cf28b86ea8d9907f32d0914}{NTRXSet\-Rx\-Iq\-Matrix} (uint8\_\-t bandwidth, uint8\_\-t symbol\-Dur)
+\begin{CompactList}\small\item\em Initializing of iq parameter for the receiver. \item\end{CompactList}\item 
+void \hyperlink{ntrxiqpar_8c_7f5ee7c54e883b4031423900cf81bfa4}{NTRXSet\-Tx\-Iq\-Matrix} (uint8\_\-t bandwidth, uint8\_\-t symbol\-Dur)
+\begin{CompactList}\small\item\em Initializing of iq parameter for the transmitter. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structMsgT}{Msg\-T} \hyperlink{ntrxiqpar_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to confiure to nano\-LOC transceiver modes. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-4 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke, O.Tekyar {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains source code for the IQ matrix values used to generate the chirp seqences.\end{Desc}
+\begin{Desc}
+\item[Revision]7819 \end{Desc}
+\begin{Desc}
+\item[Date]2010-05-10 16:08:00 +0200 (Mo, 10 Mai 2010) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2010-05-10 16:08:00 +0200 (Mo, 10 Mai 2010) \end{Desc}
+
+
+Definition in file \hyperlink{ntrxiqpar_8c-source}{ntrxiqpar.c}.
+
+\subsection{Function Documentation}
+\hypertarget{ntrxiqpar_8c_f755eef3bbb9b3f1990d8754679a5695}{
+\index{ntrxiqpar.c@{ntrxiqpar.c}!NTRXSetAgcValues@{NTRXSetAgcValues}}
+\index{NTRXSetAgcValues@{NTRXSetAgcValues}!ntrxiqpar.c@{ntrxiqpar.c}}
+\subsubsection[NTRXSetAgcValues]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Agc\-Values (uint8\_\-t {\em bandwidth}, uint8\_\-t {\em symbol\-Dur}, uint8\_\-t {\em symbol\-Rate})}}
+\label{ntrxiqpar_8c_f755eef3bbb9b3f1990d8754679a5695}
+
+
+Initializing the AGC values. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bandwidth}]this parameter determines the the mode (fdma or 80 MHz) \item[{\em symbol\-Dur}]this parameter determines the symbol duration between 500ns and 8us) \item[{\em symbol\-Rate}]this parameter determines the symbol rate between 125kbit and 2Mbit)\end{description}
+\end{Desc}
+This function initializes the agc values for a specific mode. 
+
+Definition at line 500 of file ntrxiqpar.c.\hypertarget{ntrxiqpar_8c_59949d54cc28e3dd2cbef880a688fb82}{
+\index{ntrxiqpar.c@{ntrxiqpar.c}!NTRXSetCorrThreshold@{NTRXSetCorrThreshold}}
+\index{NTRXSetCorrThreshold@{NTRXSetCorrThreshold}!ntrxiqpar.c@{ntrxiqpar.c}}
+\subsubsection[NTRXSetCorrThreshold]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Corr\-Threshold (uint8\_\-t {\em bandwidth}, uint8\_\-t {\em symbol\-Dur})}}
+\label{ntrxiqpar_8c_59949d54cc28e3dd2cbef880a688fb82}
+
+
+Initializing of correlator threshold values for a specific mode. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bandwidth}]this parameter determines the the mode (fdma or 80 MHz) \item[{\em symbol\-Dur}]this parameter determines the symbol duration between 500ns and 8us)\end{description}
+\end{Desc}
+This function initializes the correlator threshold registers for a specific mode. 
+
+Definition at line 560 of file ntrxiqpar.c.\hypertarget{ntrxiqpar_8c_8a4de89a7cf28b86ea8d9907f32d0914}{
+\index{ntrxiqpar.c@{ntrxiqpar.c}!NTRXSetRxIqMatrix@{NTRXSetRxIqMatrix}}
+\index{NTRXSetRxIqMatrix@{NTRXSetRxIqMatrix}!ntrxiqpar.c@{ntrxiqpar.c}}
+\subsubsection[NTRXSetRxIqMatrix]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Rx\-Iq\-Matrix (uint8\_\-t {\em bandwidth}, uint8\_\-t {\em symbol\-Dur})}}
+\label{ntrxiqpar_8c_8a4de89a7cf28b86ea8d9907f32d0914}
+
+
+Initializing of iq parameter for the receiver. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bandwidth}]this parameter determines the the mode (fdma or 80 MHz) \item[{\em symbol\-Dur}]this parameter determines the symbol duration between 500ns and 8us)\end{description}
+\end{Desc}
+This function initializes the iq parameter for the receiver depending on the bandwidth and symbol duration. 
+
+Definition at line 333 of file ntrxiqpar.c.\hypertarget{ntrxiqpar_8c_7f5ee7c54e883b4031423900cf81bfa4}{
+\index{ntrxiqpar.c@{ntrxiqpar.c}!NTRXSetTxIqMatrix@{NTRXSetTxIqMatrix}}
+\index{NTRXSetTxIqMatrix@{NTRXSetTxIqMatrix}!ntrxiqpar.c@{ntrxiqpar.c}}
+\subsubsection[NTRXSetTxIqMatrix]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Tx\-Iq\-Matrix (uint8\_\-t {\em bandwidth}, uint8\_\-t {\em symbol\-Dur})}}
+\label{ntrxiqpar_8c_7f5ee7c54e883b4031423900cf81bfa4}
+
+
+Initializing of iq parameter for the transmitter. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bandwidth}]this parameter determines the the mode (fdma or 80 MHz) \item[{\em symbol\-Dur}]this parameter determines the symbol duration between 500ns and 8us)\end{description}
+\end{Desc}
+This function initializes the iq parameter for the transmitter depending on the bandwidth and symbol duration. 
+
+Definition at line 397 of file ntrxiqpar.c.
+
+\subsection{Variable Documentation}
+\hypertarget{ntrxiqpar_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{
+\index{ntrxiqpar.c@{ntrxiqpar.c}!upMsg@{upMsg}}
+\index{upMsg@{upMsg}!ntrxiqpar.c@{ntrxiqpar.c}}
+\subsubsection[upMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T} \hyperlink{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}}}
+\label{ntrxiqpar_8c_97bc9a3f01dfc7d193c5f9e80abc409d}
+
+
+message struct for all received data. 
+
+Definition at line 166 of file phy.c.

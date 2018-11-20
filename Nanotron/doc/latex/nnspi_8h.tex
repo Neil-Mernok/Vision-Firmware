@@ -1,0 +1,210 @@
+\hypertarget{nnspi_8h}{
+\section{include/nnspi.h File Reference}
+\label{nnspi_8h}\index{include/nnspi.h@{include/nnspi.h}}
+}
+SPI bus access functions. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{nnspi_8h_2bfb9e965de4814137ca64ca14c38687}{NANONETRESETDELAY}~1000
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830}{CMDT} \{ \hyperlink{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d8698302c4d34144e53615dfded2cab582e1f77}{READ\_\-CMD} =  0x00, 
+\hyperlink{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830a205d74a45080ab0895dd10e21c0eefc}{WRITE\_\-CMD} =  0x80
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{nnspi_8h_23c7094e31707b24fc3094961bd5f189}{Init\-SPI} (void)
+\item 
+void \hyperlink{nnspi_8h_d793b0c20d2bc2105b1b27e6b2694637}{NTRXIrq\-Enable} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} value)
+\item 
+void \hyperlink{nnspi_8h_c1aef668c7661d6c8a4283bdca5dd480}{NTRXPower\-On\-Reset} (void)
+\item 
+void \hyperlink{nnspi_8h_f2b06f7a77065c7220cf222507945113}{NTRXSetup\-Spi\-Interface} (void)
+\item 
+void \hyperlink{nnspi_8h_e9efb83c240477508bf80dc646f5c759}{NTRXSPIRead} (uint8\_\-t address, uint8\_\-t $\ast$buffer, uint8\_\-t len)
+\item 
+void \hyperlink{nnspi_8h_a0911b12d8fb33dc5d5510cd528bf1c6}{NTRXSPIRead\-Byte} (uint8\_\-t address, uint8\_\-t $\ast$buffer)
+\item 
+void \hyperlink{nnspi_8h_69ac12fb28bbfe337ac8e09df489e490}{NTRXSPIWrite} (uint8\_\-t address, uint8\_\-t $\ast$buffer, uint8\_\-t len)
+\item 
+void \hyperlink{nnspi_8h_e29a33cac90ca56d3217716c2aea4e44}{NTRXSPIWrite\-Byte} (uint8\_\-t address, uint8\_\-t buffer)
+\item 
+void \hyperlink{nnspi_8h_e415e00c3e827494612c01bc991e5b01}{Spi\-Trace\-On} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} flag)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+volatile uint8\_\-t \hyperlink{nnspi_8h_fbe30f7b55ae4e5510c07900c7fe7a1f}{nn\-Irq}
+\item 
+volatile uint8\_\-t \hyperlink{nnspi_8h_62830c8994acdab4734a0f86910cf63d}{sreg}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+SPI bus access functions. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]B. Jozefini, S. Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the prototypes for the SPI bus control functions of the AVR controller. \end{Desc}
+
+
+Definition in file \hyperlink{nnspi_8h-source}{nnspi.h}.
+
+\subsection{Define Documentation}
+\hypertarget{nnspi_8h_2bfb9e965de4814137ca64ca14c38687}{
+\index{nnspi.h@{nnspi.h}!NANONETRESETDELAY@{NANONETRESETDELAY}}
+\index{NANONETRESETDELAY@{NANONETRESETDELAY}!nnspi.h@{nnspi.h}}
+\subsubsection[NANONETRESETDELAY]{\setlength{\rightskip}{0pt plus 5cm}\#define NANONETRESETDELAY~1000}}
+\label{nnspi_8h_2bfb9e965de4814137ca64ca14c38687}
+
+
+
+
+Definition at line 26 of file nnspi.h.
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830}{
+\index{nnspi.h@{nnspi.h}!CMDT@{CMDT}}
+\index{CMDT@{CMDT}!nnspi.h@{nnspi.h}}
+\subsubsection[CMDT]{\setlength{\rightskip}{0pt plus 5cm}enum \hyperlink{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830}{CMDT}}}
+\label{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{READ_CMD@{READ\_\-CMD}!nnspi.h@{nnspi.h}}\index{nnspi.h@{nnspi.h}!READ_CMD@{READ\_\-CMD}}\item[{\em 
+\hypertarget{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d8698302c4d34144e53615dfded2cab582e1f77}{
+READ\_\-CMD}
+\label{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d8698302c4d34144e53615dfded2cab582e1f77}
+}]\index{WRITE_CMD@{WRITE\_\-CMD}!nnspi.h@{nnspi.h}}\index{nnspi.h@{nnspi.h}!WRITE_CMD@{WRITE\_\-CMD}}\item[{\em 
+\hypertarget{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830a205d74a45080ab0895dd10e21c0eefc}{
+WRITE\_\-CMD}
+\label{nnspi_8h_c22a6543d8a88ade8bbd1e1c9d869830a205d74a45080ab0895dd10e21c0eefc}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 20 of file nnspi.h.
+
+\subsection{Function Documentation}
+\hypertarget{nnspi_8h_23c7094e31707b24fc3094961bd5f189}{
+\index{nnspi.h@{nnspi.h}!InitSPI@{InitSPI}}
+\index{InitSPI@{InitSPI}!nnspi.h@{nnspi.h}}
+\subsubsection[InitSPI]{\setlength{\rightskip}{0pt plus 5cm}void Init\-SPI (void)}}
+\label{nnspi_8h_23c7094e31707b24fc3094961bd5f189}
+
+
+Init\-SPI:
+
+\hyperlink{nnspi_8h_23c7094e31707b24fc3094961bd5f189}{Init\-SPI()} initializes the spi interface on the microcontroller
+
+Returns: none 
+
+Definition at line 114 of file nnspi.c.\hypertarget{nnspi_8h_d793b0c20d2bc2105b1b27e6b2694637}{
+\index{nnspi.h@{nnspi.h}!NTRXIrqEnable@{NTRXIrqEnable}}
+\index{NTRXIrqEnable@{NTRXIrqEnable}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXIrqEnable]{\setlength{\rightskip}{0pt plus 5cm}void NTRXIrq\-Enable (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em value})}}
+\label{nnspi_8h_d793b0c20d2bc2105b1b27e6b2694637}
+
+
+\hypertarget{nnspi_8h_c1aef668c7661d6c8a4283bdca5dd480}{
+\index{nnspi.h@{nnspi.h}!NTRXPowerOnReset@{NTRXPowerOnReset}}
+\index{NTRXPowerOnReset@{NTRXPowerOnReset}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXPowerOnReset]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPower\-On\-Reset (void)}}
+\label{nnspi_8h_c1aef668c7661d6c8a4283bdca5dd480}
+
+
+NTRXPower\-On\-Reset:
+
+Nano\-Reset() resets the nano\-NET chip and adjusts the pin level.
+
+Returns: none 
+
+Definition at line 90 of file nnspi.c.\hypertarget{nnspi_8h_f2b06f7a77065c7220cf222507945113}{
+\index{nnspi.h@{nnspi.h}!NTRXSetupSpiInterface@{NTRXSetupSpiInterface}}
+\index{NTRXSetupSpiInterface@{NTRXSetupSpiInterface}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXSetupSpiInterface]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSetup\-Spi\-Interface (void)}}
+\label{nnspi_8h_f2b06f7a77065c7220cf222507945113}
+
+
+NTRXSetup\-Spi\-Interface:
+
+\hyperlink{nnspi_8h_f2b06f7a77065c7220cf222507945113}{NTRXSetup\-Spi\-Interface()} initializes the SPI interface on nano\-LOC
+
+Returns: none 
+
+Definition at line 149 of file nnspi.c.\hypertarget{nnspi_8h_e9efb83c240477508bf80dc646f5c759}{
+\index{nnspi.h@{nnspi.h}!NTRXSPIRead@{NTRXSPIRead}}
+\index{NTRXSPIRead@{NTRXSPIRead}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXSPIRead]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIRead (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer}, uint8\_\-t {\em len})}}
+\label{nnspi_8h_e9efb83c240477508bf80dc646f5c759}
+
+
+
+
+Definition at line 154 of file nnspi.c.\hypertarget{nnspi_8h_a0911b12d8fb33dc5d5510cd528bf1c6}{
+\index{nnspi.h@{nnspi.h}!NTRXSPIReadByte@{NTRXSPIReadByte}}
+\index{NTRXSPIReadByte@{NTRXSPIReadByte}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXSPIReadByte]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIRead\-Byte (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer})}}
+\label{nnspi_8h_a0911b12d8fb33dc5d5510cd528bf1c6}
+
+
+
+
+Definition at line 242 of file nnspi.c.\hypertarget{nnspi_8h_69ac12fb28bbfe337ac8e09df489e490}{
+\index{nnspi.h@{nnspi.h}!NTRXSPIWrite@{NTRXSPIWrite}}
+\index{NTRXSPIWrite@{NTRXSPIWrite}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXSPIWrite]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIWrite (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer}, uint8\_\-t {\em len})}}
+\label{nnspi_8h_69ac12fb28bbfe337ac8e09df489e490}
+
+
+
+
+Definition at line 203 of file nnspi.c.\hypertarget{nnspi_8h_e29a33cac90ca56d3217716c2aea4e44}{
+\index{nnspi.h@{nnspi.h}!NTRXSPIWriteByte@{NTRXSPIWriteByte}}
+\index{NTRXSPIWriteByte@{NTRXSPIWriteByte}!nnspi.h@{nnspi.h}}
+\subsubsection[NTRXSPIWriteByte]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIWrite\-Byte (uint8\_\-t {\em address}, uint8\_\-t {\em buffer})}}
+\label{nnspi_8h_e29a33cac90ca56d3217716c2aea4e44}
+
+
+
+
+Definition at line 278 of file nnspi.c.\hypertarget{nnspi_8h_e415e00c3e827494612c01bc991e5b01}{
+\index{nnspi.h@{nnspi.h}!SpiTraceOn@{SpiTraceOn}}
+\index{SpiTraceOn@{SpiTraceOn}!nnspi.h@{nnspi.h}}
+\subsubsection[SpiTraceOn]{\setlength{\rightskip}{0pt plus 5cm}void Spi\-Trace\-On (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em flag})}}
+\label{nnspi_8h_e415e00c3e827494612c01bc991e5b01}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{nnspi_8h_fbe30f7b55ae4e5510c07900c7fe7a1f}{
+\index{nnspi.h@{nnspi.h}!nnIrq@{nnIrq}}
+\index{nnIrq@{nnIrq}!nnspi.h@{nnspi.h}}
+\subsubsection[nnIrq]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\_\-t \hyperlink{nnspi_8h_fbe30f7b55ae4e5510c07900c7fe7a1f}{nn\-Irq}}}
+\label{nnspi_8h_fbe30f7b55ae4e5510c07900c7fe7a1f}
+
+
+\hypertarget{nnspi_8h_62830c8994acdab4734a0f86910cf63d}{
+\index{nnspi.h@{nnspi.h}!sreg@{sreg}}
+\index{sreg@{sreg}!nnspi.h@{nnspi.h}}
+\subsubsection[sreg]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\_\-t \hyperlink{nnspi_8h_62830c8994acdab4734a0f86910cf63d}{sreg}}}
+\label{nnspi_8h_62830c8994acdab4734a0f86910cf63d}
+
+

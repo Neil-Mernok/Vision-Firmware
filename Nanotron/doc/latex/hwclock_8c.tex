@@ -1,0 +1,323 @@
+\hypertarget{hwclock_8c}{
+\section{portation/hwclock.c File Reference}
+\label{hwclock_8c}\index{portation/hwclock.c@{portation/hwclock.c}}
+}
+Timer support for AVR. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include $<$avr/io.h$>$}\par
+{\tt \#include $<$util/delay.h$>$}\par
+{\tt \#include $<$avr/interrupt.h$>$}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}keys.h\char`\"{}}\par
+{\tt \#include \char`\"{}avrport.h\char`\"{}}\par
+{\tt \#include \char`\"{}portation.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{hwclock_8c_5bcf2962d7a37c34484cef13fa9601b2}{\_\-\_\-OPTIMIZE\_\-\_\-}~0
+\item 
+\#define \hyperlink{hwclock_8c_42ad198e3e68bcade63e8454f1097575}{MAX\_\-DELAY\_\-MS}~( 262 / ( F\_\-CPU / 1000000UL ))
+\item 
+\#define \hyperlink{hwclock_8c_8fbb5471f4e03699d46f1f85433d4209}{MAX\_\-DELAY\_\-US}~( 768 / ( F\_\-CPU / 1000000UL ))
+\item 
+\#define \hyperlink{hwclock_8c_dd3f7099b37520311e01a39330b7d89c}{MILLISECONDS\_\-PER\_\-TICK}~1
+\item 
+\#define \hyperlink{hwclock_8c_0a57022540a4ec7fa278a95a40314999}{STATE\_\-HIGH}~5
+\item 
+\#define \hyperlink{hwclock_8c_5ed4dc798cf7dbb26376fa416f776aff}{STATE\_\-LOW}~-5
+\item 
+\#define \hyperlink{hwclock_8c_77ddeee41ef28a28f42ea963e40ae3b0}{TIMER\_\-RELOAD\_\-VALUE}~(256 - 230)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+uint8\_\-t \hyperlink{hwclock_8c_85c75e4b3871881e616264e1b87ea259}{Get\-Hwcl\-Reload\-Val} (void)
+\item 
+uint32\_\-t \hyperlink{hwclock_8c_20623b49c1ed1dd212ad55448a651a9c}{hwclock} (void)
+\begin{CompactList}\small\item\em return system clock in milliseconds \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_3f8fa222f4976a01d7517c4ab86e7c4b}{hwclock\_\-init} (void)
+\begin{CompactList}\small\item\em clock tick initialization \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_369bb91cd7b5ed9cc814bfb036fcfe9d}{hwclock\_\-tune} (int8\_\-t tuning\-Direction)
+\begin{CompactList}\small\item\em Modifies the time interval between any two subsequent timer ticks. \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_fc5d36ce3dcdae1762d3d8a42db18c6e}{hwclock\-Restart} (uint32\_\-t start)
+\begin{CompactList}\small\item\em clock tick initialization \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_c8c1a9f4fefba19cbaa462744963a5f3}{hwdelay} (uint32\_\-t t)
+\item 
+void \hyperlink{hwclock_8c_87f07be0d623932db45b4998f9175e8a}{HWDelayms} (uint16\_\-t ms)
+\begin{CompactList}\small\item\em Delay processing for n milliseconds. \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_5f99322ada800b90a8a06d0127b07513}{HWDelayus} (uint16\_\-t us)
+\begin{CompactList}\small\item\em Delay processing for n microseconds. \item\end{CompactList}\item 
+void \hyperlink{hwclock_8c_36e1fc2a1ed68d4e87522f60b934922b}{Key\-Update} (uint8\_\-t stat, uint8\_\-t id)
+\begin{CompactList}\small\item\em Update key state. \item\end{CompactList}\item 
+\hyperlink{hwclock_8c_44eda0ab7b65fb527ffed34c9067db4c}{SIGNAL} (SIG\_\-OVERFLOW0)
+\begin{CompactList}\small\item\em Timer 0 overflow interrupt. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static uint32\_\-t \hyperlink{hwclock_8c_c58407c538a7142b2decadef472a0ec3}{bogo\_\-mips} = 0
+\item 
+static uint8\_\-t \hyperlink{hwclock_8c_9af5b2ec266f13d0aae274eecedaed5f}{hwcl\-Timer\-Reload\-Val} = TIMER\_\-RELOAD\_\-VALUE
+\item 
+static volatile uint32\_\-t \hyperlink{hwclock_8c_b69c774dad0814fa066f807e4aba7fb7}{jiffies} = 0
+\item 
+volatile \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags} \mbox{[}$\,$\mbox{]} = \{ FALSE, FALSE, FALSE \}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Timer support for AVR. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Rohdemann, S. Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the source code for the utility functions of the Hardware Timer Function. \end{Desc}
+
+
+Definition in file \hyperlink{hwclock_8c-source}{hwclock.c}.
+
+\subsection{Define Documentation}
+\hypertarget{hwclock_8c_5bcf2962d7a37c34484cef13fa9601b2}{
+\index{hwclock.c@{hwclock.c}!__OPTIMIZE__@{\_\-\_\-OPTIMIZE\_\-\_\-}}
+\index{__OPTIMIZE__@{\_\-\_\-OPTIMIZE\_\-\_\-}!hwclock.c@{hwclock.c}}
+\subsubsection[\_\-\_\-OPTIMIZE\_\-\_\-]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-OPTIMIZE\_\-\_\-~0}}
+\label{hwclock_8c_5bcf2962d7a37c34484cef13fa9601b2}
+
+
+
+
+Definition at line 17 of file hwclock.c.\hypertarget{hwclock_8c_42ad198e3e68bcade63e8454f1097575}{
+\index{hwclock.c@{hwclock.c}!MAX_DELAY_MS@{MAX\_\-DELAY\_\-MS}}
+\index{MAX_DELAY_MS@{MAX\_\-DELAY\_\-MS}!hwclock.c@{hwclock.c}}
+\subsubsection[MAX\_\-DELAY\_\-MS]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-DELAY\_\-MS~( 262 / ( F\_\-CPU / 1000000UL ))}}
+\label{hwclock_8c_42ad198e3e68bcade63e8454f1097575}
+
+
+
+
+Definition at line 52 of file hwclock.c.\hypertarget{hwclock_8c_8fbb5471f4e03699d46f1f85433d4209}{
+\index{hwclock.c@{hwclock.c}!MAX_DELAY_US@{MAX\_\-DELAY\_\-US}}
+\index{MAX_DELAY_US@{MAX\_\-DELAY\_\-US}!hwclock.c@{hwclock.c}}
+\subsubsection[MAX\_\-DELAY\_\-US]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-DELAY\_\-US~( 768 / ( F\_\-CPU / 1000000UL ))}}
+\label{hwclock_8c_8fbb5471f4e03699d46f1f85433d4209}
+
+
+
+
+Definition at line 51 of file hwclock.c.\hypertarget{hwclock_8c_dd3f7099b37520311e01a39330b7d89c}{
+\index{hwclock.c@{hwclock.c}!MILLISECONDS_PER_TICK@{MILLISECONDS\_\-PER\_\-TICK}}
+\index{MILLISECONDS_PER_TICK@{MILLISECONDS\_\-PER\_\-TICK}!hwclock.c@{hwclock.c}}
+\subsubsection[MILLISECONDS\_\-PER\_\-TICK]{\setlength{\rightskip}{0pt plus 5cm}\#define MILLISECONDS\_\-PER\_\-TICK~1}}
+\label{hwclock_8c_dd3f7099b37520311e01a39330b7d89c}
+
+
+
+
+Definition at line 46 of file hwclock.c.\hypertarget{hwclock_8c_0a57022540a4ec7fa278a95a40314999}{
+\index{hwclock.c@{hwclock.c}!STATE_HIGH@{STATE\_\-HIGH}}
+\index{STATE_HIGH@{STATE\_\-HIGH}!hwclock.c@{hwclock.c}}
+\subsubsection[STATE\_\-HIGH]{\setlength{\rightskip}{0pt plus 5cm}\#define STATE\_\-HIGH~5}}
+\label{hwclock_8c_0a57022540a4ec7fa278a95a40314999}
+
+
+
+
+Definition at line 49 of file hwclock.c.\hypertarget{hwclock_8c_5ed4dc798cf7dbb26376fa416f776aff}{
+\index{hwclock.c@{hwclock.c}!STATE_LOW@{STATE\_\-LOW}}
+\index{STATE_LOW@{STATE\_\-LOW}!hwclock.c@{hwclock.c}}
+\subsubsection[STATE\_\-LOW]{\setlength{\rightskip}{0pt plus 5cm}\#define STATE\_\-LOW~-5}}
+\label{hwclock_8c_5ed4dc798cf7dbb26376fa416f776aff}
+
+
+
+
+Definition at line 50 of file hwclock.c.\hypertarget{hwclock_8c_77ddeee41ef28a28f42ea963e40ae3b0}{
+\index{hwclock.c@{hwclock.c}!TIMER_RELOAD_VALUE@{TIMER\_\-RELOAD\_\-VALUE}}
+\index{TIMER_RELOAD_VALUE@{TIMER\_\-RELOAD\_\-VALUE}!hwclock.c@{hwclock.c}}
+\subsubsection[TIMER\_\-RELOAD\_\-VALUE]{\setlength{\rightskip}{0pt plus 5cm}\#define TIMER\_\-RELOAD\_\-VALUE~(256 - 230)}}
+\label{hwclock_8c_77ddeee41ef28a28f42ea963e40ae3b0}
+
+
+
+
+Definition at line 42 of file hwclock.c.
+
+\subsection{Function Documentation}
+\hypertarget{hwclock_8c_85c75e4b3871881e616264e1b87ea259}{
+\index{hwclock.c@{hwclock.c}!GetHwclReloadVal@{GetHwclReloadVal}}
+\index{GetHwclReloadVal@{GetHwclReloadVal}!hwclock.c@{hwclock.c}}
+\subsubsection[GetHwclReloadVal]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t Get\-Hwcl\-Reload\-Val (void)}}
+\label{hwclock_8c_85c75e4b3871881e616264e1b87ea259}
+
+
+
+
+Definition at line 274 of file hwclock.c.\hypertarget{hwclock_8c_20623b49c1ed1dd212ad55448a651a9c}{
+\index{hwclock.c@{hwclock.c}!hwclock@{hwclock}}
+\index{hwclock@{hwclock}!hwclock.c@{hwclock.c}}
+\subsubsection[hwclock]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t hwclock (void)}}
+\label{hwclock_8c_20623b49c1ed1dd212ad55448a651a9c}
+
+
+return system clock in milliseconds 
+
+\begin{Desc}
+\item[Returns:]time in milliseconds\end{Desc}
+This function returns the elapsed time since program start in milliseconds. 
+
+Definition at line 223 of file hwclock.c.\hypertarget{hwclock_8c_3f8fa222f4976a01d7517c4ab86e7c4b}{
+\index{hwclock.c@{hwclock.c}!hwclock_init@{hwclock\_\-init}}
+\index{hwclock_init@{hwclock\_\-init}!hwclock.c@{hwclock.c}}
+\subsubsection[hwclock\_\-init]{\setlength{\rightskip}{0pt plus 5cm}void hwclock\_\-init (void)}}
+\label{hwclock_8c_3f8fa222f4976a01d7517c4ab86e7c4b}
+
+
+clock tick initialization 
+
+This function initializes the Timer 0 in the AVR to generate an interrupt ever 10 ms. 
+
+Definition at line 196 of file hwclock.c.\hypertarget{hwclock_8c_369bb91cd7b5ed9cc814bfb036fcfe9d}{
+\index{hwclock.c@{hwclock.c}!hwclock_tune@{hwclock\_\-tune}}
+\index{hwclock_tune@{hwclock\_\-tune}!hwclock.c@{hwclock.c}}
+\subsubsection[hwclock\_\-tune]{\setlength{\rightskip}{0pt plus 5cm}void hwclock\_\-tune (int8\_\-t {\em tuning\-Direction})}}
+\label{hwclock_8c_369bb91cd7b5ed9cc814bfb036fcfe9d}
+
+
+Modifies the time interval between any two subsequent timer ticks. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tuning\-Direction}]+1 to speed up the hwclock, -1 to speed down, 0 to reset to default. \end{description}
+\end{Desc}
+
+
+Definition at line 241 of file hwclock.c.\hypertarget{hwclock_8c_fc5d36ce3dcdae1762d3d8a42db18c6e}{
+\index{hwclock.c@{hwclock.c}!hwclockRestart@{hwclockRestart}}
+\index{hwclockRestart@{hwclockRestart}!hwclock.c@{hwclock.c}}
+\subsubsection[hwclockRestart]{\setlength{\rightskip}{0pt plus 5cm}void hwclock\-Restart (uint32\_\-t {\em start})}}
+\label{hwclock_8c_fc5d36ce3dcdae1762d3d8a42db18c6e}
+
+
+clock tick initialization 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start}]this is the start value for jiffies\end{description}
+\end{Desc}
+This function initializes the Timer 0 in the AVR to generate an interrupt ever 10 ms. 
+
+Definition at line 171 of file hwclock.c.\hypertarget{hwclock_8c_c8c1a9f4fefba19cbaa462744963a5f3}{
+\index{hwclock.c@{hwclock.c}!hwdelay@{hwdelay}}
+\index{hwdelay@{hwdelay}!hwclock.c@{hwclock.c}}
+\subsubsection[hwdelay]{\setlength{\rightskip}{0pt plus 5cm}void hwdelay (uint32\_\-t {\em t})}}
+\label{hwclock_8c_c8c1a9f4fefba19cbaa462744963a5f3}
+
+
+Deprecated function please dont use for new projects 
+
+Definition at line 66 of file hwclock.c.\hypertarget{hwclock_8c_87f07be0d623932db45b4998f9175e8a}{
+\index{hwclock.c@{hwclock.c}!HWDelayms@{HWDelayms}}
+\index{HWDelayms@{HWDelayms}!hwclock.c@{hwclock.c}}
+\subsubsection[HWDelayms]{\setlength{\rightskip}{0pt plus 5cm}void HWDelayms (uint16\_\-t {\em ms})}}
+\label{hwclock_8c_87f07be0d623932db45b4998f9175e8a}
+
+
+Delay processing for n milliseconds. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ms}]this is the delay in milliseconds\end{description}
+\end{Desc}
+This function is used for waiting TIMER\_\-RELOAD\_\-VALUEbefore continue with programm execution. Interrupts are still processed. 
+
+Definition at line 134 of file hwclock.c.\hypertarget{hwclock_8c_5f99322ada800b90a8a06d0127b07513}{
+\index{hwclock.c@{hwclock.c}!HWDelayus@{HWDelayus}}
+\index{HWDelayus@{HWDelayus}!hwclock.c@{hwclock.c}}
+\subsubsection[HWDelayus]{\setlength{\rightskip}{0pt plus 5cm}void HWDelayus (uint16\_\-t {\em us})}}
+\label{hwclock_8c_5f99322ada800b90a8a06d0127b07513}
+
+
+Delay processing for n microseconds. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em us}]this is the delay in microseconds\end{description}
+\end{Desc}
+This function is used for waiting before continue with programm execution. Interrupts are still processed. Because of the high inaccuracy of the delay function this function tries to compensate the delay error by adding an offset. 
+
+Definition at line 89 of file hwclock.c.\hypertarget{hwclock_8c_36e1fc2a1ed68d4e87522f60b934922b}{
+\index{hwclock.c@{hwclock.c}!KeyUpdate@{KeyUpdate}}
+\index{KeyUpdate@{KeyUpdate}!hwclock.c@{hwclock.c}}
+\subsubsection[KeyUpdate]{\setlength{\rightskip}{0pt plus 5cm}void Key\-Update (uint8\_\-t {\em stat}, uint8\_\-t {\em id})}}
+\label{hwclock_8c_36e1fc2a1ed68d4e87522f60b934922b}
+
+
+Update key state. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stat}]this is the logic level of the key port \item[{\em id}]this is the index of the keylist\end{description}
+\end{Desc}
+This function updates the keystate every 10ms. The main purpose is to eliminate key bouncing. 
+
+Definition at line 290 of file hwclock.c.\hypertarget{hwclock_8c_44eda0ab7b65fb527ffed34c9067db4c}{
+\index{hwclock.c@{hwclock.c}!SIGNAL@{SIGNAL}}
+\index{SIGNAL@{SIGNAL}!hwclock.c@{hwclock.c}}
+\subsubsection[SIGNAL]{\setlength{\rightskip}{0pt plus 5cm}SIGNAL (SIG\_\-OVERFLOW0)}}
+\label{hwclock_8c_44eda0ab7b65fb527ffed34c9067db4c}
+
+
+Timer 0 overflow interrupt. 
+
+Interrupt service routine for the hardware timer 
+
+Definition at line 328 of file hwclock.c.
+
+\subsection{Variable Documentation}
+\hypertarget{hwclock_8c_c58407c538a7142b2decadef472a0ec3}{
+\index{hwclock.c@{hwclock.c}!bogo_mips@{bogo\_\-mips}}
+\index{bogo_mips@{bogo\_\-mips}!hwclock.c@{hwclock.c}}
+\subsubsection[bogo\_\-mips]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \hyperlink{hwclock_8c_c58407c538a7142b2decadef472a0ec3}{bogo\_\-mips} = 0\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{hwclock_8c_c58407c538a7142b2decadef472a0ec3}
+
+
+
+
+Definition at line 56 of file hwclock.c.\hypertarget{hwclock_8c_9af5b2ec266f13d0aae274eecedaed5f}{
+\index{hwclock.c@{hwclock.c}!hwclTimerReloadVal@{hwclTimerReloadVal}}
+\index{hwclTimerReloadVal@{hwclTimerReloadVal}!hwclock.c@{hwclock.c}}
+\subsubsection[hwclTimerReloadVal]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{hwclock_8c_9af5b2ec266f13d0aae274eecedaed5f}{hwcl\-Timer\-Reload\-Val} = TIMER\_\-RELOAD\_\-VALUE\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{hwclock_8c_9af5b2ec266f13d0aae274eecedaed5f}
+
+
+
+
+Definition at line 57 of file hwclock.c.\hypertarget{hwclock_8c_b69c774dad0814fa066f807e4aba7fb7}{
+\index{hwclock.c@{hwclock.c}!jiffies@{jiffies}}
+\index{jiffies@{jiffies}!hwclock.c@{hwclock.c}}
+\subsubsection[jiffies]{\setlength{\rightskip}{0pt plus 5cm}volatile uint32\_\-t \hyperlink{hwclock_8c_b69c774dad0814fa066f807e4aba7fb7}{jiffies} = 0\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{hwclock_8c_b69c774dad0814fa066f807e4aba7fb7}
+
+
+
+
+Definition at line 55 of file hwclock.c.\hypertarget{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{
+\index{hwclock.c@{hwclock.c}!key_flags@{key\_\-flags}}
+\index{key_flags@{key\_\-flags}!hwclock.c@{hwclock.c}}
+\subsubsection[key\_\-flags]{\setlength{\rightskip}{0pt plus 5cm}volatile \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}{key\_\-flags}\mbox{[}$\,$\mbox{]} = \{ FALSE, FALSE, FALSE \}}}
+\label{hwclock_8c_96e75ef48ff2fb57ef7f566563bb5887}
+
+
+
+
+Definition at line 54 of file hwclock.c.

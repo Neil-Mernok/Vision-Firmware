@@ -1,0 +1,121 @@
+\hypertarget{ntrxinit_8c}{
+\section{phy/ntrxinit.c File Reference}
+\label{ntrxinit_8c}\index{phy/ntrxinit.c@{phy/ntrxinit.c}}
+}
+Functions for the initialization of the nano\-LOC transceiver. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler} (int16\_\-t err)
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxinit_8c_a4057bfa2c651859436e3798ceb3f0c6}{NTRXInit} (void)
+\begin{CompactList}\small\item\em Initializing of the transceiver chip. \item\end{CompactList}\item 
+void \hyperlink{ntrxinit_8c_134c3bd25c3c49b11f8447ebeea9614c}{NTRXSet\-Default\-Mode} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{ntrxinit_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}
+\begin{CompactList}\small\item\em structure for all layer configuration settings \item\end{CompactList}\item 
+const uint8\_\-t \hyperlink{ntrxinit_8c_cb7119ffe7527eaaff5c594ba775112b}{TRX\_\-SYNC\_\-WORD} \mbox{[}$\,$\mbox{]}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for the initialization of the nano\-LOC transceiver. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-4 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the source code for the implementation of the NA5TR1 initialisation.\end{Desc}
+\begin{Desc}
+\item[Revision]7207 \end{Desc}
+\begin{Desc}
+\item[Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+
+
+Definition in file \hyperlink{ntrxinit_8c-source}{ntrxinit.c}.
+
+\subsection{Function Documentation}
+\hypertarget{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}{
+\index{ntrxinit.c@{ntrxinit.c}!error_handler@{error\_\-handler}}
+\index{error_handler@{error\_\-handler}!ntrxinit.c@{ntrxinit.c}}
+\subsubsection[error\_\-handler]{\setlength{\rightskip}{0pt plus 5cm}void error\_\-handler (int16\_\-t {\em err})}}
+\label{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}
+
+
+error\_\-handler:
+
+\hyperlink{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler()} print out the error number and stop the system.
+
+Returns: None 
+
+Definition at line 51 of file main.c.\hypertarget{ntrxinit_8c_a4057bfa2c651859436e3798ceb3f0c6}{
+\index{ntrxinit.c@{ntrxinit.c}!NTRXInit@{NTRXInit}}
+\index{NTRXInit@{NTRXInit}!ntrxinit.c@{ntrxinit.c}}
+\subsubsection[NTRXInit]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXInit (void)}}
+\label{ntrxinit_8c_a4057bfa2c651859436e3798ceb3f0c6}
+
+
+Initializing of the transceiver chip. 
+
+This function initializes all registers of the nano\-LOC transceiver chip. This function should only be called once.
+
+If this function is called for the first time, the structure setting\-Val is set to the predefined default mode values. After setting up the SPI interface this function compares the version and revision register of the chip with the values expected by the driver. If these don't match, the software will call an error function and halts. The reason for this drastic reaction is that the driver can not garantie a non interfering behaviour. 
+
+! Some short delay seems necessary here?? 
+
+Definition at line 153 of file ntrxinit.c.\hypertarget{ntrxinit_8c_134c3bd25c3c49b11f8447ebeea9614c}{
+\index{ntrxinit.c@{ntrxinit.c}!NTRXSetDefaultMode@{NTRXSetDefaultMode}}
+\index{NTRXSetDefaultMode@{NTRXSetDefaultMode}!ntrxinit.c@{ntrxinit.c}}
+\subsubsection[NTRXSetDefaultMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Default\-Mode (void)}}
+\label{ntrxinit_8c_134c3bd25c3c49b11f8447ebeea9614c}
+
+
+
+
+Definition at line 41 of file ntrxinit.c.
+
+\subsection{Variable Documentation}
+\hypertarget{ntrxinit_8c_c6bf7bba136f1383deb2932be153b881}{
+\index{ntrxinit.c@{ntrxinit.c}!phyPIB@{phyPIB}}
+\index{phyPIB@{phyPIB}!ntrxinit.c@{ntrxinit.c}}
+\subsubsection[phyPIB]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}}}
+\label{ntrxinit_8c_c6bf7bba136f1383deb2932be153b881}
+
+
+structure for all layer configuration settings 
+
+
+
+Definition at line 182 of file phy.c.\hypertarget{ntrxinit_8c_cb7119ffe7527eaaff5c594ba775112b}{
+\index{ntrxinit.c@{ntrxinit.c}!TRX_SYNC_WORD@{TRX\_\-SYNC\_\-WORD}}
+\index{TRX_SYNC_WORD@{TRX\_\-SYNC\_\-WORD}!ntrxinit.c@{ntrxinit.c}}
+\subsubsection[TRX\_\-SYNC\_\-WORD]{\setlength{\rightskip}{0pt plus 5cm}const uint8\_\-t \hyperlink{ntrxinit_8c_cb7119ffe7527eaaff5c594ba775112b}{TRX\_\-SYNC\_\-WORD}\mbox{[}$\,$\mbox{]}}}
+\label{ntrxinit_8c_cb7119ffe7527eaaff5c594ba775112b}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+    CONFIG_DEFAULT_SYNCWORD
+\end{verbatim}\end{Code}
+Default sync word for transceiver. 
+
+Definition at line 37 of file ntrxinit.c.

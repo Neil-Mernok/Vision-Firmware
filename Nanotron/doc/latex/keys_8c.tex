@@ -1,0 +1,106 @@
+\hypertarget{keys_8c}{
+\section{portation/keys.c File Reference}
+\label{keys_8c}\index{portation/keys.c@{portation/keys.c}}
+}
+This file contains the implementations for key functions. 
+
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}keys.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+uint8\_\-t \hyperlink{keys_8c_8caf96f2cb44c74717d932fb6b5fa611}{Get\-Key\-State} (uint8\_\-t key\_\-index)
+\begin{CompactList}\small\item\em Gets the state of the key given by index. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{keys_8c_061dc0a0255c492fc6adb486137aba88}{key\-Pressed} \mbox{[}NKEYS\mbox{]} = \{FALSE,FALSE,FALSE\}
+\item 
+static uint32\_\-t \hyperlink{keys_8c_de40f40cd148f5143efa1d38cc542703}{key\-Pressed\-Start\-Time} \mbox{[}NKEYS\mbox{]} = \{0,0,0\}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the implementations for key functions. 
+
+\begin{Desc}
+\item[Date:]2006-08-29 {\tt Copyright} 2006- Nanotron Technologies \end{Desc}
+\begin{Desc}
+\item[Author:]Andreas Krause\end{Desc}
+\begin{Desc}
+\item[Revision]6310 \end{Desc}
+\begin{Desc}
+\item[Date]2009-04-22 14:28:30 +0200 (Mi, 22 Apr 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-04-22 14:28:30 +0200 (Mi, 22 Apr 2009) \end{Desc}
+
+
+Definition in file \hyperlink{keys_8c-source}{keys.c}.
+
+\subsection{Function Documentation}
+\hypertarget{keys_8c_8caf96f2cb44c74717d932fb6b5fa611}{
+\index{keys.c@{keys.c}!GetKeyState@{GetKeyState}}
+\index{GetKeyState@{GetKeyState}!keys.c@{keys.c}}
+\subsubsection[GetKeyState]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t Get\-Key\-State (uint8\_\-t {\em key\_\-index})}}
+\label{keys_8c_8caf96f2cb44c74717d932fb6b5fa611}
+
+
+Gets the state of the key given by index. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em key\_\-index}]Index number of the key. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]One of the following values will be returned as long as the given key is pressed/not pressed: \begin{TabularC}{3}
+\hline
+{\bf Value}&{\bf Description} \\\hline
+\hyperlink{keys_8h_42819d478612ef90666b18dfacd44ea6}{KEY\_\-NOT\_\-PRESSED} &if the key is currently not pressed,&\\\hline
+\hyperlink{keys_8h_8386b89daf8ec3a1805554fd95b80a9e}{KEY\_\-PRESSED} &key has been pressed for $<$ 1 sec, \\\hline
+\hyperlink{keys_8h_8264ff33541be69d92196213278ddb81}{KEY\_\-PRESSED\_\-FOR\_\-1S} &if the key has been pressed for 1..2 sec, \\\hline
+\hyperlink{keys_8h_fdaced0342c2f56dec53f5c812099e34}{KEY\_\-PRESSED\_\-FOR\_\-2S} &if the key has been pressed for 2..3 sec, \\\hline
+\hyperlink{keys_8h_075d288eef80f71635ec499fca34b3f9}{KEY\_\-PRESSED\_\-FOR\_\-3S} &if the key has been pressed for 3..4 sec, \\\hline
+\hyperlink{keys_8h_04389585c80c4c5fee943cb48fe308e5}{KEY\_\-PRESSED\_\-FOR\_\-4S} &if the key has been pressed for 4..5 sec, \\\hline
+\hyperlink{keys_8h_43ef75877ab3ce6a0b268cfbe22d0360}{KEY\_\-PRESSED\_\-FOR\_\-5S} &if the key has been pressed for $>$ 5 sec, \\\hline
+\end{TabularC}
+There is a special behaviour {\em once\/} after key release. The function will then return one of these values: \begin{TabularC}{3}
+\hline
+{\bf Value}&{\bf Description} \\\hline
+\hyperlink{keys_8h_7289f1ae18cb4742bf9f4e1965b63071}{KEY\_\-REL\_\-AFTER\_\-10MS} &if the key was released after $<$ 1 sec,&\\\hline
+\hyperlink{keys_8h_9e9346747ee34398968a604b6a88f08e}{KEY\_\-REL\_\-AFTER\_\-1S} &if the key was released after 1..2 sec, \\\hline
+\hyperlink{keys_8h_28bca403d46afffd63c71bc9b977dc8b}{KEY\_\-REL\_\-AFTER\_\-2S} &if the key was released after 2..3 sec, \\\hline
+\hyperlink{keys_8h_69d7b969c4fc42011d96809a89bf1fb0}{KEY\_\-REL\_\-AFTER\_\-3S} &if the key was released after 3..4 sec, \\\hline
+\hyperlink{keys_8h_06307b2b74026911d5fa8c789ed081ef}{KEY\_\-REL\_\-AFTER\_\-4S} &if the key was released after 4..5 sec, \\\hline
+\hyperlink{keys_8h_b2aa33ea89b96412698f3e087dba5596}{KEY\_\-REL\_\-AFTER\_\-5S} &if the key was released after $>$ 5 sec, \\\hline
+\end{TabularC}
+\end{Desc}
+\begin{Desc}
+\item[Note:]To find out if the key is currently pressed this sentence must be true: (Get\-Key\-State(mykey) \& KEY\_\-PRESSED) == KEY\_\-PRESSED \end{Desc}
+
+
+Definition at line 29 of file keys.c.
+
+\subsection{Variable Documentation}
+\hypertarget{keys_8c_061dc0a0255c492fc6adb486137aba88}{
+\index{keys.c@{keys.c}!keyPressed@{keyPressed}}
+\index{keyPressed@{keyPressed}!keys.c@{keys.c}}
+\subsubsection[keyPressed]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{keys_8c_061dc0a0255c492fc6adb486137aba88}{key\-Pressed}\mbox{[}NKEYS\mbox{]} = \{FALSE,FALSE,FALSE\}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{keys_8c_061dc0a0255c492fc6adb486137aba88}
+
+
+
+
+Definition at line 24 of file keys.c.\hypertarget{keys_8c_de40f40cd148f5143efa1d38cc542703}{
+\index{keys.c@{keys.c}!keyPressedStartTime@{keyPressedStartTime}}
+\index{keyPressedStartTime@{keyPressedStartTime}!keys.c@{keys.c}}
+\subsubsection[keyPressedStartTime]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \hyperlink{keys_8c_de40f40cd148f5143efa1d38cc542703}{key\-Pressed\-Start\-Time}\mbox{[}NKEYS\mbox{]} = \{0,0,0\}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{keys_8c_de40f40cd148f5143efa1d38cc542703}
+
+
+
+
+Definition at line 25 of file keys.c.

@@ -1,0 +1,150 @@
+\hypertarget{ntrxtypes_8h}{
+\section{include/ntrxtypes.h File Reference}
+\label{ntrxtypes_8h}\index{include/ntrxtypes.h@{include/ntrxtypes.h}}
+}
+Type definitions for data types. 
+
+{\tt \#include $<$config.h$>$}\par
+{\tt \#include $<$stdint.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structMsgT}{Msg\-T}
+\begin{CompactList}\small\item\em General purpose message structure. \item\end{CompactList}\item 
+struct \hyperlink{structMyTmT}{My\-Tm\-T}
+\begin{CompactList}\small\item\em Timer structure used by the timerlib. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{ntrxtypes_8h_12281a95eca7ffdc5db4489e21c9ead5}{BITS2BYTES}(n)~(n/8)
+\item 
+\#define \hyperlink{ntrxtypes_8h_263efce0e5cda1d387a1a43f94715445}{NIL}~(0)
+\item 
+\#define \hyperlink{ntrxtypes_8h_070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}~(0)
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef uint8\_\-t \hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \mbox{[}6\mbox{]}
+\begin{CompactList}\small\item\em 48 bit address type. \item\end{CompactList}\item 
+typedef void($\ast$) \hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Function pointer type for upstream callback functions. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \{ \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a1e095cc966dbecf6a0d8aad75348d1a}{FALSE} =  0, 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a82764c3079aea4e60c80e45befbb839}{TRUE} =  1
+ \}
+\begin{CompactList}\small\item\em Bool type. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Type definitions for data types. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Rohdemann {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the generic datatype definitions of the n\-TRX driver. These type definitions isolate the n\-TRX code from dependencies on the hardware environment for which the n\-TRX is compiled.\end{Desc}
+\begin{Desc}
+\item[Revision]7037 \end{Desc}
+\begin{Desc}
+\item[Date]2009-10-02 16:40:28 +0200 (Fr, 02 Okt 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]ak \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-10-02 16:40:28 +0200 (Fr, 02 Okt 2009) \end{Desc}
+
+
+Definition in file \hyperlink{ntrxtypes_8h-source}{ntrxtypes.h}.
+
+\subsection{Define Documentation}
+\hypertarget{ntrxtypes_8h_12281a95eca7ffdc5db4489e21c9ead5}{
+\index{ntrxtypes.h@{ntrxtypes.h}!BITS2BYTES@{BITS2BYTES}}
+\index{BITS2BYTES@{BITS2BYTES}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[BITS2BYTES]{\setlength{\rightskip}{0pt plus 5cm}\#define BITS2BYTES(n)~(n/8)}}
+\label{ntrxtypes_8h_12281a95eca7ffdc5db4489e21c9ead5}
+
+
+
+
+Definition at line 28 of file ntrxtypes.h.\hypertarget{ntrxtypes_8h_263efce0e5cda1d387a1a43f94715445}{
+\index{ntrxtypes.h@{ntrxtypes.h}!NIL@{NIL}}
+\index{NIL@{NIL}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[NIL]{\setlength{\rightskip}{0pt plus 5cm}\#define NIL~(0)}}
+\label{ntrxtypes_8h_263efce0e5cda1d387a1a43f94715445}
+
+
+
+
+Definition at line 35 of file ntrxtypes.h.\hypertarget{ntrxtypes_8h_070d2ce7b6bb7e5c05602aa8c308d0c4}{
+\index{ntrxtypes.h@{ntrxtypes.h}!NULL@{NULL}}
+\index{NULL@{NULL}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[NULL]{\setlength{\rightskip}{0pt plus 5cm}\#define NULL~(0)}}
+\label{ntrxtypes_8h_070d2ce7b6bb7e5c05602aa8c308d0c4}
+
+
+
+
+Definition at line 31 of file ntrxtypes.h.
+
+\subsection{Typedef Documentation}
+\hypertarget{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{
+\index{ntrxtypes.h@{ntrxtypes.h}!AddrT@{AddrT}}
+\index{AddrT@{AddrT}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[AddrT]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\_\-t \hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T}\mbox{[}6\mbox{]}}}
+\label{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}
+
+
+48 bit address type. 
+
+
+
+Definition at line 56 of file ntrxtypes.h.\hypertarget{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{
+\index{ntrxtypes.h@{ntrxtypes.h}!callbackfn_t@{callbackfn\_\-t}}
+\index{callbackfn_t@{callbackfn\_\-t}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[callbackfn\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$) \hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t}(\hyperlink{structMsgT}{Msg\-T} $\ast$msg)}}
+\label{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}
+
+
+Function pointer type for upstream callback functions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em msg}]The received message that will be delivered upstream. \end{description}
+\end{Desc}
+
+
+Definition at line 89 of file ntrxtypes.h.
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{
+\index{ntrxtypes.h@{ntrxtypes.h}!bool_t@{bool\_\-t}}
+\index{bool_t@{bool\_\-t}!ntrxtypes.h@{ntrxtypes.h}}
+\subsubsection[bool\_\-t]{\setlength{\rightskip}{0pt plus 5cm}enum \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t}}}
+\label{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}
+
+
+Bool type. 
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{FALSE@{FALSE}!ntrxtypes.h@{ntrxtypes.h}}\index{ntrxtypes.h@{ntrxtypes.h}!FALSE@{FALSE}}\item[{\em 
+\hypertarget{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a1e095cc966dbecf6a0d8aad75348d1a}{
+FALSE}
+\label{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a1e095cc966dbecf6a0d8aad75348d1a}
+}]\index{TRUE@{TRUE}!ntrxtypes.h@{ntrxtypes.h}}\index{ntrxtypes.h@{ntrxtypes.h}!TRUE@{TRUE}}\item[{\em 
+\hypertarget{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a82764c3079aea4e60c80e45befbb839}{
+TRUE}
+\label{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8a82764c3079aea4e60c80e45befbb839}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 51 of file ntrxtypes.h.

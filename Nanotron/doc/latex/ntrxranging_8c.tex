@@ -1,0 +1,702 @@
+\hypertarget{ntrxranging_8c}{
+\section{phy/ntrxranging.c File Reference}
+\label{ntrxranging_8c}\index{phy/ntrxranging.c@{phy/ntrxranging.c}}
+}
+Ranging support functions. 
+
+{\tt \#include \char`\"{}portation.h\char`\"{}}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxranging.h\char`\"{}}\par
+{\tt \#include \char`\"{}phy.h\char`\"{}}\par
+{\tt \#include \char`\"{}registermap.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include $<$stdio.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structRangingT}{Ranging\-T}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{ntrxranging_8c_072e0bccf79168f4be76c3f22b0c0f76}{ACTTXID}~10
+\item 
+\#define \hyperlink{ntrxranging_8c_edda2249555d7f968786b23ba4b42ef8}{CLK\_\-32MHZ}~32
+\item 
+\#define \hyperlink{ntrxranging_8c_dd9d79c967d29060e6d6ad699ad5c0e3}{CLK\_\-4MHZ}~4
+\item 
+\#define \hyperlink{ntrxranging_8c_0c601a9e71a27d1c2e06d52db0d8dda6}{CLK\_\-LOD20}~(2000.0/244175)
+\item 
+\#define \hyperlink{ntrxranging_8c_7194053a42881b1b4bc8546b4c8713e9}{COUNTER}~9
+\item 
+\#define \hyperlink{ntrxranging_8c_af2d99638d71c152481142faf725c1cd}{MAX\_\-DIFF\_\-ALLOWED}~10
+\item 
+\#define \hyperlink{ntrxranging_8c_5c9e9e79d80972f0ae843976140d867d}{PHASEOFFSETACK}~0
+\item 
+\#define \hyperlink{ntrxranging_8c_8b1aaede50a20d8e3e99447277a3cec0}{PHASEOFFSETDATA}~5
+\item 
+\#define \hyperlink{ntrxranging_8c_4a8e992fd2977532f6fffc5dcb12e829}{PULSE\_\-DET\_\-UC\_\-MAX}~(2$\ast$24)
+\item 
+\#define \hyperlink{ntrxranging_8c_42efd84fccf8750646217880c165026b}{RANGING\_\-DATA\_\-LEN}~11
+\item 
+\#define \hyperlink{ntrxranging_8c_c58b8d6864729178d8718413d32b5100}{RANGING\_\-DEBUG}~No\-Debugging
+\item 
+\#define \hyperlink{ntrxranging_8c_a2bc5efb02be120c9d6f597fd4db58d0}{RANGING\_\-ERROR}~8
+\item 
+\#define \hyperlink{ntrxranging_8c_22b93c4f491e7d91ffa31c6d77d2256f}{RANGING\_\-IDLE}~0
+\item 
+\#define \hyperlink{ntrxranging_8c_c2b7f54fbce9a4e7ba2280c26a77a92f}{RANGING\_\-RUNNING}~1
+\item 
+\#define \hyperlink{ntrxranging_8c_9084653b5a5589b27dd9209f6b2be08d}{SPEED\_\-OF\_\-AIR}~299.792458
+\item 
+\#define \hyperlink{ntrxranging_8c_bda7dbad1652e64fd46ba1f076e8c561}{TOAOFFSETMEANACK\_\-H}~2
+\item 
+\#define \hyperlink{ntrxranging_8c_c4b52fa7548de093c430f40a029e3c32}{TOAOFFSETMEANACK\_\-L}~1
+\item 
+\#define \hyperlink{ntrxranging_8c_8806c5c2d262f9e4f241563c2f2487ac}{TOAOFFSETMEANDATA\_\-H}~7
+\item 
+\#define \hyperlink{ntrxranging_8c_2c923d13490e0a7bf842ff5825629ad9}{TOAOFFSETMEANDATA\_\-L}~6
+\item 
+\#define \hyperlink{ntrxranging_8c_51694c117d51247a38e8952a967a5b21}{TXRESPTIME\_\-H}~4
+\item 
+\#define \hyperlink{ntrxranging_8c_adf0e568b27221dbcc0d41f5af087da9}{TXRESPTIME\_\-L}~3
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static double \hyperlink{ntrxranging_8c_27585647e5f4bcf79db2301ef54f2719}{delay} (uint8\_\-t $\ast$p)
+\begin{CompactList}\small\item\em Calculates airtime and substract all processing delays. \item\end{CompactList}\item 
+static double \hyperlink{ntrxranging_8c_10adfd36c3c127ae5d47e4d18654a717}{dist} (uint8\_\-t $\ast$p1, uint8\_\-t $\ast$p2)
+\begin{CompactList}\small\item\em Calculates the distance between two stations. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler} (int16\_\-t err)
+\item 
+void \hyperlink{ntrxranging_8c_54b149c9e384fc41d4e807ee6c4dd1f7}{NTRXRanging\-ACK} (void)
+\begin{CompactList}\small\item\em This function collects data from a hardware acknowledge. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_3ffea022c9043c189bf64004ce13cfc4}{NTRXRanging\-Init} ()
+\begin{CompactList}\small\item\em This function initialize the local ranging memory. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_7e64f6445b5262b0b6be979d4a4b9cc7}{NTRXRanging\-Interrupt} (void)
+\begin{CompactList}\small\item\em This function is called on baseband timer interrupt (ranging timeouts). \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxranging_8c_70907643ce9dfc85cd56cd19c1fb945c}{NTRXRanging\-Is\-IDLE} (void)
+\begin{CompactList}\small\item\em This function returns the internal status of ranging. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_77d2951842af5da82551588eeb2d0b3e}{NTRXRanging\-Request} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function try to start a ranging process. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_2a85e9cf03ffb50a4be65b7634d7625b}{NTRXRanging\-RX} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function collects data from a rx packet. \item\end{CompactList}\item 
+static void \hyperlink{ntrxranging_8c_3e5285e9f49a0a4986ae628c18312105}{NTRXRead\-Register\-ACK} (void)
+\begin{CompactList}\small\item\em Reads the ack ranging registers after a packet transmission to remote ranging values. \item\end{CompactList}\item 
+static void \hyperlink{ntrxranging_8c_185d2ef0380262bf075637de78122922}{NTRXRead\-Register\-RX} (void)
+\begin{CompactList}\small\item\em Reads the rx ranging registers after a packet reception to local ranging values. \item\end{CompactList}\item 
+static void \hyperlink{ntrxranging_8c_b734661d6de9cc596ccab5b05ee656a7}{NTRXSet0} (void)
+\begin{CompactList}\small\item\em Takes a snapshot from local and remote ranging values for later distance calculation. \item\end{CompactList}\item 
+static void \hyperlink{ntrxranging_8c_95181139ecf22fe6a2354771db31c3a5}{NTRXSet1} (void)
+\begin{CompactList}\small\item\em Takes a snapshot from local and remote ranging values for later distance calculation. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_5d212d5040fbb60593d70d92edb9e3c6}{NTRXStart\-Timeout} (uint16\_\-t to\_\-ms)
+\begin{CompactList}\small\item\em Start timeout. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_a3c1b65f74445b59384eb28802dd8e25}{NTRXStop\-Timeout} (void)
+\begin{CompactList}\small\item\em Cancel running timeout. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback} (\hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} rg\-Permission, \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} rg\-Get\-Memory)
+\begin{CompactList}\small\item\em Registers function pointers to ranging specific functions. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structPhyModeSetT}{Phy\-Mode\-Set\-T} \hyperlink{ntrxranging_8c_93806a2ab72ce9ba673c0ac29fd87395}{mode\-Set}
+\item 
+\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{ntrxranging_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}
+\begin{CompactList}\small\item\em structure for all layer configuration settings \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} \hyperlink{ntrxranging_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up}
+\item 
+static \hyperlink{structRangingT}{Ranging\-T} $\ast$ \hyperlink{ntrxranging_8c_e7316be52deeeed3d7d3b98cc045f7d3}{pr\-MEM}
+\item 
+static \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} \hyperlink{ntrxranging_8c_aee5e1b194e05427cc1e93b4a515057c}{ranging\-Get\-Memory}
+\item 
+static \hyperlink{structRangingT}{Ranging\-T} \hyperlink{ntrxranging_8c_1f5fef49ba274950f88214cce035a97c}{ranging\-MEM}
+\item 
+static \hyperlink{structRangingMsgT}{Ranging\-Msg\-T} \hyperlink{ntrxranging_8c_e1bf7955c4b6c0202e5e81a442e1269f}{ranging\-MSG}
+\item 
+static \hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} \hyperlink{ntrxranging_8c_4cb90114e062af5522c606b7bdfcbd96}{ranging\-Permission}
+\item 
+static \hyperlink{structMsgT}{Msg\-T} \hyperlink{ntrxranging_8c_ccbebab9f81ef8a98fa9ca3fa5e632f2}{rec\-Buffer}
+\item 
+static uint16\_\-t \hyperlink{ntrxranging_8c_f5ae82768750b53466cd7d710c609e51}{to\_\-cnt\_\-down} = 0
+\item 
+static uint16\_\-t \hyperlink{ntrxranging_8c_ddd312e4dfa0b4c6a0d9b8783961c3e2}{to\_\-mod} = 0
+\item 
+static \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxranging_8c_1349017ec2b3bb42fe1ad5abf4f074e3}{to\_\-stop} = FALSE
+\item 
+\hyperlink{structMsgT}{Msg\-T} $\ast$ \hyperlink{ntrxranging_8c_c8a2e3eac97d762116052cf5cfdd2584}{tx\-Send\-Msg}
+\item 
+\hyperlink{structMsgT}{Msg\-T} \hyperlink{ntrxranging_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Ranging support functions. 
+
+\begin{Desc}
+\item[Date:]2009-07-07 \end{Desc}
+\begin{Desc}
+\item[Author:]Christian Bock {\tt }(C) 2009 Nanotron Technologies\end{Desc}
+This file contains the source code for the implementation of the NTRX ranging functions. 
+
+Definition in file \hyperlink{ntrxranging_8c-source}{ntrxranging.c}.
+
+\subsection{Define Documentation}
+\hypertarget{ntrxranging_8c_072e0bccf79168f4be76c3f22b0c0f76}{
+\index{ntrxranging.c@{ntrxranging.c}!ACTTXID@{ACTTXID}}
+\index{ACTTXID@{ACTTXID}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[ACTTXID]{\setlength{\rightskip}{0pt plus 5cm}\#define ACTTXID~10}}
+\label{ntrxranging_8c_072e0bccf79168f4be76c3f22b0c0f76}
+
+
+
+
+Definition at line 47 of file ntrxranging.c.\hypertarget{ntrxranging_8c_edda2249555d7f968786b23ba4b42ef8}{
+\index{ntrxranging.c@{ntrxranging.c}!CLK_32MHZ@{CLK\_\-32MHZ}}
+\index{CLK_32MHZ@{CLK\_\-32MHZ}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[CLK\_\-32MHZ]{\setlength{\rightskip}{0pt plus 5cm}\#define CLK\_\-32MHZ~32}}
+\label{ntrxranging_8c_edda2249555d7f968786b23ba4b42ef8}
+
+
+
+
+Definition at line 1293 of file ntrxranging.c.\hypertarget{ntrxranging_8c_dd9d79c967d29060e6d6ad699ad5c0e3}{
+\index{ntrxranging.c@{ntrxranging.c}!CLK_4MHZ@{CLK\_\-4MHZ}}
+\index{CLK_4MHZ@{CLK\_\-4MHZ}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[CLK\_\-4MHZ]{\setlength{\rightskip}{0pt plus 5cm}\#define CLK\_\-4MHZ~4}}
+\label{ntrxranging_8c_dd9d79c967d29060e6d6ad699ad5c0e3}
+
+
+
+
+Definition at line 1292 of file ntrxranging.c.\hypertarget{ntrxranging_8c_0c601a9e71a27d1c2e06d52db0d8dda6}{
+\index{ntrxranging.c@{ntrxranging.c}!CLK_LOD20@{CLK\_\-LOD20}}
+\index{CLK_LOD20@{CLK\_\-LOD20}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[CLK\_\-LOD20]{\setlength{\rightskip}{0pt plus 5cm}\#define CLK\_\-LOD20~(2000.0/244175)}}
+\label{ntrxranging_8c_0c601a9e71a27d1c2e06d52db0d8dda6}
+
+
+
+
+Definition at line 1294 of file ntrxranging.c.\hypertarget{ntrxranging_8c_7194053a42881b1b4bc8546b4c8713e9}{
+\index{ntrxranging.c@{ntrxranging.c}!COUNTER@{COUNTER}}
+\index{COUNTER@{COUNTER}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[COUNTER]{\setlength{\rightskip}{0pt plus 5cm}\#define COUNTER~9}}
+\label{ntrxranging_8c_7194053a42881b1b4bc8546b4c8713e9}
+
+
+
+
+Definition at line 46 of file ntrxranging.c.\hypertarget{ntrxranging_8c_af2d99638d71c152481142faf725c1cd}{
+\index{ntrxranging.c@{ntrxranging.c}!MAX_DIFF_ALLOWED@{MAX\_\-DIFF\_\-ALLOWED}}
+\index{MAX_DIFF_ALLOWED@{MAX\_\-DIFF\_\-ALLOWED}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[MAX\_\-DIFF\_\-ALLOWED]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-DIFF\_\-ALLOWED~10}}
+\label{ntrxranging_8c_af2d99638d71c152481142faf725c1cd}
+
+
+
+
+Definition at line 57 of file ntrxranging.c.\hypertarget{ntrxranging_8c_5c9e9e79d80972f0ae843976140d867d}{
+\index{ntrxranging.c@{ntrxranging.c}!PHASEOFFSETACK@{PHASEOFFSETACK}}
+\index{PHASEOFFSETACK@{PHASEOFFSETACK}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[PHASEOFFSETACK]{\setlength{\rightskip}{0pt plus 5cm}\#define PHASEOFFSETACK~0}}
+\label{ntrxranging_8c_5c9e9e79d80972f0ae843976140d867d}
+
+
+
+
+Definition at line 37 of file ntrxranging.c.\hypertarget{ntrxranging_8c_8b1aaede50a20d8e3e99447277a3cec0}{
+\index{ntrxranging.c@{ntrxranging.c}!PHASEOFFSETDATA@{PHASEOFFSETDATA}}
+\index{PHASEOFFSETDATA@{PHASEOFFSETDATA}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[PHASEOFFSETDATA]{\setlength{\rightskip}{0pt plus 5cm}\#define PHASEOFFSETDATA~5}}
+\label{ntrxranging_8c_8b1aaede50a20d8e3e99447277a3cec0}
+
+
+
+
+Definition at line 42 of file ntrxranging.c.\hypertarget{ntrxranging_8c_4a8e992fd2977532f6fffc5dcb12e829}{
+\index{ntrxranging.c@{ntrxranging.c}!PULSE_DET_UC_MAX@{PULSE\_\-DET\_\-UC\_\-MAX}}
+\index{PULSE_DET_UC_MAX@{PULSE\_\-DET\_\-UC\_\-MAX}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[PULSE\_\-DET\_\-UC\_\-MAX]{\setlength{\rightskip}{0pt plus 5cm}\#define PULSE\_\-DET\_\-UC\_\-MAX~(2$\ast$24)}}
+\label{ntrxranging_8c_4a8e992fd2977532f6fffc5dcb12e829}
+
+
+
+
+Definition at line 1295 of file ntrxranging.c.\hypertarget{ntrxranging_8c_42efd84fccf8750646217880c165026b}{
+\index{ntrxranging.c@{ntrxranging.c}!RANGING_DATA_LEN@{RANGING\_\-DATA\_\-LEN}}
+\index{RANGING_DATA_LEN@{RANGING\_\-DATA\_\-LEN}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RANGING\_\-DATA\_\-LEN]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-DATA\_\-LEN~11}}
+\label{ntrxranging_8c_42efd84fccf8750646217880c165026b}
+
+
+
+
+Definition at line 50 of file ntrxranging.c.\hypertarget{ntrxranging_8c_c58b8d6864729178d8718413d32b5100}{
+\index{ntrxranging.c@{ntrxranging.c}!RANGING_DEBUG@{RANGING\_\-DEBUG}}
+\index{RANGING_DEBUG@{RANGING\_\-DEBUG}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RANGING\_\-DEBUG]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-DEBUG~No\-Debugging}}
+\label{ntrxranging_8c_c58b8d6864729178d8718413d32b5100}
+
+
+
+
+Definition at line 23 of file ntrxranging.c.\hypertarget{ntrxranging_8c_a2bc5efb02be120c9d6f597fd4db58d0}{
+\index{ntrxranging.c@{ntrxranging.c}!RANGING_ERROR@{RANGING\_\-ERROR}}
+\index{RANGING_ERROR@{RANGING\_\-ERROR}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RANGING\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-ERROR~8}}
+\label{ntrxranging_8c_a2bc5efb02be120c9d6f597fd4db58d0}
+
+
+
+
+Definition at line 45 of file ntrxranging.c.\hypertarget{ntrxranging_8c_22b93c4f491e7d91ffa31c6d77d2256f}{
+\index{ntrxranging.c@{ntrxranging.c}!RANGING_IDLE@{RANGING\_\-IDLE}}
+\index{RANGING_IDLE@{RANGING\_\-IDLE}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RANGING\_\-IDLE]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-IDLE~0}}
+\label{ntrxranging_8c_22b93c4f491e7d91ffa31c6d77d2256f}
+
+
+
+
+Definition at line 29 of file ntrxranging.c.\hypertarget{ntrxranging_8c_c2b7f54fbce9a4e7ba2280c26a77a92f}{
+\index{ntrxranging.c@{ntrxranging.c}!RANGING_RUNNING@{RANGING\_\-RUNNING}}
+\index{RANGING_RUNNING@{RANGING\_\-RUNNING}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RANGING\_\-RUNNING]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-RUNNING~1}}
+\label{ntrxranging_8c_c2b7f54fbce9a4e7ba2280c26a77a92f}
+
+
+
+
+Definition at line 34 of file ntrxranging.c.\hypertarget{ntrxranging_8c_9084653b5a5589b27dd9209f6b2be08d}{
+\index{ntrxranging.c@{ntrxranging.c}!SPEED_OF_AIR@{SPEED\_\-OF\_\-AIR}}
+\index{SPEED_OF_AIR@{SPEED\_\-OF\_\-AIR}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[SPEED\_\-OF\_\-AIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SPEED\_\-OF\_\-AIR~299.792458}}
+\label{ntrxranging_8c_9084653b5a5589b27dd9209f6b2be08d}
+
+
+
+
+Definition at line 53 of file ntrxranging.c.\hypertarget{ntrxranging_8c_bda7dbad1652e64fd46ba1f076e8c561}{
+\index{ntrxranging.c@{ntrxranging.c}!TOAOFFSETMEANACK_H@{TOAOFFSETMEANACK\_\-H}}
+\index{TOAOFFSETMEANACK_H@{TOAOFFSETMEANACK\_\-H}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TOAOFFSETMEANACK\_\-H]{\setlength{\rightskip}{0pt plus 5cm}\#define TOAOFFSETMEANACK\_\-H~2}}
+\label{ntrxranging_8c_bda7dbad1652e64fd46ba1f076e8c561}
+
+
+
+
+Definition at line 39 of file ntrxranging.c.\hypertarget{ntrxranging_8c_c4b52fa7548de093c430f40a029e3c32}{
+\index{ntrxranging.c@{ntrxranging.c}!TOAOFFSETMEANACK_L@{TOAOFFSETMEANACK\_\-L}}
+\index{TOAOFFSETMEANACK_L@{TOAOFFSETMEANACK\_\-L}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TOAOFFSETMEANACK\_\-L]{\setlength{\rightskip}{0pt plus 5cm}\#define TOAOFFSETMEANACK\_\-L~1}}
+\label{ntrxranging_8c_c4b52fa7548de093c430f40a029e3c32}
+
+
+
+
+Definition at line 38 of file ntrxranging.c.\hypertarget{ntrxranging_8c_8806c5c2d262f9e4f241563c2f2487ac}{
+\index{ntrxranging.c@{ntrxranging.c}!TOAOFFSETMEANDATA_H@{TOAOFFSETMEANDATA\_\-H}}
+\index{TOAOFFSETMEANDATA_H@{TOAOFFSETMEANDATA\_\-H}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TOAOFFSETMEANDATA\_\-H]{\setlength{\rightskip}{0pt plus 5cm}\#define TOAOFFSETMEANDATA\_\-H~7}}
+\label{ntrxranging_8c_8806c5c2d262f9e4f241563c2f2487ac}
+
+
+
+
+Definition at line 44 of file ntrxranging.c.\hypertarget{ntrxranging_8c_2c923d13490e0a7bf842ff5825629ad9}{
+\index{ntrxranging.c@{ntrxranging.c}!TOAOFFSETMEANDATA_L@{TOAOFFSETMEANDATA\_\-L}}
+\index{TOAOFFSETMEANDATA_L@{TOAOFFSETMEANDATA\_\-L}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TOAOFFSETMEANDATA\_\-L]{\setlength{\rightskip}{0pt plus 5cm}\#define TOAOFFSETMEANDATA\_\-L~6}}
+\label{ntrxranging_8c_2c923d13490e0a7bf842ff5825629ad9}
+
+
+
+
+Definition at line 43 of file ntrxranging.c.\hypertarget{ntrxranging_8c_51694c117d51247a38e8952a967a5b21}{
+\index{ntrxranging.c@{ntrxranging.c}!TXRESPTIME_H@{TXRESPTIME\_\-H}}
+\index{TXRESPTIME_H@{TXRESPTIME\_\-H}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TXRESPTIME\_\-H]{\setlength{\rightskip}{0pt plus 5cm}\#define TXRESPTIME\_\-H~4}}
+\label{ntrxranging_8c_51694c117d51247a38e8952a967a5b21}
+
+
+
+
+Definition at line 41 of file ntrxranging.c.\hypertarget{ntrxranging_8c_adf0e568b27221dbcc0d41f5af087da9}{
+\index{ntrxranging.c@{ntrxranging.c}!TXRESPTIME_L@{TXRESPTIME\_\-L}}
+\index{TXRESPTIME_L@{TXRESPTIME\_\-L}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[TXRESPTIME\_\-L]{\setlength{\rightskip}{0pt plus 5cm}\#define TXRESPTIME\_\-L~3}}
+\label{ntrxranging_8c_adf0e568b27221dbcc0d41f5af087da9}
+
+
+
+
+Definition at line 40 of file ntrxranging.c.
+
+\subsection{Function Documentation}
+\hypertarget{ntrxranging_8c_27585647e5f4bcf79db2301ef54f2719}{
+\index{ntrxranging.c@{ntrxranging.c}!delay@{delay}}
+\index{delay@{delay}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[delay]{\setlength{\rightskip}{0pt plus 5cm}double delay (uint8\_\-t $\ast$ {\em p})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_27585647e5f4bcf79db2301ef54f2719}
+
+
+Calculates airtime and substract all processing delays. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p}]is one set of register values \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]airtime \end{Desc}
+
+
+Definition at line 1298 of file ntrxranging.c.\hypertarget{ntrxranging_8c_10adfd36c3c127ae5d47e4d18654a717}{
+\index{ntrxranging.c@{ntrxranging.c}!dist@{dist}}
+\index{dist@{dist}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[dist]{\setlength{\rightskip}{0pt plus 5cm}double dist (uint8\_\-t $\ast$ {\em p1}, uint8\_\-t $\ast$ {\em p2})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_10adfd36c3c127ae5d47e4d18654a717}
+
+
+Calculates the distance between two stations. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p1}]is one set of register values \item[{\em p2}]is one set of register values \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]distance in \mbox{[}m\mbox{]} \end{Desc}
+
+
+Definition at line 1250 of file ntrxranging.c.\hypertarget{ntrxranging_8c_361f0e5c2930b643953fbc188f21e3e3}{
+\index{ntrxranging.c@{ntrxranging.c}!error_handler@{error\_\-handler}}
+\index{error_handler@{error\_\-handler}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[error\_\-handler]{\setlength{\rightskip}{0pt plus 5cm}void error\_\-handler (int16\_\-t {\em err})}}
+\label{ntrxranging_8c_361f0e5c2930b643953fbc188f21e3e3}
+
+
+error\_\-handler:
+
+\hyperlink{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler()} print out the error number and stop the system.
+
+Returns: None 
+
+Definition at line 51 of file main.c.\hypertarget{ntrxranging_8c_54b149c9e384fc41d4e807ee6c4dd1f7}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingACK@{NTRXRangingACK}}
+\index{NTRXRangingACK@{NTRXRangingACK}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingACK]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-ACK (void)}}
+\label{ntrxranging_8c_54b149c9e384fc41d4e807ee6c4dd1f7}
+
+
+This function collects data from a hardware acknowledge. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer to the sended message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called on hardware ack, after an ranging packet is send. Depending on the RANGING\_\-TYPE next steps will proccessed. \end{Desc}
+
+
+Definition at line 353 of file ntrxranging.c.\hypertarget{ntrxranging_8c_3ffea022c9043c189bf64004ce13cfc4}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingInit@{NTRXRangingInit}}
+\index{NTRXRangingInit@{NTRXRangingInit}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingInit]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Init (void)}}
+\label{ntrxranging_8c_3ffea022c9043c189bf64004ce13cfc4}
+
+
+This function initialize the local ranging memory. 
+
+\begin{Desc}
+\item[Note:]This function must called once during initialisation to ensure that the local ranging memory is in initial position. \end{Desc}
+
+
+Definition at line 166 of file ntrxranging.c.\hypertarget{ntrxranging_8c_7e64f6445b5262b0b6be979d4a4b9cc7}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingInterrupt@{NTRXRangingInterrupt}}
+\index{NTRXRangingInterrupt@{NTRXRangingInterrupt}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingInterrupt]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Interrupt (void)}}
+\label{ntrxranging_8c_7e64f6445b5262b0b6be979d4a4b9cc7}
+
+
+This function is called on baseband timer interrupt (ranging timeouts). 
+
+\begin{Desc}
+\item[Note:]baseband timer starts on every successfull ranging request and if no answer is received the interrupt occure and ranging will abort. This prevents blocking the phy for new remote ranging requests. \end{Desc}
+
+
+Definition at line 1464 of file ntrxranging.c.\hypertarget{ntrxranging_8c_70907643ce9dfc85cd56cd19c1fb945c}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingIsIDLE@{NTRXRangingIsIDLE}}
+\index{NTRXRangingIsIDLE@{NTRXRangingIsIDLE}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingIsIDLE]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXRanging\-Is\-IDLE (void)}}
+\label{ntrxranging_8c_70907643ce9dfc85cd56cd19c1fb945c}
+
+
+This function returns the internal status of ranging. 
+
+\begin{Desc}
+\item[Note:]This function should be called before setting the driver into power down, to ensure that ranging is finished. \end{Desc}
+\begin{Desc}
+\item[Returns:]TRUE if no ranging is pending, otherweise FALSE \end{Desc}
+
+
+Definition at line 155 of file ntrxranging.c.\hypertarget{ntrxranging_8c_77d2951842af5da82551588eeb2d0b3e}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingRequest@{NTRXRangingRequest}}
+\index{NTRXRangingRequest@{NTRXRangingRequest}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingRequest]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Request (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{ntrxranging_8c_77d2951842af5da82551588eeb2d0b3e}
+
+
+This function try to start a ranging process. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the pointer to send message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called ever on a PD\_\-RANGING\_\-REQUEST. If transmitter is free, and no other ranging is running, this function starts a new ranging process.\end{Desc}
+RANGING\_\-TYPE\_\-3W\_\-A = ---$>$,$<$---,$<$--- (singel measurement, distance local known) RANGING\_\-TYPE\_\-3W\_\-B = ---$>$,$<$---,---$>$ (singel measurement, distance remote known) RANGING\_\-TYPE\_\-2W\_\-PP= ---$>$,$<$--- (continue, distance remote known) 
+
+Definition at line 177 of file ntrxranging.c.\hypertarget{ntrxranging_8c_2a85e9cf03ffb50a4be65b7634d7625b}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXRangingRX@{NTRXRangingRX}}
+\index{NTRXRangingRX@{NTRXRangingRX}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXRangingRX]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-RX (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{ntrxranging_8c_2a85e9cf03ffb50a4be65b7634d7625b}
+
+
+This function collects data from a rx packet. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the pointer to recieved message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called on rx interrupt, after an ranging packet is recieved. Depending on the RANGING\_\-TYPE next steps will proccessed. \end{Desc}
+
+
+Definition at line 650 of file ntrxranging.c.\hypertarget{ntrxranging_8c_3e5285e9f49a0a4986ae628c18312105}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXReadRegisterACK@{NTRXReadRegisterACK}}
+\index{NTRXReadRegisterACK@{NTRXReadRegisterACK}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXReadRegisterACK]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRead\-Register\-ACK (void)\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_3e5285e9f49a0a4986ae628c18312105}
+
+
+Reads the ack ranging registers after a packet transmission to remote ranging values. 
+
+
+
+Definition at line 1209 of file ntrxranging.c.\hypertarget{ntrxranging_8c_185d2ef0380262bf075637de78122922}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXReadRegisterRX@{NTRXReadRegisterRX}}
+\index{NTRXReadRegisterRX@{NTRXReadRegisterRX}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXReadRegisterRX]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRead\-Register\-RX (void)\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_185d2ef0380262bf075637de78122922}
+
+
+Reads the rx ranging registers after a packet reception to local ranging values. 
+
+
+
+Definition at line 1390 of file ntrxranging.c.\hypertarget{ntrxranging_8c_b734661d6de9cc596ccab5b05ee656a7}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXSet0@{NTRXSet0}}
+\index{NTRXSet0@{NTRXSet0}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXSet0]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet0 (void)\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_b734661d6de9cc596ccab5b05ee656a7}
+
+
+Takes a snapshot from local and remote ranging values for later distance calculation. 
+
+
+
+Definition at line 1340 of file ntrxranging.c.\hypertarget{ntrxranging_8c_95181139ecf22fe6a2354771db31c3a5}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXSet1@{NTRXSet1}}
+\index{NTRXSet1@{NTRXSet1}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXSet1]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet1 (void)\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_95181139ecf22fe6a2354771db31c3a5}
+
+
+Takes a snapshot from local and remote ranging values for later distance calculation. 
+
+
+
+Definition at line 1365 of file ntrxranging.c.\hypertarget{ntrxranging_8c_5d212d5040fbb60593d70d92edb9e3c6}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXStartTimeout@{NTRXStartTimeout}}
+\index{NTRXStartTimeout@{NTRXStartTimeout}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXStartTimeout]{\setlength{\rightskip}{0pt plus 5cm}void NTRXStart\-Timeout (uint16\_\-t {\em to\_\-ms})}}
+\label{ntrxranging_8c_5d212d5040fbb60593d70d92edb9e3c6}
+
+
+Start timeout. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em to\_\-ms}]in milliseconds from 1ms up to 200ms. \end{description}
+\end{Desc}
+
+
+Definition at line 1435 of file ntrxranging.c.\hypertarget{ntrxranging_8c_a3c1b65f74445b59384eb28802dd8e25}{
+\index{ntrxranging.c@{ntrxranging.c}!NTRXStopTimeout@{NTRXStopTimeout}}
+\index{NTRXStopTimeout@{NTRXStopTimeout}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[NTRXStopTimeout]{\setlength{\rightskip}{0pt plus 5cm}void NTRXStop\-Timeout (void)}}
+\label{ntrxranging_8c_a3c1b65f74445b59384eb28802dd8e25}
+
+
+Cancel running timeout. 
+
+
+
+Definition at line 1457 of file ntrxranging.c.\hypertarget{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{
+\index{ntrxranging.c@{ntrxranging.c}!RangingRegisterCallback@{RangingRegisterCallback}}
+\index{RangingRegisterCallback@{RangingRegisterCallback}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[RangingRegisterCallback]{\setlength{\rightskip}{0pt plus 5cm}void Ranging\-Register\-Callback (\hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} {\em rg\-Permission}, \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} {\em rg\-Get\-Memory})}}
+\label{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}
+
+
+Registers function pointers to ranging specific functions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rg\-Permission}]If set the PHY will ask the user by this function for permission to perform ranging with a given remote MAC address. Default on startup for this parameter is NULL, i.e. ranging will always be performed. \item[{\em rg\-Get\-Memory}]If set the PHY will call this function in order to obtain a valid piece of memory to store internal ranging states while ranging with a certain remote station. Default for this parameter is NULL, i.e. the PHY will be capable to perform ranging with {\em only\/} {\em one\/} ranging partner. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]Ping-Pong ranging will be rejected if rg\-Get\-Memory is not assigned. \end{Desc}
+
+
+Definition at line 1518 of file ntrxranging.c.
+
+\subsection{Variable Documentation}
+\hypertarget{ntrxranging_8c_93806a2ab72ce9ba673c0ac29fd87395}{
+\index{ntrxranging.c@{ntrxranging.c}!modeSet@{modeSet}}
+\index{modeSet@{modeSet}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[modeSet]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyModeSetT}{Phy\-Mode\-Set\-T} \hyperlink{ntrxutil_8c_93806a2ab72ce9ba673c0ac29fd87395}{mode\-Set}}}
+\label{ntrxranging_8c_93806a2ab72ce9ba673c0ac29fd87395}
+
+
+group of parameters that define a transmission mode. 
+
+Definition at line 69 of file ntrxutil.c.\hypertarget{ntrxranging_8c_c6bf7bba136f1383deb2932be153b881}{
+\index{ntrxranging.c@{ntrxranging.c}!phyPIB@{phyPIB}}
+\index{phyPIB@{phyPIB}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[phyPIB]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}}}
+\label{ntrxranging_8c_c6bf7bba136f1383deb2932be153b881}
+
+
+structure for all layer configuration settings 
+
+
+
+Definition at line 182 of file phy.c.\hypertarget{ntrxranging_8c_d978f7ee674fb95595d77d2966423a8e}{
+\index{ntrxranging.c@{ntrxranging.c}!phySendMsgUp@{phySendMsgUp}}
+\index{phySendMsgUp@{phySendMsgUp}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[phySendMsgUp]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} \hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up}}}
+\label{ntrxranging_8c_d978f7ee674fb95595d77d2966423a8e}
+
+
+used to send msg to upper layer =$>$ \hyperlink{phy_8c}{phy.c} 
+
+Definition at line 161 of file phy.c.\hypertarget{ntrxranging_8c_e7316be52deeeed3d7d3b98cc045f7d3}{
+\index{ntrxranging.c@{ntrxranging.c}!prMEM@{prMEM}}
+\index{prMEM@{prMEM}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[prMEM]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structRangingT}{Ranging\-T}$\ast$ \hyperlink{ntrxranging_8c_e7316be52deeeed3d7d3b98cc045f7d3}{pr\-MEM}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_e7316be52deeeed3d7d3b98cc045f7d3}
+
+
+pointer to ranging memory 
+
+Definition at line 78 of file ntrxranging.c.\hypertarget{ntrxranging_8c_aee5e1b194e05427cc1e93b4a515057c}{
+\index{ntrxranging.c@{ntrxranging.c}!rangingGetMemory@{rangingGetMemory}}
+\index{rangingGetMemory@{rangingGetMemory}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[rangingGetMemory]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} \hyperlink{ntrxranging_8c_aee5e1b194e05427cc1e93b4a515057c}{ranging\-Get\-Memory}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_aee5e1b194e05427cc1e93b4a515057c}
+
+
+
+
+Definition at line 90 of file ntrxranging.c.\hypertarget{ntrxranging_8c_1f5fef49ba274950f88214cce035a97c}{
+\index{ntrxranging.c@{ntrxranging.c}!rangingMEM@{rangingMEM}}
+\index{rangingMEM@{rangingMEM}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[rangingMEM]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structRangingT}{Ranging\-T} \hyperlink{ntrxranging_8c_1f5fef49ba274950f88214cce035a97c}{ranging\-MEM}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_1f5fef49ba274950f88214cce035a97c}
+
+
+local ranging memory for 3W\_\-A \& 3W\_\-B 
+
+Definition at line 77 of file ntrxranging.c.\hypertarget{ntrxranging_8c_e1bf7955c4b6c0202e5e81a442e1269f}{
+\index{ntrxranging.c@{ntrxranging.c}!rangingMSG@{rangingMSG}}
+\index{rangingMSG@{rangingMSG}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[rangingMSG]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structRangingMsgT}{Ranging\-Msg\-T} \hyperlink{ntrxranging_8c_e1bf7955c4b6c0202e5e81a442e1269f}{ranging\-MSG}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_e1bf7955c4b6c0202e5e81a442e1269f}
+
+
+used to communicate with upper layer 
+
+Definition at line 76 of file ntrxranging.c.\hypertarget{ntrxranging_8c_4cb90114e062af5522c606b7bdfcbd96}{
+\index{ntrxranging.c@{ntrxranging.c}!rangingPermission@{rangingPermission}}
+\index{rangingPermission@{rangingPermission}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[rangingPermission]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} \hyperlink{ntrxranging_8c_4cb90114e062af5522c606b7bdfcbd96}{ranging\-Permission}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_4cb90114e062af5522c606b7bdfcbd96}
+
+
+
+
+Definition at line 85 of file ntrxranging.c.\hypertarget{ntrxranging_8c_ccbebab9f81ef8a98fa9ca3fa5e632f2}{
+\index{ntrxranging.c@{ntrxranging.c}!recBuffer@{recBuffer}}
+\index{recBuffer@{recBuffer}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[recBuffer]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T} \hyperlink{ntrxranging_8c_ccbebab9f81ef8a98fa9ca3fa5e632f2}{rec\-Buffer}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_ccbebab9f81ef8a98fa9ca3fa5e632f2}
+
+
+buffers recently recieved msg 
+
+Definition at line 81 of file ntrxranging.c.\hypertarget{ntrxranging_8c_f5ae82768750b53466cd7d710c609e51}{
+\index{ntrxranging.c@{ntrxranging.c}!to_cnt_down@{to\_\-cnt\_\-down}}
+\index{to_cnt_down@{to\_\-cnt\_\-down}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[to\_\-cnt\_\-down]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \hyperlink{ntrxranging_8c_f5ae82768750b53466cd7d710c609e51}{to\_\-cnt\_\-down} = 0\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_f5ae82768750b53466cd7d710c609e51}
+
+
+
+
+Definition at line 93 of file ntrxranging.c.\hypertarget{ntrxranging_8c_ddd312e4dfa0b4c6a0d9b8783961c3e2}{
+\index{ntrxranging.c@{ntrxranging.c}!to_mod@{to\_\-mod}}
+\index{to_mod@{to\_\-mod}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[to\_\-mod]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \hyperlink{ntrxranging_8c_ddd312e4dfa0b4c6a0d9b8783961c3e2}{to\_\-mod} = 0\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_ddd312e4dfa0b4c6a0d9b8783961c3e2}
+
+
+
+
+Definition at line 95 of file ntrxranging.c.\hypertarget{ntrxranging_8c_1349017ec2b3bb42fe1ad5abf4f074e3}{
+\index{ntrxranging.c@{ntrxranging.c}!to_stop@{to\_\-stop}}
+\index{to_stop@{to\_\-stop}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[to\_\-stop]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxranging_8c_1349017ec2b3bb42fe1ad5abf4f074e3}{to\_\-stop} = FALSE\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{ntrxranging_8c_1349017ec2b3bb42fe1ad5abf4f074e3}
+
+
+
+
+Definition at line 97 of file ntrxranging.c.\hypertarget{ntrxranging_8c_c8a2e3eac97d762116052cf5cfdd2584}{
+\index{ntrxranging.c@{ntrxranging.c}!txSendMsg@{txSendMsg}}
+\index{txSendMsg@{txSendMsg}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[txSendMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T}$\ast$ \hyperlink{phy_8c_c8a2e3eac97d762116052cf5cfdd2584}{tx\-Send\-Msg}}}
+\label{ntrxranging_8c_c8a2e3eac97d762116052cf5cfdd2584}
+
+
+pointer to store last transmitted message. 
+
+Definition at line 172 of file phy.c.\hypertarget{ntrxranging_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{
+\index{ntrxranging.c@{ntrxranging.c}!upMsg@{upMsg}}
+\index{upMsg@{upMsg}!ntrxranging.c@{ntrxranging.c}}
+\subsubsection[upMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T} \hyperlink{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}}}
+\label{ntrxranging_8c_97bc9a3f01dfc7d193c5f9e80abc409d}
+
+
+message struct for all received data. 
+
+Definition at line 166 of file phy.c.

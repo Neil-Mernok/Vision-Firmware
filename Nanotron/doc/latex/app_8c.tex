@@ -1,0 +1,228 @@
+\hypertarget{app_8c}{
+\section{app.c File Reference}
+\label{app_8c}\index{app.c@{app.c}}
+}
+This file contains the source code for the demo. 
+
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxranging.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include \char`\"{}keys.h\char`\"{}}\par
+{\tt \#include \char`\"{}app.h\char`\"{}}\par
+{\tt \#include \char`\"{}phy.h\char`\"{}}\par
+{\tt \#include \char`\"{}usart.h\char`\"{}}\par
+{\tt \#include \char`\"{}led.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structAplMemT}{Apl\-Mem\-T}
+\begin{CompactList}\small\item\em Structure type for all layer configuration settings. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{app_8c_a657335b591d3330d08ada2ac256cd39}{Send\-Msg}~PDSap
+\begin{CompactList}\small\item\em Data request to the next lower layer. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{app_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{APLCallback} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Upstream message handling. \item\end{CompactList}\item 
+void \hyperlink{app_8c_68a13a0d6f1190937b67e472a7e93ae8}{APLInit} (void)
+\begin{CompactList}\small\item\em Initialize the application. \item\end{CompactList}\item 
+void \hyperlink{app_8c_5ab14ffc7b885a71c14ada716ad69abc}{APLPoll} (void)
+\begin{CompactList}\small\item\em Poll function of the application. \item\end{CompactList}\item 
+void $\ast$ \hyperlink{app_8c_32d7d43c9dab0838efc9bd0f8c826bb3}{Get\-Mem\-For\-PHY} (uint16\_\-t mem\-Size, uint8\_\-t $\ast$mac\-Addr)
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{app_8c_4eb57d97916e052ad96c7f38bb9803b2}{Permission} (uint8\_\-t $\ast$mac\-Addr, uint8\_\-t $\ast$data, uint8\_\-t $\ast$len)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structAplMemT}{Apl\-Mem\-T} $\ast$ \hyperlink{app_8c_75924d0f2dbdc07928e50c657f309c9e}{apl}
+\begin{CompactList}\small\item\em Pointer to memory for all layer configuration settings. \item\end{CompactList}\item 
+\hyperlink{structAplMemT}{Apl\-Mem\-T} \hyperlink{app_8c_59d3d1551ee94faf345cb4fda2e0af79}{apl\-M}
+\begin{CompactList}\small\item\em Memory for all layer configuration settings. \item\end{CompactList}\item 
+\hyperlink{structMsgT}{Msg\-T} \hyperlink{app_8c_35c0c552c167638a903f76b2b202b0f8}{down\-Msg}
+\begin{CompactList}\small\item\em Message structure for data or ranging requests. \item\end{CompactList}\item 
+uint32\_\-t \hyperlink{app_8c_0f786339212c6b553d79256125845cfe}{last\_\-calib} = 0
+\item 
+void $\ast$ \hyperlink{app_8c_10d113e689110f31b6e3abd47ad59cdb}{phy\-Mem\-P} = NULL
+\item 
+uint8\_\-t \hyperlink{app_8c_7dff90a44def25de3b0912fd67edcbcc}{ranging\_\-type} = RANGING\_\-TYPE\_\-3W\_\-A
+\begin{CompactList}\small\item\em Ranging type which is used. \item\end{CompactList}\item 
+\hyperlink{structRangingMsgT}{Ranging\-Msg\-T} $\ast$ \hyperlink{app_8c_c4cb2847307003d61aa8cc8029ed707b}{up\-Ranging\-Msg}
+\begin{CompactList}\small\item\em Message structure for payload of received ranging packets. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the source code for the demo. 
+
+\begin{Desc}
+\item[Date:]2007-11-29 {\tt Copyright} 2007- Nanotron Technologies \end{Desc}
+\begin{Desc}
+\item[Author:]Christian Bock\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};\end{Desc}
+\begin{Desc}
+\item[Revision]7617 \end{Desc}
+\begin{Desc}
+\item[Date]2010-03-29 12:15:31 +0200 (Mo, 29 M\~{A}¤r 2010) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]hgu \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2010-03-29 12:15:31 +0200 (Mo, 29 M\~{A}¤r 2010) \end{Desc}
+
+
+Definition in file \hyperlink{app_8c-source}{app.c}.
+
+\subsection{Define Documentation}
+\hypertarget{app_8c_a657335b591d3330d08ada2ac256cd39}{
+\index{app.c@{app.c}!SendMsg@{SendMsg}}
+\index{SendMsg@{SendMsg}!app.c@{app.c}}
+\subsubsection[SendMsg]{\setlength{\rightskip}{0pt plus 5cm}\#define Send\-Msg~PDSap}}
+\label{app_8c_a657335b591d3330d08ada2ac256cd39}
+
+
+Data request to the next lower layer. 
+
+This function calls the next lower layer to request a data transmission. 
+
+Definition at line 44 of file app.c.
+
+\subsection{Function Documentation}
+\hypertarget{app_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{
+\index{app.c@{app.c}!APLCallback@{APLCallback}}
+\index{APLCallback@{APLCallback}!app.c@{app.c}}
+\subsubsection[APLCallback]{\setlength{\rightskip}{0pt plus 5cm}void APLCallback (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{app_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}
+
+
+Upstream message handling. 
+
+\begin{Desc}
+\item[payload containing data]\end{Desc}
+\begin{Desc}
+\item[len length of payload]\end{Desc}
+Appl\-Callback represents the upstream part of the application. 
+
+Definition at line 119 of file app.c.\hypertarget{app_8c_68a13a0d6f1190937b67e472a7e93ae8}{
+\index{app.c@{app.c}!APLInit@{APLInit}}
+\index{APLInit@{APLInit}!app.c@{app.c}}
+\subsubsection[APLInit]{\setlength{\rightskip}{0pt plus 5cm}void APLInit (void)}}
+\label{app_8c_68a13a0d6f1190937b67e472a7e93ae8}
+
+
+Initialize the application. 
+
+Initialize the application. 
+
+Definition at line 372 of file app.c.\hypertarget{app_8c_5ab14ffc7b885a71c14ada716ad69abc}{
+\index{app.c@{app.c}!APLPoll@{APLPoll}}
+\index{APLPoll@{APLPoll}!app.c@{app.c}}
+\subsubsection[APLPoll]{\setlength{\rightskip}{0pt plus 5cm}void APLPoll (void)}}
+\label{app_8c_5ab14ffc7b885a71c14ada716ad69abc}
+
+
+Poll function of the application. 
+
+Will be called from the system main loop in frequent intervals. 
+
+Definition at line 184 of file app.c.\hypertarget{app_8c_32d7d43c9dab0838efc9bd0f8c826bb3}{
+\index{app.c@{app.c}!GetMemForPHY@{GetMemForPHY}}
+\index{GetMemForPHY@{GetMemForPHY}!app.c@{app.c}}
+\subsubsection[GetMemForPHY]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Get\-Mem\-For\-PHY (uint16\_\-t {\em mem\-Size}, uint8\_\-t $\ast$ {\em mac\-Addr})}}
+\label{app_8c_32d7d43c9dab0838efc9bd0f8c826bb3}
+
+
+
+
+Definition at line 273 of file app.c.\hypertarget{app_8c_4eb57d97916e052ad96c7f38bb9803b2}{
+\index{app.c@{app.c}!Permission@{Permission}}
+\index{Permission@{Permission}!app.c@{app.c}}
+\subsubsection[Permission]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} Permission (uint8\_\-t $\ast$ {\em mac\-Addr}, uint8\_\-t $\ast$ {\em data}, uint8\_\-t $\ast$ {\em len})}}
+\label{app_8c_4eb57d97916e052ad96c7f38bb9803b2}
+
+
+
+
+Definition at line 289 of file app.c.
+
+\subsection{Variable Documentation}
+\hypertarget{app_8c_75924d0f2dbdc07928e50c657f309c9e}{
+\index{app.c@{app.c}!apl@{apl}}
+\index{apl@{apl}!app.c@{app.c}}
+\subsubsection[apl]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structAplMemT}{Apl\-Mem\-T}$\ast$ \hyperlink{app_8c_75924d0f2dbdc07928e50c657f309c9e}{apl}}}
+\label{app_8c_75924d0f2dbdc07928e50c657f309c9e}
+
+
+Pointer to memory for all layer configuration settings. 
+
+
+
+Definition at line 61 of file app.c.\hypertarget{app_8c_59d3d1551ee94faf345cb4fda2e0af79}{
+\index{app.c@{app.c}!aplM@{aplM}}
+\index{aplM@{aplM}!app.c@{app.c}}
+\subsubsection[aplM]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structAplMemT}{Apl\-Mem\-T} \hyperlink{app_8c_59d3d1551ee94faf345cb4fda2e0af79}{apl\-M}}}
+\label{app_8c_59d3d1551ee94faf345cb4fda2e0af79}
+
+
+Memory for all layer configuration settings. 
+
+
+
+Definition at line 59 of file app.c.\hypertarget{app_8c_35c0c552c167638a903f76b2b202b0f8}{
+\index{app.c@{app.c}!downMsg@{downMsg}}
+\index{downMsg@{downMsg}!app.c@{app.c}}
+\subsubsection[downMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T} \hyperlink{app_8c_35c0c552c167638a903f76b2b202b0f8}{down\-Msg}}}
+\label{app_8c_35c0c552c167638a903f76b2b202b0f8}
+
+
+Message structure for data or ranging requests. 
+
+
+
+Definition at line 63 of file app.c.\hypertarget{app_8c_0f786339212c6b553d79256125845cfe}{
+\index{app.c@{app.c}!last_calib@{last\_\-calib}}
+\index{last_calib@{last\_\-calib}!app.c@{app.c}}
+\subsubsection[last\_\-calib]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \hyperlink{app_8c_0f786339212c6b553d79256125845cfe}{last\_\-calib} = 0}}
+\label{app_8c_0f786339212c6b553d79256125845cfe}
+
+
+
+
+Definition at line 68 of file app.c.\hypertarget{app_8c_10d113e689110f31b6e3abd47ad59cdb}{
+\index{app.c@{app.c}!phyMemP@{phyMemP}}
+\index{phyMemP@{phyMemP}!app.c@{app.c}}
+\subsubsection[phyMemP]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \hyperlink{app_8c_10d113e689110f31b6e3abd47ad59cdb}{phy\-Mem\-P} = NULL}}
+\label{app_8c_10d113e689110f31b6e3abd47ad59cdb}
+
+
+
+
+Definition at line 272 of file app.c.\hypertarget{app_8c_7dff90a44def25de3b0912fd67edcbcc}{
+\index{app.c@{app.c}!ranging_type@{ranging\_\-type}}
+\index{ranging_type@{ranging\_\-type}!app.c@{app.c}}
+\subsubsection[ranging\_\-type]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{app_8c_7dff90a44def25de3b0912fd67edcbcc}{ranging\_\-type} = RANGING\_\-TYPE\_\-3W\_\-A}}
+\label{app_8c_7dff90a44def25de3b0912fd67edcbcc}
+
+
+Ranging type which is used. 
+
+
+
+Definition at line 67 of file app.c.\hypertarget{app_8c_c4cb2847307003d61aa8cc8029ed707b}{
+\index{app.c@{app.c}!upRangingMsg@{upRangingMsg}}
+\index{upRangingMsg@{upRangingMsg}!app.c@{app.c}}
+\subsubsection[upRangingMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structRangingMsgT}{Ranging\-Msg\-T}$\ast$ \hyperlink{app_8c_c4cb2847307003d61aa8cc8029ed707b}{up\-Ranging\-Msg}}}
+\label{app_8c_c4cb2847307003d61aa8cc8029ed707b}
+
+
+Message structure for payload of received ranging packets. 
+
+
+
+Definition at line 65 of file app.c.

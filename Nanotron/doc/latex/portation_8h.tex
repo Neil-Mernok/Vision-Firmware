@@ -1,0 +1,82 @@
+\hypertarget{portation_8h}{
+\section{include/portation.h File Reference}
+\label{portation_8h}\index{include/portation.h@{include/portation.h}}
+}
+{\tt \#include $<$ntrxtypes.h$>$}\par
+{\tt \#include $<$hwclock.h$>$}\par
+{\tt \#include $<$avr/pgmspace.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$avr/interrupt.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{portation_8h_576548463ba6b3ff67ac804e449f0572}{ENTER\_\-TASK}~cli()
+\item 
+\#define \hyperlink{portation_8h_9c02624f52ce913c824d914a1a5d8c37}{LEAVE\_\-TASK}~sei()
+\item 
+\#define \hyperlink{portation_8h_da71a76081f5e1b46b318f8db78c75cb}{No\-Debugging}(args,...)
+\item 
+\#define \hyperlink{portation_8h_720300e9263b8045c54b7ef1fcf7915b}{PRINTF}(args,...)~printf\_\-P(PSTR(args), \#\#\_\-\_\-VA\_\-ARGS\_\-\_\-)
+\item 
+\#define \hyperlink{portation_8h_b6bd95ee9840774b93f928565d726985}{Read\-Rom\-Byte}(p)~pgm\_\-read\_\-byte(\&(p))
+\item 
+\#define \hyperlink{portation_8h_c0a333280ab3bb2653eefd9e230fea44}{Read\-Rom\-Word}(p)~pgm\_\-read\_\-word(\&(p))
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{portation_8h_576548463ba6b3ff67ac804e449f0572}{
+\index{portation.h@{portation.h}!ENTER_TASK@{ENTER\_\-TASK}}
+\index{ENTER_TASK@{ENTER\_\-TASK}!portation.h@{portation.h}}
+\subsubsection[ENTER\_\-TASK]{\setlength{\rightskip}{0pt plus 5cm}\#define ENTER\_\-TASK~cli()}}
+\label{portation_8h_576548463ba6b3ff67ac804e449f0572}
+
+
+
+
+Definition at line 40 of file portation.h.\hypertarget{portation_8h_9c02624f52ce913c824d914a1a5d8c37}{
+\index{portation.h@{portation.h}!LEAVE_TASK@{LEAVE\_\-TASK}}
+\index{LEAVE_TASK@{LEAVE\_\-TASK}!portation.h@{portation.h}}
+\subsubsection[LEAVE\_\-TASK]{\setlength{\rightskip}{0pt plus 5cm}\#define LEAVE\_\-TASK~sei()}}
+\label{portation_8h_9c02624f52ce913c824d914a1a5d8c37}
+
+
+
+
+Definition at line 43 of file portation.h.\hypertarget{portation_8h_da71a76081f5e1b46b318f8db78c75cb}{
+\index{portation.h@{portation.h}!NoDebugging@{NoDebugging}}
+\index{NoDebugging@{NoDebugging}!portation.h@{portation.h}}
+\subsubsection[NoDebugging]{\setlength{\rightskip}{0pt plus 5cm}\#define No\-Debugging(args,  {\em ...})}}
+\label{portation_8h_da71a76081f5e1b46b318f8db78c75cb}
+
+
+
+
+Definition at line 50 of file portation.h.\hypertarget{portation_8h_720300e9263b8045c54b7ef1fcf7915b}{
+\index{portation.h@{portation.h}!PRINTF@{PRINTF}}
+\index{PRINTF@{PRINTF}!portation.h@{portation.h}}
+\subsubsection[PRINTF]{\setlength{\rightskip}{0pt plus 5cm}\#define PRINTF(args,  {\em ...})~printf\_\-P(PSTR(args), \#\#\_\-\_\-VA\_\-ARGS\_\-\_\-)}}
+\label{portation_8h_720300e9263b8045c54b7ef1fcf7915b}
+
+
+
+
+Definition at line 47 of file portation.h.\hypertarget{portation_8h_b6bd95ee9840774b93f928565d726985}{
+\index{portation.h@{portation.h}!ReadRomByte@{ReadRomByte}}
+\index{ReadRomByte@{ReadRomByte}!portation.h@{portation.h}}
+\subsubsection[ReadRomByte]{\setlength{\rightskip}{0pt plus 5cm}\#define Read\-Rom\-Byte(p)~pgm\_\-read\_\-byte(\&(p))}}
+\label{portation_8h_b6bd95ee9840774b93f928565d726985}
+
+
+
+
+Definition at line 35 of file portation.h.\hypertarget{portation_8h_c0a333280ab3bb2653eefd9e230fea44}{
+\index{portation.h@{portation.h}!ReadRomWord@{ReadRomWord}}
+\index{ReadRomWord@{ReadRomWord}!portation.h@{portation.h}}
+\subsubsection[ReadRomWord]{\setlength{\rightskip}{0pt plus 5cm}\#define Read\-Rom\-Word(p)~pgm\_\-read\_\-word(\&(p))}}
+\label{portation_8h_c0a333280ab3bb2653eefd9e230fea44}
+
+
+
+
+Definition at line 36 of file portation.h.

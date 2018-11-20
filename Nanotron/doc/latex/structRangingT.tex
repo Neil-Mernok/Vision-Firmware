@@ -1,0 +1,99 @@
+\hypertarget{structRangingT}{
+\section{Ranging\-T Struct Reference}
+\label{structRangingT}\index{RangingT@{RangingT}}
+}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structRangingT_018a9cb2a22c1041010b887d07a83d70}{addr}
+\item 
+uint8\_\-t \hyperlink{structRangingT_215921081ad3adb2e4eaf6ee121e1015}{errors}
+\item 
+uint8\_\-t \hyperlink{structRangingT_2709b7cecea01e61e4a1664b8b639fc3}{lrv} \mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}
+\item 
+uint8\_\-t \hyperlink{structRangingT_02e77ce88b8c2b7e44b0970a7ae94bd0}{rrv} \mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}
+\item 
+uint8\_\-t \hyperlink{structRangingT_2b35c473cc31e5b390bc2c2a92810661}{set1} \mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}
+\item 
+uint8\_\-t \hyperlink{structRangingT_65e8530970fa6a0345100b05ad59aefa}{set2} \mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}
+\item 
+uint8\_\-t \hyperlink{structRangingT_ba98588af40243a4178517deb33d22a6}{state}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+
+
+Definition at line 65 of file ntrxranging.c.
+
+\subsection{Field Documentation}
+\hypertarget{structRangingT_018a9cb2a22c1041010b887d07a83d70}{
+\index{RangingT@{Ranging\-T}!addr@{addr}}
+\index{addr@{addr}!RangingT@{Ranging\-T}}
+\subsubsection[addr]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structRangingT_018a9cb2a22c1041010b887d07a83d70}{Ranging\-T::addr}}}
+\label{structRangingT_018a9cb2a22c1041010b887d07a83d70}
+
+
+address of remote ranging station 
+
+Definition at line 72 of file ntrxranging.c.\hypertarget{structRangingT_215921081ad3adb2e4eaf6ee121e1015}{
+\index{RangingT@{Ranging\-T}!errors@{errors}}
+\index{errors@{errors}!RangingT@{Ranging\-T}}
+\subsubsection[errors]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_215921081ad3adb2e4eaf6ee121e1015}{Ranging\-T::errors}}}
+\label{structRangingT_215921081ad3adb2e4eaf6ee121e1015}
+
+
+this stores occuring errors during ranging 
+
+Definition at line 71 of file ntrxranging.c.\hypertarget{structRangingT_2709b7cecea01e61e4a1664b8b639fc3}{
+\index{RangingT@{Ranging\-T}!lrv@{lrv}}
+\index{lrv@{lrv}!RangingT@{Ranging\-T}}
+\subsubsection[lrv]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_2709b7cecea01e61e4a1664b8b639fc3}{Ranging\-T::lrv}\mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}}}
+\label{structRangingT_2709b7cecea01e61e4a1664b8b639fc3}
+
+
+local ranging values 
+
+Definition at line 67 of file ntrxranging.c.\hypertarget{structRangingT_02e77ce88b8c2b7e44b0970a7ae94bd0}{
+\index{RangingT@{Ranging\-T}!rrv@{rrv}}
+\index{rrv@{rrv}!RangingT@{Ranging\-T}}
+\subsubsection[rrv]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_02e77ce88b8c2b7e44b0970a7ae94bd0}{Ranging\-T::rrv}\mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}}}
+\label{structRangingT_02e77ce88b8c2b7e44b0970a7ae94bd0}
+
+
+remote ranging values 
+
+Definition at line 68 of file ntrxranging.c.\hypertarget{structRangingT_2b35c473cc31e5b390bc2c2a92810661}{
+\index{RangingT@{Ranging\-T}!set1@{set1}}
+\index{set1@{set1}!RangingT@{Ranging\-T}}
+\subsubsection[set1]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_2b35c473cc31e5b390bc2c2a92810661}{Ranging\-T::set1}\mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}}}
+\label{structRangingT_2b35c473cc31e5b390bc2c2a92810661}
+
+
+this holds collected data for calculation 
+
+Definition at line 69 of file ntrxranging.c.\hypertarget{structRangingT_65e8530970fa6a0345100b05ad59aefa}{
+\index{RangingT@{Ranging\-T}!set2@{set2}}
+\index{set2@{set2}!RangingT@{Ranging\-T}}
+\subsubsection[set2]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_65e8530970fa6a0345100b05ad59aefa}{Ranging\-T::set2}\mbox{[}RANGING\_\-DATA\_\-LEN\mbox{]}}}
+\label{structRangingT_65e8530970fa6a0345100b05ad59aefa}
+
+
+this holds collected data for calculation 
+
+Definition at line 70 of file ntrxranging.c.\hypertarget{structRangingT_ba98588af40243a4178517deb33d22a6}{
+\index{RangingT@{Ranging\-T}!state@{state}}
+\index{state@{state}!RangingT@{Ranging\-T}}
+\subsubsection[state]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingT_ba98588af40243a4178517deb33d22a6}{Ranging\-T::state}}}
+\label{structRangingT_ba98588af40243a4178517deb33d22a6}
+
+
+local state of ranging process 
+
+Definition at line 73 of file ntrxranging.c.
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+phy/\hyperlink{ntrxranging_8c}{ntrxranging.c}\end{CompactItemize}

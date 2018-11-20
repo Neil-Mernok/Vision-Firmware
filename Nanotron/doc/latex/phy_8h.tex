@@ -1,0 +1,1309 @@
+\hypertarget{phy_8h}{
+\section{include/phy.h File Reference}
+\label{phy_8h}\index{include/phy.h@{include/phy.h}}
+}
+Functions for data transmission and reception. 
+
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{phy_8h_48ab0908fbea4cd90e660f2970f1db3e}{DEBUG\_\-PHY}~No\-Debugging
+\begin{CompactList}\small\item\em Debugging output using printf. Can be globally disabled with PHY\_\-DEBUG . \item\end{CompactList}\item 
+\#define \hyperlink{phy_8h_5f181c81f5a816cde0fefe997ba6b19d}{PD\_\-DATA\_\-CONFIRM}~0x02
+\item 
+\#define \hyperlink{phy_8h_3cc3bf18224bb2af81ee8d61c6220d85}{PD\_\-DATA\_\-INDICATION}~0x03
+\item 
+\#define \hyperlink{phy_8h_eb1fbd802c83e1f38e571fd25c0bc540}{PD\_\-DATA\_\-REQUEST}~0x01
+\item 
+\#define \hyperlink{phy_8h_5203cc2f85e5e1f1c3cde73576f790b3}{PD\_\-RANGING\_\-ANSWER1\_\-EXECUTE}~0x10
+\item 
+\#define \hyperlink{phy_8h_e1989856b66cdb4f44412ef6cd9861a8}{PD\_\-RANGING\_\-ANSWER2\_\-EXECUTE}~0x11
+\item 
+\#define \hyperlink{phy_8h_bad88e24eabf376586e62a83b8f06c10}{PD\_\-RANGING\_\-CONFIRM}~0x12
+\item 
+\#define \hyperlink{phy_8h_694fdfa765719b8a4bfdad1ce912c040}{PD\_\-RANGING\_\-INDICATION}~0x13
+\item 
+\#define \hyperlink{phy_8h_0774aec92303bd1b361b1f136bf26d38}{PD\_\-RANGING\_\-REQUEST}~0x0e
+\item 
+\#define \hyperlink{phy_8h_83732a4f422d9c0918771c62095cdac9}{PD\_\-RANGING\_\-REQUEST\_\-EXECUTE}~0x0f
+\item 
+\#define \hyperlink{phy_8h_aafd95606c53696e5f37a6c1f3adf006}{PD\_\-STATUS\_\-INDICATION}~0x04
+\item 
+\#define \hyperlink{phy_8h_b5b0458a6477d70a1c46842b81fe032f}{PHY\_\-ADDR\_\-MATCHING}~0x76
+\item 
+\#define \hyperlink{phy_8h_8d94b6c99cee50b7d05983cac10c2ca7}{PHY\_\-ARQ}~0x70
+\item 
+\#define \hyperlink{phy_8h_465c143770c8ca8ecb5a05a15f0a4d5b}{PHY\_\-ARQ\_\-MAX}~0x71
+\item 
+\#define \hyperlink{phy_8h_878e5931f3d80e4ed5ac0591f8238c6a}{PHY\_\-BRDC\_\-ADDR}~\{0x\-FF,0x\-FF,0x\-FF,0x\-FF,0x\-FF,0x\-FF\}
+\item 
+\#define \hyperlink{phy_8h_68b880e6b6b891add400a895aa508fd6}{PHY\_\-BUSY}~0x00
+\item 
+\#define \hyperlink{phy_8h_959b87af6b42ba2f33d1de0ad1e39b2c}{PHY\_\-BUSY\_\-RX}~0x01
+\item 
+\#define \hyperlink{phy_8h_67ae2f0863eefeb1379225ded85a0e6a}{PHY\_\-BUSY\_\-TX}~0x02
+\item 
+\#define \hyperlink{phy_8h_2cbcc4d4ca492ae33acb85f2b3ed46db}{PHY\_\-CANNELS\_\-SUPPORTED}~0x01
+\item 
+\#define \hyperlink{phy_8h_6ea152889346845713f55fa5f2a93871}{PHY\_\-CARRIER\_\-MODE}~0x02
+\item 
+\#define \hyperlink{phy_8h_532ff0ca29834e2b1a05e7a0ed030931}{PHY\_\-CCA\_\-MODE}~0x03
+\item 
+\#define \hyperlink{phy_8h_fb37a5dc68f15818a4a9bcb7eb84ec83}{PHY\_\-CCA\_\-MODE\_\-1}~0x01
+\item 
+\#define \hyperlink{phy_8h_5f07b5de45c24d7324699770344f7558}{PHY\_\-CCA\_\-MODE\_\-2}~0x02
+\item 
+\#define \hyperlink{phy_8h_eedf6d30a0bda925cdfaf16189f32aa5}{PHY\_\-CCA\_\-MODE\_\-3}~0x03
+\item 
+\#define \hyperlink{phy_8h_add5a873d63910469892c0b2ecdd6181}{PHY\_\-CCA\_\-MODE\_\-DEFAULT}~PHY\_\-CCA\_\-OFF
+\item 
+\#define \hyperlink{phy_8h_27392b38756d5ab6df742911ef9d5896}{PHY\_\-CCA\_\-OFF}~0x00
+\item 
+\#define \hyperlink{phy_8h_4cd3190fba33006e964ac4cb8b8024c2}{PHY\_\-CHANNEL\_\-COUNT}~16
+\item 
+\#define \hyperlink{phy_8h_f6e4cc855c0f0966c874dc1572980406}{PHY\_\-CHANNEL\_\-MIN}~11
+\item 
+\#define \hyperlink{phy_8h_318bcebf888387c1bff48541227cf441}{PHY\_\-CONFIGURATION\_\-ERROR}~0x0d
+\item 
+\#define \hyperlink{phy_8h_5cba18d16f6039370d6803d081783750}{PHY\_\-CONTINUOUS\_\-MODE}~0x01
+\item 
+\#define \hyperlink{phy_8h_7aa5aaf2dbac602a86581abb9ced8050}{PHY\_\-CURRENT\_\-CHANNEL}~0x00
+\item 
+\#define \hyperlink{phy_8h_8d3faa87052e64f4bf2027bb8a54a8cb}{PHY\_\-CURRENT\_\-PAGE}~0x04
+\item 
+\#define \hyperlink{phy_8h_8be6cf418473dda772282e0b866629d1}{PHY\_\-FEC}~0x72
+\item 
+\#define \hyperlink{phy_8h_7b09052b788a6fa808e18d13ccdd12bf}{PHY\_\-FORCE\_\-TRX\_\-OFF}~0x03
+\item 
+\#define \hyperlink{phy_8h_09fa8077a3aeaf5c3ec703d61dc03dde}{PHY\_\-FP\_\-NOT\_\-SET}~0x0e
+\item 
+\#define \hyperlink{phy_8h_2f4fb9bf18cdd9192422e007ba2e908c}{PHY\_\-FRAME\_\-TYPE}~0x7b
+\item 
+\#define \hyperlink{phy_8h_ecdfee04e9aa43d812ac3c6502e36be1}{PHY\_\-FRAME\_\-TYPE\_\-ACK}~0x01
+\item 
+\#define \hyperlink{phy_8h_da3bca099ad7bb6b42acc719567179a1}{PHY\_\-FRAME\_\-TYPE\_\-BRDC}~0x03
+\item 
+\#define \hyperlink{phy_8h_402a42cd560ee63cc307e36479a4b826}{PHY\_\-FRAME\_\-TYPE\_\-CLR2S}~0x05
+\item 
+\#define \hyperlink{phy_8h_096bd9a2483f1e547337ae15c3c59cbc}{PHY\_\-FRAME\_\-TYPE\_\-DATA}~0x00
+\item 
+\#define \hyperlink{phy_8h_40349ea32af760ab9826db1e3e5075c2}{PHY\_\-FRAME\_\-TYPE\_\-REQ2S}~0x04
+\item 
+\#define \hyperlink{phy_8h_91afac3899640f8dd15eadb89d8f542d}{PHY\_\-FRAME\_\-TYPE\_\-TIMEB}~0x02
+\item 
+\#define \hyperlink{phy_8h_f60e2ea0ffac3bdfae6cb76f0ce7d523}{PHY\_\-FRAME\_\-TYPE\_\-UNDEF}~0x\-FF
+\item 
+\#define \hyperlink{phy_8h_88a22431d1afac5dbeea0102fe43f4e2}{PHY\_\-IDLE}~0x04
+\item 
+\#define \hyperlink{phy_8h_fc7e2c05e3513b286e00b5ee37ef6b47}{PHY\_\-INIT\_\-PAGE}~0
+\item 
+\#define \hyperlink{phy_8h_78f9c31475e7191cfa3760045abdc13f}{PHY\_\-INVALID\_\-PARAMETER}~0x05
+\item 
+\#define \hyperlink{phy_8h_55f496a7288fce51bc0399390e79fd57}{PHY\_\-LOG\_\-CHANNEL}~0x7f
+\item 
+\#define \hyperlink{phy_8h_004afc9174802865601082dc6e1af8c9}{PHY\_\-MAC\_\-ADDRESS1}~0x73
+\item 
+\#define \hyperlink{phy_8h_99e4d9dc6a8b51bf8b04ef664f80779a}{PHY\_\-MAC\_\-ADDRESS2}~0x74
+\item 
+\#define \hyperlink{phy_8h_94fbb2886908c365afa59531924ed674}{PHY\_\-MAX\_\-FRAME\_\-DURATION}~0x05
+\item 
+\#define \hyperlink{phy_8h_f570780b82562decc0185ae8c7b6f1ca}{PHY\_\-NO\_\-ACK}~0x0c
+\item 
+\#define \hyperlink{phy_8h_db54239d4b1049e61b77935532cf0adf}{PHY\_\-NO\_\-MEMORY}~0x0f
+\item 
+\#define \hyperlink{phy_8h_b11c7b5064f801ebb72eda56bb1d780b}{PHY\_\-NORMAL\_\-MODE}~0x00
+\item 
+\#define \hyperlink{phy_8h_978bd33dc0b2bd39eab74851226f41d0}{PHY\_\-PAGES\_\-SUPPORTED}~0
+\item 
+\#define \hyperlink{phy_8h_d219de39eacc2e8a93350bf2991f2b00}{PHY\_\-POWERDOWN\_\-PAD\_\-MODE}~0x81
+\item 
+\#define \hyperlink{phy_8h_01a38f9c8691e82437a934318322a752}{PHY\_\-PWR\_\-DOWN\_\-MODE}~0x7a
+\item 
+\#define \hyperlink{phy_8h_0bd1455e282045d41396db82125be599}{PHY\_\-RAW\_\-MODE}~0x77
+\item 
+\#define \hyperlink{phy_8h_cf9aad735ebb4121a92e625c8c7257f5}{PHY\_\-READ\_\-ONLY}~0x0b
+\item 
+\#define \hyperlink{phy_8h_0c4ef64194b6b8583887f43ddce35537}{PHY\_\-RECAL\_\-INTERVAL}~0x94
+\item 
+\#define \hyperlink{phy_8h_8b082e37fed8f517f12d07e246a9998d}{PHY\_\-RECALIBRATION}~0x78
+\item 
+\#define \hyperlink{phy_8h_314958e5ae1bce09dc8efdf299e29c04}{PHY\_\-RSSI}~0x7e
+\item 
+\#define \hyperlink{phy_8h_35f211fb2e0e7bb225171c2ed988c282}{PHY\_\-RX\_\-CMD}~0x91
+\item 
+\#define \hyperlink{phy_8h_f8c16c32a3368ec1972a860ec63d15e3}{PHY\_\-RX\_\-ON}~0x06
+\item 
+\#define \hyperlink{phy_8h_38bfbf29e5baab246363c2ebe257663f}{PHY\_\-RX\_\-STATE}~0x7d
+\item 
+\#define \hyperlink{phy_8h_fc4d1d6be30991cc0c5658f19de6c54a}{PHY\_\-RX\_\-TIMEOUT}~0x80
+\item 
+\#define \hyperlink{phy_8h_710a5793dc2f90adfaab38b60e0f21d7}{PHY\_\-SHR\_\-DURATION}~0x06
+\item 
+\#define \hyperlink{phy_8h_3293594c76f1cf7c69ab88d645cf03ca}{PHY\_\-SUCCESS}~0x07
+\item 
+\#define \hyperlink{phy_8h_ca37553beb110498bec6302a6109ad76}{PHY\_\-SYMBOLS\_\-PER\_\-OCTET}~0x07
+\item 
+\#define \hyperlink{phy_8h_f7d61752ea7320cc2fc1770d8a68236f}{PHY\_\-SYNCWORD}~0x90
+\item 
+\#define \hyperlink{phy_8h_3d93327affaaf6f123637565de738539}{PHY\_\-TESTMODE}~0x7c
+\item 
+\#define \hyperlink{phy_8h_620db16976b8e2a9531e5489406a2104}{PHY\_\-TRX\_\-MODE}~0x79
+\item 
+\#define \hyperlink{phy_8h_5598ac4e41a39c0ba5eec332f9b28006}{PHY\_\-TRX\_\-OFF}~0x08
+\item 
+\#define \hyperlink{phy_8h_ac066b5099937aae1cb278f8f52be5a9}{PHY\_\-TX\_\-ADDR\_\-SELECT}~0x75
+\item 
+\#define \hyperlink{phy_8h_b29051cb51732c88a3cd46c4233ef685}{PHY\_\-TX\_\-ON}~0x09
+\item 
+\#define \hyperlink{phy_8h_7122ee6f5e2e7cbc255d8987616d739b}{PHY\_\-TX\_\-POWER}~0x02
+\item 
+\#define \hyperlink{phy_8h_35b57ee9e8a1a6308edd2e4224887bcb}{PHY\_\-TX\_\-POWER\_\-TOLERANCE}~0x01
+\item 
+\#define \hyperlink{phy_8h_08ef247b256f9cba95cf97d191420f65}{PHY\_\-UNSUPPORTED\_\-ATTRIBUTE}~0x0a
+\item 
+\#define \hyperlink{phy_8h_e3488bbb0f429d9a841d39296f654670}{PHY\_\-USER\_\-DATA\_\-OVERFLOW}~0x10
+\item 
+\#define \hyperlink{phy_8h_5fb397bb67e72c7e2a7b93d4d9101166}{PLME\_\-CCA\_\-CONFIRM}~0x06
+\item 
+\#define \hyperlink{phy_8h_d0f2325f23604db9fafdeec74667d66c}{PLME\_\-CCA\_\-REQUEST}~0x05
+\item 
+\#define \hyperlink{phy_8h_7f7602b248d558056a4f2b186eab2f6a}{PLME\_\-ED\_\-CONFIRM}~0x08
+\item 
+\#define \hyperlink{phy_8h_46228dd46217802a41f17e34475f9894}{PLME\_\-ED\_\-REQUEST}~0x07
+\item 
+\#define \hyperlink{phy_8h_d4b661d1446b1be7f8eb13612dd1c0af}{PLME\_\-GET\_\-CONFIRM}~0x0a
+\item 
+\#define \hyperlink{phy_8h_3da6d03b47f1fb0393adfa25d428b487}{PLME\_\-GET\_\-REQUEST}~0x09
+\item 
+\#define \hyperlink{phy_8h_2816b4e559387f10467d284d34cb0dfd}{PLME\_\-SET\_\-CONFIRM}~0x0c
+\item 
+\#define \hyperlink{phy_8h_4e309d9dd41bcc1d82d27aacaaeb1dc2}{PLME\_\-SET\_\-REQUEST}~0x0b
+\item 
+\#define \hyperlink{phy_8h_53aa68e86a18d2c25a61a041006b3ee7}{PLME\_\-SET\_\-TRX\_\-STATE\_\-CONFIRM}~0x0c
+\item 
+\#define \hyperlink{phy_8h_4ae6c2efadba464e153c68568044db76}{PLME\_\-SET\_\-TRX\_\-STATE\_\-REQUEST}~0x0d
+\item 
+\#define \hyperlink{phy_8h_786012dad04daf429877fc7daa8c912a}{RG\_\-STAT\_\-DEFAULT}~0x00
+\item 
+\#define \hyperlink{phy_8h_3e4b685ef2caccf60ad0a8e537653972}{RG\_\-STAT\_\-NO\_\-ERROR}~0x0F
+\item 
+\#define \hyperlink{phy_8h_416a14fc010e3738ba43e0614a108247}{RG\_\-STAT\_\-T1}~0x01
+\item 
+\#define \hyperlink{phy_8h_80dee94ad161c611a5b0d91ff9f3ad34}{RG\_\-STAT\_\-T2}~0x02
+\item 
+\#define \hyperlink{phy_8h_9dafaf6cffa1c39c612d244e72fc3303}{RG\_\-STAT\_\-T3}~0x04
+\item 
+\#define \hyperlink{phy_8h_f5d7ee0953f7c3986cb3192ea1363e08}{RG\_\-STAT\_\-T4}~0x08
+\item 
+\#define \hyperlink{phy_8h_3accdf50e571d3f39196032355718599}{RG\_\-STAT\_\-TIMEOUT}~0x40
+\item 
+\#define \hyperlink{phy_8h_8ed0f3b296233ab0b789d7f061890c37}{RG\_\-STAT\_\-VALUE\_\-ERROR}~0x80
+\item 
+\#define \hyperlink{phy_8h_9262bdbce092037c8b356c67b7b3a5ae}{Send\-Msg\-Up}~($\ast$\hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up})
+\begin{CompactList}\small\item\em Callback function of upper layer. \item\end{CompactList}\item 
+\#define \hyperlink{phy_8h_976a8c79ed976425c24f2cdc7951550c}{TO\_\-CSMA}~5
+\begin{CompactList}\small\item\em Timeout for any CSMA/CCA process. \mbox{[}ms\mbox{]}. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8h_a4057bfa2c651859436e3798ceb3f0c6}{NTRXInit} (void)
+\begin{CompactList}\small\item\em Initializing of the transceiver chip. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_9f9a03406742ffa2927c4ba70cbdedeb}{NTRXPost\-BBIrq} (void)
+\item 
+void \hyperlink{phy_8h_3d739dbf4ac04244a50f49c5ce06f727}{NTRXSend\-Packet} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function send packets out. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_134c3bd25c3c49b11f8447ebeea9614c}{NTRXSet\-Default\-Mode} (void)
+\item 
+void \hyperlink{phy_8h_e68acaf37de209a988dc46b5ccb0368e}{PDCallback} (void)
+\begin{CompactList}\small\item\em Callback function for received messages. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_6209bbfd2b951c355afa0ee008523cca}{PDSap} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function processes all data request. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_306baee9074ea37595b68f47f903732c}{PHYAuto\-Calibration} (void)
+\item 
+void \hyperlink{phy_8h_65b5ffbaddd90d1dafb2ac869a9ba34e}{PHYInit} (void)
+\begin{CompactList}\small\item\em Initializing of module global variables. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8h_8f376b3e4de263568b32aeb78890d131}{PHYIs\-IDLE} (void)
+\begin{CompactList}\small\item\em Returns status of PHY and RANGING. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_da089b8d8079e3f72249bc86d7e0558b}{PHYPoll} (void)
+\begin{CompactList}\small\item\em polls the nano\-LOC chip for incomming messages \item\end{CompactList}\item 
+void \hyperlink{phy_8h_b70ab9d97192d8ebe998f534228bcb1a}{PHYRegister\-Callback} (\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} cb\-Msg)
+\begin{CompactList}\small\item\em Configuration of callback functions. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_4351f09dc34904ddc6d75fa36c2f5771}{PLMESap} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Physical layer management entety. \item\end{CompactList}\item 
+void \hyperlink{phy_8h_beafbc66ca89f02f8c1804ec0cae8e6b}{Update\-LEDs} (void)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for data transmission and reception. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-4 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This module contains all functions to operate the nano\-LOC chip.\end{Desc}
+\begin{Desc}
+\item[Revision]7207 \end{Desc}
+\begin{Desc}
+\item[Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+
+
+Definition in file \hyperlink{phy_8h-source}{phy.h}.
+
+\subsection{Define Documentation}
+\hypertarget{phy_8h_48ab0908fbea4cd90e660f2970f1db3e}{
+\index{phy.h@{phy.h}!DEBUG_PHY@{DEBUG\_\-PHY}}
+\index{DEBUG_PHY@{DEBUG\_\-PHY}!phy.h@{phy.h}}
+\subsubsection[DEBUG\_\-PHY]{\setlength{\rightskip}{0pt plus 5cm}\#define DEBUG\_\-PHY~No\-Debugging}}
+\label{phy_8h_48ab0908fbea4cd90e660f2970f1db3e}
+
+
+Debugging output using printf. Can be globally disabled with PHY\_\-DEBUG . 
+
+
+
+Definition at line 41 of file phy.h.\hypertarget{phy_8h_5f181c81f5a816cde0fefe997ba6b19d}{
+\index{phy.h@{phy.h}!PD_DATA_CONFIRM@{PD\_\-DATA\_\-CONFIRM}}
+\index{PD_DATA_CONFIRM@{PD\_\-DATA\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PD\_\-DATA\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-DATA\_\-CONFIRM~0x02}}
+\label{phy_8h_5f181c81f5a816cde0fefe997ba6b19d}
+
+
+
+
+Definition at line 112 of file phy.h.\hypertarget{phy_8h_3cc3bf18224bb2af81ee8d61c6220d85}{
+\index{phy.h@{phy.h}!PD_DATA_INDICATION@{PD\_\-DATA\_\-INDICATION}}
+\index{PD_DATA_INDICATION@{PD\_\-DATA\_\-INDICATION}!phy.h@{phy.h}}
+\subsubsection[PD\_\-DATA\_\-INDICATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-DATA\_\-INDICATION~0x03}}
+\label{phy_8h_3cc3bf18224bb2af81ee8d61c6220d85}
+
+
+
+
+Definition at line 113 of file phy.h.\hypertarget{phy_8h_eb1fbd802c83e1f38e571fd25c0bc540}{
+\index{phy.h@{phy.h}!PD_DATA_REQUEST@{PD\_\-DATA\_\-REQUEST}}
+\index{PD_DATA_REQUEST@{PD\_\-DATA\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PD\_\-DATA\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-DATA\_\-REQUEST~0x01}}
+\label{phy_8h_eb1fbd802c83e1f38e571fd25c0bc540}
+
+
+
+
+Definition at line 111 of file phy.h.\hypertarget{phy_8h_5203cc2f85e5e1f1c3cde73576f790b3}{
+\index{phy.h@{phy.h}!PD_RANGING_ANSWER1_EXECUTE@{PD\_\-RANGING\_\-ANSWER1\_\-EXECUTE}}
+\index{PD_RANGING_ANSWER1_EXECUTE@{PD\_\-RANGING\_\-ANSWER1\_\-EXECUTE}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-ANSWER1\_\-EXECUTE]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-ANSWER1\_\-EXECUTE~0x10}}
+\label{phy_8h_5203cc2f85e5e1f1c3cde73576f790b3}
+
+
+
+
+Definition at line 128 of file phy.h.\hypertarget{phy_8h_e1989856b66cdb4f44412ef6cd9861a8}{
+\index{phy.h@{phy.h}!PD_RANGING_ANSWER2_EXECUTE@{PD\_\-RANGING\_\-ANSWER2\_\-EXECUTE}}
+\index{PD_RANGING_ANSWER2_EXECUTE@{PD\_\-RANGING\_\-ANSWER2\_\-EXECUTE}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-ANSWER2\_\-EXECUTE]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-ANSWER2\_\-EXECUTE~0x11}}
+\label{phy_8h_e1989856b66cdb4f44412ef6cd9861a8}
+
+
+
+
+Definition at line 129 of file phy.h.\hypertarget{phy_8h_bad88e24eabf376586e62a83b8f06c10}{
+\index{phy.h@{phy.h}!PD_RANGING_CONFIRM@{PD\_\-RANGING\_\-CONFIRM}}
+\index{PD_RANGING_CONFIRM@{PD\_\-RANGING\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-CONFIRM~0x12}}
+\label{phy_8h_bad88e24eabf376586e62a83b8f06c10}
+
+
+
+
+Definition at line 130 of file phy.h.\hypertarget{phy_8h_694fdfa765719b8a4bfdad1ce912c040}{
+\index{phy.h@{phy.h}!PD_RANGING_INDICATION@{PD\_\-RANGING\_\-INDICATION}}
+\index{PD_RANGING_INDICATION@{PD\_\-RANGING\_\-INDICATION}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-INDICATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-INDICATION~0x13}}
+\label{phy_8h_694fdfa765719b8a4bfdad1ce912c040}
+
+
+
+
+Definition at line 131 of file phy.h.\hypertarget{phy_8h_0774aec92303bd1b361b1f136bf26d38}{
+\index{phy.h@{phy.h}!PD_RANGING_REQUEST@{PD\_\-RANGING\_\-REQUEST}}
+\index{PD_RANGING_REQUEST@{PD\_\-RANGING\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-REQUEST~0x0e}}
+\label{phy_8h_0774aec92303bd1b361b1f136bf26d38}
+
+
+
+
+Definition at line 126 of file phy.h.\hypertarget{phy_8h_83732a4f422d9c0918771c62095cdac9}{
+\index{phy.h@{phy.h}!PD_RANGING_REQUEST_EXECUTE@{PD\_\-RANGING\_\-REQUEST\_\-EXECUTE}}
+\index{PD_RANGING_REQUEST_EXECUTE@{PD\_\-RANGING\_\-REQUEST\_\-EXECUTE}!phy.h@{phy.h}}
+\subsubsection[PD\_\-RANGING\_\-REQUEST\_\-EXECUTE]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-RANGING\_\-REQUEST\_\-EXECUTE~0x0f}}
+\label{phy_8h_83732a4f422d9c0918771c62095cdac9}
+
+
+
+
+Definition at line 127 of file phy.h.\hypertarget{phy_8h_aafd95606c53696e5f37a6c1f3adf006}{
+\index{phy.h@{phy.h}!PD_STATUS_INDICATION@{PD\_\-STATUS\_\-INDICATION}}
+\index{PD_STATUS_INDICATION@{PD\_\-STATUS\_\-INDICATION}!phy.h@{phy.h}}
+\subsubsection[PD\_\-STATUS\_\-INDICATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PD\_\-STATUS\_\-INDICATION~0x04}}
+\label{phy_8h_aafd95606c53696e5f37a6c1f3adf006}
+
+
+
+
+Definition at line 114 of file phy.h.\hypertarget{phy_8h_b5b0458a6477d70a1c46842b81fe032f}{
+\index{phy.h@{phy.h}!PHY_ADDR_MATCHING@{PHY\_\-ADDR\_\-MATCHING}}
+\index{PHY_ADDR_MATCHING@{PHY\_\-ADDR\_\-MATCHING}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-ADDR\_\-MATCHING]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-ADDR\_\-MATCHING~0x76}}
+\label{phy_8h_b5b0458a6477d70a1c46842b81fe032f}
+
+
+
+
+Definition at line 84 of file phy.h.\hypertarget{phy_8h_8d94b6c99cee50b7d05983cac10c2ca7}{
+\index{phy.h@{phy.h}!PHY_ARQ@{PHY\_\-ARQ}}
+\index{PHY_ARQ@{PHY\_\-ARQ}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-ARQ]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-ARQ~0x70}}
+\label{phy_8h_8d94b6c99cee50b7d05983cac10c2ca7}
+
+
+
+
+Definition at line 78 of file phy.h.\hypertarget{phy_8h_465c143770c8ca8ecb5a05a15f0a4d5b}{
+\index{phy.h@{phy.h}!PHY_ARQ_MAX@{PHY\_\-ARQ\_\-MAX}}
+\index{PHY_ARQ_MAX@{PHY\_\-ARQ\_\-MAX}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-ARQ\_\-MAX]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-ARQ\_\-MAX~0x71}}
+\label{phy_8h_465c143770c8ca8ecb5a05a15f0a4d5b}
+
+
+
+
+Definition at line 79 of file phy.h.\hypertarget{phy_8h_878e5931f3d80e4ed5ac0591f8238c6a}{
+\index{phy.h@{phy.h}!PHY_BRDC_ADDR@{PHY\_\-BRDC\_\-ADDR}}
+\index{PHY_BRDC_ADDR@{PHY\_\-BRDC\_\-ADDR}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-BRDC\_\-ADDR]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-BRDC\_\-ADDR~\{0x\-FF,0x\-FF,0x\-FF,0x\-FF,0x\-FF,0x\-FF\}}}
+\label{phy_8h_878e5931f3d80e4ed5ac0591f8238c6a}
+
+
+
+
+Definition at line 150 of file phy.h.\hypertarget{phy_8h_68b880e6b6b891add400a895aa508fd6}{
+\index{phy.h@{phy.h}!PHY_BUSY@{PHY\_\-BUSY}}
+\index{PHY_BUSY@{PHY\_\-BUSY}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-BUSY]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-BUSY~0x00}}
+\label{phy_8h_68b880e6b6b891add400a895aa508fd6}
+
+
+
+
+Definition at line 52 of file phy.h.\hypertarget{phy_8h_959b87af6b42ba2f33d1de0ad1e39b2c}{
+\index{phy.h@{phy.h}!PHY_BUSY_RX@{PHY\_\-BUSY\_\-RX}}
+\index{PHY_BUSY_RX@{PHY\_\-BUSY\_\-RX}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-BUSY\_\-RX]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-BUSY\_\-RX~0x01}}
+\label{phy_8h_959b87af6b42ba2f33d1de0ad1e39b2c}
+
+
+
+
+Definition at line 53 of file phy.h.\hypertarget{phy_8h_67ae2f0863eefeb1379225ded85a0e6a}{
+\index{phy.h@{phy.h}!PHY_BUSY_TX@{PHY\_\-BUSY\_\-TX}}
+\index{PHY_BUSY_TX@{PHY\_\-BUSY\_\-TX}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-BUSY\_\-TX]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-BUSY\_\-TX~0x02}}
+\label{phy_8h_67ae2f0863eefeb1379225ded85a0e6a}
+
+
+
+
+Definition at line 54 of file phy.h.\hypertarget{phy_8h_2cbcc4d4ca492ae33acb85f2b3ed46db}{
+\index{phy.h@{phy.h}!PHY_CANNELS_SUPPORTED@{PHY\_\-CANNELS\_\-SUPPORTED}}
+\index{PHY_CANNELS_SUPPORTED@{PHY\_\-CANNELS\_\-SUPPORTED}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CANNELS\_\-SUPPORTED]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CANNELS\_\-SUPPORTED~0x01}}
+\label{phy_8h_2cbcc4d4ca492ae33acb85f2b3ed46db}
+
+
+
+
+Definition at line 71 of file phy.h.\hypertarget{phy_8h_6ea152889346845713f55fa5f2a93871}{
+\index{phy.h@{phy.h}!PHY_CARRIER_MODE@{PHY\_\-CARRIER\_\-MODE}}
+\index{PHY_CARRIER_MODE@{PHY\_\-CARRIER\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CARRIER\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CARRIER\_\-MODE~0x02}}
+\label{phy_8h_6ea152889346845713f55fa5f2a93871}
+
+
+
+
+Definition at line 103 of file phy.h.\hypertarget{phy_8h_532ff0ca29834e2b1a05e7a0ed030931}{
+\index{phy.h@{phy.h}!PHY_CCA_MODE@{PHY\_\-CCA\_\-MODE}}
+\index{PHY_CCA_MODE@{PHY\_\-CCA\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-MODE~0x03}}
+\label{phy_8h_532ff0ca29834e2b1a05e7a0ed030931}
+
+
+
+
+Definition at line 73 of file phy.h.\hypertarget{phy_8h_fb37a5dc68f15818a4a9bcb7eb84ec83}{
+\index{phy.h@{phy.h}!PHY_CCA_MODE_1@{PHY\_\-CCA\_\-MODE\_\-1}}
+\index{PHY_CCA_MODE_1@{PHY\_\-CCA\_\-MODE\_\-1}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-MODE\_\-1]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-MODE\_\-1~0x01}}
+\label{phy_8h_fb37a5dc68f15818a4a9bcb7eb84ec83}
+
+
+
+
+Definition at line 106 of file phy.h.\hypertarget{phy_8h_5f07b5de45c24d7324699770344f7558}{
+\index{phy.h@{phy.h}!PHY_CCA_MODE_2@{PHY\_\-CCA\_\-MODE\_\-2}}
+\index{PHY_CCA_MODE_2@{PHY\_\-CCA\_\-MODE\_\-2}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-MODE\_\-2]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-MODE\_\-2~0x02}}
+\label{phy_8h_5f07b5de45c24d7324699770344f7558}
+
+
+
+
+Definition at line 107 of file phy.h.\hypertarget{phy_8h_eedf6d30a0bda925cdfaf16189f32aa5}{
+\index{phy.h@{phy.h}!PHY_CCA_MODE_3@{PHY\_\-CCA\_\-MODE\_\-3}}
+\index{PHY_CCA_MODE_3@{PHY\_\-CCA\_\-MODE\_\-3}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-MODE\_\-3]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-MODE\_\-3~0x03}}
+\label{phy_8h_eedf6d30a0bda925cdfaf16189f32aa5}
+
+
+
+
+Definition at line 108 of file phy.h.\hypertarget{phy_8h_add5a873d63910469892c0b2ecdd6181}{
+\index{phy.h@{phy.h}!PHY_CCA_MODE_DEFAULT@{PHY\_\-CCA\_\-MODE\_\-DEFAULT}}
+\index{PHY_CCA_MODE_DEFAULT@{PHY\_\-CCA\_\-MODE\_\-DEFAULT}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-MODE\_\-DEFAULT]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-MODE\_\-DEFAULT~PHY\_\-CCA\_\-OFF}}
+\label{phy_8h_add5a873d63910469892c0b2ecdd6181}
+
+
+
+
+Definition at line 109 of file phy.h.\hypertarget{phy_8h_27392b38756d5ab6df742911ef9d5896}{
+\index{phy.h@{phy.h}!PHY_CCA_OFF@{PHY\_\-CCA\_\-OFF}}
+\index{PHY_CCA_OFF@{PHY\_\-CCA\_\-OFF}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CCA\_\-OFF]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CCA\_\-OFF~0x00}}
+\label{phy_8h_27392b38756d5ab6df742911ef9d5896}
+
+
+
+
+Definition at line 105 of file phy.h.\hypertarget{phy_8h_4cd3190fba33006e964ac4cb8b8024c2}{
+\index{phy.h@{phy.h}!PHY_CHANNEL_COUNT@{PHY\_\-CHANNEL\_\-COUNT}}
+\index{PHY_CHANNEL_COUNT@{PHY\_\-CHANNEL\_\-COUNT}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CHANNEL\_\-COUNT]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CHANNEL\_\-COUNT~16}}
+\label{phy_8h_4cd3190fba33006e964ac4cb8b8024c2}
+
+
+
+
+Definition at line 49 of file phy.h.\hypertarget{phy_8h_f6e4cc855c0f0966c874dc1572980406}{
+\index{phy.h@{phy.h}!PHY_CHANNEL_MIN@{PHY\_\-CHANNEL\_\-MIN}}
+\index{PHY_CHANNEL_MIN@{PHY\_\-CHANNEL\_\-MIN}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CHANNEL\_\-MIN]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CHANNEL\_\-MIN~11}}
+\label{phy_8h_f6e4cc855c0f0966c874dc1572980406}
+
+
+
+
+Definition at line 48 of file phy.h.\hypertarget{phy_8h_318bcebf888387c1bff48541227cf441}{
+\index{phy.h@{phy.h}!PHY_CONFIGURATION_ERROR@{PHY\_\-CONFIGURATION\_\-ERROR}}
+\index{PHY_CONFIGURATION_ERROR@{PHY\_\-CONFIGURATION\_\-ERROR}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CONFIGURATION\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CONFIGURATION\_\-ERROR~0x0d}}
+\label{phy_8h_318bcebf888387c1bff48541227cf441}
+
+
+
+
+Definition at line 65 of file phy.h.\hypertarget{phy_8h_5cba18d16f6039370d6803d081783750}{
+\index{phy.h@{phy.h}!PHY_CONTINUOUS_MODE@{PHY\_\-CONTINUOUS\_\-MODE}}
+\index{PHY_CONTINUOUS_MODE@{PHY\_\-CONTINUOUS\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CONTINUOUS\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CONTINUOUS\_\-MODE~0x01}}
+\label{phy_8h_5cba18d16f6039370d6803d081783750}
+
+
+
+
+Definition at line 102 of file phy.h.\hypertarget{phy_8h_7aa5aaf2dbac602a86581abb9ced8050}{
+\index{phy.h@{phy.h}!PHY_CURRENT_CHANNEL@{PHY\_\-CURRENT\_\-CHANNEL}}
+\index{PHY_CURRENT_CHANNEL@{PHY\_\-CURRENT\_\-CHANNEL}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CURRENT\_\-CHANNEL]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CURRENT\_\-CHANNEL~0x00}}
+\label{phy_8h_7aa5aaf2dbac602a86581abb9ced8050}
+
+
+
+
+Definition at line 70 of file phy.h.\hypertarget{phy_8h_8d3faa87052e64f4bf2027bb8a54a8cb}{
+\index{phy.h@{phy.h}!PHY_CURRENT_PAGE@{PHY\_\-CURRENT\_\-PAGE}}
+\index{PHY_CURRENT_PAGE@{PHY\_\-CURRENT\_\-PAGE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-CURRENT\_\-PAGE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-CURRENT\_\-PAGE~0x04}}
+\label{phy_8h_8d3faa87052e64f4bf2027bb8a54a8cb}
+
+
+
+
+Definition at line 74 of file phy.h.\hypertarget{phy_8h_8be6cf418473dda772282e0b866629d1}{
+\index{phy.h@{phy.h}!PHY_FEC@{PHY\_\-FEC}}
+\index{PHY_FEC@{PHY\_\-FEC}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FEC]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FEC~0x72}}
+\label{phy_8h_8be6cf418473dda772282e0b866629d1}
+
+
+
+
+Definition at line 80 of file phy.h.\hypertarget{phy_8h_7b09052b788a6fa808e18d13ccdd12bf}{
+\index{phy.h@{phy.h}!PHY_FORCE_TRX_OFF@{PHY\_\-FORCE\_\-TRX\_\-OFF}}
+\index{PHY_FORCE_TRX_OFF@{PHY\_\-FORCE\_\-TRX\_\-OFF}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FORCE\_\-TRX\_\-OFF]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FORCE\_\-TRX\_\-OFF~0x03}}
+\label{phy_8h_7b09052b788a6fa808e18d13ccdd12bf}
+
+
+
+
+Definition at line 55 of file phy.h.\hypertarget{phy_8h_09fa8077a3aeaf5c3ec703d61dc03dde}{
+\index{phy.h@{phy.h}!PHY_FP_NOT_SET@{PHY\_\-FP\_\-NOT\_\-SET}}
+\index{PHY_FP_NOT_SET@{PHY\_\-FP\_\-NOT\_\-SET}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FP\_\-NOT\_\-SET]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FP\_\-NOT\_\-SET~0x0e}}
+\label{phy_8h_09fa8077a3aeaf5c3ec703d61dc03dde}
+
+
+
+
+Definition at line 66 of file phy.h.\hypertarget{phy_8h_2f4fb9bf18cdd9192422e007ba2e908c}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE@{PHY\_\-FRAME\_\-TYPE}}
+\index{PHY_FRAME_TYPE@{PHY\_\-FRAME\_\-TYPE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE~0x7b}}
+\label{phy_8h_2f4fb9bf18cdd9192422e007ba2e908c}
+
+
+
+
+Definition at line 89 of file phy.h.\hypertarget{phy_8h_ecdfee04e9aa43d812ac3c6502e36be1}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_ACK@{PHY\_\-FRAME\_\-TYPE\_\-ACK}}
+\index{PHY_FRAME_TYPE_ACK@{PHY\_\-FRAME\_\-TYPE\_\-ACK}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-ACK]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-ACK~0x01}}
+\label{phy_8h_ecdfee04e9aa43d812ac3c6502e36be1}
+
+
+
+
+Definition at line 144 of file phy.h.\hypertarget{phy_8h_da3bca099ad7bb6b42acc719567179a1}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_BRDC@{PHY\_\-FRAME\_\-TYPE\_\-BRDC}}
+\index{PHY_FRAME_TYPE_BRDC@{PHY\_\-FRAME\_\-TYPE\_\-BRDC}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-BRDC]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-BRDC~0x03}}
+\label{phy_8h_da3bca099ad7bb6b42acc719567179a1}
+
+
+
+
+Definition at line 146 of file phy.h.\hypertarget{phy_8h_402a42cd560ee63cc307e36479a4b826}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_CLR2S@{PHY\_\-FRAME\_\-TYPE\_\-CLR2S}}
+\index{PHY_FRAME_TYPE_CLR2S@{PHY\_\-FRAME\_\-TYPE\_\-CLR2S}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-CLR2S]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-CLR2S~0x05}}
+\label{phy_8h_402a42cd560ee63cc307e36479a4b826}
+
+
+
+
+Definition at line 148 of file phy.h.\hypertarget{phy_8h_096bd9a2483f1e547337ae15c3c59cbc}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_DATA@{PHY\_\-FRAME\_\-TYPE\_\-DATA}}
+\index{PHY_FRAME_TYPE_DATA@{PHY\_\-FRAME\_\-TYPE\_\-DATA}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-DATA]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-DATA~0x00}}
+\label{phy_8h_096bd9a2483f1e547337ae15c3c59cbc}
+
+
+
+
+Definition at line 143 of file phy.h.\hypertarget{phy_8h_40349ea32af760ab9826db1e3e5075c2}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_REQ2S@{PHY\_\-FRAME\_\-TYPE\_\-REQ2S}}
+\index{PHY_FRAME_TYPE_REQ2S@{PHY\_\-FRAME\_\-TYPE\_\-REQ2S}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-REQ2S]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-REQ2S~0x04}}
+\label{phy_8h_40349ea32af760ab9826db1e3e5075c2}
+
+
+
+
+Definition at line 147 of file phy.h.\hypertarget{phy_8h_91afac3899640f8dd15eadb89d8f542d}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_TIMEB@{PHY\_\-FRAME\_\-TYPE\_\-TIMEB}}
+\index{PHY_FRAME_TYPE_TIMEB@{PHY\_\-FRAME\_\-TYPE\_\-TIMEB}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-TIMEB]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-TIMEB~0x02}}
+\label{phy_8h_91afac3899640f8dd15eadb89d8f542d}
+
+
+
+
+Definition at line 145 of file phy.h.\hypertarget{phy_8h_f60e2ea0ffac3bdfae6cb76f0ce7d523}{
+\index{phy.h@{phy.h}!PHY_FRAME_TYPE_UNDEF@{PHY\_\-FRAME\_\-TYPE\_\-UNDEF}}
+\index{PHY_FRAME_TYPE_UNDEF@{PHY\_\-FRAME\_\-TYPE\_\-UNDEF}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-FRAME\_\-TYPE\_\-UNDEF]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-FRAME\_\-TYPE\_\-UNDEF~0x\-FF}}
+\label{phy_8h_f60e2ea0ffac3bdfae6cb76f0ce7d523}
+
+
+
+
+Definition at line 149 of file phy.h.\hypertarget{phy_8h_88a22431d1afac5dbeea0102fe43f4e2}{
+\index{phy.h@{phy.h}!PHY_IDLE@{PHY\_\-IDLE}}
+\index{PHY_IDLE@{PHY\_\-IDLE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-IDLE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-IDLE~0x04}}
+\label{phy_8h_88a22431d1afac5dbeea0102fe43f4e2}
+
+
+
+
+Definition at line 56 of file phy.h.\hypertarget{phy_8h_fc7e2c05e3513b286e00b5ee37ef6b47}{
+\index{phy.h@{phy.h}!PHY_INIT_PAGE@{PHY\_\-INIT\_\-PAGE}}
+\index{PHY_INIT_PAGE@{PHY\_\-INIT\_\-PAGE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-INIT\_\-PAGE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-INIT\_\-PAGE~0}}
+\label{phy_8h_fc7e2c05e3513b286e00b5ee37ef6b47}
+
+
+
+
+Definition at line 46 of file phy.h.\hypertarget{phy_8h_78f9c31475e7191cfa3760045abdc13f}{
+\index{phy.h@{phy.h}!PHY_INVALID_PARAMETER@{PHY\_\-INVALID\_\-PARAMETER}}
+\index{PHY_INVALID_PARAMETER@{PHY\_\-INVALID\_\-PARAMETER}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-INVALID\_\-PARAMETER]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-INVALID\_\-PARAMETER~0x05}}
+\label{phy_8h_78f9c31475e7191cfa3760045abdc13f}
+
+
+
+
+Definition at line 57 of file phy.h.\hypertarget{phy_8h_55f496a7288fce51bc0399390e79fd57}{
+\index{phy.h@{phy.h}!PHY_LOG_CHANNEL@{PHY\_\-LOG\_\-CHANNEL}}
+\index{PHY_LOG_CHANNEL@{PHY\_\-LOG\_\-CHANNEL}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-LOG\_\-CHANNEL]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-LOG\_\-CHANNEL~0x7f}}
+\label{phy_8h_55f496a7288fce51bc0399390e79fd57}
+
+
+
+
+Definition at line 93 of file phy.h.\hypertarget{phy_8h_004afc9174802865601082dc6e1af8c9}{
+\index{phy.h@{phy.h}!PHY_MAC_ADDRESS1@{PHY\_\-MAC\_\-ADDRESS1}}
+\index{PHY_MAC_ADDRESS1@{PHY\_\-MAC\_\-ADDRESS1}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-MAC\_\-ADDRESS1]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-MAC\_\-ADDRESS1~0x73}}
+\label{phy_8h_004afc9174802865601082dc6e1af8c9}
+
+
+
+
+Definition at line 81 of file phy.h.\hypertarget{phy_8h_99e4d9dc6a8b51bf8b04ef664f80779a}{
+\index{phy.h@{phy.h}!PHY_MAC_ADDRESS2@{PHY\_\-MAC\_\-ADDRESS2}}
+\index{PHY_MAC_ADDRESS2@{PHY\_\-MAC\_\-ADDRESS2}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-MAC\_\-ADDRESS2]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-MAC\_\-ADDRESS2~0x74}}
+\label{phy_8h_99e4d9dc6a8b51bf8b04ef664f80779a}
+
+
+
+
+Definition at line 82 of file phy.h.\hypertarget{phy_8h_94fbb2886908c365afa59531924ed674}{
+\index{phy.h@{phy.h}!PHY_MAX_FRAME_DURATION@{PHY\_\-MAX\_\-FRAME\_\-DURATION}}
+\index{PHY_MAX_FRAME_DURATION@{PHY\_\-MAX\_\-FRAME\_\-DURATION}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-MAX\_\-FRAME\_\-DURATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-MAX\_\-FRAME\_\-DURATION~0x05}}
+\label{phy_8h_94fbb2886908c365afa59531924ed674}
+
+
+
+
+Definition at line 75 of file phy.h.\hypertarget{phy_8h_f570780b82562decc0185ae8c7b6f1ca}{
+\index{phy.h@{phy.h}!PHY_NO_ACK@{PHY\_\-NO\_\-ACK}}
+\index{PHY_NO_ACK@{PHY\_\-NO\_\-ACK}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-NO\_\-ACK]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-NO\_\-ACK~0x0c}}
+\label{phy_8h_f570780b82562decc0185ae8c7b6f1ca}
+
+
+
+
+Definition at line 64 of file phy.h.\hypertarget{phy_8h_db54239d4b1049e61b77935532cf0adf}{
+\index{phy.h@{phy.h}!PHY_NO_MEMORY@{PHY\_\-NO\_\-MEMORY}}
+\index{PHY_NO_MEMORY@{PHY\_\-NO\_\-MEMORY}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-NO\_\-MEMORY]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-NO\_\-MEMORY~0x0f}}
+\label{phy_8h_db54239d4b1049e61b77935532cf0adf}
+
+
+
+
+Definition at line 67 of file phy.h.\hypertarget{phy_8h_b11c7b5064f801ebb72eda56bb1d780b}{
+\index{phy.h@{phy.h}!PHY_NORMAL_MODE@{PHY\_\-NORMAL\_\-MODE}}
+\index{PHY_NORMAL_MODE@{PHY\_\-NORMAL\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-NORMAL\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-NORMAL\_\-MODE~0x00}}
+\label{phy_8h_b11c7b5064f801ebb72eda56bb1d780b}
+
+
+
+
+Definition at line 101 of file phy.h.\hypertarget{phy_8h_978bd33dc0b2bd39eab74851226f41d0}{
+\index{phy.h@{phy.h}!PHY_PAGES_SUPPORTED@{PHY\_\-PAGES\_\-SUPPORTED}}
+\index{PHY_PAGES_SUPPORTED@{PHY\_\-PAGES\_\-SUPPORTED}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-PAGES\_\-SUPPORTED]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-PAGES\_\-SUPPORTED~0}}
+\label{phy_8h_978bd33dc0b2bd39eab74851226f41d0}
+
+
+
+
+Definition at line 47 of file phy.h.\hypertarget{phy_8h_d219de39eacc2e8a93350bf2991f2b00}{
+\index{phy.h@{phy.h}!PHY_POWERDOWN_PAD_MODE@{PHY\_\-POWERDOWN\_\-PAD\_\-MODE}}
+\index{PHY_POWERDOWN_PAD_MODE@{PHY\_\-POWERDOWN\_\-PAD\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-POWERDOWN\_\-PAD\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-POWERDOWN\_\-PAD\_\-MODE~0x81}}
+\label{phy_8h_d219de39eacc2e8a93350bf2991f2b00}
+
+
+
+
+Definition at line 99 of file phy.h.\hypertarget{phy_8h_01a38f9c8691e82437a934318322a752}{
+\index{phy.h@{phy.h}!PHY_PWR_DOWN_MODE@{PHY\_\-PWR\_\-DOWN\_\-MODE}}
+\index{PHY_PWR_DOWN_MODE@{PHY\_\-PWR\_\-DOWN\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-PWR\_\-DOWN\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-PWR\_\-DOWN\_\-MODE~0x7a}}
+\label{phy_8h_01a38f9c8691e82437a934318322a752}
+
+
+
+
+Definition at line 88 of file phy.h.\hypertarget{phy_8h_0bd1455e282045d41396db82125be599}{
+\index{phy.h@{phy.h}!PHY_RAW_MODE@{PHY\_\-RAW\_\-MODE}}
+\index{PHY_RAW_MODE@{PHY\_\-RAW\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RAW\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RAW\_\-MODE~0x77}}
+\label{phy_8h_0bd1455e282045d41396db82125be599}
+
+
+
+
+Definition at line 85 of file phy.h.\hypertarget{phy_8h_cf9aad735ebb4121a92e625c8c7257f5}{
+\index{phy.h@{phy.h}!PHY_READ_ONLY@{PHY\_\-READ\_\-ONLY}}
+\index{PHY_READ_ONLY@{PHY\_\-READ\_\-ONLY}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-READ\_\-ONLY]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-READ\_\-ONLY~0x0b}}
+\label{phy_8h_cf9aad735ebb4121a92e625c8c7257f5}
+
+
+
+
+Definition at line 63 of file phy.h.\hypertarget{phy_8h_0c4ef64194b6b8583887f43ddce35537}{
+\index{phy.h@{phy.h}!PHY_RECAL_INTERVAL@{PHY\_\-RECAL\_\-INTERVAL}}
+\index{PHY_RECAL_INTERVAL@{PHY\_\-RECAL\_\-INTERVAL}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RECAL\_\-INTERVAL]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RECAL\_\-INTERVAL~0x94}}
+\label{phy_8h_0c4ef64194b6b8583887f43ddce35537}
+
+
+
+
+Definition at line 96 of file phy.h.\hypertarget{phy_8h_8b082e37fed8f517f12d07e246a9998d}{
+\index{phy.h@{phy.h}!PHY_RECALIBRATION@{PHY\_\-RECALIBRATION}}
+\index{PHY_RECALIBRATION@{PHY\_\-RECALIBRATION}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RECALIBRATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RECALIBRATION~0x78}}
+\label{phy_8h_8b082e37fed8f517f12d07e246a9998d}
+
+
+
+
+Definition at line 86 of file phy.h.\hypertarget{phy_8h_314958e5ae1bce09dc8efdf299e29c04}{
+\index{phy.h@{phy.h}!PHY_RSSI@{PHY\_\-RSSI}}
+\index{PHY_RSSI@{PHY\_\-RSSI}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RSSI]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RSSI~0x7e}}
+\label{phy_8h_314958e5ae1bce09dc8efdf299e29c04}
+
+
+
+
+Definition at line 92 of file phy.h.\hypertarget{phy_8h_35f211fb2e0e7bb225171c2ed988c282}{
+\index{phy.h@{phy.h}!PHY_RX_CMD@{PHY\_\-RX\_\-CMD}}
+\index{PHY_RX_CMD@{PHY\_\-RX\_\-CMD}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RX\_\-CMD]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RX\_\-CMD~0x91}}
+\label{phy_8h_35f211fb2e0e7bb225171c2ed988c282}
+
+
+
+
+Definition at line 95 of file phy.h.\hypertarget{phy_8h_f8c16c32a3368ec1972a860ec63d15e3}{
+\index{phy.h@{phy.h}!PHY_RX_ON@{PHY\_\-RX\_\-ON}}
+\index{PHY_RX_ON@{PHY\_\-RX\_\-ON}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RX\_\-ON]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RX\_\-ON~0x06}}
+\label{phy_8h_f8c16c32a3368ec1972a860ec63d15e3}
+
+
+
+
+Definition at line 58 of file phy.h.\hypertarget{phy_8h_38bfbf29e5baab246363c2ebe257663f}{
+\index{phy.h@{phy.h}!PHY_RX_STATE@{PHY\_\-RX\_\-STATE}}
+\index{PHY_RX_STATE@{PHY\_\-RX\_\-STATE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RX\_\-STATE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RX\_\-STATE~0x7d}}
+\label{phy_8h_38bfbf29e5baab246363c2ebe257663f}
+
+
+
+
+Definition at line 91 of file phy.h.\hypertarget{phy_8h_fc4d1d6be30991cc0c5658f19de6c54a}{
+\index{phy.h@{phy.h}!PHY_RX_TIMEOUT@{PHY\_\-RX\_\-TIMEOUT}}
+\index{PHY_RX_TIMEOUT@{PHY\_\-RX\_\-TIMEOUT}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-RX\_\-TIMEOUT]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-RX\_\-TIMEOUT~0x80}}
+\label{phy_8h_fc4d1d6be30991cc0c5658f19de6c54a}
+
+
+
+
+Definition at line 98 of file phy.h.\hypertarget{phy_8h_710a5793dc2f90adfaab38b60e0f21d7}{
+\index{phy.h@{phy.h}!PHY_SHR_DURATION@{PHY\_\-SHR\_\-DURATION}}
+\index{PHY_SHR_DURATION@{PHY\_\-SHR\_\-DURATION}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-SHR\_\-DURATION]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-SHR\_\-DURATION~0x06}}
+\label{phy_8h_710a5793dc2f90adfaab38b60e0f21d7}
+
+
+
+
+Definition at line 76 of file phy.h.\hypertarget{phy_8h_3293594c76f1cf7c69ab88d645cf03ca}{
+\index{phy.h@{phy.h}!PHY_SUCCESS@{PHY\_\-SUCCESS}}
+\index{PHY_SUCCESS@{PHY\_\-SUCCESS}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-SUCCESS]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-SUCCESS~0x07}}
+\label{phy_8h_3293594c76f1cf7c69ab88d645cf03ca}
+
+
+
+
+Definition at line 59 of file phy.h.\hypertarget{phy_8h_ca37553beb110498bec6302a6109ad76}{
+\index{phy.h@{phy.h}!PHY_SYMBOLS_PER_OCTET@{PHY\_\-SYMBOLS\_\-PER\_\-OCTET}}
+\index{PHY_SYMBOLS_PER_OCTET@{PHY\_\-SYMBOLS\_\-PER\_\-OCTET}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-SYMBOLS\_\-PER\_\-OCTET]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-SYMBOLS\_\-PER\_\-OCTET~0x07}}
+\label{phy_8h_ca37553beb110498bec6302a6109ad76}
+
+
+
+
+Definition at line 77 of file phy.h.\hypertarget{phy_8h_f7d61752ea7320cc2fc1770d8a68236f}{
+\index{phy.h@{phy.h}!PHY_SYNCWORD@{PHY\_\-SYNCWORD}}
+\index{PHY_SYNCWORD@{PHY\_\-SYNCWORD}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-SYNCWORD]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-SYNCWORD~0x90}}
+\label{phy_8h_f7d61752ea7320cc2fc1770d8a68236f}
+
+
+
+
+Definition at line 94 of file phy.h.\hypertarget{phy_8h_3d93327affaaf6f123637565de738539}{
+\index{phy.h@{phy.h}!PHY_TESTMODE@{PHY\_\-TESTMODE}}
+\index{PHY_TESTMODE@{PHY\_\-TESTMODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TESTMODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TESTMODE~0x7c}}
+\label{phy_8h_3d93327affaaf6f123637565de738539}
+
+
+
+
+Definition at line 90 of file phy.h.\hypertarget{phy_8h_620db16976b8e2a9531e5489406a2104}{
+\index{phy.h@{phy.h}!PHY_TRX_MODE@{PHY\_\-TRX\_\-MODE}}
+\index{PHY_TRX_MODE@{PHY\_\-TRX\_\-MODE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TRX\_\-MODE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TRX\_\-MODE~0x79}}
+\label{phy_8h_620db16976b8e2a9531e5489406a2104}
+
+
+
+
+Definition at line 87 of file phy.h.\hypertarget{phy_8h_5598ac4e41a39c0ba5eec332f9b28006}{
+\index{phy.h@{phy.h}!PHY_TRX_OFF@{PHY\_\-TRX\_\-OFF}}
+\index{PHY_TRX_OFF@{PHY\_\-TRX\_\-OFF}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TRX\_\-OFF]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TRX\_\-OFF~0x08}}
+\label{phy_8h_5598ac4e41a39c0ba5eec332f9b28006}
+
+
+
+
+Definition at line 60 of file phy.h.\hypertarget{phy_8h_ac066b5099937aae1cb278f8f52be5a9}{
+\index{phy.h@{phy.h}!PHY_TX_ADDR_SELECT@{PHY\_\-TX\_\-ADDR\_\-SELECT}}
+\index{PHY_TX_ADDR_SELECT@{PHY\_\-TX\_\-ADDR\_\-SELECT}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TX\_\-ADDR\_\-SELECT]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TX\_\-ADDR\_\-SELECT~0x75}}
+\label{phy_8h_ac066b5099937aae1cb278f8f52be5a9}
+
+
+
+
+Definition at line 83 of file phy.h.\hypertarget{phy_8h_b29051cb51732c88a3cd46c4233ef685}{
+\index{phy.h@{phy.h}!PHY_TX_ON@{PHY\_\-TX\_\-ON}}
+\index{PHY_TX_ON@{PHY\_\-TX\_\-ON}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TX\_\-ON]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TX\_\-ON~0x09}}
+\label{phy_8h_b29051cb51732c88a3cd46c4233ef685}
+
+
+
+
+Definition at line 61 of file phy.h.\hypertarget{phy_8h_7122ee6f5e2e7cbc255d8987616d739b}{
+\index{phy.h@{phy.h}!PHY_TX_POWER@{PHY\_\-TX\_\-POWER}}
+\index{PHY_TX_POWER@{PHY\_\-TX\_\-POWER}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TX\_\-POWER]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TX\_\-POWER~0x02}}
+\label{phy_8h_7122ee6f5e2e7cbc255d8987616d739b}
+
+
+
+
+Definition at line 72 of file phy.h.\hypertarget{phy_8h_35b57ee9e8a1a6308edd2e4224887bcb}{
+\index{phy.h@{phy.h}!PHY_TX_POWER_TOLERANCE@{PHY\_\-TX\_\-POWER\_\-TOLERANCE}}
+\index{PHY_TX_POWER_TOLERANCE@{PHY\_\-TX\_\-POWER\_\-TOLERANCE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-TX\_\-POWER\_\-TOLERANCE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-TX\_\-POWER\_\-TOLERANCE~0x01}}
+\label{phy_8h_35b57ee9e8a1a6308edd2e4224887bcb}
+
+
+
+
+Definition at line 50 of file phy.h.\hypertarget{phy_8h_08ef247b256f9cba95cf97d191420f65}{
+\index{phy.h@{phy.h}!PHY_UNSUPPORTED_ATTRIBUTE@{PHY\_\-UNSUPPORTED\_\-ATTRIBUTE}}
+\index{PHY_UNSUPPORTED_ATTRIBUTE@{PHY\_\-UNSUPPORTED\_\-ATTRIBUTE}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-UNSUPPORTED\_\-ATTRIBUTE]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-UNSUPPORTED\_\-ATTRIBUTE~0x0a}}
+\label{phy_8h_08ef247b256f9cba95cf97d191420f65}
+
+
+
+
+Definition at line 62 of file phy.h.\hypertarget{phy_8h_e3488bbb0f429d9a841d39296f654670}{
+\index{phy.h@{phy.h}!PHY_USER_DATA_OVERFLOW@{PHY\_\-USER\_\-DATA\_\-OVERFLOW}}
+\index{PHY_USER_DATA_OVERFLOW@{PHY\_\-USER\_\-DATA\_\-OVERFLOW}!phy.h@{phy.h}}
+\subsubsection[PHY\_\-USER\_\-DATA\_\-OVERFLOW]{\setlength{\rightskip}{0pt plus 5cm}\#define PHY\_\-USER\_\-DATA\_\-OVERFLOW~0x10}}
+\label{phy_8h_e3488bbb0f429d9a841d39296f654670}
+
+
+
+
+Definition at line 68 of file phy.h.\hypertarget{phy_8h_5fb397bb67e72c7e2a7b93d4d9101166}{
+\index{phy.h@{phy.h}!PLME_CCA_CONFIRM@{PLME\_\-CCA\_\-CONFIRM}}
+\index{PLME_CCA_CONFIRM@{PLME\_\-CCA\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-CCA\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-CCA\_\-CONFIRM~0x06}}
+\label{phy_8h_5fb397bb67e72c7e2a7b93d4d9101166}
+
+
+
+
+Definition at line 116 of file phy.h.\hypertarget{phy_8h_d0f2325f23604db9fafdeec74667d66c}{
+\index{phy.h@{phy.h}!PLME_CCA_REQUEST@{PLME\_\-CCA\_\-REQUEST}}
+\index{PLME_CCA_REQUEST@{PLME\_\-CCA\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-CCA\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-CCA\_\-REQUEST~0x05}}
+\label{phy_8h_d0f2325f23604db9fafdeec74667d66c}
+
+
+
+
+Definition at line 115 of file phy.h.\hypertarget{phy_8h_7f7602b248d558056a4f2b186eab2f6a}{
+\index{phy.h@{phy.h}!PLME_ED_CONFIRM@{PLME\_\-ED\_\-CONFIRM}}
+\index{PLME_ED_CONFIRM@{PLME\_\-ED\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-ED\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-ED\_\-CONFIRM~0x08}}
+\label{phy_8h_7f7602b248d558056a4f2b186eab2f6a}
+
+
+
+
+Definition at line 118 of file phy.h.\hypertarget{phy_8h_46228dd46217802a41f17e34475f9894}{
+\index{phy.h@{phy.h}!PLME_ED_REQUEST@{PLME\_\-ED\_\-REQUEST}}
+\index{PLME_ED_REQUEST@{PLME\_\-ED\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-ED\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-ED\_\-REQUEST~0x07}}
+\label{phy_8h_46228dd46217802a41f17e34475f9894}
+
+
+
+
+Definition at line 117 of file phy.h.\hypertarget{phy_8h_d4b661d1446b1be7f8eb13612dd1c0af}{
+\index{phy.h@{phy.h}!PLME_GET_CONFIRM@{PLME\_\-GET\_\-CONFIRM}}
+\index{PLME_GET_CONFIRM@{PLME\_\-GET\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-GET\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-GET\_\-CONFIRM~0x0a}}
+\label{phy_8h_d4b661d1446b1be7f8eb13612dd1c0af}
+
+
+
+
+Definition at line 120 of file phy.h.\hypertarget{phy_8h_3da6d03b47f1fb0393adfa25d428b487}{
+\index{phy.h@{phy.h}!PLME_GET_REQUEST@{PLME\_\-GET\_\-REQUEST}}
+\index{PLME_GET_REQUEST@{PLME\_\-GET\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-GET\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-GET\_\-REQUEST~0x09}}
+\label{phy_8h_3da6d03b47f1fb0393adfa25d428b487}
+
+
+
+
+Definition at line 119 of file phy.h.\hypertarget{phy_8h_2816b4e559387f10467d284d34cb0dfd}{
+\index{phy.h@{phy.h}!PLME_SET_CONFIRM@{PLME\_\-SET\_\-CONFIRM}}
+\index{PLME_SET_CONFIRM@{PLME\_\-SET\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-SET\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-SET\_\-CONFIRM~0x0c}}
+\label{phy_8h_2816b4e559387f10467d284d34cb0dfd}
+
+
+
+
+Definition at line 122 of file phy.h.\hypertarget{phy_8h_4e309d9dd41bcc1d82d27aacaaeb1dc2}{
+\index{phy.h@{phy.h}!PLME_SET_REQUEST@{PLME\_\-SET\_\-REQUEST}}
+\index{PLME_SET_REQUEST@{PLME\_\-SET\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-SET\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-SET\_\-REQUEST~0x0b}}
+\label{phy_8h_4e309d9dd41bcc1d82d27aacaaeb1dc2}
+
+
+
+
+Definition at line 121 of file phy.h.\hypertarget{phy_8h_53aa68e86a18d2c25a61a041006b3ee7}{
+\index{phy.h@{phy.h}!PLME_SET_TRX_STATE_CONFIRM@{PLME\_\-SET\_\-TRX\_\-STATE\_\-CONFIRM}}
+\index{PLME_SET_TRX_STATE_CONFIRM@{PLME\_\-SET\_\-TRX\_\-STATE\_\-CONFIRM}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-SET\_\-TRX\_\-STATE\_\-CONFIRM]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-SET\_\-TRX\_\-STATE\_\-CONFIRM~0x0c}}
+\label{phy_8h_53aa68e86a18d2c25a61a041006b3ee7}
+
+
+
+
+Definition at line 124 of file phy.h.\hypertarget{phy_8h_4ae6c2efadba464e153c68568044db76}{
+\index{phy.h@{phy.h}!PLME_SET_TRX_STATE_REQUEST@{PLME\_\-SET\_\-TRX\_\-STATE\_\-REQUEST}}
+\index{PLME_SET_TRX_STATE_REQUEST@{PLME\_\-SET\_\-TRX\_\-STATE\_\-REQUEST}!phy.h@{phy.h}}
+\subsubsection[PLME\_\-SET\_\-TRX\_\-STATE\_\-REQUEST]{\setlength{\rightskip}{0pt plus 5cm}\#define PLME\_\-SET\_\-TRX\_\-STATE\_\-REQUEST~0x0d}}
+\label{phy_8h_4ae6c2efadba464e153c68568044db76}
+
+
+
+
+Definition at line 123 of file phy.h.\hypertarget{phy_8h_786012dad04daf429877fc7daa8c912a}{
+\index{phy.h@{phy.h}!RG_STAT_DEFAULT@{RG\_\-STAT\_\-DEFAULT}}
+\index{RG_STAT_DEFAULT@{RG\_\-STAT\_\-DEFAULT}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-DEFAULT]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-DEFAULT~0x00}}
+\label{phy_8h_786012dad04daf429877fc7daa8c912a}
+
+
+
+
+Definition at line 132 of file phy.h.\hypertarget{phy_8h_3e4b685ef2caccf60ad0a8e537653972}{
+\index{phy.h@{phy.h}!RG_STAT_NO_ERROR@{RG\_\-STAT\_\-NO\_\-ERROR}}
+\index{RG_STAT_NO_ERROR@{RG\_\-STAT\_\-NO\_\-ERROR}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-NO\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-NO\_\-ERROR~0x0F}}
+\label{phy_8h_3e4b685ef2caccf60ad0a8e537653972}
+
+
+
+
+Definition at line 133 of file phy.h.\hypertarget{phy_8h_416a14fc010e3738ba43e0614a108247}{
+\index{phy.h@{phy.h}!RG_STAT_T1@{RG\_\-STAT\_\-T1}}
+\index{RG_STAT_T1@{RG\_\-STAT\_\-T1}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-T1]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-T1~0x01}}
+\label{phy_8h_416a14fc010e3738ba43e0614a108247}
+
+
+
+
+Definition at line 135 of file phy.h.\hypertarget{phy_8h_80dee94ad161c611a5b0d91ff9f3ad34}{
+\index{phy.h@{phy.h}!RG_STAT_T2@{RG\_\-STAT\_\-T2}}
+\index{RG_STAT_T2@{RG\_\-STAT\_\-T2}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-T2]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-T2~0x02}}
+\label{phy_8h_80dee94ad161c611a5b0d91ff9f3ad34}
+
+
+
+
+Definition at line 136 of file phy.h.\hypertarget{phy_8h_9dafaf6cffa1c39c612d244e72fc3303}{
+\index{phy.h@{phy.h}!RG_STAT_T3@{RG\_\-STAT\_\-T3}}
+\index{RG_STAT_T3@{RG\_\-STAT\_\-T3}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-T3]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-T3~0x04}}
+\label{phy_8h_9dafaf6cffa1c39c612d244e72fc3303}
+
+
+
+
+Definition at line 137 of file phy.h.\hypertarget{phy_8h_f5d7ee0953f7c3986cb3192ea1363e08}{
+\index{phy.h@{phy.h}!RG_STAT_T4@{RG\_\-STAT\_\-T4}}
+\index{RG_STAT_T4@{RG\_\-STAT\_\-T4}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-T4]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-T4~0x08}}
+\label{phy_8h_f5d7ee0953f7c3986cb3192ea1363e08}
+
+
+
+
+Definition at line 138 of file phy.h.\hypertarget{phy_8h_3accdf50e571d3f39196032355718599}{
+\index{phy.h@{phy.h}!RG_STAT_TIMEOUT@{RG\_\-STAT\_\-TIMEOUT}}
+\index{RG_STAT_TIMEOUT@{RG\_\-STAT\_\-TIMEOUT}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-TIMEOUT]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-TIMEOUT~0x40}}
+\label{phy_8h_3accdf50e571d3f39196032355718599}
+
+
+
+
+Definition at line 140 of file phy.h.\hypertarget{phy_8h_8ed0f3b296233ab0b789d7f061890c37}{
+\index{phy.h@{phy.h}!RG_STAT_VALUE_ERROR@{RG\_\-STAT\_\-VALUE\_\-ERROR}}
+\index{RG_STAT_VALUE_ERROR@{RG\_\-STAT\_\-VALUE\_\-ERROR}!phy.h@{phy.h}}
+\subsubsection[RG\_\-STAT\_\-VALUE\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define RG\_\-STAT\_\-VALUE\_\-ERROR~0x80}}
+\label{phy_8h_8ed0f3b296233ab0b789d7f061890c37}
+
+
+
+
+Definition at line 141 of file phy.h.\hypertarget{phy_8h_9262bdbce092037c8b356c67b7b3a5ae}{
+\index{phy.h@{phy.h}!SendMsgUp@{SendMsgUp}}
+\index{SendMsgUp@{SendMsgUp}!phy.h@{phy.h}}
+\subsubsection[SendMsgUp]{\setlength{\rightskip}{0pt plus 5cm}\#define Send\-Msg\-Up~($\ast$\hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up})}}
+\label{phy_8h_9262bdbce092037c8b356c67b7b3a5ae}
+
+
+Callback function of upper layer. 
+
+This function is called when the physical layer wants to forward received data to the next upper layer. This define is used to be able to add another layer. 
+
+Definition at line 186 of file phy.h.\hypertarget{phy_8h_976a8c79ed976425c24f2cdc7951550c}{
+\index{phy.h@{phy.h}!TO_CSMA@{TO\_\-CSMA}}
+\index{TO_CSMA@{TO\_\-CSMA}!phy.h@{phy.h}}
+\subsubsection[TO\_\-CSMA]{\setlength{\rightskip}{0pt plus 5cm}\#define TO\_\-CSMA~5}}
+\label{phy_8h_976a8c79ed976425c24f2cdc7951550c}
+
+
+Timeout for any CSMA/CCA process. \mbox{[}ms\mbox{]}. 
+
+This timeout runs after sending a packet. If the timer expire the transmission is cancled and restarted with disabled CSMA/CCA. 
+
+Definition at line 161 of file phy.h.
+
+\subsection{Function Documentation}
+\hypertarget{phy_8h_a4057bfa2c651859436e3798ceb3f0c6}{
+\index{phy.h@{phy.h}!NTRXInit@{NTRXInit}}
+\index{NTRXInit@{NTRXInit}!phy.h@{phy.h}}
+\subsubsection[NTRXInit]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXInit (void)}}
+\label{phy_8h_a4057bfa2c651859436e3798ceb3f0c6}
+
+
+Initializing of the transceiver chip. 
+
+This function initializes all registers of the nano\-LOC transceiver chip. This function should only be called once.
+
+If this function is called for the first time, the structure setting\-Val is set to the predefined default mode values. After setting up the SPI interface this function compares the version and revision register of the chip with the values expected by the driver. If these don't match, the software will call an error function and halts. The reason for this drastic reaction is that the driver can not garantie a non interfering behaviour. 
+
+! Some short delay seems necessary here?? 
+
+Definition at line 153 of file ntrxinit.c.\hypertarget{phy_8h_9f9a03406742ffa2927c4ba70cbdedeb}{
+\index{phy.h@{phy.h}!NTRXPostBBIrq@{NTRXPostBBIrq}}
+\index{NTRXPostBBIrq@{NTRXPostBBIrq}!phy.h@{phy.h}}
+\subsubsection[NTRXPostBBIrq]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPost\-BBIrq (void)}}
+\label{phy_8h_9f9a03406742ffa2927c4ba70cbdedeb}
+
+
+\hypertarget{phy_8h_3d739dbf4ac04244a50f49c5ce06f727}{
+\index{phy.h@{phy.h}!NTRXSendPacket@{NTRXSendPacket}}
+\index{NTRXSendPacket@{NTRXSendPacket}!phy.h@{phy.h}}
+\subsubsection[NTRXSendPacket]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSend\-Packet (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8h_3d739dbf4ac04244a50f49c5ce06f727}
+
+
+This function send packets out. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer\end{description}
+\end{Desc}
+This function is called ever on sending packets (e.g. PDSap). 
+
+Definition at line 277 of file phy.c.\hypertarget{phy_8h_134c3bd25c3c49b11f8447ebeea9614c}{
+\index{phy.h@{phy.h}!NTRXSetDefaultMode@{NTRXSetDefaultMode}}
+\index{NTRXSetDefaultMode@{NTRXSetDefaultMode}!phy.h@{phy.h}}
+\subsubsection[NTRXSetDefaultMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Default\-Mode (void)}}
+\label{phy_8h_134c3bd25c3c49b11f8447ebeea9614c}
+
+
+
+
+Definition at line 41 of file ntrxinit.c.\hypertarget{phy_8h_e68acaf37de209a988dc46b5ccb0368e}{
+\index{phy.h@{phy.h}!PDCallback@{PDCallback}}
+\index{PDCallback@{PDCallback}!phy.h@{phy.h}}
+\subsubsection[PDCallback]{\setlength{\rightskip}{0pt plus 5cm}void PDCallback (void)}}
+\label{phy_8h_e68acaf37de209a988dc46b5ccb0368e}
+
+
+Callback function for received messages. 
+
+This function reads out the payload of a received message and calls the upper layer/application 
+
+Definition at line 1072 of file phy.c.\hypertarget{phy_8h_6209bbfd2b951c355afa0ee008523cca}{
+\index{phy.h@{phy.h}!PDSap@{PDSap}}
+\index{PDSap@{PDSap}!phy.h@{phy.h}}
+\subsubsection[PDSap]{\setlength{\rightskip}{0pt plus 5cm}void PDSap (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8h_6209bbfd2b951c355afa0ee008523cca}
+
+
+This function processes all data request. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer\end{description}
+\end{Desc}
+This function represents the service access point for data requests and ranging requests. When the primitive is set to {\em PD\_\-DATA\_\-REQUEST\/} all necessary actions are taken to copy the payload to the nano\-LOC chip and set the MAC header parameter in the corresponding registers. When all this is done the transmission will be initiated. In case of a transmission in progress, {\em PDSap\/} will reject the message and indicate a failure with the status {\em PHY\_\-BUSY\_\-TX\/}. 
+
+Definition at line 414 of file phy.c.\hypertarget{phy_8h_306baee9074ea37595b68f47f903732c}{
+\index{phy.h@{phy.h}!PHYAutoCalibration@{PHYAutoCalibration}}
+\index{PHYAutoCalibration@{PHYAutoCalibration}!phy.h@{phy.h}}
+\subsubsection[PHYAutoCalibration]{\setlength{\rightskip}{0pt plus 5cm}void PHYAuto\-Calibration (void)}}
+\label{phy_8h_306baee9074ea37595b68f47f903732c}
+
+
+\hypertarget{phy_8h_65b5ffbaddd90d1dafb2ac869a9ba34e}{
+\index{phy.h@{phy.h}!PHYInit@{PHYInit}}
+\index{PHYInit@{PHYInit}!phy.h@{phy.h}}
+\subsubsection[PHYInit]{\setlength{\rightskip}{0pt plus 5cm}void PHYInit (void)}}
+\label{phy_8h_65b5ffbaddd90d1dafb2ac869a9ba34e}
+
+
+Initializing of module global variables. 
+
+This function initializes all module global variables located in the physical layers parameter information base (phy\-PIB). The nano\-LOC chip has to be already initialized and in ready (idle) mode. The receiver is started and interrupts for CRC2 and Tx End and Rx End are enabled. 
+
+Definition at line 194 of file phy.c.\hypertarget{phy_8h_8f376b3e4de263568b32aeb78890d131}{
+\index{phy.h@{phy.h}!PHYIsIDLE@{PHYIsIDLE}}
+\index{PHYIsIDLE@{PHYIsIDLE}!phy.h@{phy.h}}
+\subsubsection[PHYIsIDLE]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} PHYIs\-IDLE (void)}}
+\label{phy_8h_8f376b3e4de263568b32aeb78890d131}
+
+
+Returns status of PHY and RANGING. 
+
+\begin{Desc}
+\item[Returns:]TRUE if phy and ranging in status IDLE. Used to check the status of the driver before going power down. \end{Desc}
+
+
+Definition at line 1484 of file phy.c.\hypertarget{phy_8h_da089b8d8079e3f72249bc86d7e0558b}{
+\index{phy.h@{phy.h}!PHYPoll@{PHYPoll}}
+\index{PHYPoll@{PHYPoll}!phy.h@{phy.h}}
+\subsubsection[PHYPoll]{\setlength{\rightskip}{0pt plus 5cm}void PHYPoll (void)}}
+\label{phy_8h_da089b8d8079e3f72249bc86d7e0558b}
+
+
+polls the nano\-LOC chip for incomming messages 
+
+This function is the main part of the the physical layer. It processes all interrupt flags and supervises the periodic recalibration. 
+
+Definition at line 1203 of file phy.c.\hypertarget{phy_8h_b70ab9d97192d8ebe998f534228bcb1a}{
+\index{phy.h@{phy.h}!PHYRegisterCallback@{PHYRegisterCallback}}
+\index{PHYRegisterCallback@{PHYRegisterCallback}!phy.h@{phy.h}}
+\subsubsection[PHYRegisterCallback]{\setlength{\rightskip}{0pt plus 5cm}void PHYRegister\-Callback (\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} {\em cb\-Msg})}}
+\label{phy_8h_b70ab9d97192d8ebe998f534228bcb1a}
+
+
+Configuration of callback functions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cb\-Msg}]Callback function pointer for the (protocol) message interface. If not set the PHY will call the function \hyperlink{phy_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{APLCallback} by default. \end{description}
+\end{Desc}
+
+
+Definition at line 1466 of file phy.c.\hypertarget{phy_8h_4351f09dc34904ddc6d75fa36c2f5771}{
+\index{phy.h@{phy.h}!PLMESap@{PLMESap}}
+\index{PLMESap@{PLMESap}!phy.h@{phy.h}}
+\subsubsection[PLMESap]{\setlength{\rightskip}{0pt plus 5cm}void PLMESap (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8h_4351f09dc34904ddc6d75fa36c2f5771}
+
+
+Physical layer management entety. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the the message struct\end{description}
+\end{Desc}
+This function represents the service access point to configure the physical layer. All configuration parameters are stored in the physical layer parameter information base {\em phy\-PIB\/}. This function hides all necessarey steps to enable or disable certain features. With this function it is possible to set values but also to query the following settings:
+
+\hyperlink{phy_8h_7aa5aaf2dbac602a86581abb9ced8050}{PHY\_\-CURRENT\_\-CHANNEL} : the channel is a transmission mode defined in PHY\_\-TRX\_\-MODE \hyperlink{phy_8h_620db16976b8e2a9531e5489406a2104}{PHY\_\-TRX\_\-MODE} : a set of three parameters bandwidth, symbol duration and symbol rate \hyperlink{phy_8h_55f496a7288fce51bc0399390e79fd57}{PHY\_\-LOG\_\-CHANNEL} : is a predefined group of chip settings \hyperlink{phy_8h_7122ee6f5e2e7cbc255d8987616d739b}{PHY\_\-TX\_\-POWER} : output power setting \mbox{[} 0 - 63 \mbox{]} \hyperlink{phy_8h_8d94b6c99cee50b7d05983cac10c2ca7}{PHY\_\-ARQ} : hardware acknowledgement \hyperlink{phy_8h_8be6cf418473dda772282e0b866629d1}{PHY\_\-FEC} : forward error correction \hyperlink{phy_8h_004afc9174802865601082dc6e1af8c9}{PHY\_\-MAC\_\-ADDRESS1} : 1st MAC address for address matching \hyperlink{phy_8h_99e4d9dc6a8b51bf8b04ef664f80779a}{PHY\_\-MAC\_\-ADDRESS2} : 2nd MAC address for address matching \hyperlink{phy_8h_ac066b5099937aae1cb278f8f52be5a9}{PHY\_\-TX\_\-ADDR\_\-SELECT} : select the MAC address as sender address \hyperlink{phy_8h_b5b0458a6477d70a1c46842b81fe032f}{PHY\_\-ADDR\_\-MATCHING} : address matching or promiscuous mode \hyperlink{phy_8h_01a38f9c8691e82437a934318322a752}{PHY\_\-PWR\_\-DOWN\_\-MODE} : set operational mode \hyperlink{phy_8h_8b082e37fed8f517f12d07e246a9998d}{PHY\_\-RECALIBRATION} : recalibration interval \hyperlink{phy_8h_2f4fb9bf18cdd9192422e007ba2e908c}{PHY\_\-FRAME\_\-TYPE} : set frame types that will be handled by the nano\-LOC chip 
+
+Definition at line 521 of file phy.c.\hypertarget{phy_8h_beafbc66ca89f02f8c1804ec0cae8e6b}{
+\index{phy.h@{phy.h}!UpdateLEDs@{UpdateLEDs}}
+\index{UpdateLEDs@{UpdateLEDs}!phy.h@{phy.h}}
+\subsubsection[UpdateLEDs]{\setlength{\rightskip}{0pt plus 5cm}void Update\-LEDs (void)}}
+\label{phy_8h_beafbc66ca89f02f8c1804ec0cae8e6b}
+
+

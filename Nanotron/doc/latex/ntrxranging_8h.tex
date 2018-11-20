@@ -1,0 +1,322 @@
+\hypertarget{ntrxranging_8h}{
+\section{include/ntrxranging.h File Reference}
+\label{ntrxranging_8h}\index{include/ntrxranging.h@{include/ntrxranging.h}}
+}
+Ranging support functions. 
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structRangingMsgT}{Ranging\-Msg\-T}
+\begin{CompactList}\small\item\em Structure for the ranging result. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{ntrxranging_8h_d9de8d976b1c4770082b3480c32a1bda}{DEBUG\_\-P}(args,...)
+\begin{CompactList}\small\item\em Debugging output using printf. Can be globally disabled with RANGE\_\-DEBUG . \item\end{CompactList}\item 
+\#define \hyperlink{ntrxranging_8h_e9741537e8095af56c2fd3ec3071610f}{MSG\_\-TYPE\_\-DATA}~0
+\item 
+\#define \hyperlink{ntrxranging_8h_a9e59b717398be64fe394f4a563db416}{MSG\_\-TYPE\_\-RANGING}~1
+\item 
+\#define \hyperlink{ntrxranging_8h_c0277c3b8156b365bfec69dbbab946f2}{RANGING\_\-PROTOCOL\_\-LEN}~1
+\begin{CompactList}\small\item\em Defines the length of the ranging protocol. \item\end{CompactList}\item 
+\#define \hyperlink{ntrxranging_8h_a6270ff7ecf29c19fb65bf752061050e}{RANGING\_\-TIMEOUT}~250
+\item 
+\#define \hyperlink{ntrxranging_8h_642da767f3a0dd99b0ae8753a08a5095}{RANGING\_\-TYPE\_\-2W\_\-PP}~2
+\begin{CompactList}\small\item\em Defines the ranging type. This type of ranging consists of one request packet, and one answer packet with following behavior: ==$>$, $<$== (distance is remote generated). The station which receives the request gets the distance as indication in the registered callback function. Advantage: Only 2 packets generate a distance (low power consumption) Disadvantage: The first ranging dont generate a distance. (delay). \item\end{CompactList}\item 
+\#define \hyperlink{ntrxranging_8h_931c72035d290af0c22c2c25171006b5}{RANGING\_\-TYPE\_\-3W\_\-A}~0
+\begin{CompactList}\small\item\em Defines the ranging type. This type of ranging consists of one request packet, and two answer packets with following behavior: ==$>$, $<$==, $<$== (distance is local generated). The station which requests the ranging, gets the distance as indication in the registered callback function. \item\end{CompactList}\item 
+\#define \hyperlink{ntrxranging_8h_3c0468417436288ecb7d2a2b084fbac0}{RANGING\_\-TYPE\_\-3W\_\-B}~1
+\begin{CompactList}\small\item\em Defines the ranging type. This type of ranging consists of one request packet, and two answer packets with following behavior: ==$>$, $<$==, ==$>$ (distance is remote generated). The station which receives the request gets the distance as indication in the registered callback function. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void $\ast$($\ast$) \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} (uint16\_\-t mem\-Size, uint8\_\-t $\ast$mac\-Addr)
+\begin{CompactList}\small\item\em Function pointer which the PHY uses to request memory for its internal ranging states regarding the given remote MAC address. \item\end{CompactList}\item 
+typedef \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t}($\ast$) \hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} (uint8\_\-t $\ast$mac\-Addr, uint8\_\-t $\ast$data, uint8\_\-t $\ast$len)
+\begin{CompactList}\small\item\em Function pointer type which the PHY uses to get permission for automatic ranging measurements with the given MAC address. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{ntrxranging_8h_54b149c9e384fc41d4e807ee6c4dd1f7}{NTRXRanging\-ACK} (void)
+\begin{CompactList}\small\item\em This function collects data from a hardware acknowledge. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8h_ad0d27399b4a31745c1d82161a584b7d}{NTRXRanging\-Init} (void)
+\begin{CompactList}\small\item\em This function initialize the local ranging memory. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8h_7e64f6445b5262b0b6be979d4a4b9cc7}{NTRXRanging\-Interrupt} (void)
+\begin{CompactList}\small\item\em This function is called on baseband timer interrupt (ranging timeouts). \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxranging_8h_70907643ce9dfc85cd56cd19c1fb945c}{NTRXRanging\-Is\-IDLE} (void)
+\begin{CompactList}\small\item\em This function returns the internal status of ranging. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8h_77d2951842af5da82551588eeb2d0b3e}{NTRXRanging\-Request} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function try to start a ranging process. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8h_2a85e9cf03ffb50a4be65b7634d7625b}{NTRXRanging\-RX} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function collects data from a rx packet. \item\end{CompactList}\item 
+void \hyperlink{ntrxranging_8h_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback} (\hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} rg\-Permission, \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} rg\-Get\-Memory)
+\begin{CompactList}\small\item\em Registers function pointers to ranging specific functions. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Ranging support functions. 
+
+\begin{Desc}
+\item[Date:]2009-07-07 \end{Desc}
+\begin{Desc}
+\item[Author:]Christian Bock {\tt }(C) 2009 Nanotron Technologies\end{Desc}
+This file contains the definitions of the ranging support and calculation of a ranging cycle with the nano\-LOC chip.
+
+\begin{Desc}
+\item[Revision]6844 \end{Desc}
+\begin{Desc}
+\item[Date]2009-08-13 09:06:26 +0200 (Do, 13 Aug 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-08-13 09:06:26 +0200 (Do, 13 Aug 2009) \end{Desc}
+
+
+Definition in file \hyperlink{ntrxranging_8h-source}{ntrxranging.h}.
+
+\subsection{Define Documentation}
+\hypertarget{ntrxranging_8h_d9de8d976b1c4770082b3480c32a1bda}{
+\index{ntrxranging.h@{ntrxranging.h}!DEBUG_P@{DEBUG\_\-P}}
+\index{DEBUG_P@{DEBUG\_\-P}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[DEBUG\_\-P]{\setlength{\rightskip}{0pt plus 5cm}\#define DEBUG\_\-P(args,  {\em ...})}}
+\label{ntrxranging_8h_d9de8d976b1c4770082b3480c32a1bda}
+
+
+Debugging output using printf. Can be globally disabled with RANGE\_\-DEBUG . 
+
+
+
+Definition at line 37 of file ntrxranging.h.\hypertarget{ntrxranging_8h_e9741537e8095af56c2fd3ec3071610f}{
+\index{ntrxranging.h@{ntrxranging.h}!MSG_TYPE_DATA@{MSG\_\-TYPE\_\-DATA}}
+\index{MSG_TYPE_DATA@{MSG\_\-TYPE\_\-DATA}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[MSG\_\-TYPE\_\-DATA]{\setlength{\rightskip}{0pt plus 5cm}\#define MSG\_\-TYPE\_\-DATA~0}}
+\label{ntrxranging_8h_e9741537e8095af56c2fd3ec3071610f}
+
+
+
+
+Definition at line 55 of file ntrxranging.h.\hypertarget{ntrxranging_8h_a9e59b717398be64fe394f4a563db416}{
+\index{ntrxranging.h@{ntrxranging.h}!MSG_TYPE_RANGING@{MSG\_\-TYPE\_\-RANGING}}
+\index{MSG_TYPE_RANGING@{MSG\_\-TYPE\_\-RANGING}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[MSG\_\-TYPE\_\-RANGING]{\setlength{\rightskip}{0pt plus 5cm}\#define MSG\_\-TYPE\_\-RANGING~1}}
+\label{ntrxranging_8h_a9e59b717398be64fe394f4a563db416}
+
+
+
+
+Definition at line 56 of file ntrxranging.h.\hypertarget{ntrxranging_8h_c0277c3b8156b365bfec69dbbab946f2}{
+\index{ntrxranging.h@{ntrxranging.h}!RANGING_PROTOCOL_LEN@{RANGING\_\-PROTOCOL\_\-LEN}}
+\index{RANGING_PROTOCOL_LEN@{RANGING\_\-PROTOCOL\_\-LEN}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RANGING\_\-PROTOCOL\_\-LEN]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-PROTOCOL\_\-LEN~1}}
+\label{ntrxranging_8h_c0277c3b8156b365bfec69dbbab946f2}
+
+
+Defines the length of the ranging protocol. 
+
+
+
+Definition at line 65 of file ntrxranging.h.\hypertarget{ntrxranging_8h_a6270ff7ecf29c19fb65bf752061050e}{
+\index{ntrxranging.h@{ntrxranging.h}!RANGING_TIMEOUT@{RANGING\_\-TIMEOUT}}
+\index{RANGING_TIMEOUT@{RANGING\_\-TIMEOUT}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RANGING\_\-TIMEOUT]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-TIMEOUT~250}}
+\label{ntrxranging_8h_a6270ff7ecf29c19fb65bf752061050e}
+
+
+
+
+Definition at line 59 of file ntrxranging.h.\hypertarget{ntrxranging_8h_642da767f3a0dd99b0ae8753a08a5095}{
+\index{ntrxranging.h@{ntrxranging.h}!RANGING_TYPE_2W_PP@{RANGING\_\-TYPE\_\-2W\_\-PP}}
+\index{RANGING_TYPE_2W_PP@{RANGING\_\-TYPE\_\-2W\_\-PP}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RANGING\_\-TYPE\_\-2W\_\-PP]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-TYPE\_\-2W\_\-PP~2}}
+\label{ntrxranging_8h_642da767f3a0dd99b0ae8753a08a5095}
+
+
+Defines the ranging type. This type of ranging consists of one request packet, and one answer packet with following behavior: ==$>$, $<$== (distance is remote generated). The station which receives the request gets the distance as indication in the registered callback function. Advantage: Only 2 packets generate a distance (low power consumption) Disadvantage: The first ranging dont generate a distance. (delay). 
+
+
+
+Definition at line 97 of file ntrxranging.h.\hypertarget{ntrxranging_8h_931c72035d290af0c22c2c25171006b5}{
+\index{ntrxranging.h@{ntrxranging.h}!RANGING_TYPE_3W_A@{RANGING\_\-TYPE\_\-3W\_\-A}}
+\index{RANGING_TYPE_3W_A@{RANGING\_\-TYPE\_\-3W\_\-A}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RANGING\_\-TYPE\_\-3W\_\-A]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-TYPE\_\-3W\_\-A~0}}
+\label{ntrxranging_8h_931c72035d290af0c22c2c25171006b5}
+
+
+Defines the ranging type. This type of ranging consists of one request packet, and two answer packets with following behavior: ==$>$, $<$==, $<$== (distance is local generated). The station which requests the ranging, gets the distance as indication in the registered callback function. 
+
+
+
+Definition at line 75 of file ntrxranging.h.\hypertarget{ntrxranging_8h_3c0468417436288ecb7d2a2b084fbac0}{
+\index{ntrxranging.h@{ntrxranging.h}!RANGING_TYPE_3W_B@{RANGING\_\-TYPE\_\-3W\_\-B}}
+\index{RANGING_TYPE_3W_B@{RANGING\_\-TYPE\_\-3W\_\-B}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RANGING\_\-TYPE\_\-3W\_\-B]{\setlength{\rightskip}{0pt plus 5cm}\#define RANGING\_\-TYPE\_\-3W\_\-B~1}}
+\label{ntrxranging_8h_3c0468417436288ecb7d2a2b084fbac0}
+
+
+Defines the ranging type. This type of ranging consists of one request packet, and two answer packets with following behavior: ==$>$, $<$==, ==$>$ (distance is remote generated). The station which receives the request gets the distance as indication in the registered callback function. 
+
+
+
+Definition at line 85 of file ntrxranging.h.
+
+\subsection{Typedef Documentation}
+\hypertarget{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{
+\index{ntrxranging.h@{ntrxranging.h}!mem_assignfn_t@{mem\_\-assignfn\_\-t}}
+\index{mem_assignfn_t@{mem\_\-assignfn\_\-t}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[mem\_\-assignfn\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$($\ast$) \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t}(uint16\_\-t mem\-Size, uint8\_\-t $\ast$mac\-Addr)}}
+\label{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}
+
+
+Function pointer which the PHY uses to request memory for its internal ranging states regarding the given remote MAC address. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mem\-Size}]Size of memory which the PHY needs to perform ranging with the given remote station. \item[{\em mac\-Addr}]MAC address of the remote ranging partner. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to a piece of memory of the requested size that the PHY may use. NULL if there is no memory available for the given remote station. \end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback}\end{Desc}
+Implement a function with this interface above the PHY layer if you wish to perform ping pong ranging. The PHY needs a seperate piece of memory to save its internal ranging state for {\em each\/} remote station. The user is responsible for the memory management. i.e. memory allocation and assignment corresponding to the given MAC address. Register your function to the PHY by calling \hyperlink{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback} . 
+
+Definition at line 198 of file ntrxranging.h.\hypertarget{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{
+\index{ntrxranging.h@{ntrxranging.h}!permissionfn_t@{permissionfn\_\-t}}
+\index{permissionfn_t@{permissionfn\_\-t}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[permissionfn\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef \hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t}($\ast$) \hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t}(uint8\_\-t $\ast$mac\-Addr, uint8\_\-t $\ast$data, uint8\_\-t $\ast$len)}}
+\label{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}
+
+
+Function pointer type which the PHY uses to get permission for automatic ranging measurements with the given MAC address. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mac\-Addr}]MAC address of the remote ranging device. \item[{\em payload}]user data \item[{\em len}]length of data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]TRUE if ranging with the remote device will be permitted; FALSE otherwise. \end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback}\end{Desc}
+Implement a function with this interface above the PHY layer that decides whether or not the PHY may perform ranging with the remote station. Register your function to the PHY by calling \hyperlink{ntrxranging_8c_ad61da6bf12a1b0f0b4d986cead4143c}{Ranging\-Register\-Callback} . 
+
+Definition at line 177 of file ntrxranging.h.
+
+\subsection{Function Documentation}
+\hypertarget{ntrxranging_8h_54b149c9e384fc41d4e807ee6c4dd1f7}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingACK@{NTRXRangingACK}}
+\index{NTRXRangingACK@{NTRXRangingACK}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingACK]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-ACK (void)}}
+\label{ntrxranging_8h_54b149c9e384fc41d4e807ee6c4dd1f7}
+
+
+This function collects data from a hardware acknowledge. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer to the sended message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called on hardware ack, after an ranging packet is send. Depending on the RANGING\_\-TYPE next steps will proccessed. \end{Desc}
+
+
+Definition at line 353 of file ntrxranging.c.\hypertarget{ntrxranging_8h_ad0d27399b4a31745c1d82161a584b7d}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingInit@{NTRXRangingInit}}
+\index{NTRXRangingInit@{NTRXRangingInit}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingInit]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Init (void)}}
+\label{ntrxranging_8h_ad0d27399b4a31745c1d82161a584b7d}
+
+
+This function initialize the local ranging memory. 
+
+\begin{Desc}
+\item[Note:]This function must called once during initialisation to ensure that the local ranging memory is in initial position. \end{Desc}
+
+
+Definition at line 166 of file ntrxranging.c.\hypertarget{ntrxranging_8h_7e64f6445b5262b0b6be979d4a4b9cc7}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingInterrupt@{NTRXRangingInterrupt}}
+\index{NTRXRangingInterrupt@{NTRXRangingInterrupt}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingInterrupt]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Interrupt (void)}}
+\label{ntrxranging_8h_7e64f6445b5262b0b6be979d4a4b9cc7}
+
+
+This function is called on baseband timer interrupt (ranging timeouts). 
+
+\begin{Desc}
+\item[Note:]baseband timer starts on every successfull ranging request and if no answer is received the interrupt occure and ranging will abort. This prevents blocking the phy for new remote ranging requests. \end{Desc}
+
+
+Definition at line 1464 of file ntrxranging.c.\hypertarget{ntrxranging_8h_70907643ce9dfc85cd56cd19c1fb945c}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingIsIDLE@{NTRXRangingIsIDLE}}
+\index{NTRXRangingIsIDLE@{NTRXRangingIsIDLE}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingIsIDLE]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXRanging\-Is\-IDLE (void)}}
+\label{ntrxranging_8h_70907643ce9dfc85cd56cd19c1fb945c}
+
+
+This function returns the internal status of ranging. 
+
+\begin{Desc}
+\item[Note:]This function should be called before setting the driver into power down, to ensure that ranging is finished. \end{Desc}
+\begin{Desc}
+\item[Returns:]TRUE if no ranging is pending, otherweise FALSE \end{Desc}
+
+
+Definition at line 155 of file ntrxranging.c.\hypertarget{ntrxranging_8h_77d2951842af5da82551588eeb2d0b3e}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingRequest@{NTRXRangingRequest}}
+\index{NTRXRangingRequest@{NTRXRangingRequest}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingRequest]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-Request (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{ntrxranging_8h_77d2951842af5da82551588eeb2d0b3e}
+
+
+This function try to start a ranging process. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the pointer to send message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called ever on a PD\_\-RANGING\_\-REQUEST. If transmitter is free, and no other ranging is running, this function starts a new ranging process.\end{Desc}
+RANGING\_\-TYPE\_\-3W\_\-A = ---$>$,$<$---,$<$--- (singel measurement, distance local known) RANGING\_\-TYPE\_\-3W\_\-B = ---$>$,$<$---,---$>$ (singel measurement, distance remote known) RANGING\_\-TYPE\_\-2W\_\-PP= ---$>$,$<$--- (continue, distance remote known) 
+
+Definition at line 177 of file ntrxranging.c.\hypertarget{ntrxranging_8h_2a85e9cf03ffb50a4be65b7634d7625b}{
+\index{ntrxranging.h@{ntrxranging.h}!NTRXRangingRX@{NTRXRangingRX}}
+\index{NTRXRangingRX@{NTRXRangingRX}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[NTRXRangingRX]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRanging\-RX (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{ntrxranging_8h_2a85e9cf03ffb50a4be65b7634d7625b}
+
+
+This function collects data from a rx packet. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the pointer to recieved message \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function is called on rx interrupt, after an ranging packet is recieved. Depending on the RANGING\_\-TYPE next steps will proccessed. \end{Desc}
+
+
+Definition at line 650 of file ntrxranging.c.\hypertarget{ntrxranging_8h_ad61da6bf12a1b0f0b4d986cead4143c}{
+\index{ntrxranging.h@{ntrxranging.h}!RangingRegisterCallback@{RangingRegisterCallback}}
+\index{RangingRegisterCallback@{RangingRegisterCallback}!ntrxranging.h@{ntrxranging.h}}
+\subsubsection[RangingRegisterCallback]{\setlength{\rightskip}{0pt plus 5cm}void Ranging\-Register\-Callback (\hyperlink{ntrxranging_8h_5940c484fd70f6aca08bea09db301cdc}{permissionfn\_\-t} {\em rg\-Permission}, \hyperlink{ntrxranging_8h_bca46fdde6f8c39405c49cbd2cbda12f}{mem\_\-assignfn\_\-t} {\em rg\-Get\-Memory})}}
+\label{ntrxranging_8h_ad61da6bf12a1b0f0b4d986cead4143c}
+
+
+Registers function pointers to ranging specific functions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rg\-Permission}]If set the PHY will ask the user by this function for permission to perform ranging with a given remote MAC address. Default on startup for this parameter is NULL, i.e. ranging will always be performed. \item[{\em rg\-Get\-Memory}]If set the PHY will call this function in order to obtain a valid piece of memory to store internal ranging states while ranging with a certain remote station. Default for this parameter is NULL, i.e. the PHY will be capable to perform ranging with {\em only\/} {\em one\/} ranging partner. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]Ping-Pong ranging will be rejected if rg\-Get\-Memory is not assigned. \end{Desc}
+
+
+Definition at line 1518 of file ntrxranging.c.

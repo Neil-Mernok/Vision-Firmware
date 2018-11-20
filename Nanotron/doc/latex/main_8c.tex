@@ -1,0 +1,114 @@
+\hypertarget{main_8c}{
+\section{portation/main.c File Reference}
+\label{main_8c}\index{portation/main.c@{portation/main.c}}
+}
+System main loop for AVR portation. 
+
+{\tt \#include \char`\"{}avrport.h\char`\"{}}\par
+{\tt \#include \char`\"{}led.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include \char`\"{}phy.h\char`\"{}}\par
+{\tt \#include $<$avr/sleep.h$>$}\par
+{\tt \#include $<$avr/wdt.h$>$}\par
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include $<$stdio.h$>$}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{main_8c_68a13a0d6f1190937b67e472a7e93ae8}{APLInit} (void)
+\begin{CompactList}\small\item\em Initialize the application. \item\end{CompactList}\item 
+void \hyperlink{main_8c_5ab14ffc7b885a71c14ada716ad69abc}{APLPoll} (void)
+\begin{CompactList}\small\item\em Poll function of the application. \item\end{CompactList}\item 
+void \hyperlink{main_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler} (int16\_\-t err)
+\item 
+int \hyperlink{main_8c_dacbe0175a79dff748855d8c9839f82b}{main} (int ac, char $\ast$av\mbox{[}$\,$\mbox{]})
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}
+\begin{CompactList}\small\item\em structure for all layer configuration settings \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+System main loop for AVR portation. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Rohdemann, S. Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the source code for the system main loop that controls the nano\-LOC devkit board. \end{Desc}
+
+
+Definition in file \hyperlink{main_8c-source}{main.c}.
+
+\subsection{Function Documentation}
+\hypertarget{main_8c_68a13a0d6f1190937b67e472a7e93ae8}{
+\index{main.c@{main.c}!APLInit@{APLInit}}
+\index{APLInit@{APLInit}!main.c@{main.c}}
+\subsubsection[APLInit]{\setlength{\rightskip}{0pt plus 5cm}void APLInit (void)}}
+\label{main_8c_68a13a0d6f1190937b67e472a7e93ae8}
+
+
+Initialize the application. 
+
+Initialize the application. 
+
+Definition at line 372 of file app.c.\hypertarget{main_8c_5ab14ffc7b885a71c14ada716ad69abc}{
+\index{main.c@{main.c}!APLPoll@{APLPoll}}
+\index{APLPoll@{APLPoll}!main.c@{main.c}}
+\subsubsection[APLPoll]{\setlength{\rightskip}{0pt plus 5cm}void APLPoll (void)}}
+\label{main_8c_5ab14ffc7b885a71c14ada716ad69abc}
+
+
+Poll function of the application. 
+
+Will be called from the system main loop in frequent intervals. 
+
+Definition at line 184 of file app.c.\hypertarget{main_8c_361f0e5c2930b643953fbc188f21e3e3}{
+\index{main.c@{main.c}!error_handler@{error\_\-handler}}
+\index{error_handler@{error\_\-handler}!main.c@{main.c}}
+\subsubsection[error\_\-handler]{\setlength{\rightskip}{0pt plus 5cm}void error\_\-handler (int16\_\-t {\em err})}}
+\label{main_8c_361f0e5c2930b643953fbc188f21e3e3}
+
+
+error\_\-handler:
+
+\hyperlink{ntrxinit_8c_361f0e5c2930b643953fbc188f21e3e3}{error\_\-handler()} print out the error number and stop the system.
+
+Returns: None 
+
+Definition at line 51 of file main.c.\hypertarget{main_8c_dacbe0175a79dff748855d8c9839f82b}{
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\subsubsection[main]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em ac}, char $\ast$ {\em av}\mbox{[}$\,$\mbox{]})}}
+\label{main_8c_dacbe0175a79dff748855d8c9839f82b}
+
+
+main:
+
+The \hyperlink{main_8c_dacbe0175a79dff748855d8c9839f82b}{main()} function of the PPS
+
+Returns: None. 
+
+Definition at line 79 of file main.c.
+
+\subsection{Variable Documentation}
+\hypertarget{main_8c_c6bf7bba136f1383deb2932be153b881}{
+\index{main.c@{main.c}!phyPIB@{phyPIB}}
+\index{phyPIB@{phyPIB}!main.c@{main.c}}
+\subsubsection[phyPIB]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}}}
+\label{main_8c_c6bf7bba136f1383deb2932be153b881}
+
+
+structure for all layer configuration settings 
+
+
+
+Definition at line 182 of file phy.c.

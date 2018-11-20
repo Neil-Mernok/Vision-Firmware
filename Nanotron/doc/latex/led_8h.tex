@@ -1,0 +1,207 @@
+\hypertarget{led_8h}{
+\section{include/led.h File Reference}
+\label{led_8h}\index{include/led.h@{include/led.h}}
+}
+Macros for LED handling. 
+
+{\tt \#include $<$avr/io.h$>$}\par
+{\tt \#include $<$avr/interrupt.h$>$}\par
+{\tt \#include \char`\"{}avrport.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{led_8h_f8d41888fc8fa931b834ccb6c86a5594}{LED0}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED0\_\-PORT $|$= LED0\_\-PIN; \} else \{ LED0\_\-PORT \&= $\sim$LED0\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_3490a641e7d8e28a5a526405d03938f1}{LED1}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED1\_\-PORT $|$= LED1\_\-PIN; \} else \{ LED1\_\-PORT \&= $\sim$LED1\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_a47fde51999011015b5cfe014274743e}{LED2}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED2\_\-PORT $|$= LED2\_\-PIN; \} else \{ LED2\_\-PORT \&= $\sim$LED2\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_d6d32c69149be530238c27f68e04d37b}{LED3}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED3\_\-PORT $|$= LED3\_\-PIN; \} else \{ LED3\_\-PORT \&= $\sim$LED3\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_45727a449f1e4bc69751a2c7be7e06dc}{LED4}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED4\_\-PORT $|$= LED4\_\-PIN; \} else \{ LED4\_\-PORT \&= $\sim$LED4\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_608334a5469aaaf50f2a35cdd50214e2}{LED5}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED5\_\-PORT $|$= LED5\_\-PIN; \} else \{ LED5\_\-PORT \&= $\sim$LED5\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_786aa09bc8367a834ea774b235954637}{LED6}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED6\_\-PORT $|$= LED6\_\-PIN; \} else \{ LED6\_\-PORT \&= $\sim$LED6\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_7bda8898f28766eb1dff6f3f3ddd25bb}{LED7}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED7\_\-PORT $|$= LED7\_\-PIN; \} else \{ LED7\_\-PORT \&= $\sim$LED7\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_3380046b2d2062ee9ea80b582238db56}{LED\_\-ALIVE}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-ALIVE\_\-PORT $|$= LED\_\-ALIVE\_\-PIN; \} else \{ LED\_\-ALIVE\_\-PORT \&= $\sim$LED\_\-ALIVE\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_60c8ed90381d8a431c58b9a42d51795f}{LED\_\-CAL}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-CAL\_\-PORT $|$= LED\_\-CAL\_\-PIN; \} else \{ LED\_\-CAL\_\-PORT \&= $\sim$LED\_\-CAL\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_df5fcbf5d10fa858319cb0a58d6f51b4}{LED\_\-ERR}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-ERR\_\-PORT $|$= LED\_\-ERR\_\-PIN; \} else \{ LED\_\-ERR\_\-PORT \&= $\sim$LED\_\-ERR\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_80700bb63bd56ebabbb4728aa433fd29}{LED\_\-OFF}~0
+\item 
+\#define \hyperlink{led_8h_f2e697ac60e05813d45ea2c9c9e79c25}{LED\_\-ON}~1
+\item 
+\#define \hyperlink{led_8h_b773f806677a6ff9fd8ca017ab0854b6}{LED\_\-RX}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-RX\_\-PORT $|$= LED\_\-RX\_\-PIN; \} else \{ LED\_\-RX\_\-PORT \&= $\sim$LED\_\-RX\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_371a2ac928d53cd866fb01f889d4dbd9}{LED\_\-TX}(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-TX\_\-PORT $|$= LED\_\-TX\_\-PIN; \} else \{ LED\_\-TX\_\-PORT \&= $\sim$LED\_\-TX\_\-PIN; \}\}
+\item 
+\#define \hyperlink{led_8h_4c4ae9a4146ce8d6a5debc90300d9abd}{NUM\_\-LEDS}~(8)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Macros for LED handling. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the macros for the nano\-LOC devkit board to access the LEDs. \end{Desc}
+
+
+Definition in file \hyperlink{led_8h-source}{led.h}.
+
+\subsection{Define Documentation}
+\hypertarget{led_8h_f8d41888fc8fa931b834ccb6c86a5594}{
+\index{led.h@{led.h}!LED0@{LED0}}
+\index{LED0@{LED0}!led.h@{led.h}}
+\subsubsection[LED0]{\setlength{\rightskip}{0pt plus 5cm}\#define LED0(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED0\_\-PORT $|$= LED0\_\-PIN; \} else \{ LED0\_\-PORT \&= $\sim$LED0\_\-PIN; \}\}}}
+\label{led_8h_f8d41888fc8fa931b834ccb6c86a5594}
+
+
+
+
+Definition at line 24 of file led.h.\hypertarget{led_8h_3490a641e7d8e28a5a526405d03938f1}{
+\index{led.h@{led.h}!LED1@{LED1}}
+\index{LED1@{LED1}!led.h@{led.h}}
+\subsubsection[LED1]{\setlength{\rightskip}{0pt plus 5cm}\#define LED1(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED1\_\-PORT $|$= LED1\_\-PIN; \} else \{ LED1\_\-PORT \&= $\sim$LED1\_\-PIN; \}\}}}
+\label{led_8h_3490a641e7d8e28a5a526405d03938f1}
+
+
+
+
+Definition at line 25 of file led.h.\hypertarget{led_8h_a47fde51999011015b5cfe014274743e}{
+\index{led.h@{led.h}!LED2@{LED2}}
+\index{LED2@{LED2}!led.h@{led.h}}
+\subsubsection[LED2]{\setlength{\rightskip}{0pt plus 5cm}\#define LED2(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED2\_\-PORT $|$= LED2\_\-PIN; \} else \{ LED2\_\-PORT \&= $\sim$LED2\_\-PIN; \}\}}}
+\label{led_8h_a47fde51999011015b5cfe014274743e}
+
+
+
+
+Definition at line 26 of file led.h.\hypertarget{led_8h_d6d32c69149be530238c27f68e04d37b}{
+\index{led.h@{led.h}!LED3@{LED3}}
+\index{LED3@{LED3}!led.h@{led.h}}
+\subsubsection[LED3]{\setlength{\rightskip}{0pt plus 5cm}\#define LED3(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED3\_\-PORT $|$= LED3\_\-PIN; \} else \{ LED3\_\-PORT \&= $\sim$LED3\_\-PIN; \}\}}}
+\label{led_8h_d6d32c69149be530238c27f68e04d37b}
+
+
+
+
+Definition at line 27 of file led.h.\hypertarget{led_8h_45727a449f1e4bc69751a2c7be7e06dc}{
+\index{led.h@{led.h}!LED4@{LED4}}
+\index{LED4@{LED4}!led.h@{led.h}}
+\subsubsection[LED4]{\setlength{\rightskip}{0pt plus 5cm}\#define LED4(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED4\_\-PORT $|$= LED4\_\-PIN; \} else \{ LED4\_\-PORT \&= $\sim$LED4\_\-PIN; \}\}}}
+\label{led_8h_45727a449f1e4bc69751a2c7be7e06dc}
+
+
+
+
+Definition at line 28 of file led.h.\hypertarget{led_8h_608334a5469aaaf50f2a35cdd50214e2}{
+\index{led.h@{led.h}!LED5@{LED5}}
+\index{LED5@{LED5}!led.h@{led.h}}
+\subsubsection[LED5]{\setlength{\rightskip}{0pt plus 5cm}\#define LED5(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED5\_\-PORT $|$= LED5\_\-PIN; \} else \{ LED5\_\-PORT \&= $\sim$LED5\_\-PIN; \}\}}}
+\label{led_8h_608334a5469aaaf50f2a35cdd50214e2}
+
+
+
+
+Definition at line 29 of file led.h.\hypertarget{led_8h_786aa09bc8367a834ea774b235954637}{
+\index{led.h@{led.h}!LED6@{LED6}}
+\index{LED6@{LED6}!led.h@{led.h}}
+\subsubsection[LED6]{\setlength{\rightskip}{0pt plus 5cm}\#define LED6(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED6\_\-PORT $|$= LED6\_\-PIN; \} else \{ LED6\_\-PORT \&= $\sim$LED6\_\-PIN; \}\}}}
+\label{led_8h_786aa09bc8367a834ea774b235954637}
+
+
+
+
+Definition at line 30 of file led.h.\hypertarget{led_8h_7bda8898f28766eb1dff6f3f3ddd25bb}{
+\index{led.h@{led.h}!LED7@{LED7}}
+\index{LED7@{LED7}!led.h@{led.h}}
+\subsubsection[LED7]{\setlength{\rightskip}{0pt plus 5cm}\#define LED7(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED7\_\-PORT $|$= LED7\_\-PIN; \} else \{ LED7\_\-PORT \&= $\sim$LED7\_\-PIN; \}\}}}
+\label{led_8h_7bda8898f28766eb1dff6f3f3ddd25bb}
+
+
+
+
+Definition at line 31 of file led.h.\hypertarget{led_8h_3380046b2d2062ee9ea80b582238db56}{
+\index{led.h@{led.h}!LED_ALIVE@{LED\_\-ALIVE}}
+\index{LED_ALIVE@{LED\_\-ALIVE}!led.h@{led.h}}
+\subsubsection[LED\_\-ALIVE]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ALIVE(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-ALIVE\_\-PORT $|$= LED\_\-ALIVE\_\-PIN; \} else \{ LED\_\-ALIVE\_\-PORT \&= $\sim$LED\_\-ALIVE\_\-PIN; \}\}}}
+\label{led_8h_3380046b2d2062ee9ea80b582238db56}
+
+
+
+
+Definition at line 37 of file led.h.\hypertarget{led_8h_60c8ed90381d8a431c58b9a42d51795f}{
+\index{led.h@{led.h}!LED_CAL@{LED\_\-CAL}}
+\index{LED_CAL@{LED\_\-CAL}!led.h@{led.h}}
+\subsubsection[LED\_\-CAL]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-CAL(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-CAL\_\-PORT $|$= LED\_\-CAL\_\-PIN; \} else \{ LED\_\-CAL\_\-PORT \&= $\sim$LED\_\-CAL\_\-PIN; \}\}}}
+\label{led_8h_60c8ed90381d8a431c58b9a42d51795f}
+
+
+
+
+Definition at line 36 of file led.h.\hypertarget{led_8h_df5fcbf5d10fa858319cb0a58d6f51b4}{
+\index{led.h@{led.h}!LED_ERR@{LED\_\-ERR}}
+\index{LED_ERR@{LED\_\-ERR}!led.h@{led.h}}
+\subsubsection[LED\_\-ERR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ERR(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-ERR\_\-PORT $|$= LED\_\-ERR\_\-PIN; \} else \{ LED\_\-ERR\_\-PORT \&= $\sim$LED\_\-ERR\_\-PIN; \}\}}}
+\label{led_8h_df5fcbf5d10fa858319cb0a58d6f51b4}
+
+
+
+
+Definition at line 35 of file led.h.\hypertarget{led_8h_80700bb63bd56ebabbb4728aa433fd29}{
+\index{led.h@{led.h}!LED_OFF@{LED\_\-OFF}}
+\index{LED_OFF@{LED\_\-OFF}!led.h@{led.h}}
+\subsubsection[LED\_\-OFF]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-OFF~0}}
+\label{led_8h_80700bb63bd56ebabbb4728aa433fd29}
+
+
+
+
+Definition at line 21 of file led.h.\hypertarget{led_8h_f2e697ac60e05813d45ea2c9c9e79c25}{
+\index{led.h@{led.h}!LED_ON@{LED\_\-ON}}
+\index{LED_ON@{LED\_\-ON}!led.h@{led.h}}
+\subsubsection[LED\_\-ON]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ON~1}}
+\label{led_8h_f2e697ac60e05813d45ea2c9c9e79c25}
+
+
+
+
+Definition at line 22 of file led.h.\hypertarget{led_8h_b773f806677a6ff9fd8ca017ab0854b6}{
+\index{led.h@{led.h}!LED_RX@{LED\_\-RX}}
+\index{LED_RX@{LED\_\-RX}!led.h@{led.h}}
+\subsubsection[LED\_\-RX]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-RX(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-RX\_\-PORT $|$= LED\_\-RX\_\-PIN; \} else \{ LED\_\-RX\_\-PORT \&= $\sim$LED\_\-RX\_\-PIN; \}\}}}
+\label{led_8h_b773f806677a6ff9fd8ca017ab0854b6}
+
+
+
+
+Definition at line 34 of file led.h.\hypertarget{led_8h_371a2ac928d53cd866fb01f889d4dbd9}{
+\index{led.h@{led.h}!LED_TX@{LED\_\-TX}}
+\index{LED_TX@{LED\_\-TX}!led.h@{led.h}}
+\subsubsection[LED\_\-TX]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-TX(flag)~;	\{ if( flag == LED\_\-ON ) \{ LED\_\-TX\_\-PORT $|$= LED\_\-TX\_\-PIN; \} else \{ LED\_\-TX\_\-PORT \&= $\sim$LED\_\-TX\_\-PIN; \}\}}}
+\label{led_8h_371a2ac928d53cd866fb01f889d4dbd9}
+
+
+
+
+Definition at line 33 of file led.h.\hypertarget{led_8h_4c4ae9a4146ce8d6a5debc90300d9abd}{
+\index{led.h@{led.h}!NUM_LEDS@{NUM\_\-LEDS}}
+\index{NUM_LEDS@{NUM\_\-LEDS}!led.h@{led.h}}
+\subsubsection[NUM\_\-LEDS]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-LEDS~(8)}}
+\label{led_8h_4c4ae9a4146ce8d6a5debc90300d9abd}
+
+
+
+
+Definition at line 20 of file led.h.

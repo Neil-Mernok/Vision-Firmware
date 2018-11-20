@@ -1,0 +1,64 @@
+\hypertarget{app_8h}{
+\section{include/app.h File Reference}
+\label{app_8h}\index{include/app.h@{include/app.h}}
+}
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{app_8h_57aab6145f8ecc5f7d87bd8c28b2fa31}{APLCallback} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Upstream message handling. \item\end{CompactList}\item 
+void \hyperlink{app_8h_68a13a0d6f1190937b67e472a7e93ae8}{APLInit} (void)
+\begin{CompactList}\small\item\em Initialize the application. \item\end{CompactList}\item 
+void \hyperlink{app_8h_1340d6ed40a4e8cbd8d93b7dd2ce20c6}{APLMECallback} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\item 
+void \hyperlink{app_8h_5ab14ffc7b885a71c14ada716ad69abc}{APLPoll} (void)
+\begin{CompactList}\small\item\em Poll function of the application. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{app_8h_57aab6145f8ecc5f7d87bd8c28b2fa31}{
+\index{app.h@{app.h}!APLCallback@{APLCallback}}
+\index{APLCallback@{APLCallback}!app.h@{app.h}}
+\subsubsection[APLCallback]{\setlength{\rightskip}{0pt plus 5cm}void APLCallback (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{app_8h_57aab6145f8ecc5f7d87bd8c28b2fa31}
+
+
+Upstream message handling. 
+
+\begin{Desc}
+\item[payload containing data]\end{Desc}
+\begin{Desc}
+\item[len length of payload]\end{Desc}
+Appl\-Callback represents the upstream part of the application. 
+
+Definition at line 119 of file app.c.\hypertarget{app_8h_68a13a0d6f1190937b67e472a7e93ae8}{
+\index{app.h@{app.h}!APLInit@{APLInit}}
+\index{APLInit@{APLInit}!app.h@{app.h}}
+\subsubsection[APLInit]{\setlength{\rightskip}{0pt plus 5cm}void APLInit (void)}}
+\label{app_8h_68a13a0d6f1190937b67e472a7e93ae8}
+
+
+Initialize the application. 
+
+Initialize the application. 
+
+Definition at line 372 of file app.c.\hypertarget{app_8h_1340d6ed40a4e8cbd8d93b7dd2ce20c6}{
+\index{app.h@{app.h}!APLMECallback@{APLMECallback}}
+\index{APLMECallback@{APLMECallback}!app.h@{app.h}}
+\subsubsection[APLMECallback]{\setlength{\rightskip}{0pt plus 5cm}void APLMECallback (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{app_8h_1340d6ed40a4e8cbd8d93b7dd2ce20c6}
+
+
+\hypertarget{app_8h_5ab14ffc7b885a71c14ada716ad69abc}{
+\index{app.h@{app.h}!APLPoll@{APLPoll}}
+\index{APLPoll@{APLPoll}!app.h@{app.h}}
+\subsubsection[APLPoll]{\setlength{\rightskip}{0pt plus 5cm}void APLPoll (void)}}
+\label{app_8h_5ab14ffc7b885a71c14ada716ad69abc}
+
+
+Poll function of the application. 
+
+Will be called from the system main loop in frequent intervals. 
+
+Definition at line 184 of file app.c.

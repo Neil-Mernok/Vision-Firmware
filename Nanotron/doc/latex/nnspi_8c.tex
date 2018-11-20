@@ -1,0 +1,142 @@
+\hypertarget{nnspi_8c}{
+\section{portation/nnspi.c File Reference}
+\label{nnspi_8c}\index{portation/nnspi.c@{portation/nnspi.c}}
+}
+SPI bus access functions. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}avrport.h\char`\"{}}\par
+{\tt \#include \char`\"{}portation.h\char`\"{}}\par
+{\tt \#include $<$avr/io.h$>$}\par
+{\tt \#include $<$avr/interrupt.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{nnspi_8c_900609cb5175d3b4c27192c3d349abbb}{CHECK\_\-IRQ}~if( \hyperlink{nnspi_8h_62830c8994acdab4734a0f86910cf63d}{sreg} == 0 )
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{nnspi_8c_23c7094e31707b24fc3094961bd5f189}{Init\-SPI} (void)
+\item 
+void \hyperlink{nnspi_8c_c1aef668c7661d6c8a4283bdca5dd480}{NTRXPower\-On\-Reset} (void)
+\item 
+void \hyperlink{nnspi_8c_f2b06f7a77065c7220cf222507945113}{NTRXSetup\-Spi\-Interface} (void)
+\item 
+void \hyperlink{nnspi_8c_e9efb83c240477508bf80dc646f5c759}{NTRXSPIRead} (uint8\_\-t address, uint8\_\-t $\ast$buffer, uint8\_\-t len)
+\item 
+void \hyperlink{nnspi_8c_a0911b12d8fb33dc5d5510cd528bf1c6}{NTRXSPIRead\-Byte} (uint8\_\-t address, uint8\_\-t $\ast$buffer)
+\item 
+void \hyperlink{nnspi_8c_69ac12fb28bbfe337ac8e09df489e490}{NTRXSPIWrite} (uint8\_\-t address, uint8\_\-t $\ast$buffer, uint8\_\-t len)
+\item 
+void \hyperlink{nnspi_8c_e29a33cac90ca56d3217716c2aea4e44}{NTRXSPIWrite\-Byte} (uint8\_\-t address, uint8\_\-t buffer)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+SPI bus access functions. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]B. Jozefini, S. Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the source code for the SPI bus control functions of the AVR controller. \end{Desc}
+
+
+Definition in file \hyperlink{nnspi_8c-source}{nnspi.c}.
+
+\subsection{Define Documentation}
+\hypertarget{nnspi_8c_900609cb5175d3b4c27192c3d349abbb}{
+\index{nnspi.c@{nnspi.c}!CHECK_IRQ@{CHECK\_\-IRQ}}
+\index{CHECK_IRQ@{CHECK\_\-IRQ}!nnspi.c@{nnspi.c}}
+\subsubsection[CHECK\_\-IRQ]{\setlength{\rightskip}{0pt plus 5cm}\#define CHECK\_\-IRQ~if( \hyperlink{nnspi_8h_62830c8994acdab4734a0f86910cf63d}{sreg} == 0 )}}
+\label{nnspi_8c_900609cb5175d3b4c27192c3d349abbb}
+
+
+
+
+Definition at line 28 of file nnspi.c.
+
+\subsection{Function Documentation}
+\hypertarget{nnspi_8c_23c7094e31707b24fc3094961bd5f189}{
+\index{nnspi.c@{nnspi.c}!InitSPI@{InitSPI}}
+\index{InitSPI@{InitSPI}!nnspi.c@{nnspi.c}}
+\subsubsection[InitSPI]{\setlength{\rightskip}{0pt plus 5cm}void Init\-SPI (void)}}
+\label{nnspi_8c_23c7094e31707b24fc3094961bd5f189}
+
+
+Init\-SPI:
+
+\hyperlink{nnspi_8h_23c7094e31707b24fc3094961bd5f189}{Init\-SPI()} initializes the spi interface on the microcontroller
+
+Returns: none 
+
+Definition at line 114 of file nnspi.c.\hypertarget{nnspi_8c_c1aef668c7661d6c8a4283bdca5dd480}{
+\index{nnspi.c@{nnspi.c}!NTRXPowerOnReset@{NTRXPowerOnReset}}
+\index{NTRXPowerOnReset@{NTRXPowerOnReset}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXPowerOnReset]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPower\-On\-Reset (void)}}
+\label{nnspi_8c_c1aef668c7661d6c8a4283bdca5dd480}
+
+
+NTRXPower\-On\-Reset:
+
+Nano\-Reset() resets the nano\-NET chip and adjusts the pin level.
+
+Returns: none 
+
+Definition at line 90 of file nnspi.c.\hypertarget{nnspi_8c_f2b06f7a77065c7220cf222507945113}{
+\index{nnspi.c@{nnspi.c}!NTRXSetupSpiInterface@{NTRXSetupSpiInterface}}
+\index{NTRXSetupSpiInterface@{NTRXSetupSpiInterface}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXSetupSpiInterface]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSetup\-Spi\-Interface (void)}}
+\label{nnspi_8c_f2b06f7a77065c7220cf222507945113}
+
+
+NTRXSetup\-Spi\-Interface:
+
+\hyperlink{nnspi_8h_f2b06f7a77065c7220cf222507945113}{NTRXSetup\-Spi\-Interface()} initializes the SPI interface on nano\-LOC
+
+Returns: none 
+
+Definition at line 149 of file nnspi.c.\hypertarget{nnspi_8c_e9efb83c240477508bf80dc646f5c759}{
+\index{nnspi.c@{nnspi.c}!NTRXSPIRead@{NTRXSPIRead}}
+\index{NTRXSPIRead@{NTRXSPIRead}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXSPIRead]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIRead (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer}, uint8\_\-t {\em len})}}
+\label{nnspi_8c_e9efb83c240477508bf80dc646f5c759}
+
+
+
+
+Definition at line 154 of file nnspi.c.\hypertarget{nnspi_8c_a0911b12d8fb33dc5d5510cd528bf1c6}{
+\index{nnspi.c@{nnspi.c}!NTRXSPIReadByte@{NTRXSPIReadByte}}
+\index{NTRXSPIReadByte@{NTRXSPIReadByte}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXSPIReadByte]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIRead\-Byte (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer})}}
+\label{nnspi_8c_a0911b12d8fb33dc5d5510cd528bf1c6}
+
+
+
+
+Definition at line 242 of file nnspi.c.\hypertarget{nnspi_8c_69ac12fb28bbfe337ac8e09df489e490}{
+\index{nnspi.c@{nnspi.c}!NTRXSPIWrite@{NTRXSPIWrite}}
+\index{NTRXSPIWrite@{NTRXSPIWrite}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXSPIWrite]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIWrite (uint8\_\-t {\em address}, uint8\_\-t $\ast$ {\em buffer}, uint8\_\-t {\em len})}}
+\label{nnspi_8c_69ac12fb28bbfe337ac8e09df489e490}
+
+
+
+
+Definition at line 203 of file nnspi.c.\hypertarget{nnspi_8c_e29a33cac90ca56d3217716c2aea4e44}{
+\index{nnspi.c@{nnspi.c}!NTRXSPIWriteByte@{NTRXSPIWriteByte}}
+\index{NTRXSPIWriteByte@{NTRXSPIWriteByte}!nnspi.c@{nnspi.c}}
+\subsubsection[NTRXSPIWriteByte]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSPIWrite\-Byte (uint8\_\-t {\em address}, uint8\_\-t {\em buffer})}}
+\label{nnspi_8c_e29a33cac90ca56d3217716c2aea4e44}
+
+
+
+
+Definition at line 278 of file nnspi.c.

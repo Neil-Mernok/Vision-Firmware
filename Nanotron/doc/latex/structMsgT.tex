@@ -1,0 +1,117 @@
+\hypertarget{structMsgT}{
+\section{Msg\-T Struct Reference}
+\label{structMsgT}\index{MsgT@{MsgT}}
+}
+General purpose message structure.  
+
+
+{\tt \#include $<$ntrxtypes.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structMsgT_c43159f8e7d6a971e0e1e8dc7d5a6701}{addr}
+\item 
+uint8\_\-t \hyperlink{structMsgT_2490adcea73235248c0644d0f0d5617f}{attribute}
+\item 
+uint8\_\-t \hyperlink{structMsgT_cceb12b48d6e524a880c2c11d399b1b6}{data} \mbox{[}CONFIG\_\-MAX\_\-PACKET\_\-SIZE\mbox{]}
+\item 
+uint8\_\-t \hyperlink{structMsgT_5edfff063e0b30b685cd4aa81dc04812}{len}
+\item 
+uint8\_\-t $\ast$ \hyperlink{structMsgT_7c3e54fb06475cb6a34d09820d59eeb1}{pdu}
+\item 
+uint8\_\-t \hyperlink{structMsgT_c5e6312583b2581386a17ee7ced2656f}{prim}
+\item 
+uint8\_\-t \hyperlink{structMsgT_f1e6d2725308055637fbed518de493a8}{status}
+\item 
+uint16\_\-t \hyperlink{structMsgT_86aa9f2d1fc5ea4ebec6b7415e28c1a9}{value}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+General purpose message structure. 
+
+This general purpose message structure is used for all layer to layer communication. 
+
+
+
+Definition at line 65 of file ntrxtypes.h.
+
+\subsection{Field Documentation}
+\hypertarget{structMsgT_c43159f8e7d6a971e0e1e8dc7d5a6701}{
+\index{MsgT@{Msg\-T}!addr@{addr}}
+\index{addr@{addr}!MsgT@{Msg\-T}}
+\subsubsection[addr]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structMsgT_c43159f8e7d6a971e0e1e8dc7d5a6701}{Msg\-T::addr}}}
+\label{structMsgT_c43159f8e7d6a971e0e1e8dc7d5a6701}
+
+
+MAC address of the message. 
+
+Definition at line 68 of file ntrxtypes.h.\hypertarget{structMsgT_2490adcea73235248c0644d0f0d5617f}{
+\index{MsgT@{Msg\-T}!attribute@{attribute}}
+\index{attribute@{attribute}!MsgT@{Msg\-T}}
+\subsubsection[attribute]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structMsgT_2490adcea73235248c0644d0f0d5617f}{Msg\-T::attribute}}}
+\label{structMsgT_2490adcea73235248c0644d0f0d5617f}
+
+
+
+
+Definition at line 75 of file ntrxtypes.h.\hypertarget{structMsgT_cceb12b48d6e524a880c2c11d399b1b6}{
+\index{MsgT@{Msg\-T}!data@{data}}
+\index{data@{data}!MsgT@{Msg\-T}}
+\subsubsection[data]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structMsgT_cceb12b48d6e524a880c2c11d399b1b6}{Msg\-T::data}\mbox{[}CONFIG\_\-MAX\_\-PACKET\_\-SIZE\mbox{]}}}
+\label{structMsgT_cceb12b48d6e524a880c2c11d399b1b6}
+
+
+Payload of the message. 
+
+Definition at line 71 of file ntrxtypes.h.\hypertarget{structMsgT_5edfff063e0b30b685cd4aa81dc04812}{
+\index{MsgT@{Msg\-T}!len@{len}}
+\index{len@{len}!MsgT@{Msg\-T}}
+\subsubsection[len]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structMsgT_5edfff063e0b30b685cd4aa81dc04812}{Msg\-T::len}}}
+\label{structMsgT_5edfff063e0b30b685cd4aa81dc04812}
+
+
+Payload length. 
+
+Definition at line 69 of file ntrxtypes.h.\hypertarget{structMsgT_7c3e54fb06475cb6a34d09820d59eeb1}{
+\index{MsgT@{Msg\-T}!pdu@{pdu}}
+\index{pdu@{pdu}!MsgT@{Msg\-T}}
+\subsubsection[pdu]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t$\ast$ \hyperlink{structMsgT_7c3e54fb06475cb6a34d09820d59eeb1}{Msg\-T::pdu}}}
+\label{structMsgT_7c3e54fb06475cb6a34d09820d59eeb1}
+
+
+Auxiliary pointer into payload (use for protocol interleaving). 
+
+Definition at line 70 of file ntrxtypes.h.\hypertarget{structMsgT_c5e6312583b2581386a17ee7ced2656f}{
+\index{MsgT@{Msg\-T}!prim@{prim}}
+\index{prim@{prim}!MsgT@{Msg\-T}}
+\subsubsection[prim]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structMsgT_c5e6312583b2581386a17ee7ced2656f}{Msg\-T::prim}}}
+\label{structMsgT_c5e6312583b2581386a17ee7ced2656f}
+
+
+The primitive of the message. 
+
+Definition at line 67 of file ntrxtypes.h.\hypertarget{structMsgT_f1e6d2725308055637fbed518de493a8}{
+\index{MsgT@{Msg\-T}!status@{status}}
+\index{status@{status}!MsgT@{Msg\-T}}
+\subsubsection[status]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structMsgT_f1e6d2725308055637fbed518de493a8}{Msg\-T::status}}}
+\label{structMsgT_f1e6d2725308055637fbed518de493a8}
+
+
+Status value for confirmations 
+
+Definition at line 73 of file ntrxtypes.h.\hypertarget{structMsgT_86aa9f2d1fc5ea4ebec6b7415e28c1a9}{
+\index{MsgT@{Msg\-T}!value@{value}}
+\index{value@{value}!MsgT@{Msg\-T}}
+\subsubsection[value]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \hyperlink{structMsgT_86aa9f2d1fc5ea4ebec6b7415e28c1a9}{Msg\-T::value}}}
+\label{structMsgT_86aa9f2d1fc5ea4ebec6b7415e28c1a9}
+
+
+Configuration value of a layer setting 
+
+Definition at line 74 of file ntrxtypes.h.
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+include/\hyperlink{ntrxtypes_8h}{ntrxtypes.h}\end{CompactItemize}

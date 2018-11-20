@@ -1,0 +1,1095 @@
+\hypertarget{avrport_8h}{
+\section{include/avrport.h File Reference}
+\label{avrport_8h}\index{include/avrport.h@{include/avrport.h}}
+}
+support for AVR. 
+
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{avrport_8h_6eea218097f2c7a5c30e1f7c21491d0d}{AVR\_\-DORD}~DORD
+\item 
+\#define \hyperlink{avrport_8h_49363e8c4a81e86f45632370c6b0c3d4}{AVR\_\-MSTR}~MSTR
+\item 
+\#define \hyperlink{avrport_8h_eac4f1cb00291725d436caed2ba6ac55}{AVR\_\-RXCIE1}~RXCIE1
+\item 
+\#define \hyperlink{avrport_8h_c3cf49581f14394576f29acdf6b1766b}{AVR\_\-RXEN1}~RXEN1
+\item 
+\#define \hyperlink{avrport_8h_94f5b2ec8e2bcf7961456d042f4e3a4c}{AVR\_\-SPCR}~SPCR
+\item 
+\#define \hyperlink{avrport_8h_1c48603d4e25cd5cc9970acf72f72262}{AVR\_\-SPDR}~SPDR
+\item 
+\#define \hyperlink{avrport_8h_c9b6de1e89fdaeb0aba178e97f78245c}{AVR\_\-SPE}~SPE
+\item 
+\#define \hyperlink{avrport_8h_050a4b11701ac03fcc1e6f0cc2dcc889}{AVR\_\-SPI2X}~SPI2X
+\item 
+\#define \hyperlink{avrport_8h_5bd28202ebae4571d7649f64cb17617d}{AVR\_\-SPIF}~SPIF
+\item 
+\#define \hyperlink{avrport_8h_933d33392376aa3a78bba0a6494ce850}{AVR\_\-SPSR}~SPSR
+\item 
+\#define \hyperlink{avrport_8h_9cd6c8d4fd48de2d6dc498077ec55059}{AVR\_\-TCCR0}~TCCR0
+\item 
+\#define \hyperlink{avrport_8h_dc28a87f9e83922110c2013253f6e98d}{AVR\_\-TCNT0}~TCNT0
+\item 
+\#define \hyperlink{avrport_8h_bc7508e1678e26063f274ae9ce6c1100}{AVR\_\-TIMSK}~TIMSK
+\item 
+\#define \hyperlink{avrport_8h_4562867c450ece7c1a21c3a3e0b10627}{AVR\_\-TXEN1}~TXEN1
+\item 
+\#define \hyperlink{avrport_8h_d2c76d5c18dda867ee00051dda7dde27}{AVR\_\-UBRR1H}~UBRR1H
+\item 
+\#define \hyperlink{avrport_8h_d5d2984217c6471f9d08d66df7e317ea}{AVR\_\-UBRR1L}~UBRR1L
+\item 
+\#define \hyperlink{avrport_8h_b8a956582261370928795abc885f7260}{AVR\_\-UCSR1A}~UCSR1A
+\item 
+\#define \hyperlink{avrport_8h_64fabd6df0ae1c1a32e4f590d53b587d}{AVR\_\-UCSR1B}~UCSR1B
+\item 
+\#define \hyperlink{avrport_8h_08217e016f1aee5d652705f37984d516}{AVR\_\-UCSR1C}~UCSR1C
+\item 
+\#define \hyperlink{avrport_8h_5185ffc66d08514a93f8f13c25811451}{AVR\_\-UCSZ10}~UCSZ10
+\item 
+\#define \hyperlink{avrport_8h_499301a1362c65be44aa3b986c128b43}{AVR\_\-UCSZ11}~UCSZ11
+\item 
+\#define \hyperlink{avrport_8h_16b564a73253ae35fdeb69a737277a8b}{AVR\_\-UDR1}~UDR1
+\item 
+\#define \hyperlink{avrport_8h_cdaeda62cb78cc6e500c9e3b64d5d50d}{AVR\_\-UDRE1}~UDRE1
+\item 
+\#define \hyperlink{avrport_8h_fdbf164bc2153315831e304b25d8fd9d}{AVR\_\-USART\_\-RECV}~SIG\_\-USART1\_\-RECV
+\item 
+\#define \hyperlink{avrport_8h_156bf5e86018a98a92920e11b13a5db3}{LED0\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_3fc522fda449d6edde717d6a857429cf}{LED0\_\-PIN}~( 1 $<$$<$ PORTC0 )
+\item 
+\#define \hyperlink{avrport_8h_76914453bb5cda4ebca204e091e8f55c}{LED0\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_9b1794d35cf88201ed57511f48422ea7}{LED1\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_318aa17e5d40e2132d2c7f6269ce7f51}{LED1\_\-PIN}~( 1 $<$$<$ PORTC1 )
+\item 
+\#define \hyperlink{avrport_8h_1c9d04655364826e039b03997bcfe19c}{LED1\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_13abca93898d27dc068a62c05faf44f9}{LED2\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_f6f84078113b55354d20585131b386f7}{LED2\_\-PIN}~( 1 $<$$<$ PORTC2 )
+\item 
+\#define \hyperlink{avrport_8h_3fbb138c249c6c047524c7055dd5f1b7}{LED2\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_f27c9e7de7811d90a7c3da8a6795708a}{LED3\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_4cb3ff938bcabb01494ce529ae55a542}{LED3\_\-PIN}~( 1 $<$$<$ PORTC3 )
+\item 
+\#define \hyperlink{avrport_8h_522f0841ee948584396ab0bc03f5a731}{LED3\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_22ba9f00f72dfd720cdea84eced79b66}{LED4\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_ae684bb3d2f940637ccbc2adeb0e134d}{LED4\_\-PIN}~( 1 $<$$<$ PORTC4 )
+\item 
+\#define \hyperlink{avrport_8h_39687a0f2f2de631936843d897410176}{LED4\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_93d2cd44ecb1ca37b6c8807591e90909}{LED5\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_1461b79814613e21bc6ebb5d8ae6e858}{LED5\_\-PIN}~( 1 $<$$<$ PORTC5 )
+\item 
+\#define \hyperlink{avrport_8h_7c97152f2e8b4c82123b7d03cbde94a7}{LED5\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_1b063ea334094abb0ebb42aae44b88ab}{LED6\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_671c4f0e7ed8fbbfecc92cf6bdd0d588}{LED6\_\-PIN}~( 1 $<$$<$ PORTC6 )
+\item 
+\#define \hyperlink{avrport_8h_dd96c5d8069d3c1bd4b364f62f70bc80}{LED6\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_305049c402280c3f78ac3c77aaa7bf5c}{LED7\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_2eb84a92cdb794b0caef73339c2e09e6}{LED7\_\-PIN}~( 1 $<$$<$ PORTC7 )
+\item 
+\#define \hyperlink{avrport_8h_81072e5ad1fdd9b35e1a20a30481d9c3}{LED7\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_f2b6ac8c1ae9cd9c23856a145aa297bb}{LED\_\-ALIVE\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_cd680c82d9a1dc06e4df20c4dea95636}{LED\_\-ALIVE\_\-PIN}~( 1 $<$$<$ PORTC7 )
+\item 
+\#define \hyperlink{avrport_8h_7a3479b431114b8ae536aeb3c1dee0f1}{LED\_\-ALIVE\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_987648cfb1c750313c110dd0048cfdaa}{LED\_\-CAL\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_0d9bd1957585d43958d2a7df36ab1ae2}{LED\_\-CAL\_\-PIN}~( 1 $<$$<$ PORTC6 )
+\item 
+\#define \hyperlink{avrport_8h_071d82c0692835243ba06dc59238b434}{LED\_\-CAL\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_9b2fadb0408c734e49d877b1cd06202d}{LED\_\-ERR\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_2e353348662394411ce4559a560ca2b2}{LED\_\-ERR\_\-PIN}~( 1 $<$$<$ PORTC5 )
+\item 
+\#define \hyperlink{avrport_8h_86eee2e0f719c505fc92c8ece4d93421}{LED\_\-ERR\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_30ee2ba11aad2c64bcc35da283867bd1}{LED\_\-RX\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_9c9f99f822618a94d057192e56a25587}{LED\_\-RX\_\-PIN}~( 1 $<$$<$ PORTC4 )
+\item 
+\#define \hyperlink{avrport_8h_98f4187f9bda5e4892e81fe7213f4084}{LED\_\-RX\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_d9be86909b2eac890f3f14971a3e15ab}{LED\_\-TX\_\-DIR}~DDRC
+\item 
+\#define \hyperlink{avrport_8h_4c36e47062aa50f9811053b658023c74}{LED\_\-TX\_\-PIN}~( 1 $<$$<$ PORTC4 )
+\item 
+\#define \hyperlink{avrport_8h_61b37c5bf19ac4fcc500980716c70808}{LED\_\-TX\_\-PORT}~PORTC
+\item 
+\#define \hyperlink{avrport_8h_e15dabf6aa5697b7b5b410e227715314}{PON\_\-RST\_\-DIR}~DDRD
+\item 
+\#define \hyperlink{avrport_8h_e5bdecc597117a0afdc62ab37bf8da1f}{PON\_\-RST\_\-PIN}~( 1 $<$$<$ PORTD5 )
+\item 
+\#define \hyperlink{avrport_8h_29dfd295202e5edb0c9b2bcf33ade13e}{PON\_\-RST\_\-PORT}~PORTD
+\item 
+\#define \hyperlink{avrport_8h_f3cfe48f6efdc257518227b43c1bc3df}{SPI\_\-CLK}~( 1 $<$$<$ PORTB1 )
+\item 
+\#define \hyperlink{avrport_8h_21cc6faf5964b9af1b09e8b0ebc83497}{SPI\_\-DIR}~DDRB
+\item 
+\#define \hyperlink{avrport_8h_f1b09a59ab69b611fc00bb21dbbab0bc}{SPI\_\-INT}~INT0
+\item 
+\#define \hyperlink{avrport_8h_b142cc77dfa97010c9d2b616d0992b64}{SPI\_\-MISO}~( 1 $<$$<$ PORTB3 )
+\item 
+\#define \hyperlink{avrport_8h_7dbebab5f7dd57885adccf6711b13592}{SPI\_\-MOSI}~( 1 $<$$<$ PORTB2 )
+\item 
+\#define \hyperlink{avrport_8h_8112c985f7444e82198d7571ce0a9160}{SPI\_\-PORT}~PORTD
+\item 
+\#define \hyperlink{avrport_8h_81f0aae3c3a2adba06ac3b802b38915a}{SPI\_\-SS}~( 1 $<$$<$ PORTB0 )
+\item 
+\#define \hyperlink{avrport_8h_62368df7fff939340101c98bc02525ff}{SPI\_\-SSN1\_\-DIR}~DDRD
+\item 
+\#define \hyperlink{avrport_8h_b959c905c095d87bce0a87a131de7900}{SPI\_\-SSN1\_\-PIN}~( 1 $<$$<$ PORTD6 )
+\item 
+\#define \hyperlink{avrport_8h_29830dcabdc1fabea1e2d2c727475a76}{SPI\_\-SSN1\_\-PORT}~PORTD
+\item 
+\#define \hyperlink{avrport_8h_1ecc33c84d91712a93369c81f34be365}{SPI\_\-SSN2\_\-DIR}~DDRD
+\item 
+\#define \hyperlink{avrport_8h_358ca0e6842b441a7facf8bc6f96450a}{SPI\_\-SSN2\_\-PIN}~( 1 $<$$<$ PORTD7 )
+\item 
+\#define \hyperlink{avrport_8h_aa7efe0add8b0d330ea5e2ca5632a4a2}{SPI\_\-SSN2\_\-PORT}~PORTD
+\item 
+\#define \hyperlink{avrport_8h_c3becfb12e1c5dfed5ac605007837c7a}{SW0\_\-DIR}~DDRE
+\item 
+\#define \hyperlink{avrport_8h_a59f6c431979d6a4e3077515387fd49b}{SW0\_\-IN}~( PINE \& ( SW0\_\-PIN ))
+\item 
+\#define \hyperlink{avrport_8h_1db7ea1df7a18b3749ee2eaaa2f2d0af}{SW0\_\-PIN}~( 1 $<$$<$ PORTE6 )
+\item 
+\#define \hyperlink{avrport_8h_fb251876f3784fcbfbfe45b725a2062e}{SW0\_\-PORT}~PORTE
+\item 
+\#define \hyperlink{avrport_8h_250671ec09a9f180448d76d6b39c01f4}{SW1\_\-DIR}~DDRE
+\item 
+\#define \hyperlink{avrport_8h_3ff984d553b4955f6fde2a1b9330ee69}{SW1\_\-IN}~( PINE \& ( SW1\_\-PIN ))
+\item 
+\#define \hyperlink{avrport_8h_3b206753e7f7b2e482816b53c6b8600c}{SW1\_\-PIN}~( 1 $<$$<$ PORTE3 )
+\item 
+\#define \hyperlink{avrport_8h_b8e25427647939c5e1d5db170d2e585a}{SW1\_\-PORT}~PORTE
+\item 
+\#define \hyperlink{avrport_8h_8e0e49dbcf7b251515d3699a4daf1d9f}{SW2\_\-DIR}~DDRE
+\item 
+\#define \hyperlink{avrport_8h_a7a6d07c801d1c9126a28cf8ce7b5689}{SW2\_\-IN}~( PINE \& ( SW2\_\-PIN ))
+\item 
+\#define \hyperlink{avrport_8h_5324908892138177958451638abfd1cc}{SW2\_\-PIN}~( 1 $<$$<$ PORTE2 )
+\item 
+\#define \hyperlink{avrport_8h_be197d970d2a0a5252fe924a16f89478}{SW2\_\-PORT}~PORTE
+\item 
+\#define \hyperlink{avrport_8h_af5f5b704fd6abf3ed4f7593c156f38b}{TEST1\_\-DIR}~DDRF
+\item 
+\#define \hyperlink{avrport_8h_1444a43d7a507fd1c82a67606330591e}{TEST1\_\-PIN}~( 1 $<$$<$ PORTF1 )
+\item 
+\#define \hyperlink{avrport_8h_b2446812f61fe7cd658f6154d104d838}{TEST1\_\-PORT}~PORTF
+\item 
+\#define \hyperlink{avrport_8h_11d523bff2c6191cd69223dfeb89f0d1}{TEST2\_\-DIR}~DDRF
+\item 
+\#define \hyperlink{avrport_8h_fdc6418d60694b94b0f80ec5abcbdcc5}{TEST2\_\-PIN}~( 1 $<$$<$ PORTF3 )
+\item 
+\#define \hyperlink{avrport_8h_b007da424da9c1fc6453ba8a749a6f5c}{TEST2\_\-PORT}~PORTF
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+support for AVR. 
+
+\begin{Desc}
+\item[Date:]2008-Apr-16 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Radtke {\tt }(C) 2008 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the port definitions for the AVR u\-C \end{Desc}
+
+
+Definition in file \hyperlink{avrport_8h-source}{avrport.h}.
+
+\subsection{Define Documentation}
+\hypertarget{avrport_8h_6eea218097f2c7a5c30e1f7c21491d0d}{
+\index{avrport.h@{avrport.h}!AVR_DORD@{AVR\_\-DORD}}
+\index{AVR_DORD@{AVR\_\-DORD}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-DORD]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-DORD~DORD}}
+\label{avrport_8h_6eea218097f2c7a5c30e1f7c21491d0d}
+
+
+
+
+Definition at line 45 of file avrport.h.\hypertarget{avrport_8h_49363e8c4a81e86f45632370c6b0c3d4}{
+\index{avrport.h@{avrport.h}!AVR_MSTR@{AVR\_\-MSTR}}
+\index{AVR_MSTR@{AVR\_\-MSTR}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-MSTR]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-MSTR~MSTR}}
+\label{avrport_8h_49363e8c4a81e86f45632370c6b0c3d4}
+
+
+
+
+Definition at line 44 of file avrport.h.\hypertarget{avrport_8h_eac4f1cb00291725d436caed2ba6ac55}{
+\index{avrport.h@{avrport.h}!AVR_RXCIE1@{AVR\_\-RXCIE1}}
+\index{AVR_RXCIE1@{AVR\_\-RXCIE1}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-RXCIE1]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-RXCIE1~RXCIE1}}
+\label{avrport_8h_eac4f1cb00291725d436caed2ba6ac55}
+
+
+
+
+Definition at line 28 of file avrport.h.\hypertarget{avrport_8h_c3cf49581f14394576f29acdf6b1766b}{
+\index{avrport.h@{avrport.h}!AVR_RXEN1@{AVR\_\-RXEN1}}
+\index{AVR_RXEN1@{AVR\_\-RXEN1}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-RXEN1]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-RXEN1~RXEN1}}
+\label{avrport_8h_c3cf49581f14394576f29acdf6b1766b}
+
+
+
+
+Definition at line 29 of file avrport.h.\hypertarget{avrport_8h_94f5b2ec8e2bcf7961456d042f4e3a4c}{
+\index{avrport.h@{avrport.h}!AVR_SPCR@{AVR\_\-SPCR}}
+\index{AVR_SPCR@{AVR\_\-SPCR}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPCR]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPCR~SPCR}}
+\label{avrport_8h_94f5b2ec8e2bcf7961456d042f4e3a4c}
+
+
+
+
+Definition at line 42 of file avrport.h.\hypertarget{avrport_8h_1c48603d4e25cd5cc9970acf72f72262}{
+\index{avrport.h@{avrport.h}!AVR_SPDR@{AVR\_\-SPDR}}
+\index{AVR_SPDR@{AVR\_\-SPDR}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPDR]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPDR~SPDR}}
+\label{avrport_8h_1c48603d4e25cd5cc9970acf72f72262}
+
+
+
+
+Definition at line 48 of file avrport.h.\hypertarget{avrport_8h_c9b6de1e89fdaeb0aba178e97f78245c}{
+\index{avrport.h@{avrport.h}!AVR_SPE@{AVR\_\-SPE}}
+\index{AVR_SPE@{AVR\_\-SPE}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPE]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPE~SPE}}
+\label{avrport_8h_c9b6de1e89fdaeb0aba178e97f78245c}
+
+
+
+
+Definition at line 43 of file avrport.h.\hypertarget{avrport_8h_050a4b11701ac03fcc1e6f0cc2dcc889}{
+\index{avrport.h@{avrport.h}!AVR_SPI2X@{AVR\_\-SPI2X}}
+\index{AVR_SPI2X@{AVR\_\-SPI2X}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPI2X]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPI2X~SPI2X}}
+\label{avrport_8h_050a4b11701ac03fcc1e6f0cc2dcc889}
+
+
+
+
+Definition at line 47 of file avrport.h.\hypertarget{avrport_8h_5bd28202ebae4571d7649f64cb17617d}{
+\index{avrport.h@{avrport.h}!AVR_SPIF@{AVR\_\-SPIF}}
+\index{AVR_SPIF@{AVR\_\-SPIF}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPIF]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPIF~SPIF}}
+\label{avrport_8h_5bd28202ebae4571d7649f64cb17617d}
+
+
+
+
+Definition at line 49 of file avrport.h.\hypertarget{avrport_8h_933d33392376aa3a78bba0a6494ce850}{
+\index{avrport.h@{avrport.h}!AVR_SPSR@{AVR\_\-SPSR}}
+\index{AVR_SPSR@{AVR\_\-SPSR}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-SPSR]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-SPSR~SPSR}}
+\label{avrport_8h_933d33392376aa3a78bba0a6494ce850}
+
+
+
+
+Definition at line 46 of file avrport.h.\hypertarget{avrport_8h_9cd6c8d4fd48de2d6dc498077ec55059}{
+\index{avrport.h@{avrport.h}!AVR_TCCR0@{AVR\_\-TCCR0}}
+\index{AVR_TCCR0@{AVR\_\-TCCR0}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-TCCR0]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-TCCR0~TCCR0}}
+\label{avrport_8h_9cd6c8d4fd48de2d6dc498077ec55059}
+
+
+
+
+Definition at line 17 of file avrport.h.\hypertarget{avrport_8h_dc28a87f9e83922110c2013253f6e98d}{
+\index{avrport.h@{avrport.h}!AVR_TCNT0@{AVR\_\-TCNT0}}
+\index{AVR_TCNT0@{AVR\_\-TCNT0}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-TCNT0]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-TCNT0~TCNT0}}
+\label{avrport_8h_dc28a87f9e83922110c2013253f6e98d}
+
+
+
+
+Definition at line 19 of file avrport.h.\hypertarget{avrport_8h_bc7508e1678e26063f274ae9ce6c1100}{
+\index{avrport.h@{avrport.h}!AVR_TIMSK@{AVR\_\-TIMSK}}
+\index{AVR_TIMSK@{AVR\_\-TIMSK}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-TIMSK]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-TIMSK~TIMSK}}
+\label{avrport_8h_bc7508e1678e26063f274ae9ce6c1100}
+
+
+
+
+Definition at line 18 of file avrport.h.\hypertarget{avrport_8h_4562867c450ece7c1a21c3a3e0b10627}{
+\index{avrport.h@{avrport.h}!AVR_TXEN1@{AVR\_\-TXEN1}}
+\index{AVR_TXEN1@{AVR\_\-TXEN1}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-TXEN1]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-TXEN1~TXEN1}}
+\label{avrport_8h_4562867c450ece7c1a21c3a3e0b10627}
+
+
+
+
+Definition at line 30 of file avrport.h.\hypertarget{avrport_8h_d2c76d5c18dda867ee00051dda7dde27}{
+\index{avrport.h@{avrport.h}!AVR_UBRR1H@{AVR\_\-UBRR1H}}
+\index{AVR_UBRR1H@{AVR\_\-UBRR1H}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UBRR1H]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UBRR1H~UBRR1H}}
+\label{avrport_8h_d2c76d5c18dda867ee00051dda7dde27}
+
+
+
+
+Definition at line 22 of file avrport.h.\hypertarget{avrport_8h_d5d2984217c6471f9d08d66df7e317ea}{
+\index{avrport.h@{avrport.h}!AVR_UBRR1L@{AVR\_\-UBRR1L}}
+\index{AVR_UBRR1L@{AVR\_\-UBRR1L}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UBRR1L]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UBRR1L~UBRR1L}}
+\label{avrport_8h_d5d2984217c6471f9d08d66df7e317ea}
+
+
+
+
+Definition at line 23 of file avrport.h.\hypertarget{avrport_8h_b8a956582261370928795abc885f7260}{
+\index{avrport.h@{avrport.h}!AVR_UCSR1A@{AVR\_\-UCSR1A}}
+\index{AVR_UCSR1A@{AVR\_\-UCSR1A}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UCSR1A]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UCSR1A~UCSR1A}}
+\label{avrport_8h_b8a956582261370928795abc885f7260}
+
+
+
+
+Definition at line 31 of file avrport.h.\hypertarget{avrport_8h_64fabd6df0ae1c1a32e4f590d53b587d}{
+\index{avrport.h@{avrport.h}!AVR_UCSR1B@{AVR\_\-UCSR1B}}
+\index{AVR_UCSR1B@{AVR\_\-UCSR1B}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UCSR1B]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UCSR1B~UCSR1B}}
+\label{avrport_8h_64fabd6df0ae1c1a32e4f590d53b587d}
+
+
+
+
+Definition at line 25 of file avrport.h.\hypertarget{avrport_8h_08217e016f1aee5d652705f37984d516}{
+\index{avrport.h@{avrport.h}!AVR_UCSR1C@{AVR\_\-UCSR1C}}
+\index{AVR_UCSR1C@{AVR\_\-UCSR1C}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UCSR1C]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UCSR1C~UCSR1C}}
+\label{avrport_8h_08217e016f1aee5d652705f37984d516}
+
+
+
+
+Definition at line 24 of file avrport.h.\hypertarget{avrport_8h_5185ffc66d08514a93f8f13c25811451}{
+\index{avrport.h@{avrport.h}!AVR_UCSZ10@{AVR\_\-UCSZ10}}
+\index{AVR_UCSZ10@{AVR\_\-UCSZ10}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UCSZ10]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UCSZ10~UCSZ10}}
+\label{avrport_8h_5185ffc66d08514a93f8f13c25811451}
+
+
+
+
+Definition at line 27 of file avrport.h.\hypertarget{avrport_8h_499301a1362c65be44aa3b986c128b43}{
+\index{avrport.h@{avrport.h}!AVR_UCSZ11@{AVR\_\-UCSZ11}}
+\index{AVR_UCSZ11@{AVR\_\-UCSZ11}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UCSZ11]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UCSZ11~UCSZ11}}
+\label{avrport_8h_499301a1362c65be44aa3b986c128b43}
+
+
+
+
+Definition at line 26 of file avrport.h.\hypertarget{avrport_8h_16b564a73253ae35fdeb69a737277a8b}{
+\index{avrport.h@{avrport.h}!AVR_UDR1@{AVR\_\-UDR1}}
+\index{AVR_UDR1@{AVR\_\-UDR1}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UDR1]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UDR1~UDR1}}
+\label{avrport_8h_16b564a73253ae35fdeb69a737277a8b}
+
+
+
+
+Definition at line 21 of file avrport.h.\hypertarget{avrport_8h_cdaeda62cb78cc6e500c9e3b64d5d50d}{
+\index{avrport.h@{avrport.h}!AVR_UDRE1@{AVR\_\-UDRE1}}
+\index{AVR_UDRE1@{AVR\_\-UDRE1}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-UDRE1]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-UDRE1~UDRE1}}
+\label{avrport_8h_cdaeda62cb78cc6e500c9e3b64d5d50d}
+
+
+
+
+Definition at line 32 of file avrport.h.\hypertarget{avrport_8h_fdbf164bc2153315831e304b25d8fd9d}{
+\index{avrport.h@{avrport.h}!AVR_USART_RECV@{AVR\_\-USART\_\-RECV}}
+\index{AVR_USART_RECV@{AVR\_\-USART\_\-RECV}!avrport.h@{avrport.h}}
+\subsubsection[AVR\_\-USART\_\-RECV]{\setlength{\rightskip}{0pt plus 5cm}\#define AVR\_\-USART\_\-RECV~SIG\_\-USART1\_\-RECV}}
+\label{avrport_8h_fdbf164bc2153315831e304b25d8fd9d}
+
+
+
+
+Definition at line 51 of file avrport.h.\hypertarget{avrport_8h_156bf5e86018a98a92920e11b13a5db3}{
+\index{avrport.h@{avrport.h}!LED0_DIR@{LED0\_\-DIR}}
+\index{LED0_DIR@{LED0\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED0\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED0\_\-DIR~DDRC}}
+\label{avrport_8h_156bf5e86018a98a92920e11b13a5db3}
+
+
+
+
+Definition at line 70 of file avrport.h.\hypertarget{avrport_8h_3fc522fda449d6edde717d6a857429cf}{
+\index{avrport.h@{avrport.h}!LED0_PIN@{LED0\_\-PIN}}
+\index{LED0_PIN@{LED0\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED0\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED0\_\-PIN~( 1 $<$$<$ PORTC0 )}}
+\label{avrport_8h_3fc522fda449d6edde717d6a857429cf}
+
+
+
+
+Definition at line 72 of file avrport.h.\hypertarget{avrport_8h_76914453bb5cda4ebca204e091e8f55c}{
+\index{avrport.h@{avrport.h}!LED0_PORT@{LED0\_\-PORT}}
+\index{LED0_PORT@{LED0\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED0\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED0\_\-PORT~PORTC}}
+\label{avrport_8h_76914453bb5cda4ebca204e091e8f55c}
+
+
+
+
+Definition at line 71 of file avrport.h.\hypertarget{avrport_8h_9b1794d35cf88201ed57511f48422ea7}{
+\index{avrport.h@{avrport.h}!LED1_DIR@{LED1\_\-DIR}}
+\index{LED1_DIR@{LED1\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED1\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED1\_\-DIR~DDRC}}
+\label{avrport_8h_9b1794d35cf88201ed57511f48422ea7}
+
+
+
+
+Definition at line 74 of file avrport.h.\hypertarget{avrport_8h_318aa17e5d40e2132d2c7f6269ce7f51}{
+\index{avrport.h@{avrport.h}!LED1_PIN@{LED1\_\-PIN}}
+\index{LED1_PIN@{LED1\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED1\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED1\_\-PIN~( 1 $<$$<$ PORTC1 )}}
+\label{avrport_8h_318aa17e5d40e2132d2c7f6269ce7f51}
+
+
+
+
+Definition at line 76 of file avrport.h.\hypertarget{avrport_8h_1c9d04655364826e039b03997bcfe19c}{
+\index{avrport.h@{avrport.h}!LED1_PORT@{LED1\_\-PORT}}
+\index{LED1_PORT@{LED1\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED1\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED1\_\-PORT~PORTC}}
+\label{avrport_8h_1c9d04655364826e039b03997bcfe19c}
+
+
+
+
+Definition at line 75 of file avrport.h.\hypertarget{avrport_8h_13abca93898d27dc068a62c05faf44f9}{
+\index{avrport.h@{avrport.h}!LED2_DIR@{LED2\_\-DIR}}
+\index{LED2_DIR@{LED2\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED2\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED2\_\-DIR~DDRC}}
+\label{avrport_8h_13abca93898d27dc068a62c05faf44f9}
+
+
+
+
+Definition at line 78 of file avrport.h.\hypertarget{avrport_8h_f6f84078113b55354d20585131b386f7}{
+\index{avrport.h@{avrport.h}!LED2_PIN@{LED2\_\-PIN}}
+\index{LED2_PIN@{LED2\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED2\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED2\_\-PIN~( 1 $<$$<$ PORTC2 )}}
+\label{avrport_8h_f6f84078113b55354d20585131b386f7}
+
+
+
+
+Definition at line 80 of file avrport.h.\hypertarget{avrport_8h_3fbb138c249c6c047524c7055dd5f1b7}{
+\index{avrport.h@{avrport.h}!LED2_PORT@{LED2\_\-PORT}}
+\index{LED2_PORT@{LED2\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED2\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED2\_\-PORT~PORTC}}
+\label{avrport_8h_3fbb138c249c6c047524c7055dd5f1b7}
+
+
+
+
+Definition at line 79 of file avrport.h.\hypertarget{avrport_8h_f27c9e7de7811d90a7c3da8a6795708a}{
+\index{avrport.h@{avrport.h}!LED3_DIR@{LED3\_\-DIR}}
+\index{LED3_DIR@{LED3\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED3\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED3\_\-DIR~DDRC}}
+\label{avrport_8h_f27c9e7de7811d90a7c3da8a6795708a}
+
+
+
+
+Definition at line 82 of file avrport.h.\hypertarget{avrport_8h_4cb3ff938bcabb01494ce529ae55a542}{
+\index{avrport.h@{avrport.h}!LED3_PIN@{LED3\_\-PIN}}
+\index{LED3_PIN@{LED3\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED3\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED3\_\-PIN~( 1 $<$$<$ PORTC3 )}}
+\label{avrport_8h_4cb3ff938bcabb01494ce529ae55a542}
+
+
+
+
+Definition at line 84 of file avrport.h.\hypertarget{avrport_8h_522f0841ee948584396ab0bc03f5a731}{
+\index{avrport.h@{avrport.h}!LED3_PORT@{LED3\_\-PORT}}
+\index{LED3_PORT@{LED3\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED3\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED3\_\-PORT~PORTC}}
+\label{avrport_8h_522f0841ee948584396ab0bc03f5a731}
+
+
+
+
+Definition at line 83 of file avrport.h.\hypertarget{avrport_8h_22ba9f00f72dfd720cdea84eced79b66}{
+\index{avrport.h@{avrport.h}!LED4_DIR@{LED4\_\-DIR}}
+\index{LED4_DIR@{LED4\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED4\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED4\_\-DIR~DDRC}}
+\label{avrport_8h_22ba9f00f72dfd720cdea84eced79b66}
+
+
+
+
+Definition at line 86 of file avrport.h.\hypertarget{avrport_8h_ae684bb3d2f940637ccbc2adeb0e134d}{
+\index{avrport.h@{avrport.h}!LED4_PIN@{LED4\_\-PIN}}
+\index{LED4_PIN@{LED4\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED4\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED4\_\-PIN~( 1 $<$$<$ PORTC4 )}}
+\label{avrport_8h_ae684bb3d2f940637ccbc2adeb0e134d}
+
+
+
+
+Definition at line 88 of file avrport.h.\hypertarget{avrport_8h_39687a0f2f2de631936843d897410176}{
+\index{avrport.h@{avrport.h}!LED4_PORT@{LED4\_\-PORT}}
+\index{LED4_PORT@{LED4\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED4\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED4\_\-PORT~PORTC}}
+\label{avrport_8h_39687a0f2f2de631936843d897410176}
+
+
+
+
+Definition at line 87 of file avrport.h.\hypertarget{avrport_8h_93d2cd44ecb1ca37b6c8807591e90909}{
+\index{avrport.h@{avrport.h}!LED5_DIR@{LED5\_\-DIR}}
+\index{LED5_DIR@{LED5\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED5\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED5\_\-DIR~DDRC}}
+\label{avrport_8h_93d2cd44ecb1ca37b6c8807591e90909}
+
+
+
+
+Definition at line 90 of file avrport.h.\hypertarget{avrport_8h_1461b79814613e21bc6ebb5d8ae6e858}{
+\index{avrport.h@{avrport.h}!LED5_PIN@{LED5\_\-PIN}}
+\index{LED5_PIN@{LED5\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED5\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED5\_\-PIN~( 1 $<$$<$ PORTC5 )}}
+\label{avrport_8h_1461b79814613e21bc6ebb5d8ae6e858}
+
+
+
+
+Definition at line 92 of file avrport.h.\hypertarget{avrport_8h_7c97152f2e8b4c82123b7d03cbde94a7}{
+\index{avrport.h@{avrport.h}!LED5_PORT@{LED5\_\-PORT}}
+\index{LED5_PORT@{LED5\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED5\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED5\_\-PORT~PORTC}}
+\label{avrport_8h_7c97152f2e8b4c82123b7d03cbde94a7}
+
+
+
+
+Definition at line 91 of file avrport.h.\hypertarget{avrport_8h_1b063ea334094abb0ebb42aae44b88ab}{
+\index{avrport.h@{avrport.h}!LED6_DIR@{LED6\_\-DIR}}
+\index{LED6_DIR@{LED6\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED6\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED6\_\-DIR~DDRC}}
+\label{avrport_8h_1b063ea334094abb0ebb42aae44b88ab}
+
+
+
+
+Definition at line 94 of file avrport.h.\hypertarget{avrport_8h_671c4f0e7ed8fbbfecc92cf6bdd0d588}{
+\index{avrport.h@{avrport.h}!LED6_PIN@{LED6\_\-PIN}}
+\index{LED6_PIN@{LED6\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED6\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED6\_\-PIN~( 1 $<$$<$ PORTC6 )}}
+\label{avrport_8h_671c4f0e7ed8fbbfecc92cf6bdd0d588}
+
+
+
+
+Definition at line 96 of file avrport.h.\hypertarget{avrport_8h_dd96c5d8069d3c1bd4b364f62f70bc80}{
+\index{avrport.h@{avrport.h}!LED6_PORT@{LED6\_\-PORT}}
+\index{LED6_PORT@{LED6\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED6\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED6\_\-PORT~PORTC}}
+\label{avrport_8h_dd96c5d8069d3c1bd4b364f62f70bc80}
+
+
+
+
+Definition at line 95 of file avrport.h.\hypertarget{avrport_8h_305049c402280c3f78ac3c77aaa7bf5c}{
+\index{avrport.h@{avrport.h}!LED7_DIR@{LED7\_\-DIR}}
+\index{LED7_DIR@{LED7\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED7\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED7\_\-DIR~DDRC}}
+\label{avrport_8h_305049c402280c3f78ac3c77aaa7bf5c}
+
+
+
+
+Definition at line 98 of file avrport.h.\hypertarget{avrport_8h_2eb84a92cdb794b0caef73339c2e09e6}{
+\index{avrport.h@{avrport.h}!LED7_PIN@{LED7\_\-PIN}}
+\index{LED7_PIN@{LED7\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED7\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED7\_\-PIN~( 1 $<$$<$ PORTC7 )}}
+\label{avrport_8h_2eb84a92cdb794b0caef73339c2e09e6}
+
+
+
+
+Definition at line 100 of file avrport.h.\hypertarget{avrport_8h_81072e5ad1fdd9b35e1a20a30481d9c3}{
+\index{avrport.h@{avrport.h}!LED7_PORT@{LED7\_\-PORT}}
+\index{LED7_PORT@{LED7\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED7\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED7\_\-PORT~PORTC}}
+\label{avrport_8h_81072e5ad1fdd9b35e1a20a30481d9c3}
+
+
+
+
+Definition at line 99 of file avrport.h.\hypertarget{avrport_8h_f2b6ac8c1ae9cd9c23856a145aa297bb}{
+\index{avrport.h@{avrport.h}!LED_ALIVE_DIR@{LED\_\-ALIVE\_\-DIR}}
+\index{LED_ALIVE_DIR@{LED\_\-ALIVE\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ALIVE\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ALIVE\_\-DIR~DDRC}}
+\label{avrport_8h_f2b6ac8c1ae9cd9c23856a145aa297bb}
+
+
+
+
+Definition at line 66 of file avrport.h.\hypertarget{avrport_8h_cd680c82d9a1dc06e4df20c4dea95636}{
+\index{avrport.h@{avrport.h}!LED_ALIVE_PIN@{LED\_\-ALIVE\_\-PIN}}
+\index{LED_ALIVE_PIN@{LED\_\-ALIVE\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ALIVE\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ALIVE\_\-PIN~( 1 $<$$<$ PORTC7 )}}
+\label{avrport_8h_cd680c82d9a1dc06e4df20c4dea95636}
+
+
+
+
+Definition at line 68 of file avrport.h.\hypertarget{avrport_8h_7a3479b431114b8ae536aeb3c1dee0f1}{
+\index{avrport.h@{avrport.h}!LED_ALIVE_PORT@{LED\_\-ALIVE\_\-PORT}}
+\index{LED_ALIVE_PORT@{LED\_\-ALIVE\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ALIVE\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ALIVE\_\-PORT~PORTC}}
+\label{avrport_8h_7a3479b431114b8ae536aeb3c1dee0f1}
+
+
+
+
+Definition at line 67 of file avrport.h.\hypertarget{avrport_8h_987648cfb1c750313c110dd0048cfdaa}{
+\index{avrport.h@{avrport.h}!LED_CAL_DIR@{LED\_\-CAL\_\-DIR}}
+\index{LED_CAL_DIR@{LED\_\-CAL\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-CAL\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-CAL\_\-DIR~DDRC}}
+\label{avrport_8h_987648cfb1c750313c110dd0048cfdaa}
+
+
+
+
+Definition at line 114 of file avrport.h.\hypertarget{avrport_8h_0d9bd1957585d43958d2a7df36ab1ae2}{
+\index{avrport.h@{avrport.h}!LED_CAL_PIN@{LED\_\-CAL\_\-PIN}}
+\index{LED_CAL_PIN@{LED\_\-CAL\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-CAL\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-CAL\_\-PIN~( 1 $<$$<$ PORTC6 )}}
+\label{avrport_8h_0d9bd1957585d43958d2a7df36ab1ae2}
+
+
+
+
+Definition at line 116 of file avrport.h.\hypertarget{avrport_8h_071d82c0692835243ba06dc59238b434}{
+\index{avrport.h@{avrport.h}!LED_CAL_PORT@{LED\_\-CAL\_\-PORT}}
+\index{LED_CAL_PORT@{LED\_\-CAL\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-CAL\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-CAL\_\-PORT~PORTC}}
+\label{avrport_8h_071d82c0692835243ba06dc59238b434}
+
+
+
+
+Definition at line 115 of file avrport.h.\hypertarget{avrport_8h_9b2fadb0408c734e49d877b1cd06202d}{
+\index{avrport.h@{avrport.h}!LED_ERR_DIR@{LED\_\-ERR\_\-DIR}}
+\index{LED_ERR_DIR@{LED\_\-ERR\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ERR\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ERR\_\-DIR~DDRC}}
+\label{avrport_8h_9b2fadb0408c734e49d877b1cd06202d}
+
+
+
+
+Definition at line 110 of file avrport.h.\hypertarget{avrport_8h_2e353348662394411ce4559a560ca2b2}{
+\index{avrport.h@{avrport.h}!LED_ERR_PIN@{LED\_\-ERR\_\-PIN}}
+\index{LED_ERR_PIN@{LED\_\-ERR\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ERR\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ERR\_\-PIN~( 1 $<$$<$ PORTC5 )}}
+\label{avrport_8h_2e353348662394411ce4559a560ca2b2}
+
+
+
+
+Definition at line 112 of file avrport.h.\hypertarget{avrport_8h_86eee2e0f719c505fc92c8ece4d93421}{
+\index{avrport.h@{avrport.h}!LED_ERR_PORT@{LED\_\-ERR\_\-PORT}}
+\index{LED_ERR_PORT@{LED\_\-ERR\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-ERR\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-ERR\_\-PORT~PORTC}}
+\label{avrport_8h_86eee2e0f719c505fc92c8ece4d93421}
+
+
+
+
+Definition at line 111 of file avrport.h.\hypertarget{avrport_8h_30ee2ba11aad2c64bcc35da283867bd1}{
+\index{avrport.h@{avrport.h}!LED_RX_DIR@{LED\_\-RX\_\-DIR}}
+\index{LED_RX_DIR@{LED\_\-RX\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-RX\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-RX\_\-DIR~DDRC}}
+\label{avrport_8h_30ee2ba11aad2c64bcc35da283867bd1}
+
+
+
+
+Definition at line 106 of file avrport.h.\hypertarget{avrport_8h_9c9f99f822618a94d057192e56a25587}{
+\index{avrport.h@{avrport.h}!LED_RX_PIN@{LED\_\-RX\_\-PIN}}
+\index{LED_RX_PIN@{LED\_\-RX\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-RX\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-RX\_\-PIN~( 1 $<$$<$ PORTC4 )}}
+\label{avrport_8h_9c9f99f822618a94d057192e56a25587}
+
+
+
+
+Definition at line 108 of file avrport.h.\hypertarget{avrport_8h_98f4187f9bda5e4892e81fe7213f4084}{
+\index{avrport.h@{avrport.h}!LED_RX_PORT@{LED\_\-RX\_\-PORT}}
+\index{LED_RX_PORT@{LED\_\-RX\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-RX\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-RX\_\-PORT~PORTC}}
+\label{avrport_8h_98f4187f9bda5e4892e81fe7213f4084}
+
+
+
+
+Definition at line 107 of file avrport.h.\hypertarget{avrport_8h_d9be86909b2eac890f3f14971a3e15ab}{
+\index{avrport.h@{avrport.h}!LED_TX_DIR@{LED\_\-TX\_\-DIR}}
+\index{LED_TX_DIR@{LED\_\-TX\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-TX\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-TX\_\-DIR~DDRC}}
+\label{avrport_8h_d9be86909b2eac890f3f14971a3e15ab}
+
+
+
+
+Definition at line 102 of file avrport.h.\hypertarget{avrport_8h_4c36e47062aa50f9811053b658023c74}{
+\index{avrport.h@{avrport.h}!LED_TX_PIN@{LED\_\-TX\_\-PIN}}
+\index{LED_TX_PIN@{LED\_\-TX\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-TX\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-TX\_\-PIN~( 1 $<$$<$ PORTC4 )}}
+\label{avrport_8h_4c36e47062aa50f9811053b658023c74}
+
+
+
+
+Definition at line 104 of file avrport.h.\hypertarget{avrport_8h_61b37c5bf19ac4fcc500980716c70808}{
+\index{avrport.h@{avrport.h}!LED_TX_PORT@{LED\_\-TX\_\-PORT}}
+\index{LED_TX_PORT@{LED\_\-TX\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[LED\_\-TX\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define LED\_\-TX\_\-PORT~PORTC}}
+\label{avrport_8h_61b37c5bf19ac4fcc500980716c70808}
+
+
+
+
+Definition at line 103 of file avrport.h.\hypertarget{avrport_8h_e15dabf6aa5697b7b5b410e227715314}{
+\index{avrport.h@{avrport.h}!PON_RST_DIR@{PON\_\-RST\_\-DIR}}
+\index{PON_RST_DIR@{PON\_\-RST\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[PON\_\-RST\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define PON\_\-RST\_\-DIR~DDRD}}
+\label{avrport_8h_e15dabf6aa5697b7b5b410e227715314}
+
+
+
+
+Definition at line 55 of file avrport.h.\hypertarget{avrport_8h_e5bdecc597117a0afdc62ab37bf8da1f}{
+\index{avrport.h@{avrport.h}!PON_RST_PIN@{PON\_\-RST\_\-PIN}}
+\index{PON_RST_PIN@{PON\_\-RST\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[PON\_\-RST\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define PON\_\-RST\_\-PIN~( 1 $<$$<$ PORTD5 )}}
+\label{avrport_8h_e5bdecc597117a0afdc62ab37bf8da1f}
+
+
+
+
+Definition at line 56 of file avrport.h.\hypertarget{avrport_8h_29dfd295202e5edb0c9b2bcf33ade13e}{
+\index{avrport.h@{avrport.h}!PON_RST_PORT@{PON\_\-RST\_\-PORT}}
+\index{PON_RST_PORT@{PON\_\-RST\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[PON\_\-RST\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define PON\_\-RST\_\-PORT~PORTD}}
+\label{avrport_8h_29dfd295202e5edb0c9b2bcf33ade13e}
+
+
+
+
+Definition at line 54 of file avrport.h.\hypertarget{avrport_8h_f3cfe48f6efdc257518227b43c1bc3df}{
+\index{avrport.h@{avrport.h}!SPI_CLK@{SPI\_\-CLK}}
+\index{SPI_CLK@{SPI\_\-CLK}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-CLK]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-CLK~( 1 $<$$<$ PORTB1 )}}
+\label{avrport_8h_f3cfe48f6efdc257518227b43c1bc3df}
+
+
+
+
+Definition at line 37 of file avrport.h.\hypertarget{avrport_8h_21cc6faf5964b9af1b09e8b0ebc83497}{
+\index{avrport.h@{avrport.h}!SPI_DIR@{SPI\_\-DIR}}
+\index{SPI_DIR@{SPI\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-DIR~DDRB}}
+\label{avrport_8h_21cc6faf5964b9af1b09e8b0ebc83497}
+
+
+
+
+Definition at line 35 of file avrport.h.\hypertarget{avrport_8h_f1b09a59ab69b611fc00bb21dbbab0bc}{
+\index{avrport.h@{avrport.h}!SPI_INT@{SPI\_\-INT}}
+\index{SPI_INT@{SPI\_\-INT}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-INT]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-INT~INT0}}
+\label{avrport_8h_f1b09a59ab69b611fc00bb21dbbab0bc}
+
+
+
+
+Definition at line 40 of file avrport.h.\hypertarget{avrport_8h_b142cc77dfa97010c9d2b616d0992b64}{
+\index{avrport.h@{avrport.h}!SPI_MISO@{SPI\_\-MISO}}
+\index{SPI_MISO@{SPI\_\-MISO}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-MISO]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-MISO~( 1 $<$$<$ PORTB3 )}}
+\label{avrport_8h_b142cc77dfa97010c9d2b616d0992b64}
+
+
+
+
+Definition at line 39 of file avrport.h.\hypertarget{avrport_8h_7dbebab5f7dd57885adccf6711b13592}{
+\index{avrport.h@{avrport.h}!SPI_MOSI@{SPI\_\-MOSI}}
+\index{SPI_MOSI@{SPI\_\-MOSI}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-MOSI]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-MOSI~( 1 $<$$<$ PORTB2 )}}
+\label{avrport_8h_7dbebab5f7dd57885adccf6711b13592}
+
+
+
+
+Definition at line 38 of file avrport.h.\hypertarget{avrport_8h_8112c985f7444e82198d7571ce0a9160}{
+\index{avrport.h@{avrport.h}!SPI_PORT@{SPI\_\-PORT}}
+\index{SPI_PORT@{SPI\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-PORT~PORTD}}
+\label{avrport_8h_8112c985f7444e82198d7571ce0a9160}
+
+
+
+
+Definition at line 34 of file avrport.h.\hypertarget{avrport_8h_81f0aae3c3a2adba06ac3b802b38915a}{
+\index{avrport.h@{avrport.h}!SPI_SS@{SPI\_\-SS}}
+\index{SPI_SS@{SPI\_\-SS}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SS]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SS~( 1 $<$$<$ PORTB0 )}}
+\label{avrport_8h_81f0aae3c3a2adba06ac3b802b38915a}
+
+
+
+
+Definition at line 36 of file avrport.h.\hypertarget{avrport_8h_62368df7fff939340101c98bc02525ff}{
+\index{avrport.h@{avrport.h}!SPI_SSN1_DIR@{SPI\_\-SSN1\_\-DIR}}
+\index{SPI_SSN1_DIR@{SPI\_\-SSN1\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN1\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN1\_\-DIR~DDRD}}
+\label{avrport_8h_62368df7fff939340101c98bc02525ff}
+
+
+
+
+Definition at line 59 of file avrport.h.\hypertarget{avrport_8h_b959c905c095d87bce0a87a131de7900}{
+\index{avrport.h@{avrport.h}!SPI_SSN1_PIN@{SPI\_\-SSN1\_\-PIN}}
+\index{SPI_SSN1_PIN@{SPI\_\-SSN1\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN1\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN1\_\-PIN~( 1 $<$$<$ PORTD6 )}}
+\label{avrport_8h_b959c905c095d87bce0a87a131de7900}
+
+
+
+
+Definition at line 60 of file avrport.h.\hypertarget{avrport_8h_29830dcabdc1fabea1e2d2c727475a76}{
+\index{avrport.h@{avrport.h}!SPI_SSN1_PORT@{SPI\_\-SSN1\_\-PORT}}
+\index{SPI_SSN1_PORT@{SPI\_\-SSN1\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN1\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN1\_\-PORT~PORTD}}
+\label{avrport_8h_29830dcabdc1fabea1e2d2c727475a76}
+
+
+
+
+Definition at line 58 of file avrport.h.\hypertarget{avrport_8h_1ecc33c84d91712a93369c81f34be365}{
+\index{avrport.h@{avrport.h}!SPI_SSN2_DIR@{SPI\_\-SSN2\_\-DIR}}
+\index{SPI_SSN2_DIR@{SPI\_\-SSN2\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN2\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN2\_\-DIR~DDRD}}
+\label{avrport_8h_1ecc33c84d91712a93369c81f34be365}
+
+
+
+
+Definition at line 63 of file avrport.h.\hypertarget{avrport_8h_358ca0e6842b441a7facf8bc6f96450a}{
+\index{avrport.h@{avrport.h}!SPI_SSN2_PIN@{SPI\_\-SSN2\_\-PIN}}
+\index{SPI_SSN2_PIN@{SPI\_\-SSN2\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN2\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN2\_\-PIN~( 1 $<$$<$ PORTD7 )}}
+\label{avrport_8h_358ca0e6842b441a7facf8bc6f96450a}
+
+
+
+
+Definition at line 64 of file avrport.h.\hypertarget{avrport_8h_aa7efe0add8b0d330ea5e2ca5632a4a2}{
+\index{avrport.h@{avrport.h}!SPI_SSN2_PORT@{SPI\_\-SSN2\_\-PORT}}
+\index{SPI_SSN2_PORT@{SPI\_\-SSN2\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SPI\_\-SSN2\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SSN2\_\-PORT~PORTD}}
+\label{avrport_8h_aa7efe0add8b0d330ea5e2ca5632a4a2}
+
+
+
+
+Definition at line 62 of file avrport.h.\hypertarget{avrport_8h_c3becfb12e1c5dfed5ac605007837c7a}{
+\index{avrport.h@{avrport.h}!SW0_DIR@{SW0\_\-DIR}}
+\index{SW0_DIR@{SW0\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SW0\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SW0\_\-DIR~DDRE}}
+\label{avrport_8h_c3becfb12e1c5dfed5ac605007837c7a}
+
+
+
+
+Definition at line 118 of file avrport.h.\hypertarget{avrport_8h_a59f6c431979d6a4e3077515387fd49b}{
+\index{avrport.h@{avrport.h}!SW0_IN@{SW0\_\-IN}}
+\index{SW0_IN@{SW0\_\-IN}!avrport.h@{avrport.h}}
+\subsubsection[SW0\_\-IN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW0\_\-IN~( PINE \& ( SW0\_\-PIN ))}}
+\label{avrport_8h_a59f6c431979d6a4e3077515387fd49b}
+
+
+
+
+Definition at line 121 of file avrport.h.\hypertarget{avrport_8h_1db7ea1df7a18b3749ee2eaaa2f2d0af}{
+\index{avrport.h@{avrport.h}!SW0_PIN@{SW0\_\-PIN}}
+\index{SW0_PIN@{SW0\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[SW0\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW0\_\-PIN~( 1 $<$$<$ PORTE6 )}}
+\label{avrport_8h_1db7ea1df7a18b3749ee2eaaa2f2d0af}
+
+
+
+
+Definition at line 120 of file avrport.h.\hypertarget{avrport_8h_fb251876f3784fcbfbfe45b725a2062e}{
+\index{avrport.h@{avrport.h}!SW0_PORT@{SW0\_\-PORT}}
+\index{SW0_PORT@{SW0\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SW0\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SW0\_\-PORT~PORTE}}
+\label{avrport_8h_fb251876f3784fcbfbfe45b725a2062e}
+
+
+
+
+Definition at line 119 of file avrport.h.\hypertarget{avrport_8h_250671ec09a9f180448d76d6b39c01f4}{
+\index{avrport.h@{avrport.h}!SW1_DIR@{SW1\_\-DIR}}
+\index{SW1_DIR@{SW1\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SW1\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SW1\_\-DIR~DDRE}}
+\label{avrport_8h_250671ec09a9f180448d76d6b39c01f4}
+
+
+
+
+Definition at line 123 of file avrport.h.\hypertarget{avrport_8h_3ff984d553b4955f6fde2a1b9330ee69}{
+\index{avrport.h@{avrport.h}!SW1_IN@{SW1\_\-IN}}
+\index{SW1_IN@{SW1\_\-IN}!avrport.h@{avrport.h}}
+\subsubsection[SW1\_\-IN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW1\_\-IN~( PINE \& ( SW1\_\-PIN ))}}
+\label{avrport_8h_3ff984d553b4955f6fde2a1b9330ee69}
+
+
+
+
+Definition at line 126 of file avrport.h.\hypertarget{avrport_8h_3b206753e7f7b2e482816b53c6b8600c}{
+\index{avrport.h@{avrport.h}!SW1_PIN@{SW1\_\-PIN}}
+\index{SW1_PIN@{SW1\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[SW1\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW1\_\-PIN~( 1 $<$$<$ PORTE3 )}}
+\label{avrport_8h_3b206753e7f7b2e482816b53c6b8600c}
+
+
+
+
+Definition at line 125 of file avrport.h.\hypertarget{avrport_8h_b8e25427647939c5e1d5db170d2e585a}{
+\index{avrport.h@{avrport.h}!SW1_PORT@{SW1\_\-PORT}}
+\index{SW1_PORT@{SW1\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SW1\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SW1\_\-PORT~PORTE}}
+\label{avrport_8h_b8e25427647939c5e1d5db170d2e585a}
+
+
+
+
+Definition at line 124 of file avrport.h.\hypertarget{avrport_8h_8e0e49dbcf7b251515d3699a4daf1d9f}{
+\index{avrport.h@{avrport.h}!SW2_DIR@{SW2\_\-DIR}}
+\index{SW2_DIR@{SW2\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[SW2\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define SW2\_\-DIR~DDRE}}
+\label{avrport_8h_8e0e49dbcf7b251515d3699a4daf1d9f}
+
+
+
+
+Definition at line 128 of file avrport.h.\hypertarget{avrport_8h_a7a6d07c801d1c9126a28cf8ce7b5689}{
+\index{avrport.h@{avrport.h}!SW2_IN@{SW2\_\-IN}}
+\index{SW2_IN@{SW2\_\-IN}!avrport.h@{avrport.h}}
+\subsubsection[SW2\_\-IN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW2\_\-IN~( PINE \& ( SW2\_\-PIN ))}}
+\label{avrport_8h_a7a6d07c801d1c9126a28cf8ce7b5689}
+
+
+
+
+Definition at line 131 of file avrport.h.\hypertarget{avrport_8h_5324908892138177958451638abfd1cc}{
+\index{avrport.h@{avrport.h}!SW2_PIN@{SW2\_\-PIN}}
+\index{SW2_PIN@{SW2\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[SW2\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define SW2\_\-PIN~( 1 $<$$<$ PORTE2 )}}
+\label{avrport_8h_5324908892138177958451638abfd1cc}
+
+
+
+
+Definition at line 130 of file avrport.h.\hypertarget{avrport_8h_be197d970d2a0a5252fe924a16f89478}{
+\index{avrport.h@{avrport.h}!SW2_PORT@{SW2\_\-PORT}}
+\index{SW2_PORT@{SW2\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[SW2\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define SW2\_\-PORT~PORTE}}
+\label{avrport_8h_be197d970d2a0a5252fe924a16f89478}
+
+
+
+
+Definition at line 129 of file avrport.h.\hypertarget{avrport_8h_af5f5b704fd6abf3ed4f7593c156f38b}{
+\index{avrport.h@{avrport.h}!TEST1_DIR@{TEST1\_\-DIR}}
+\index{TEST1_DIR@{TEST1\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[TEST1\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST1\_\-DIR~DDRF}}
+\label{avrport_8h_af5f5b704fd6abf3ed4f7593c156f38b}
+
+
+
+
+Definition at line 133 of file avrport.h.\hypertarget{avrport_8h_1444a43d7a507fd1c82a67606330591e}{
+\index{avrport.h@{avrport.h}!TEST1_PIN@{TEST1\_\-PIN}}
+\index{TEST1_PIN@{TEST1\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[TEST1\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST1\_\-PIN~( 1 $<$$<$ PORTF1 )}}
+\label{avrport_8h_1444a43d7a507fd1c82a67606330591e}
+
+
+
+
+Definition at line 135 of file avrport.h.\hypertarget{avrport_8h_b2446812f61fe7cd658f6154d104d838}{
+\index{avrport.h@{avrport.h}!TEST1_PORT@{TEST1\_\-PORT}}
+\index{TEST1_PORT@{TEST1\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[TEST1\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST1\_\-PORT~PORTF}}
+\label{avrport_8h_b2446812f61fe7cd658f6154d104d838}
+
+
+
+
+Definition at line 134 of file avrport.h.\hypertarget{avrport_8h_11d523bff2c6191cd69223dfeb89f0d1}{
+\index{avrport.h@{avrport.h}!TEST2_DIR@{TEST2\_\-DIR}}
+\index{TEST2_DIR@{TEST2\_\-DIR}!avrport.h@{avrport.h}}
+\subsubsection[TEST2\_\-DIR]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST2\_\-DIR~DDRF}}
+\label{avrport_8h_11d523bff2c6191cd69223dfeb89f0d1}
+
+
+
+
+Definition at line 137 of file avrport.h.\hypertarget{avrport_8h_fdc6418d60694b94b0f80ec5abcbdcc5}{
+\index{avrport.h@{avrport.h}!TEST2_PIN@{TEST2\_\-PIN}}
+\index{TEST2_PIN@{TEST2\_\-PIN}!avrport.h@{avrport.h}}
+\subsubsection[TEST2\_\-PIN]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST2\_\-PIN~( 1 $<$$<$ PORTF3 )}}
+\label{avrport_8h_fdc6418d60694b94b0f80ec5abcbdcc5}
+
+
+
+
+Definition at line 139 of file avrport.h.\hypertarget{avrport_8h_b007da424da9c1fc6453ba8a749a6f5c}{
+\index{avrport.h@{avrport.h}!TEST2_PORT@{TEST2\_\-PORT}}
+\index{TEST2_PORT@{TEST2\_\-PORT}!avrport.h@{avrport.h}}
+\subsubsection[TEST2\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST2\_\-PORT~PORTF}}
+\label{avrport_8h_b007da424da9c1fc6453ba8a749a6f5c}
+
+
+
+
+Definition at line 138 of file avrport.h.

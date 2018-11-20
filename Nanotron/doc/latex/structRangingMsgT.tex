@@ -1,0 +1,62 @@
+\hypertarget{structRangingMsgT}{
+\section{Ranging\-Msg\-T Struct Reference}
+\label{structRangingMsgT}\index{RangingMsgT@{RangingMsgT}}
+}
+Structure for the ranging result.  
+
+
+{\tt \#include $<$ntrxranging.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structRangingMsgT_b01dfcfbabc08a375ec34b2a79ce2f0c}{addr}
+\item 
+double \hyperlink{structRangingMsgT_b10eb73f4f5092f27dd38215cc59a748}{distance}
+\item 
+uint8\_\-t \hyperlink{structRangingMsgT_a90c066386e8e1ac2a4a08f88c958d68}{error}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Structure for the ranging result. 
+
+When a ranging cycle is finished a ranging result message will be send to the upper layer. The message will have the following format. 
+
+
+
+Definition at line 48 of file ntrxranging.h.
+
+\subsection{Field Documentation}
+\hypertarget{structRangingMsgT_b01dfcfbabc08a375ec34b2a79ce2f0c}{
+\index{RangingMsgT@{Ranging\-Msg\-T}!addr@{addr}}
+\index{addr@{addr}!RangingMsgT@{Ranging\-Msg\-T}}
+\subsubsection[addr]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{structRangingMsgT_b01dfcfbabc08a375ec34b2a79ce2f0c}{Ranging\-Msg\-T::addr}}}
+\label{structRangingMsgT_b01dfcfbabc08a375ec34b2a79ce2f0c}
+
+
+address of remote ranging station 
+
+Definition at line 52 of file ntrxranging.h.\hypertarget{structRangingMsgT_b10eb73f4f5092f27dd38215cc59a748}{
+\index{RangingMsgT@{Ranging\-Msg\-T}!distance@{distance}}
+\index{distance@{distance}!RangingMsgT@{Ranging\-Msg\-T}}
+\subsubsection[distance]{\setlength{\rightskip}{0pt plus 5cm}double \hyperlink{structRangingMsgT_b10eb73f4f5092f27dd38215cc59a748}{Ranging\-Msg\-T::distance}}}
+\label{structRangingMsgT_b10eb73f4f5092f27dd38215cc59a748}
+
+
+result of measurement 
+
+Definition at line 51 of file ntrxranging.h.\hypertarget{structRangingMsgT_a90c066386e8e1ac2a4a08f88c958d68}{
+\index{RangingMsgT@{Ranging\-Msg\-T}!error@{error}}
+\index{error@{error}!RangingMsgT@{Ranging\-Msg\-T}}
+\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{structRangingMsgT_a90c066386e8e1ac2a4a08f88c958d68}{Ranging\-Msg\-T::error}}}
+\label{structRangingMsgT_a90c066386e8e1ac2a4a08f88c958d68}
+
+
+status value of the ranging cycle 
+
+Definition at line 50 of file ntrxranging.h.
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+include/\hyperlink{ntrxranging_8h}{ntrxranging.h}\end{CompactItemize}

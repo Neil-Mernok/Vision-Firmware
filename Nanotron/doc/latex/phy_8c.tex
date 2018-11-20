@@ -1,0 +1,485 @@
+\hypertarget{phy_8c}{
+\section{phy/phy.c File Reference}
+\label{phy_8c}\index{phy/phy.c@{phy/phy.c}}
+}
+Functions for data transmission and reception. 
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include $<$portation.h$>$}\par
+{\tt \#include \char`\"{}phy.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxranging.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{phy_8c_c9a450f6226e00168d287bd34b251faf}{DEVKIT201\_\-CHANGE}~1
+\item 
+\#define \hyperlink{phy_8c_b06cd566fcc9e8b283acaed0cc071e4e}{Send\-Cfg\-Up}~($\ast$\hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up})
+\begin{CompactList}\small\item\em Callback function of upper layer. \item\end{CompactList}\item 
+\#define \hyperlink{phy_8c_badb57c6bc6421541792e1b8f9da9dc1}{TRIGGER\_\-LED\_\-CAL}()~;
+\item 
+\#define \hyperlink{phy_8c_a70a8e7cc44d594428850742b9200658}{TRIGGER\_\-LED\_\-ERR}()~;
+\item 
+\#define \hyperlink{phy_8c_18f4e60df12c59f933bc37b650b4a172}{TRIGGER\_\-LED\_\-RX}()~;
+\item 
+\#define \hyperlink{phy_8c_dcf6b1a7326dfd97fc6c1f3597efa888}{TRIGGER\_\-LED\_\-TX}()~;
+\item 
+\#define \hyperlink{phy_8c_8c52efc5de618140362a765625e1871c}{Update\-LEDs}()~;
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{phy_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{APLCallback} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Upstream message handling. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_b59de684a69bbd1a45fbfe6ddd7ff17f}{NTRXInterrupt} (void)
+\begin{CompactList}\small\item\em interrupt service routine for the nano\-LOC chip \item\end{CompactList}\item 
+void \hyperlink{phy_8c_3d739dbf4ac04244a50f49c5ce06f727}{NTRXSend\-Packet} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function send packets out. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_e68acaf37de209a988dc46b5ccb0368e}{PDCallback} (void)
+\begin{CompactList}\small\item\em Callback function for received messages. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_6209bbfd2b951c355afa0ee008523cca}{PDSap} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em This function processes all data request. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_65b5ffbaddd90d1dafb2ac869a9ba34e}{PHYInit} (void)
+\begin{CompactList}\small\item\em Initializing of module global variables. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8c_8f376b3e4de263568b32aeb78890d131}{PHYIs\-IDLE} (void)
+\begin{CompactList}\small\item\em Returns status of PHY and RANGING. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_da089b8d8079e3f72249bc86d7e0558b}{PHYPoll} (void)
+\begin{CompactList}\small\item\em polls the nano\-LOC chip for incomming messages \item\end{CompactList}\item 
+void \hyperlink{phy_8c_b70ab9d97192d8ebe998f534228bcb1a}{PHYRegister\-Callback} (\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} cb\-Msg)
+\begin{CompactList}\small\item\em Configuration of callback functions. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_4351f09dc34904ddc6d75fa36c2f5771}{PLMESap} (\hyperlink{structMsgT}{Msg\-T} $\ast$msg)
+\begin{CompactList}\small\item\em Physical layer management entety. \item\end{CompactList}\item 
+void \hyperlink{phy_8c_827799691336edf50f8e3607e2744764}{Testmode\-Off} (void)
+\begin{CompactList}\small\item\em Helper function to switch off test modes. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{phy_8c_785de78dfb9786e1b6c7be36c1d19041}{brdc\-Addr} = PHY\_\-BRDC\_\-ADDR
+\item 
+uint8\_\-t \hyperlink{phy_8c_726c1569e12dade6d73f9fcb47fb82bd}{buff\-Swapped} = FALSE
+\item 
+\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{phy_8c_56e2ecb817dfc44752d022a29d9e710c}{cache\-Addr}
+\item 
+uint8\_\-t \hyperlink{phy_8c_8be22dc0fd688aa9c6e0a4ba77fa7042}{last\_\-frame\-Type}
+\item 
+uint8\_\-t \hyperlink{phy_8c_7a8e3c8d3b55d837a2923d91209ea940}{last\-Arq\-Count}
+\item 
+\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{phy_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}
+\begin{CompactList}\small\item\em structure for all layer configuration settings \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} \hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up} = \&APLCallback
+\item 
+int16\_\-t \hyperlink{phy_8c_0b38592c042a3f62fe1d0381dc890d2f}{rcwd} = 0
+\item 
+volatile uint8\_\-t \hyperlink{phy_8c_30a724834e37ffa7a49a04e5378d17ee}{rx\-Irq}
+\item 
+uint32\_\-t \hyperlink{phy_8c_4a96d36a7921f3731872b0d56c9620fd}{ti\-Phy\-Rx\-Timeout}
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8c_7f3ef04f1f45c9c47380743a73bd0426}{ti\-Phy\-Rx\-Timeout\_\-once}
+\item 
+uint32\_\-t \hyperlink{phy_8c_e053622f1d4f8c24cbddc488ac40fa9d}{ti\-Recal}
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8c_78852dc58d0a7ec95f5393f3550478c5}{trx\-Poll\-Mode} = TRUE
+\item 
+volatile uint8\_\-t \hyperlink{phy_8c_2d2735c1e8ad83deefbb819ba3892aa6}{tx\-Irq}
+\item 
+\hyperlink{structMsgT}{Msg\-T} $\ast$ \hyperlink{phy_8c_c8a2e3eac97d762116052cf5cfdd2584}{tx\-Send\-Msg} = NULL
+\item 
+\hyperlink{structMsgT}{Msg\-T} \hyperlink{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for data transmission and reception. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-4 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This module contains all functions to operate the nano\-LOC chip.\end{Desc}
+\begin{Desc}
+\item[Revision]7207 \end{Desc}
+\begin{Desc}
+\item[Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+
+
+Definition in file \hyperlink{phy_8c-source}{phy.c}.
+
+\subsection{Define Documentation}
+\hypertarget{phy_8c_c9a450f6226e00168d287bd34b251faf}{
+\index{phy.c@{phy.c}!DEVKIT201_CHANGE@{DEVKIT201\_\-CHANGE}}
+\index{DEVKIT201_CHANGE@{DEVKIT201\_\-CHANGE}!phy.c@{phy.c}}
+\subsubsection[DEVKIT201\_\-CHANGE]{\setlength{\rightskip}{0pt plus 5cm}\#define DEVKIT201\_\-CHANGE~1}}
+\label{phy_8c_c9a450f6226e00168d287bd34b251faf}
+
+
+
+
+Definition at line 31 of file phy.c.\hypertarget{phy_8c_b06cd566fcc9e8b283acaed0cc071e4e}{
+\index{phy.c@{phy.c}!SendCfgUp@{SendCfgUp}}
+\index{SendCfgUp@{SendCfgUp}!phy.c@{phy.c}}
+\subsubsection[SendCfgUp]{\setlength{\rightskip}{0pt plus 5cm}\#define Send\-Cfg\-Up~($\ast$\hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up})}}
+\label{phy_8c_b06cd566fcc9e8b283acaed0cc071e4e}
+
+
+Callback function of upper layer. 
+
+This function is called when the physical layer wants to send configuration data to the next upper layer. This define is used to be able to add another layer. 
+
+Definition at line 42 of file phy.c.\hypertarget{phy_8c_badb57c6bc6421541792e1b8f9da9dc1}{
+\index{phy.c@{phy.c}!TRIGGER_LED_CAL@{TRIGGER\_\-LED\_\-CAL}}
+\index{TRIGGER_LED_CAL@{TRIGGER\_\-LED\_\-CAL}!phy.c@{phy.c}}
+\subsubsection[TRIGGER\_\-LED\_\-CAL]{\setlength{\rightskip}{0pt plus 5cm}\#define TRIGGER\_\-LED\_\-CAL()~;}}
+\label{phy_8c_badb57c6bc6421541792e1b8f9da9dc1}
+
+
+
+
+Definition at line 155 of file phy.c.\hypertarget{phy_8c_a70a8e7cc44d594428850742b9200658}{
+\index{phy.c@{phy.c}!TRIGGER_LED_ERR@{TRIGGER\_\-LED\_\-ERR}}
+\index{TRIGGER_LED_ERR@{TRIGGER\_\-LED\_\-ERR}!phy.c@{phy.c}}
+\subsubsection[TRIGGER\_\-LED\_\-ERR]{\setlength{\rightskip}{0pt plus 5cm}\#define TRIGGER\_\-LED\_\-ERR()~;}}
+\label{phy_8c_a70a8e7cc44d594428850742b9200658}
+
+
+
+
+Definition at line 154 of file phy.c.\hypertarget{phy_8c_18f4e60df12c59f933bc37b650b4a172}{
+\index{phy.c@{phy.c}!TRIGGER_LED_RX@{TRIGGER\_\-LED\_\-RX}}
+\index{TRIGGER_LED_RX@{TRIGGER\_\-LED\_\-RX}!phy.c@{phy.c}}
+\subsubsection[TRIGGER\_\-LED\_\-RX]{\setlength{\rightskip}{0pt plus 5cm}\#define TRIGGER\_\-LED\_\-RX()~;}}
+\label{phy_8c_18f4e60df12c59f933bc37b650b4a172}
+
+
+
+
+Definition at line 153 of file phy.c.\hypertarget{phy_8c_dcf6b1a7326dfd97fc6c1f3597efa888}{
+\index{phy.c@{phy.c}!TRIGGER_LED_TX@{TRIGGER\_\-LED\_\-TX}}
+\index{TRIGGER_LED_TX@{TRIGGER\_\-LED\_\-TX}!phy.c@{phy.c}}
+\subsubsection[TRIGGER\_\-LED\_\-TX]{\setlength{\rightskip}{0pt plus 5cm}\#define TRIGGER\_\-LED\_\-TX()~;}}
+\label{phy_8c_dcf6b1a7326dfd97fc6c1f3597efa888}
+
+
+
+
+Definition at line 152 of file phy.c.\hypertarget{phy_8c_8c52efc5de618140362a765625e1871c}{
+\index{phy.c@{phy.c}!UpdateLEDs@{UpdateLEDs}}
+\index{UpdateLEDs@{UpdateLEDs}!phy.c@{phy.c}}
+\subsubsection[UpdateLEDs]{\setlength{\rightskip}{0pt plus 5cm}\#define Update\-LEDs(void)~;}}
+\label{phy_8c_8c52efc5de618140362a765625e1871c}
+
+
+
+
+Definition at line 156 of file phy.c.
+
+\subsection{Function Documentation}
+\hypertarget{phy_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{
+\index{phy.c@{phy.c}!APLCallback@{APLCallback}}
+\index{APLCallback@{APLCallback}!phy.c@{phy.c}}
+\subsubsection[APLCallback]{\setlength{\rightskip}{0pt plus 5cm}void APLCallback (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}
+
+
+Upstream message handling. 
+
+\begin{Desc}
+\item[payload containing data]\end{Desc}
+\begin{Desc}
+\item[len length of payload]\end{Desc}
+Appl\-Callback represents the upstream part of the application. 
+
+Definition at line 119 of file app.c.\hypertarget{phy_8c_b59de684a69bbd1a45fbfe6ddd7ff17f}{
+\index{phy.c@{phy.c}!NTRXInterrupt@{NTRXInterrupt}}
+\index{NTRXInterrupt@{NTRXInterrupt}!phy.c@{phy.c}}
+\subsubsection[NTRXInterrupt]{\setlength{\rightskip}{0pt plus 5cm}void NTRXInterrupt (void)}}
+\label{phy_8c_b59de684a69bbd1a45fbfe6ddd7ff17f}
+
+
+interrupt service routine for the nano\-LOC chip 
+
+This function is an interrupt service routine of the nanochip. It updates the TX and RX status flags. 
+
+Definition at line 1414 of file phy.c.\hypertarget{phy_8c_3d739dbf4ac04244a50f49c5ce06f727}{
+\index{phy.c@{phy.c}!NTRXSendPacket@{NTRXSendPacket}}
+\index{NTRXSendPacket@{NTRXSendPacket}!phy.c@{phy.c}}
+\subsubsection[NTRXSendPacket]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSend\-Packet (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8c_3d739dbf4ac04244a50f49c5ce06f727}
+
+
+This function send packets out. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer\end{description}
+\end{Desc}
+This function is called ever on sending packets (e.g. PDSap). 
+
+Definition at line 277 of file phy.c.\hypertarget{phy_8c_e68acaf37de209a988dc46b5ccb0368e}{
+\index{phy.c@{phy.c}!PDCallback@{PDCallback}}
+\index{PDCallback@{PDCallback}!phy.c@{phy.c}}
+\subsubsection[PDCallback]{\setlength{\rightskip}{0pt plus 5cm}void PDCallback (void)}}
+\label{phy_8c_e68acaf37de209a988dc46b5ccb0368e}
+
+
+Callback function for received messages. 
+
+This function reads out the payload of a received message and calls the upper layer/application 
+
+Definition at line 1072 of file phy.c.\hypertarget{phy_8c_6209bbfd2b951c355afa0ee008523cca}{
+\index{phy.c@{phy.c}!PDSap@{PDSap}}
+\index{PDSap@{PDSap}!phy.c@{phy.c}}
+\subsubsection[PDSap]{\setlength{\rightskip}{0pt plus 5cm}void PDSap (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8c_6209bbfd2b951c355afa0ee008523cca}
+
+
+This function processes all data request. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the message pointer\end{description}
+\end{Desc}
+This function represents the service access point for data requests and ranging requests. When the primitive is set to {\em PD\_\-DATA\_\-REQUEST\/} all necessary actions are taken to copy the payload to the nano\-LOC chip and set the MAC header parameter in the corresponding registers. When all this is done the transmission will be initiated. In case of a transmission in progress, {\em PDSap\/} will reject the message and indicate a failure with the status {\em PHY\_\-BUSY\_\-TX\/}. 
+
+Definition at line 414 of file phy.c.\hypertarget{phy_8c_65b5ffbaddd90d1dafb2ac869a9ba34e}{
+\index{phy.c@{phy.c}!PHYInit@{PHYInit}}
+\index{PHYInit@{PHYInit}!phy.c@{phy.c}}
+\subsubsection[PHYInit]{\setlength{\rightskip}{0pt plus 5cm}void PHYInit (void)}}
+\label{phy_8c_65b5ffbaddd90d1dafb2ac869a9ba34e}
+
+
+Initializing of module global variables. 
+
+This function initializes all module global variables located in the physical layers parameter information base (phy\-PIB). The nano\-LOC chip has to be already initialized and in ready (idle) mode. The receiver is started and interrupts for CRC2 and Tx End and Rx End are enabled. 
+
+Definition at line 194 of file phy.c.\hypertarget{phy_8c_8f376b3e4de263568b32aeb78890d131}{
+\index{phy.c@{phy.c}!PHYIsIDLE@{PHYIsIDLE}}
+\index{PHYIsIDLE@{PHYIsIDLE}!phy.c@{phy.c}}
+\subsubsection[PHYIsIDLE]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} PHYIs\-IDLE (void)}}
+\label{phy_8c_8f376b3e4de263568b32aeb78890d131}
+
+
+Returns status of PHY and RANGING. 
+
+\begin{Desc}
+\item[Returns:]TRUE if phy and ranging in status IDLE. Used to check the status of the driver before going power down. \end{Desc}
+
+
+Definition at line 1484 of file phy.c.\hypertarget{phy_8c_da089b8d8079e3f72249bc86d7e0558b}{
+\index{phy.c@{phy.c}!PHYPoll@{PHYPoll}}
+\index{PHYPoll@{PHYPoll}!phy.c@{phy.c}}
+\subsubsection[PHYPoll]{\setlength{\rightskip}{0pt plus 5cm}void PHYPoll (void)}}
+\label{phy_8c_da089b8d8079e3f72249bc86d7e0558b}
+
+
+polls the nano\-LOC chip for incomming messages 
+
+This function is the main part of the the physical layer. It processes all interrupt flags and supervises the periodic recalibration. 
+
+Definition at line 1203 of file phy.c.\hypertarget{phy_8c_b70ab9d97192d8ebe998f534228bcb1a}{
+\index{phy.c@{phy.c}!PHYRegisterCallback@{PHYRegisterCallback}}
+\index{PHYRegisterCallback@{PHYRegisterCallback}!phy.c@{phy.c}}
+\subsubsection[PHYRegisterCallback]{\setlength{\rightskip}{0pt plus 5cm}void PHYRegister\-Callback (\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} {\em cb\-Msg})}}
+\label{phy_8c_b70ab9d97192d8ebe998f534228bcb1a}
+
+
+Configuration of callback functions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cb\-Msg}]Callback function pointer for the (protocol) message interface. If not set the PHY will call the function \hyperlink{phy_8c_57aab6145f8ecc5f7d87bd8c28b2fa31}{APLCallback} by default. \end{description}
+\end{Desc}
+
+
+Definition at line 1466 of file phy.c.\hypertarget{phy_8c_4351f09dc34904ddc6d75fa36c2f5771}{
+\index{phy.c@{phy.c}!PLMESap@{PLMESap}}
+\index{PLMESap@{PLMESap}!phy.c@{phy.c}}
+\subsubsection[PLMESap]{\setlength{\rightskip}{0pt plus 5cm}void PLMESap (\hyperlink{structMsgT}{Msg\-T} $\ast$ {\em msg})}}
+\label{phy_8c_4351f09dc34904ddc6d75fa36c2f5771}
+
+
+Physical layer management entety. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$msg}]this is the the message struct\end{description}
+\end{Desc}
+This function represents the service access point to configure the physical layer. All configuration parameters are stored in the physical layer parameter information base {\em phy\-PIB\/}. This function hides all necessarey steps to enable or disable certain features. With this function it is possible to set values but also to query the following settings:
+
+\hyperlink{phy_8h_7aa5aaf2dbac602a86581abb9ced8050}{PHY\_\-CURRENT\_\-CHANNEL} : the channel is a transmission mode defined in PHY\_\-TRX\_\-MODE \hyperlink{phy_8h_620db16976b8e2a9531e5489406a2104}{PHY\_\-TRX\_\-MODE} : a set of three parameters bandwidth, symbol duration and symbol rate \hyperlink{phy_8h_55f496a7288fce51bc0399390e79fd57}{PHY\_\-LOG\_\-CHANNEL} : is a predefined group of chip settings \hyperlink{phy_8h_7122ee6f5e2e7cbc255d8987616d739b}{PHY\_\-TX\_\-POWER} : output power setting \mbox{[} 0 - 63 \mbox{]} \hyperlink{phy_8h_8d94b6c99cee50b7d05983cac10c2ca7}{PHY\_\-ARQ} : hardware acknowledgement \hyperlink{phy_8h_8be6cf418473dda772282e0b866629d1}{PHY\_\-FEC} : forward error correction \hyperlink{phy_8h_004afc9174802865601082dc6e1af8c9}{PHY\_\-MAC\_\-ADDRESS1} : 1st MAC address for address matching \hyperlink{phy_8h_99e4d9dc6a8b51bf8b04ef664f80779a}{PHY\_\-MAC\_\-ADDRESS2} : 2nd MAC address for address matching \hyperlink{phy_8h_ac066b5099937aae1cb278f8f52be5a9}{PHY\_\-TX\_\-ADDR\_\-SELECT} : select the MAC address as sender address \hyperlink{phy_8h_b5b0458a6477d70a1c46842b81fe032f}{PHY\_\-ADDR\_\-MATCHING} : address matching or promiscuous mode \hyperlink{phy_8h_01a38f9c8691e82437a934318322a752}{PHY\_\-PWR\_\-DOWN\_\-MODE} : set operational mode \hyperlink{phy_8h_8b082e37fed8f517f12d07e246a9998d}{PHY\_\-RECALIBRATION} : recalibration interval \hyperlink{phy_8h_2f4fb9bf18cdd9192422e007ba2e908c}{PHY\_\-FRAME\_\-TYPE} : set frame types that will be handled by the nano\-LOC chip 
+
+Definition at line 521 of file phy.c.\hypertarget{phy_8c_827799691336edf50f8e3607e2744764}{
+\index{phy.c@{phy.c}!TestmodeOff@{TestmodeOff}}
+\index{TestmodeOff@{TestmodeOff}!phy.c@{phy.c}}
+\subsubsection[TestmodeOff]{\setlength{\rightskip}{0pt plus 5cm}void Testmode\-Off (void)}}
+\label{phy_8c_827799691336edf50f8e3607e2744764}
+
+
+Helper function to switch off test modes. 
+
+This function switches off a previously enabled test mode. Note: Only one test mode at a time can be enabled. 
+
+Definition at line 481 of file phy.c.
+
+\subsection{Variable Documentation}
+\hypertarget{phy_8c_785de78dfb9786e1b6c7be36c1d19041}{
+\index{phy.c@{phy.c}!brdcAddr@{brdcAddr}}
+\index{brdcAddr@{brdcAddr}!phy.c@{phy.c}}
+\subsubsection[brdcAddr]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{phy_8c_785de78dfb9786e1b6c7be36c1d19041}{brdc\-Addr} = PHY\_\-BRDC\_\-ADDR}}
+\label{phy_8c_785de78dfb9786e1b6c7be36c1d19041}
+
+
+broadcast address 
+
+Definition at line 176 of file phy.c.\hypertarget{phy_8c_726c1569e12dade6d73f9fcb47fb82bd}{
+\index{phy.c@{phy.c}!buffSwapped@{buffSwapped}}
+\index{buffSwapped@{buffSwapped}!phy.c@{phy.c}}
+\subsubsection[buffSwapped]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{phy_8c_726c1569e12dade6d73f9fcb47fb82bd}{buff\-Swapped} = FALSE}}
+\label{phy_8c_726c1569e12dade6d73f9fcb47fb82bd}
+
+
+swap buffer state for accessing the right memory block 
+
+Definition at line 174 of file phy.c.\hypertarget{phy_8c_56e2ecb817dfc44752d022a29d9e710c}{
+\index{phy.c@{phy.c}!cacheAddr@{cacheAddr}}
+\index{cacheAddr@{cacheAddr}!phy.c@{phy.c}}
+\subsubsection[cacheAddr]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_9763ea343e88d0129a49347a4b2ff676}{Addr\-T} \hyperlink{phy_8c_56e2ecb817dfc44752d022a29d9e710c}{cache\-Addr}}}
+\label{phy_8c_56e2ecb817dfc44752d022a29d9e710c}
+
+
+destination address 
+
+Definition at line 175 of file phy.c.\hypertarget{phy_8c_8be22dc0fd688aa9c6e0a4ba77fa7042}{
+\index{phy.c@{phy.c}!last_frameType@{last\_\-frameType}}
+\index{last_frameType@{last\_\-frameType}!phy.c@{phy.c}}
+\subsubsection[last\_\-frameType]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{phy_8c_8be22dc0fd688aa9c6e0a4ba77fa7042}{last\_\-frame\-Type}}}
+\label{phy_8c_8be22dc0fd688aa9c6e0a4ba77fa7042}
+
+
+last frame\-Type 
+
+Definition at line 177 of file phy.c.\hypertarget{phy_8c_7a8e3c8d3b55d837a2923d91209ea940}{
+\index{phy.c@{phy.c}!lastArqCount@{lastArqCount}}
+\index{lastArqCount@{lastArqCount}!phy.c@{phy.c}}
+\subsubsection[lastArqCount]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{phy_8c_7a8e3c8d3b55d837a2923d91209ea940}{last\-Arq\-Count}}}
+\label{phy_8c_7a8e3c8d3b55d837a2923d91209ea940}
+
+
+number of retransmissions of last transmitted message. 
+
+Definition at line 171 of file phy.c.\hypertarget{phy_8c_c6bf7bba136f1383deb2932be153b881}{
+\index{phy.c@{phy.c}!phyPIB@{phyPIB}}
+\index{phyPIB@{phyPIB}!phy.c@{phy.c}}
+\subsubsection[phyPIB]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}}}
+\label{phy_8c_c6bf7bba136f1383deb2932be153b881}
+
+
+structure for all layer configuration settings 
+
+
+
+Definition at line 182 of file phy.c.\hypertarget{phy_8c_d978f7ee674fb95595d77d2966423a8e}{
+\index{phy.c@{phy.c}!phySendMsgUp@{phySendMsgUp}}
+\index{phySendMsgUp@{phySendMsgUp}!phy.c@{phy.c}}
+\subsubsection[phySendMsgUp]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_10be15f806ba2b998eabaa78f85402ea}{callbackfn\_\-t} \hyperlink{phy_8c_d978f7ee674fb95595d77d2966423a8e}{phy\-Send\-Msg\-Up} = \&APLCallback}}
+\label{phy_8c_d978f7ee674fb95595d77d2966423a8e}
+
+
+used to send msg to upper layer =$>$ \hyperlink{phy_8c}{phy.c} 
+
+Definition at line 161 of file phy.c.\hypertarget{phy_8c_0b38592c042a3f62fe1d0381dc890d2f}{
+\index{phy.c@{phy.c}!rcwd@{rcwd}}
+\index{rcwd@{rcwd}!phy.c@{phy.c}}
+\subsubsection[rcwd]{\setlength{\rightskip}{0pt plus 5cm}int16\_\-t \hyperlink{phy_8c_0b38592c042a3f62fe1d0381dc890d2f}{rcwd} = 0}}
+\label{phy_8c_0b38592c042a3f62fe1d0381dc890d2f}
+
+
+retransmission counter for dynamic recalibration. 
+
+Definition at line 167 of file phy.c.\hypertarget{phy_8c_30a724834e37ffa7a49a04e5378d17ee}{
+\index{phy.c@{phy.c}!rxIrq@{rxIrq}}
+\index{rxIrq@{rxIrq}!phy.c@{phy.c}}
+\subsubsection[rxIrq]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\_\-t \hyperlink{phy_8c_30a724834e37ffa7a49a04e5378d17ee}{rx\-Irq}}}
+\label{phy_8c_30a724834e37ffa7a49a04e5378d17ee}
+
+
+rx interrupt status register. 
+
+Definition at line 179 of file phy.c.\hypertarget{phy_8c_4a96d36a7921f3731872b0d56c9620fd}{
+\index{phy.c@{phy.c}!tiPhyRxTimeout@{tiPhyRxTimeout}}
+\index{tiPhyRxTimeout@{tiPhyRxTimeout}!phy.c@{phy.c}}
+\subsubsection[tiPhyRxTimeout]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \hyperlink{phy_8c_4a96d36a7921f3731872b0d56c9620fd}{ti\-Phy\-Rx\-Timeout}}}
+\label{phy_8c_4a96d36a7921f3731872b0d56c9620fd}
+
+
+timestamp of last rx. 
+
+Definition at line 169 of file phy.c.\hypertarget{phy_8c_7f3ef04f1f45c9c47380743a73bd0426}{
+\index{phy.c@{phy.c}!tiPhyRxTimeout_once@{tiPhyRxTimeout\_\-once}}
+\index{tiPhyRxTimeout_once@{tiPhyRxTimeout\_\-once}!phy.c@{phy.c}}
+\subsubsection[tiPhyRxTimeout\_\-once]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8c_7f3ef04f1f45c9c47380743a73bd0426}{ti\-Phy\-Rx\-Timeout\_\-once}}}
+\label{phy_8c_7f3ef04f1f45c9c47380743a73bd0426}
+
+
+report only once time 
+
+Definition at line 170 of file phy.c.\hypertarget{phy_8c_e053622f1d4f8c24cbddc488ac40fa9d}{
+\index{phy.c@{phy.c}!tiRecal@{tiRecal}}
+\index{tiRecal@{tiRecal}!phy.c@{phy.c}}
+\subsubsection[tiRecal]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \hyperlink{phy_8c_e053622f1d4f8c24cbddc488ac40fa9d}{ti\-Recal}}}
+\label{phy_8c_e053622f1d4f8c24cbddc488ac40fa9d}
+
+
+timestamp of last calibration. 
+
+Definition at line 168 of file phy.c.\hypertarget{phy_8c_78852dc58d0a7ec95f5393f3550478c5}{
+\index{phy.c@{phy.c}!trxPollMode@{trxPollMode}}
+\index{trxPollMode@{trxPollMode}!phy.c@{phy.c}}
+\subsubsection[trxPollMode]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{phy_8c_78852dc58d0a7ec95f5393f3550478c5}{trx\-Poll\-Mode} = TRUE}}
+\label{phy_8c_78852dc58d0a7ec95f5393f3550478c5}
+
+
+flag for irq polling. 
+
+Definition at line 173 of file phy.c.\hypertarget{phy_8c_2d2735c1e8ad83deefbb819ba3892aa6}{
+\index{phy.c@{phy.c}!txIrq@{txIrq}}
+\index{txIrq@{txIrq}!phy.c@{phy.c}}
+\subsubsection[txIrq]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\_\-t \hyperlink{phy_8c_2d2735c1e8ad83deefbb819ba3892aa6}{tx\-Irq}}}
+\label{phy_8c_2d2735c1e8ad83deefbb819ba3892aa6}
+
+
+tx interrupt status register. 
+
+Definition at line 178 of file phy.c.\hypertarget{phy_8c_c8a2e3eac97d762116052cf5cfdd2584}{
+\index{phy.c@{phy.c}!txSendMsg@{txSendMsg}}
+\index{txSendMsg@{txSendMsg}!phy.c@{phy.c}}
+\subsubsection[txSendMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T}$\ast$ \hyperlink{phy_8c_c8a2e3eac97d762116052cf5cfdd2584}{tx\-Send\-Msg} = NULL}}
+\label{phy_8c_c8a2e3eac97d762116052cf5cfdd2584}
+
+
+pointer to store last transmitted message. 
+
+Definition at line 172 of file phy.c.\hypertarget{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{
+\index{phy.c@{phy.c}!upMsg@{upMsg}}
+\index{upMsg@{upMsg}!phy.c@{phy.c}}
+\subsubsection[upMsg]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structMsgT}{Msg\-T} \hyperlink{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}{up\-Msg}}}
+\label{phy_8c_97bc9a3f01dfc7d193c5f9e80abc409d}
+
+
+message struct for all received data. 
+
+Definition at line 166 of file phy.c.

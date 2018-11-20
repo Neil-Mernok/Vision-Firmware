@@ -1,0 +1,678 @@
+\hypertarget{ntrxutil_8c}{
+\section{phy/ntrxutil.c File Reference}
+\label{ntrxutil_8c}\index{phy/ntrxutil.c@{phy/ntrxutil.c}}
+}
+Functions for the physical layer helper functions. 
+
+{\tt \#include \char`\"{}portation.h\char`\"{}}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxtypes.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxutil.h\char`\"{}}\par
+{\tt \#include \char`\"{}hwclock.h\char`\"{}}\par
+{\tt \#include \char`\"{}nnspi.h\char`\"{}}\par
+{\tt \#include \char`\"{}ntrxiqpar.h\char`\"{}}\par
+{\tt \#include \char`\"{}phy.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{ntrxutil_8c_0c33b494a68ce28497e7ce8e5e95feff}{CONST}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxutil_8c_6d8e2c60fb416cec7194fadd249e795a}{NTRXAll\-Calibration} (void)
+\begin{CompactList}\small\item\em calibrates the local ocsillator. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxutil_8c_0847745ceda08c83f1f3cf300b984d9d}{NTRXAll\-Fake\-Calibration} (void)
+\begin{CompactList}\small\item\em copy values from last calibration into chip. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxutil_8c_07f33ebf6bc4fac5b163c248f91611df}{NTRXCheck\-Ver\-Rev} (void)
+\begin{CompactList}\small\item\em read out version an revision of the transceiver chip. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_e743a8064b035e44fa2af809a27da584}{NTRXDio\-Output32k\-Hz} (uint8\_\-t bits)
+\begin{CompactList}\small\item\em enable diio\mbox{[}3:0\mbox{]} as output with 32khz \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_d6369f182675dd1e98e5fed7e0e05d4d}{NTRXFct\-Cal} (void)
+\begin{CompactList}\small\item\em sets the capacitors to tune the frequency. \item\end{CompactList}\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_35b0d27a9f5a5dcd7d9e46c6a1970c99}{NTRXGet\-Rssi} (void)
+\item 
+uint32\_\-t \hyperlink{ntrxutil_8c_44b0ba35f9e47e813e3a11310b95ce44}{NTRXGet\-Rtc} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} force)
+\begin{CompactList}\small\item\em read out the real time clock of the transceiver. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxutil_8c_23c06a6934d32b57c4b39d5063d1d871}{NTRXGet\-Rx\-Crc2Mode} (void)
+\begin{CompactList}\small\item\em returns the setting vor the CRC-2 mode of the transceiver chip. \item\end{CompactList}\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_7458f8d0da6f7eb7fcfdf868cd0c05f4}{NTRXGet\-Tx\-Arq\-Max} (void)
+\begin{CompactList}\small\item\em read out number of retransmission attempts. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_bd913455c1c24ec5d15fc2226de34898}{NTRXInit\-Shadow\-Register} (void)
+\begin{CompactList}\small\item\em initialize shadow registers. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_f27da11539ad8929d64a9d2d941e6b45}{NTRXPowerdown\-Mode} (uint8\_\-t mode, uint32\_\-t ms)
+\begin{CompactList}\small\item\em read out the real time clock of the transceiver. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_7c4c27e7d7678f2f7eafc92139777c51}{NTRXPowerdown\-Mode\-DIO} (uint8\_\-t mode, uint8\_\-t dio)
+\item 
+void \hyperlink{ntrxutil_8c_a951d3979e2011b8ae4828ff5223cad2}{NTRXPowerup\-From\-Pad\-Mode} (void)
+\item 
+void \hyperlink{ntrxutil_8c_b6210a43be458494b5ead05fa7e425b6}{NTRXReset\-Settings} (void)
+\begin{CompactList}\small\item\em resets the transmission mode parameters. \item\end{CompactList}\item 
+\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} \hyperlink{ntrxutil_8c_fd2f196571a23f6216826995951a2a5c}{NTRXRestart} (void)
+\item 
+void \hyperlink{ntrxutil_8c_bac26a4544bb61d39bb7fb015fa4cf78}{NTRXRXEnable} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} enable)
+\item 
+void \hyperlink{ntrxutil_8c_38d911533e4aceb823fca919c396d744}{NTRXRx\-Lo\-Calibration} (void)
+\begin{CompactList}\small\item\em calibrates the local ocsillator. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_21cb928b0910afd6e744a893b502e012}{NTRXSet\-Channel} (uint8\_\-t value)
+\begin{CompactList}\small\item\em set the logical channel. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_ad931140ac5ed6370a13177d3a08f9b9}{NTRXSet\-Index\-Reg} (uint8\_\-t page)
+\begin{CompactList}\small\item\em set the index register. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_82c4119d655f0f451bfb8efcd96301cb}{NTRXSet\-Ram\-Index} (uint8\_\-t page)
+\begin{CompactList}\small\item\em set the index register. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_fb2f520b9b54c03a2ec5c06cce7b5d6f}{NTRXSet\-Sync\-Word} (uint8\_\-t $\ast$value)
+\begin{CompactList}\small\item\em sets the sync word in the transceiver. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_e81c24844a8074d0f3be35da317db1aa}{NTRXSet\-Test\-Carrier\-Mode} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} value)
+\begin{CompactList}\small\item\em Carriermode for chip measurement. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_ef07ce2340c54c6e3daa440106d3024e}{NTRXSet\-Test\-Chirp\-Mode} (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} value)
+\begin{CompactList}\small\item\em Testmode for chip measurement. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_ed23913bce8ac3852caa701bdf5aa8d0}{NTRXSetup\-Trx\-Mode} (uint8\_\-t fdma, uint8\_\-t sd, uint8\_\-t sr)
+\begin{CompactList}\small\item\em sets transmission mode in the transceiver. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_fd37114ab335e910d9ca6b2815d77881}{NTRXStart\-Bb\-Timer} (int16\_\-t startvalue)
+\begin{CompactList}\small\item\em starts the baseband timer. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_39343ab27d7e694fdc0fe0521883a012}{NTRXStop\-Bb\-Timer} (void)
+\begin{CompactList}\small\item\em stops the baseband timer. \item\end{CompactList}\item 
+void \hyperlink{ntrxutil_8c_9fa006b6e0a992659172d2fb1c3bd852}{NTRXTx\-Lo\-Calibration} (void)
+\begin{CompactList}\small\item\em calibrates the local ocsillator. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_4226a24a3cb2784055856694f532b2e5}{lfdma} = 0
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_6b4f3536ed550159bc1f96adc2bf68d8}{lo\-Tar\-Val} \mbox{[}5\mbox{]}\mbox{[}2\mbox{]}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_68eedcf9dfd2eb1555ecbb6f8f5fbde5}{lo\-Tar\-Val\-Rx} \mbox{[}2\mbox{]} = \{0x6f, 0x68\}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_812b45df18aed2227eece7309f2d9bad}{lo\-Tar\-Val\-Rx\_\-418k\-Hz} \mbox{[}$\,$\mbox{]} = \{0x5c, 0x68\}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_7dd4465d6b995dfdf1fb5cd6a6c37067}{lo\-Tar\-Val\-Tx} \mbox{[}2\mbox{]} = \{0x59, 0x68\}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_bc5f11b4679d0801a542ad345fe9966f}{lsd} = 0
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_b1a27e42dd2b3713ee7b37a1037b4c8d}{lsr} = 0
+\item 
+\hyperlink{structPhyModeSetT}{Phy\-Mode\-Set\-T} \hyperlink{ntrxutil_8c_93806a2ab72ce9ba673c0ac29fd87395}{mode\-Set}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_bfdbd671d2e178256cea6cef7f16963b}{ntrx\-BBStatus}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_a451266a323263f11153845381597545}{ntrx\-Irq\-Status} \mbox{[}2\mbox{]}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_e1c9a830dc25ae16c2321e7b0c2c9279}{ntrx\-Shadow\-Reg} \mbox{[}SHADOWREGCOUNT\mbox{]}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_5faba542d732fa5f7f914a969acc0ca3}{ntrx\-State}
+\item 
+\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{ntrxutil_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}
+\begin{CompactList}\small\item\em structure for all layer configuration settings \item\end{CompactList}\item 
+uint8\_\-t ntrx\-Init\-Shadow\-Reg\mbox{[}$\,$\mbox{]} \hyperlink{ntrxutil_8c_23a7d198d0c26e71808db4e84d968e75}{PROGMEM}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_77faed8385bd61ab7f6e03111f00760a}{rx\_\-caps} \mbox{[}3\mbox{]} = \{0,0,0\}
+\item 
+uint8\_\-t \hyperlink{ntrxutil_8c_85ec6e1480a4a8fe92fdcd722d48d2c8}{tx\_\-caps} \mbox{[}3\mbox{]} = \{0,0,0\}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for the physical layer helper functions. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-4 \end{Desc}
+\begin{Desc}
+\item[Author:]S.Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the source code for the implementation of the NTRX helper functions\end{Desc}
+\begin{Desc}
+\item[Revision]7207 \end{Desc}
+\begin{Desc}
+\item[Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-By]sra \end{Desc}
+\begin{Desc}
+\item[Last\-Changed\-Date]2009-11-25 10:58:46 +0100 (Mi, 25 Nov 2009) \end{Desc}
+
+
+Definition in file \hyperlink{ntrxutil_8c-source}{ntrxutil.c}.
+
+\subsection{Define Documentation}
+\hypertarget{ntrxutil_8c_0c33b494a68ce28497e7ce8e5e95feff}{
+\index{ntrxutil.c@{ntrxutil.c}!CONST@{CONST}}
+\index{CONST@{CONST}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[CONST]{\setlength{\rightskip}{0pt plus 5cm}\#define CONST}}
+\label{ntrxutil_8c_0c33b494a68ce28497e7ce8e5e95feff}
+
+
+
+
+Definition at line 35 of file ntrxutil.c.
+
+\subsection{Function Documentation}
+\hypertarget{ntrxutil_8c_6d8e2c60fb416cec7194fadd249e795a}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXAllCalibration@{NTRXAllCalibration}}
+\index{NTRXAllCalibration@{NTRXAllCalibration}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXAllCalibration]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXAll\-Calibration (void)}}
+\label{ntrxutil_8c_6d8e2c60fb416cec7194fadd249e795a}
+
+
+calibrates the local ocsillator. 
+
+This function callibrates the local oscillator for both the transmitter and the receiver part. This function should be called regularly to maintain a stable and in spec transmission. 
+
+Definition at line 325 of file ntrxutil.c.\hypertarget{ntrxutil_8c_0847745ceda08c83f1f3cf300b984d9d}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXAllFakeCalibration@{NTRXAllFakeCalibration}}
+\index{NTRXAllFakeCalibration@{NTRXAllFakeCalibration}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXAllFakeCalibration]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXAll\-Fake\-Calibration (void)}}
+\label{ntrxutil_8c_0847745ceda08c83f1f3cf300b984d9d}
+
+
+copy values from last calibration into chip. 
+
+
+
+Definition at line 308 of file ntrxutil.c.\hypertarget{ntrxutil_8c_07f33ebf6bc4fac5b163c248f91611df}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXCheckVerRev@{NTRXCheckVerRev}}
+\index{NTRXCheckVerRev@{NTRXCheckVerRev}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXCheckVerRev]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXCheck\-Ver\-Rev (void)}}
+\label{ntrxutil_8c_07f33ebf6bc4fac5b163c248f91611df}
+
+
+read out version an revision of the transceiver chip. 
+
+\begin{Desc}
+\item[Returns:]TRUE if equal, False if not equal or SPI access failed.\end{Desc}
+This function compares the version and revision register with the expected Version and Revision number from the software. 
+
+Definition at line 364 of file ntrxutil.c.\hypertarget{ntrxutil_8c_e743a8064b035e44fa2af809a27da584}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXDioOutput32kHz@{NTRXDioOutput32kHz}}
+\index{NTRXDioOutput32kHz@{NTRXDioOutput32kHz}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXDioOutput32kHz]{\setlength{\rightskip}{0pt plus 5cm}void NTRXDio\-Output32k\-Hz (uint8\_\-t {\em bits})}}
+\label{ntrxutil_8c_e743a8064b035e44fa2af809a27da584}
+
+
+enable diio\mbox{[}3:0\mbox{]} as output with 32khz 
+
+
+
+Definition at line 979 of file ntrxutil.c.\hypertarget{ntrxutil_8c_d6369f182675dd1e98e5fed7e0e05d4d}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXFctCal@{NTRXFctCal}}
+\index{NTRXFctCal@{NTRXFctCal}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXFctCal]{\setlength{\rightskip}{0pt plus 5cm}void NTRXFct\-Cal (void)}}
+\label{ntrxutil_8c_d6369f182675dd1e98e5fed7e0e05d4d}
+
+
+sets the capacitors to tune the frequency. 
+
+This function executes the recommended procedure to tune the frequency by en- and disableing capacitors. 
+
+Definition at line 425 of file ntrxutil.c.\hypertarget{ntrxutil_8c_35b0d27a9f5a5dcd7d9e46c6a1970c99}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXGetRssi@{NTRXGetRssi}}
+\index{NTRXGetRssi@{NTRXGetRssi}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXGetRssi]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t NTRXGet\-Rssi (void)}}
+\label{ntrxutil_8c_35b0d27a9f5a5dcd7d9e46c6a1970c99}
+
+
+
+
+Definition at line 1038 of file ntrxutil.c.\hypertarget{ntrxutil_8c_44b0ba35f9e47e813e3a11310b95ce44}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXGetRtc@{NTRXGetRtc}}
+\index{NTRXGetRtc@{NTRXGetRtc}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXGetRtc]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t NTRXGet\-Rtc (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em force})}}
+\label{ntrxutil_8c_44b0ba35f9e47e813e3a11310b95ce44}
+
+
+read out the real time clock of the transceiver. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em force}]== TRUE lets the function read the RTC anyway \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the time in 1/32768 seconds (ca. 30 us)\end{Desc}
+This function reads out the real time clock of the transceiver 
+
+$<$ stores the last RTC value
+
+$<$ stores the hwclock value when RTC was read 
+
+Definition at line 654 of file ntrxutil.c.\hypertarget{ntrxutil_8c_23c06a6934d32b57c4b39d5063d1d871}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXGetRxCrc2Mode@{NTRXGetRxCrc2Mode}}
+\index{NTRXGetRxCrc2Mode@{NTRXGetRxCrc2Mode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXGetRxCrc2Mode]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXGet\-Rx\-Crc2Mode (void)}}
+\label{ntrxutil_8c_23c06a6934d32b57c4b39d5063d1d871}
+
+
+returns the setting vor the CRC-2 mode of the transceiver chip. 
+
+\begin{Desc}
+\item[Returns:]On (TRUE) or Off (FALSE).\end{Desc}
+This function returns the CRC-2 mode settings in the transceiver chip. The value is taken from the shadow ram. 
+
+Definition at line 410 of file ntrxutil.c.\hypertarget{ntrxutil_8c_7458f8d0da6f7eb7fcfdf868cd0c05f4}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXGetTxArqMax@{NTRXGetTxArqMax}}
+\index{NTRXGetTxArqMax@{NTRXGetTxArqMax}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXGetTxArqMax]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t NTRXGet\-Tx\-Arq\-Max (void)}}
+\label{ntrxutil_8c_7458f8d0da6f7eb7fcfdf868cd0c05f4}
+
+
+read out number of retransmission attempts. 
+
+\begin{Desc}
+\item[Returns:]tx arq maximum value in the range of (0x0...0x\-E).\end{Desc}
+This function returns the number of packet retransmissions used by the nano\-LOC chip. The value is taken from the shadow ram. 
+
+Definition at line 396 of file ntrxutil.c.\hypertarget{ntrxutil_8c_bd913455c1c24ec5d15fc2226de34898}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXInitShadowRegister@{NTRXInitShadowRegister}}
+\index{NTRXInitShadowRegister@{NTRXInitShadowRegister}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXInitShadowRegister]{\setlength{\rightskip}{0pt plus 5cm}void NTRXInit\-Shadow\-Register (void)}}
+\label{ntrxutil_8c_bd913455c1c24ec5d15fc2226de34898}
+
+
+initialize shadow registers. 
+
+This function initializes the shadow register array to the initial values in the transceiver when it is powered up or reset. 
+
+Definition at line 120 of file ntrxutil.c.\hypertarget{ntrxutil_8c_f27da11539ad8929d64a9d2d941e6b45}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXPowerdownMode@{NTRXPowerdownMode}}
+\index{NTRXPowerdownMode@{NTRXPowerdownMode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXPowerdownMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPowerdown\-Mode (uint8\_\-t {\em mode}, uint32\_\-t {\em ms})}}
+\label{ntrxutil_8c_f27da11539ad8929d64a9d2d941e6b45}
+
+
+read out the real time clock of the transceiver. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mode}]0 is full and 1 is for pad mode \item[{\em seconds}]wake up time from now\end{description}
+\end{Desc}
+This function starts the alarm clock if the parameter seconds is greater than 0 and brings the transceiver into the requested powerdown mode. There are two powerdown modes supported: powerdown mode full and powerdown mode pad. The second mode can be used to supervise the dig-IO pins of the nano\-LOC chip. 
+
+Definition at line 707 of file ntrxutil.c.\hypertarget{ntrxutil_8c_7c4c27e7d7678f2f7eafc92139777c51}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXPowerdownModeDIO@{NTRXPowerdownModeDIO}}
+\index{NTRXPowerdownModeDIO@{NTRXPowerdownModeDIO}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXPowerdownModeDIO]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPowerdown\-Mode\-DIO (uint8\_\-t {\em mode}, uint8\_\-t {\em dio})}}
+\label{ntrxutil_8c_7c4c27e7d7678f2f7eafc92139777c51}
+
+
+
+
+Definition at line 931 of file ntrxutil.c.\hypertarget{ntrxutil_8c_a951d3979e2011b8ae4828ff5223cad2}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXPowerupFromPadMode@{NTRXPowerupFromPadMode}}
+\index{NTRXPowerupFromPadMode@{NTRXPowerupFromPadMode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXPowerupFromPadMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXPowerup\-From\-Pad\-Mode (void)}}
+\label{ntrxutil_8c_a951d3979e2011b8ae4828ff5223cad2}
+
+
+
+
+Definition at line 916 of file ntrxutil.c.\hypertarget{ntrxutil_8c_b6210a43be458494b5ead05fa7e425b6}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXResetSettings@{NTRXResetSettings}}
+\index{NTRXResetSettings@{NTRXResetSettings}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXResetSettings]{\setlength{\rightskip}{0pt plus 5cm}void NTRXReset\-Settings (void)}}
+\label{ntrxutil_8c_b6210a43be458494b5ead05fa7e425b6}
+
+
+resets the transmission mode parameters. 
+
+This function sets the three parameters that define a transmission mode. 
+
+Definition at line 104 of file ntrxutil.c.\hypertarget{ntrxutil_8c_fd2f196571a23f6216826995951a2a5c}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXRestart@{NTRXRestart}}
+\index{NTRXRestart@{NTRXRestart}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXRestart]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} NTRXRestart (void)}}
+\label{ntrxutil_8c_fd2f196571a23f6216826995951a2a5c}
+
+
+\hypertarget{ntrxutil_8c_bac26a4544bb61d39bb7fb015fa4cf78}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXRXEnable@{NTRXRXEnable}}
+\index{NTRXRXEnable@{NTRXRXEnable}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXRXEnable]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRXEnable (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em enable})}}
+\label{ntrxutil_8c_bac26a4544bb61d39bb7fb015fa4cf78}
+
+
+
+
+Definition at line 1004 of file ntrxutil.c.\hypertarget{ntrxutil_8c_38d911533e4aceb823fca919c396d744}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXRxLoCalibration@{NTRXRxLoCalibration}}
+\index{NTRXRxLoCalibration@{NTRXRxLoCalibration}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXRxLoCalibration]{\setlength{\rightskip}{0pt plus 5cm}void NTRXRx\-Lo\-Calibration (void)}}
+\label{ntrxutil_8c_38d911533e4aceb823fca919c396d744}
+
+
+calibrates the local ocsillator. 
+
+This function callibrates the local oscillator of the receiver part. It is not called directly but from within the NTRXAll\-Calibration function. 
+
+Definition at line 229 of file ntrxutil.c.\hypertarget{ntrxutil_8c_21cb928b0910afd6e744a893b502e012}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetChannel@{NTRXSetChannel}}
+\index{NTRXSetChannel@{NTRXSetChannel}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetChannel]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Channel (uint8\_\-t {\em value})}}
+\label{ntrxutil_8c_21cb928b0910afd6e744a893b502e012}
+
+
+set the logical channel. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em value}]the logical channel id\end{description}
+\end{Desc}
+This function sets the logical channel for transmission and reception 
+
+Definition at line 142 of file ntrxutil.c.\hypertarget{ntrxutil_8c_ad931140ac5ed6370a13177d3a08f9b9}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetIndexReg@{NTRXSetIndexReg}}
+\index{NTRXSetIndexReg@{NTRXSetIndexReg}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetIndexReg]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Index\-Reg (uint8\_\-t {\em page})}}
+\label{ntrxutil_8c_ad931140ac5ed6370a13177d3a08f9b9}
+
+
+set the index register. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em page}]address index\end{description}
+\end{Desc}
+This function sets the index registers for the transceiver chip. The chip address space is deviced into 4 sections a 1kbyte. 
+
+Definition at line 188 of file ntrxutil.c.\hypertarget{ntrxutil_8c_82c4119d655f0f451bfb8efcd96301cb}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetRamIndex@{NTRXSetRamIndex}}
+\index{NTRXSetRamIndex@{NTRXSetRamIndex}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetRamIndex]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Ram\-Index (uint8\_\-t {\em page})}}
+\label{ntrxutil_8c_82c4119d655f0f451bfb8efcd96301cb}
+
+
+set the index register. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em page}]address index\end{description}
+\end{Desc}
+This function sets the index registers for the transceiver chip The chip address space is deviced into 4 sections a 1kbyte. 
+
+Definition at line 207 of file ntrxutil.c.\hypertarget{ntrxutil_8c_fb2f520b9b54c03a2ec5c06cce7b5d6f}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetSyncWord@{NTRXSetSyncWord}}
+\index{NTRXSetSyncWord@{NTRXSetSyncWord}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetSyncWord]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Sync\-Word (uint8\_\-t $\ast$ {\em value})}}
+\label{ntrxutil_8c_fb2f520b9b54c03a2ec5c06cce7b5d6f}
+
+
+sets the sync word in the transceiver. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em value}]a pointer to the 8 byte syncword.\end{description}
+\end{Desc}
+This function writes the syncword in the syncword register. The syncword is used for add a transceivers to a logical group. Only messages with the right syncword are detected (received) and processed. 
+
+Definition at line 482 of file ntrxutil.c.\hypertarget{ntrxutil_8c_e81c24844a8074d0f3be35da317db1aa}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetTestCarrierMode@{NTRXSetTestCarrierMode}}
+\index{NTRXSetTestCarrierMode@{NTRXSetTestCarrierMode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetTestCarrierMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Test\-Carrier\-Mode (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em value})}}
+\label{ntrxutil_8c_e81c24844a8074d0f3be35da317db1aa}
+
+
+Carriermode for chip measurement. 
+
+This function enables or disables the unmodulated carrier signal test mode by sending a continuous carrier. This requires to swich off the receiver. Note: This function should be periodically interrupted and the transmitter recalibrated. Otherwise the frequency might be out of range. 
+
+Definition at line 862 of file ntrxutil.c.\hypertarget{ntrxutil_8c_ef07ce2340c54c6e3daa440106d3024e}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetTestChirpMode@{NTRXSetTestChirpMode}}
+\index{NTRXSetTestChirpMode@{NTRXSetTestChirpMode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetTestChirpMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSet\-Test\-Chirp\-Mode (\hyperlink{ntrxtypes_8h_04dd5074964518403bf944f2b240a5f8}{bool\_\-t} {\em value})}}
+\label{ntrxutil_8c_ef07ce2340c54c6e3daa440106d3024e}
+
+
+Testmode for chip measurement. 
+
+This function enables or disables the chip test mode. In this mode a continuous chirp is transmitted. This requires to swich off the receiver. Note: This function should be interrupted periodically and the transmitter recalibrated. Otherwise the frequency might be out of range. 
+
+Definition at line 808 of file ntrxutil.c.\hypertarget{ntrxutil_8c_ed23913bce8ac3852caa701bdf5aa8d0}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXSetupTrxMode@{NTRXSetupTrxMode}}
+\index{NTRXSetupTrxMode@{NTRXSetupTrxMode}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXSetupTrxMode]{\setlength{\rightskip}{0pt plus 5cm}void NTRXSetup\-Trx\-Mode (uint8\_\-t {\em fdma}, uint8\_\-t {\em sd}, uint8\_\-t {\em sr})}}
+\label{ntrxutil_8c_ed23913bce8ac3852caa701bdf5aa8d0}
+
+
+sets transmission mode in the transceiver. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fdma}]this parameter determines the the mode (fdma or 80 MHz) \item[{\em sd}]this parameter determines the symbol duration between 500ns and 8us) \item[{\em sr}]this parameter determines the symbol rate between 125kbit and 2Mbit)\end{description}
+\end{Desc}
+Based on the three parameters the transceiver is initialized. The iq parameter are set and the nano\-LOC chip is calibrated. 
+
+Definition at line 499 of file ntrxutil.c.\hypertarget{ntrxutil_8c_fd37114ab335e910d9ca6b2815d77881}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXStartBbTimer@{NTRXStartBbTimer}}
+\index{NTRXStartBbTimer@{NTRXStartBbTimer}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXStartBbTimer]{\setlength{\rightskip}{0pt plus 5cm}void NTRXStart\-Bb\-Timer (int16\_\-t {\em startvalue})}}
+\label{ntrxutil_8c_fd37114ab335e910d9ca6b2815d77881}
+
+
+starts the baseband timer. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em startvalue}]countdown value in us\end{description}
+\end{Desc}
+Starts a countdown from startvalue to zero ( in us ) 
+
+Definition at line 779 of file ntrxutil.c.\hypertarget{ntrxutil_8c_39343ab27d7e694fdc0fe0521883a012}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXStopBbTimer@{NTRXStopBbTimer}}
+\index{NTRXStopBbTimer@{NTRXStopBbTimer}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXStopBbTimer]{\setlength{\rightskip}{0pt plus 5cm}void NTRXStop\-Bb\-Timer (void)}}
+\label{ntrxutil_8c_39343ab27d7e694fdc0fe0521883a012}
+
+
+stops the baseband timer. 
+
+Stops the baseband timer. The baseband timer is recommended for very short timer intervals $<$ 1 ms 
+
+Definition at line 793 of file ntrxutil.c.\hypertarget{ntrxutil_8c_9fa006b6e0a992659172d2fb1c3bd852}{
+\index{ntrxutil.c@{ntrxutil.c}!NTRXTxLoCalibration@{NTRXTxLoCalibration}}
+\index{NTRXTxLoCalibration@{NTRXTxLoCalibration}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[NTRXTxLoCalibration]{\setlength{\rightskip}{0pt plus 5cm}void NTRXTx\-Lo\-Calibration (void)}}
+\label{ntrxutil_8c_9fa006b6e0a992659172d2fb1c3bd852}
+
+
+calibrates the local ocsillator. 
+
+This function callibrates the local oscillator of the transmitter part. It is not called directly but from within the NTRXAll\-Calibration function. 
+
+Definition at line 272 of file ntrxutil.c.
+
+\subsection{Variable Documentation}
+\hypertarget{ntrxutil_8c_4226a24a3cb2784055856694f532b2e5}{
+\index{ntrxutil.c@{ntrxutil.c}!lfdma@{lfdma}}
+\index{lfdma@{lfdma}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[lfdma]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_4226a24a3cb2784055856694f532b2e5}{lfdma} = 0}}
+\label{ntrxutil_8c_4226a24a3cb2784055856694f532b2e5}
+
+
+
+
+Definition at line 73 of file ntrxutil.c.\hypertarget{ntrxutil_8c_6b4f3536ed550159bc1f96adc2bf68d8}{
+\index{ntrxutil.c@{ntrxutil.c}!loTarVal@{loTarVal}}
+\index{loTarVal@{loTarVal}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[loTarVal]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_6b4f3536ed550159bc1f96adc2bf68d8}{lo\-Tar\-Val}\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}}}
+\label{ntrxutil_8c_6b4f3536ed550159bc1f96adc2bf68d8}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim} {{0x59, 0x68},         
+                            {0x59, 0x68},           
+
+
+
+
+
+
+
+
+                            {0x66, 0x62},           
+                            {0x66, 0x68},           
+                            {0x66, 0x6e}            
+
+}
+\end{verbatim}\end{Code}
+
+
+Definition at line 40 of file ntrxutil.c.\hypertarget{ntrxutil_8c_68eedcf9dfd2eb1555ecbb6f8f5fbde5}{
+\index{ntrxutil.c@{ntrxutil.c}!loTarValRx@{loTarValRx}}
+\index{loTarValRx@{loTarValRx}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[loTarValRx]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_68eedcf9dfd2eb1555ecbb6f8f5fbde5}{lo\-Tar\-Val\-Rx}\mbox{[}2\mbox{]} = \{0x6f, 0x68\}}}
+\label{ntrxutil_8c_68eedcf9dfd2eb1555ecbb6f8f5fbde5}
+
+
+
+
+Definition at line 59 of file ntrxutil.c.\hypertarget{ntrxutil_8c_812b45df18aed2227eece7309f2d9bad}{
+\index{ntrxutil.c@{ntrxutil.c}!loTarValRx_418kHz@{loTarValRx\_\-418kHz}}
+\index{loTarValRx_418kHz@{loTarValRx\_\-418kHz}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[loTarValRx\_\-418kHz]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_812b45df18aed2227eece7309f2d9bad}{lo\-Tar\-Val\-Rx\_\-418k\-Hz}\mbox{[}$\,$\mbox{]} = \{0x5c, 0x68\}}}
+\label{ntrxutil_8c_812b45df18aed2227eece7309f2d9bad}
+
+
+
+
+Definition at line 65 of file ntrxutil.c.\hypertarget{ntrxutil_8c_7dd4465d6b995dfdf1fb5cd6a6c37067}{
+\index{ntrxutil.c@{ntrxutil.c}!loTarValTx@{loTarValTx}}
+\index{loTarValTx@{loTarValTx}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[loTarValTx]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_7dd4465d6b995dfdf1fb5cd6a6c37067}{lo\-Tar\-Val\-Tx}\mbox{[}2\mbox{]} = \{0x59, 0x68\}}}
+\label{ntrxutil_8c_7dd4465d6b995dfdf1fb5cd6a6c37067}
+
+
+
+
+Definition at line 58 of file ntrxutil.c.\hypertarget{ntrxutil_8c_bc5f11b4679d0801a542ad345fe9966f}{
+\index{ntrxutil.c@{ntrxutil.c}!lsd@{lsd}}
+\index{lsd@{lsd}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[lsd]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_bc5f11b4679d0801a542ad345fe9966f}{lsd} = 0}}
+\label{ntrxutil_8c_bc5f11b4679d0801a542ad345fe9966f}
+
+
+
+
+Definition at line 73 of file ntrxutil.c.\hypertarget{ntrxutil_8c_b1a27e42dd2b3713ee7b37a1037b4c8d}{
+\index{ntrxutil.c@{ntrxutil.c}!lsr@{lsr}}
+\index{lsr@{lsr}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[lsr]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_b1a27e42dd2b3713ee7b37a1037b4c8d}{lsr} = 0}}
+\label{ntrxutil_8c_b1a27e42dd2b3713ee7b37a1037b4c8d}
+
+
+ranging variables 
+
+Definition at line 73 of file ntrxutil.c.\hypertarget{ntrxutil_8c_93806a2ab72ce9ba673c0ac29fd87395}{
+\index{ntrxutil.c@{ntrxutil.c}!modeSet@{modeSet}}
+\index{modeSet@{modeSet}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[modeSet]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyModeSetT}{Phy\-Mode\-Set\-T} \hyperlink{ntrxutil_8c_93806a2ab72ce9ba673c0ac29fd87395}{mode\-Set}}}
+\label{ntrxutil_8c_93806a2ab72ce9ba673c0ac29fd87395}
+
+
+group of parameters that define a transmission mode. 
+
+Definition at line 69 of file ntrxutil.c.\hypertarget{ntrxutil_8c_bfdbd671d2e178256cea6cef7f16963b}{
+\index{ntrxutil.c@{ntrxutil.c}!ntrxBBStatus@{ntrxBBStatus}}
+\index{ntrxBBStatus@{ntrxBBStatus}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[ntrxBBStatus]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_bfdbd671d2e178256cea6cef7f16963b}{ntrx\-BBStatus}}}
+\label{ntrxutil_8c_bfdbd671d2e178256cea6cef7f16963b}
+
+
+baseband status register 
+
+Definition at line 71 of file ntrxutil.c.\hypertarget{ntrxutil_8c_a451266a323263f11153845381597545}{
+\index{ntrxutil.c@{ntrxutil.c}!ntrxIrqStatus@{ntrxIrqStatus}}
+\index{ntrxIrqStatus@{ntrxIrqStatus}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[ntrxIrqStatus]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_a451266a323263f11153845381597545}{ntrx\-Irq\-Status}\mbox{[}2\mbox{]}}}
+\label{ntrxutil_8c_a451266a323263f11153845381597545}
+
+
+interrupt status register 
+
+Definition at line 70 of file ntrxutil.c.\hypertarget{ntrxutil_8c_e1c9a830dc25ae16c2321e7b0c2c9279}{
+\index{ntrxutil.c@{ntrxutil.c}!ntrxShadowReg@{ntrxShadowReg}}
+\index{ntrxShadowReg@{ntrxShadowReg}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[ntrxShadowReg]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_e1c9a830dc25ae16c2321e7b0c2c9279}{ntrx\-Shadow\-Reg}\mbox{[}SHADOWREGCOUNT\mbox{]}}}
+\label{ntrxutil_8c_e1c9a830dc25ae16c2321e7b0c2c9279}
+
+
+shadow register for the nano\-LOC chip. Needed for write-only register 
+
+Definition at line 68 of file ntrxutil.c.\hypertarget{ntrxutil_8c_5faba542d732fa5f7f914a969acc0ca3}{
+\index{ntrxutil.c@{ntrxutil.c}!ntrxState@{ntrxState}}
+\index{ntrxState@{ntrxState}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[ntrxState]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_5faba542d732fa5f7f914a969acc0ca3}{ntrx\-State}}}
+\label{ntrxutil_8c_5faba542d732fa5f7f914a969acc0ca3}
+
+
+state of the nano\-LOC chip 
+
+Definition at line 72 of file ntrxutil.c.\hypertarget{ntrxutil_8c_c6bf7bba136f1383deb2932be153b881}{
+\index{ntrxutil.c@{ntrxutil.c}!phyPIB@{phyPIB}}
+\index{phyPIB@{phyPIB}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[phyPIB]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structPhyPIB}{Phy\-PIB} \hyperlink{main_8c_c6bf7bba136f1383deb2932be153b881}{phy\-PIB}}}
+\label{ntrxutil_8c_c6bf7bba136f1383deb2932be153b881}
+
+
+structure for all layer configuration settings 
+
+
+
+Definition at line 182 of file phy.c.\hypertarget{ntrxutil_8c_23a7d198d0c26e71808db4e84d968e75}{
+\index{ntrxutil.c@{ntrxutil.c}!PROGMEM@{PROGMEM}}
+\index{PROGMEM@{PROGMEM}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[PROGMEM]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t ntrx\-Init\-Shadow\-Reg \mbox{[}$\,$\mbox{]} \hyperlink{ntrxutil_8c_23a7d198d0c26e71808db4e84d968e75}{PROGMEM}}}
+\label{ntrxutil_8c_23a7d198d0c26e71808db4e84d968e75}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+{
+   0,   0,   0,   0,   0,   0,   0,   6,
+   0,   0,   0,   0,   0,   0,   0,   0,
+   0,   0,   0,   0,   0,   0,  64,   0,
+  32,  64,   0,  32,   0,   0,   0,   3,
+   6, 152,  12,   0,   2,  63,  30,   6,
+   0,   0, 171,  44, 213, 146, 148, 202,
+ 105, 171,  48,   0,   0,   0,   0,   0,
+   0,   0,   0,   0, 224,   4,   0,   1,
+   3,   7,   0,   3,  63,  63,  15,  15,
+ 115,   0,  16,  16,  67,  20,  16,   0,
+   0, 127,   0,   0,   0,   0,   0,   0,
+   0,   0,  11,  95,   5,   7, 213,  98,
+   0,   0,   0,  12,  10,   0,   0,   0,
+   0,   0,   0,   0,   0,   0,   0,   0,
+   0,   0,   0,   0,   0,   0,   0,   0,
+   0,   0,   0,   0,   0,  80,   0,   0
+}
+\end{verbatim}\end{Code}
+
+
+Definition at line 77 of file ntrxutil.c.\hypertarget{ntrxutil_8c_77faed8385bd61ab7f6e03111f00760a}{
+\index{ntrxutil.c@{ntrxutil.c}!rx_caps@{rx\_\-caps}}
+\index{rx_caps@{rx\_\-caps}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[rx\_\-caps]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_77faed8385bd61ab7f6e03111f00760a}{rx\_\-caps}\mbox{[}3\mbox{]} = \{0,0,0\}}}
+\label{ntrxutil_8c_77faed8385bd61ab7f6e03111f00760a}
+
+
+used for fake calibration 
+
+Definition at line 75 of file ntrxutil.c.\hypertarget{ntrxutil_8c_85ec6e1480a4a8fe92fdcd722d48d2c8}{
+\index{ntrxutil.c@{ntrxutil.c}!tx_caps@{tx\_\-caps}}
+\index{tx_caps@{tx\_\-caps}!ntrxutil.c@{ntrxutil.c}}
+\subsubsection[tx\_\-caps]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \hyperlink{ntrxutil_8c_85ec6e1480a4a8fe92fdcd722d48d2c8}{tx\_\-caps}\mbox{[}3\mbox{]} = \{0,0,0\}}}
+\label{ntrxutil_8c_85ec6e1480a4a8fe92fdcd722d48d2c8}
+
+
+
+
+Definition at line 75 of file ntrxutil.c.

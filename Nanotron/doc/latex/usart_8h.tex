@@ -1,0 +1,65 @@
+\hypertarget{usart_8h}{
+\section{include/usart.h File Reference}
+\label{usart_8h}\index{include/usart.h@{include/usart.h}}
+}
+Console support functions. 
+
+{\tt \#include \char`\"{}config.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{usart_8h_cadd2a5d99d952e55a4580dbc8f8739d}{console\_\-init} (void)
+\begin{CompactList}\small\item\em Initialize console i/o support. \item\end{CompactList}\item 
+int \hyperlink{usart_8h_97e9b1fe8d4c010474637a654aad6566}{kbhit} (void)
+\item 
+char $\ast$ \hyperlink{usart_8h_ce90de052323a48a8fad2a33eab81545}{read\_\-line} (char buf\mbox{[}$\,$\mbox{]})
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Console support functions. 
+
+\begin{Desc}
+\item[Date:]2007-Dez-11 \end{Desc}
+\begin{Desc}
+\item[Author:]S. Rohdemann, S. Radtke {\tt }(C) 2007 Nanotron Technologies\end{Desc}
+\begin{Desc}
+\item[Note:]Build\-Number = \char`\"{}Build\-Number : 7951\char`\"{};
+
+This file contains the prototypes for the console and serial port support functions. \end{Desc}
+
+
+Definition in file \hyperlink{usart_8h-source}{usart.h}.
+
+\subsection{Function Documentation}
+\hypertarget{usart_8h_cadd2a5d99d952e55a4580dbc8f8739d}{
+\index{usart.h@{usart.h}!console_init@{console\_\-init}}
+\index{console_init@{console\_\-init}!usart.h@{usart.h}}
+\subsubsection[console\_\-init]{\setlength{\rightskip}{0pt plus 5cm}void console\_\-init (void)}}
+\label{usart_8h_cadd2a5d99d952e55a4580dbc8f8739d}
+
+
+Initialize console i/o support. 
+
+This function initializes the usart interface of the AVR u\-Controller 
+
+Definition at line 47 of file usart.c.\hypertarget{usart_8h_97e9b1fe8d4c010474637a654aad6566}{
+\index{usart.h@{usart.h}!kbhit@{kbhit}}
+\index{kbhit@{kbhit}!usart.h@{usart.h}}
+\subsubsection[kbhit]{\setlength{\rightskip}{0pt plus 5cm}int kbhit (void)}}
+\label{usart_8h_97e9b1fe8d4c010474637a654aad6566}
+
+
+kbhit:
+
+\hyperlink{usart_8h_97e9b1fe8d4c010474637a654aad6566}{kbhit()} returns the status of the console interface
+
+Returns: 1 if one or more characters are ready for input 0 otherwise 
+
+Definition at line 112 of file usart.c.\hypertarget{usart_8h_ce90de052323a48a8fad2a33eab81545}{
+\index{usart.h@{usart.h}!read_line@{read\_\-line}}
+\index{read_line@{read\_\-line}!usart.h@{usart.h}}
+\subsubsection[read\_\-line]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ read\_\-line (char {\em buf}\mbox{[}$\,$\mbox{]})}}
+\label{usart_8h_ce90de052323a48a8fad2a33eab81545}
+
+
