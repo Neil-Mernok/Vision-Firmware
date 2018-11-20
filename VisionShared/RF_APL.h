@@ -57,7 +57,7 @@ typedef struct
 } RF_message;
 
 uint8_t get_status_byte();
-void Rf_Info_Packet(uint8_t type);
+int Rf_Info_Packet(uint8_t type, uint8_t Identifier);
 void Rf_GPS_info(uint8_t Array_start);
 void Apl_broadcast_ID(void);
 uint8_t Apl_report_LF(LF_message_type LF);

@@ -64,8 +64,10 @@ void Apl_Send_PDS(uint8_t type)
 	txSendPacket(RF_Buffer, rf_legacy_PDS_size);
 }
 
-void Rf_Info_Packet(uint8_t type)
+int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 {
+	RF_Buffer[0] = Identifier;
+	RF_Buffer[1] = Vision_Status.kind;
 	*((uint32_t*) &RF_Buffer[2]) = Vision_Status.UID;
 	RF_Buffer[6] = type;
 	RF_Buffer[7] = vision_settings.MernokAsset_Groups[type-1];
@@ -85,19 +87,21 @@ void Rf_Info_Packet(uint8_t type)
 	RF_Buffer[17] = vision_settings.V_length;
 	RF_Buffer[18] = vision_settings.V_width;
 	RF_Buffer[19] = Vision_Status.Stopping_dist;
+	*((uint16_t*) &RF_Buffer[20]) = Vision_Status.Speed/10;
+
+	return 22;
 }
 
 void Rf_GPS_info(uint8_t Array_start)
 {
-	*((int32_t*) &RF_Buffer[20]) = Vision_Status.GPS_Data.Longitude;
-	*((int32_t*) &RF_Buffer[24]) = Vision_Status.GPS_Data.Latitude;
-	*((int32_t*) &RF_Buffer[28]) = Vision_Status.GPS_Data.SeaLevel;
-	*((uint16_t*) &RF_Buffer[32]) = Vision_Status.GPS_Data.VerticalAccuracy/10;
-	*((uint16_t*) &RF_Buffer[34]) = Vision_Status.GPS_Data.HorizontalAccuracy/10;
-	*((uint16_t*) &RF_Buffer[36]) = Vision_Status.GPS_Data.HeadingVehicle/10;
-	*((uint16_t*) &RF_Buffer[38]) = Vision_Status.GPS_Data.Speed/10;
-	RF_Buffer[40] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[41] =	Vision_Status.GPS_Data.FixAge;
+	*((int32_t*) &RF_Buffer[Array_start]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.SeaLevel;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.VerticalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.HorizontalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.HeadingVehicle/10;
+	RF_Buffer[Array_start+=1] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[Array_start+=1] =	Vision_Status.GPS_Data.FixAge;
 }
 
 /**
@@ -108,26 +112,19 @@ void Rf_GPS_info(uint8_t Array_start)
 uint8_t Apl_report_ID(uint8_t type)
 {
 	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size;
 
 	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_ID_puls;
-	RF_Buffer[1] = Vision_Status.kind;
-
 	if (Vision_Status.kind == Pulse_GPS)
-	{
 		packet_size = rf_ID_Pulse_GPS_size;
-	}
 	else
-	{
 		packet_size = rf_ID_Pulse_size;
-	}
 
 	// ---- TAG Information ----
-	Rf_Info_Packet(type);
-
+	info_packet_size = Rf_Info_Packet(type, rf_ID_puls);
 
 	// ---- GPS Coordinates ----
-	Rf_GPS_info(20);
+	Rf_GPS_info(info_packet_size);
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -141,6 +138,7 @@ uint8_t Apl_report_ID(uint8_t type)
  */
 uint8_t Apl_report_name()
 {
+	uint8_t info_packet_size;
 	// don't send a name message if there is none. 
 	if(vision_settings.name_str.len() == 0)
 		return Apl_report_ID(Vision_Status.TagTypeHolder);
@@ -148,24 +146,19 @@ uint8_t Apl_report_name()
 	uint8_t packet_size = 0 ;
 
 	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_ID_name;
-	RF_Buffer[1] = Vision_Status.kind;
+//	RF_Buffer[0] = rf_ID_name;
+//	RF_Buffer[1] = Vision_Status.kind;
 
 	if (Vision_Status.kind == Pulse_GPS)
-	{
 		packet_size = rf_ID_Pulse_GPS_size;
-	}
 	else
-	{
 		packet_size = rf_ID_Pulse_size;
-	}
 
 	// ---- TAG Information ----
-	Rf_Info_Packet(Vision_Status.TagTypeHolder);
-
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_ID_name);
 
 	// ---- GPS Coordinates ----
-	Rf_GPS_info(20);
+	Rf_GPS_info(info_packet_size);
 
 
 	// ---- TAG Name ----
@@ -190,25 +183,18 @@ uint8_t Apl_report_name()
  */
 uint8_t Apl_report_name_var(uint8_t type, char* name)
 {
+	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size;
 	// don't send a name message if there is none. 
-	if(name == 0)
-		return Apl_report_ID(type);
-
 	int len = strnlen(name, STR_MAX);
 
-	if(len == 0)
+	if(name == 0 || len == 0)
 		return Apl_report_ID(type);
 
-	uint8_t packet_size = 0 ;
 	packet_size = rf_ID_Pulse_size;
 
-	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_ID_name;
-	RF_Buffer[1] = Vision_Status.kind;
-
 	// ---- TAG Information ----
-	Rf_Info_Packet(type);
-
+	info_packet_size = Rf_Info_Packet(type, rf_ID_name);
 
 	// ---- TAG Name ----
 	memcpy(&RF_Buffer[packet_size], name, len);
@@ -244,19 +230,17 @@ void Apl_broadcast_ID(void)
 uint8_t Apl_report_LF(LF_message_type LF)
 {
 	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size;
 	packet_size = rf_LF_resp_size;
 
-	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_LF_resp;
-	RF_Buffer[1] = Vision_Status.kind;
 
 	// ---- TAG Information ----
-	Rf_Info_Packet(Vision_Status.TagTypeHolder);
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_LF_resp);
 
 	//----  Over-write with LF data ----
-	*((uint16_t*) &RF_Buffer[20]) = LF.VehicleID;
-	RF_Buffer[22] = LF.SlaveID;
-	RF_Buffer[23] = LF.RSSI;
+	*((uint16_t*) &RF_Buffer[info_packet_size]) = LF.VehicleID;
+	RF_Buffer[info_packet_size+=2] = LF.SlaveID;
+	RF_Buffer[info_packet_size+=1] = LF.RSSI;
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -267,15 +251,12 @@ uint8_t Apl_report_LF(LF_message_type LF)
 uint8_t Apl_sync_LF()
 {
 	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size = 0;
 	packet_size = rf_LF_send_size;
 
-	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_LF_send;
-	RF_Buffer[1] = Vision_Status.kind;
-
 	// ---- TAG Information ----
-	Rf_Info_Packet(Vision_Status.TagTypeHolder);
-	RF_Buffer[21] = vision_settings.lf_power;
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_LF_send);
+	RF_Buffer[info_packet_size] = vision_settings.lf_power;
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -371,19 +352,15 @@ uint8_t Apl_master_boot_message(uint8_t* buffer, uint8_t len)
 // */
 uint8_t Apl_report_GPS_Coordinates(void)
 {
-
+	uint8_t info_packet_size;
 	uint8_t packet_size = 0 ;
 	packet_size = rf_GPS_Coordinates_size;
 
-	// ---- Packet Identifier ----
-	RF_Buffer[0] = rf_GPS_C;
-	RF_Buffer[1] = Vision_Status.kind;
-
 	// ---- TAG Information ----
-	Rf_Info_Packet(Vision_Status.TagTypeHolder);
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_GPS_C);
 
 	// ---- GPS Information ----
-	Rf_GPS_info(20);
+	Rf_GPS_info(info_packet_size);
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -594,7 +571,6 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		T->UID = *((uint32_t*) (&buffer[2]));
 		T->type = buffer[6];
 		T->group = buffer[7];
-		//T->group = vision_settings.MernokAsset_Groups[(uint8_t)buffer[6]-1];
 		T->last_seen = time_now();
 		T->status = buffer[8];
 		T->ManTagAck = buffer[9]&0x01;
@@ -606,15 +582,16 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		T->V_lenght = buffer[17];
 		T->V_Width = buffer[18];
 		T->Stopping_dist = buffer[19];
+		T->Speed = *((uint16_t*) (&buffer[20]));
 
 		switch (buffer[0])
 		{
 		case rf_LF_resp:			// ---- LF response message ----
 
 			// ---- LF Information ----
-			T->LF.VehicleID = *((uint16_t*) (&buffer[20]));
-			T->LF.SlaveID = buffer[22];
-			T->LF.RSSI = buffer[23];
+			T->LF.VehicleID = *((uint16_t*) (&buffer[22]));
+			T->LF.SlaveID = buffer[24];
+			T->LF.RSSI = buffer[25];
 			T->LF.last_LF = time_now();
 			T->Dist = 35 - T->LF.RSSI;
 			T->range_needed = 0;
@@ -623,13 +600,13 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		case rf_GPS_C:				// ---- GPS coordinates broadcast message ----
 
 			// ---- GPS Information ----
-			T->GPS_Data.Longitude = *((int32_t*) &buffer[20]);
-			T->GPS_Data.Latitude = *((int32_t*) &buffer[24]);
-			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[28]);
-			T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[32])*10;
-			T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[34])*10;
-			T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[36])*10;
-			T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
+			T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
+			T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
+			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
+			T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[34])*10;
+			T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[36])*10;
+			T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[38])*10;
+			//T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
 			T->GPS_Data.FixType = buffer[40];
 			T->GPS_Data.FixAge = buffer[41];
 			break;
@@ -644,13 +621,13 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 			{
 
 				// ---- GPS Information ----
-				T->GPS_Data.Longitude = *((int32_t*) &buffer[20]);
-				T->GPS_Data.Latitude = *((int32_t*) &buffer[24]);
-				T->GPS_Data.SeaLevel = *((int32_t*) &buffer[28]);
-				T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[32])*10;
-				T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[34])*10;
-				T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[36])*10;
-				T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
+				T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
+				T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
+				T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
+				T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[34])*10;
+				T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[36])*10;
+				T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[38])*10;
+//				T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
 				T->GPS_Data.FixType = buffer[40];
 				T->GPS_Data.FixAge = buffer[41];
 
@@ -662,7 +639,7 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 				T->GPS_Data.SeaLevel = 0;
 				T->GPS_Data.VerticalAccuracy = 0;
 				T->GPS_Data.HorizontalAccuracy = 0;
-				T->GPS_Data.Speed = 0;
+//				T->GPS_Data.Speed = 0;
 				T->GPS_Data.HeadingVehicle = 0;
 				T->GPS_Data.FixType = 0;
 				T->GPS_Data.FixAge = 0xFF;

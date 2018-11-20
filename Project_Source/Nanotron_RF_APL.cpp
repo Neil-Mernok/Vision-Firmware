@@ -157,7 +157,7 @@ extern "C" int nApl_Parse_message(uint8_t* buffer, uint32_t sender, uint8_t len)
 		MIF.data = &buffer[1];
 		MIF.len = len - 1;							// length is the RF length, minus the 5 bytes for UID and 'M' command and 3 padded bytes.
 		MIF.Master = RF;
-		parse_message_old(MIF);
+		parse_message(MIF.data,MIF.len,MIF.Master);
 		Vision_Status.Force_RF = time_now()+30000;	//keep the RF on as long as the master needs us...
 		break;
 		

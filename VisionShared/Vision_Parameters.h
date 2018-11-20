@@ -177,6 +177,7 @@ typedef struct
 	uint8_t Stopping_dist;				//Stopping distance parameter to be added to settings on EEPROM
 	uint8_t MernokAssetFile_Def;		// ---- Last mernok asset file loaded onto EEPROM ---- //
 	uint8_t Group_status;
+	uint16_t Speed;
 
 } _Vision_Status;
 
@@ -630,7 +631,7 @@ int GetSettings();
 uint16_t GetStatusWord(void);
 //_Vision_Status GetStatusfromWord(uint16_t data);
 void USB_plugged(int in);
-
+void DetermineTagType(void);
 
 
 #ifdef __cplusplus

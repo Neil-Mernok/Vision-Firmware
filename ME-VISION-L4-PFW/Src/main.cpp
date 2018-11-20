@@ -152,17 +152,7 @@ int main(void)
 		cant_sleep = 0;								// start off assuming we can sleep. then ask each task if they need to stay awake. 
 
 		Refresh_Settings_task(&settings);			// periodically read settings.
-
-		//todo: neil move this to apropriate location in code
-		Vision_Status.Group_status  = vision_settings.MernokAsset_Groups[(uint8_t)vision_settings.tag_type-1];
-		if ((vision_settings.getActivities().CAN_Heartbeat_monitor)&&((uint32_t)vision_settings.CAN_Timeout._value*1000>time_since(Vision_Status.Last_CAN)))
-		{
-			Vision_Status.TagTypeHolder = vision_settings.Type_revert;
-		}
-		else if(!vision_settings.getActivities().CAN_Heartbeat_monitor)
-		{
-			Vision_Status.TagTypeHolder = vision_settings.tag_type;
-		}
+		DetermineTagType();
 
 		/// 	Ranger code		///////////////////////////////	
 		if(Vision_Status.board_id == ME_PCB_138_03)

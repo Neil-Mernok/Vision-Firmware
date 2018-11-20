@@ -187,6 +187,7 @@ void clear_transp(_Transpondert* T)
 	T->LF.RSSI = -1;
 	T->LF.last_LF = 0;
 	T->LF.VehicleID = 0;
+	T->Speed = 0;
 	T->GPS_Data.Longitude = 0;
 	T->GPS_Data.Latitude = 0;
 	T->GPS_Data.FixType = 0;

@@ -83,17 +83,6 @@ int GetSettings(void)
 				vision_settings.list[i]->checkbounds();
 
 			}
-//			if ((!MernokAsset_GroupList_populated)&&(RFID_Read_byte(vision_settings.Mernok_Asset_rev.address)!=0))
-//			{
-//				Get_MernokAsset_GroupValues();
-//			}
-//			if (!sizeCalculated_flag)
-//			{
-//#ifdef USE_HAL_DRIVER
-//				EEPROMsizeCalc();
-//#endif
-//			}
-
 			Vision_Status.sts.RFID_Working = true;
 		}
 		else
@@ -102,11 +91,7 @@ int GetSettings(void)
 			SaveSettings();
 			Vision_Status.sts.RFID_Working = true;
 		}
-//		if((!MernokAsset_GroupList_populated)&&((RFID_Read_byte(vision_settings.Mernok_Asset_rev.address)==0)||(vision_settings.Mernok_Asset_rev._value ==255)))
-//		{
-//			Set_Default_MernokAsset_GroupValues();
-//		}
-		//todo: Neil determine if this is the right place to put this
+
 		Vision_Status.UID = *((uint32_t*) (UID_bytes));
 		return 1;
 	}
@@ -129,4 +114,18 @@ void USB_plugged(int in)
 	{
 		Vision_Status.sts.USB_Active = 0;
 	}
+}
+
+void DetermineTagType(void)
+{
+	if ((vision_settings.getActivities().CAN_Heartbeat_monitor)&&((uint32_t)vision_settings.CAN_Timeout._value*1000>time_since(Vision_Status.Last_CAN)))
+	{
+		Vision_Status.TagTypeHolder = vision_settings.Type_revert;
+	}
+	else if(!vision_settings.getActivities().CAN_Heartbeat_monitor)
+	{
+		Vision_Status.TagTypeHolder = vision_settings.tag_type;
+	}
+
+	Vision_Status.Group_status  = vision_settings.MernokAsset_Groups[(uint8_t)vision_settings.tag_type-1];
 }
