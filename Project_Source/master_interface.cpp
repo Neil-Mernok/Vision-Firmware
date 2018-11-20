@@ -663,15 +663,16 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 		buffer[25] = t->V_lenght;
 		buffer[26] = t->V_Width;
 		buffer[27] = t->Stopping_dist;
+		memcpy(buffer + 28, &t->Speed, 4);
 
 		////////////////////////////////////////////
 
 		// ---- GPS functionality ----
-		memcpy(buffer + 28, &t->GPS_Data.Longitude, 4);
-		memcpy(buffer + 32, &t->GPS_Data.Latitude, 4);
-		memcpy(buffer + 36, &t->GPS_Data.VerticalAccuracy, 4);
-		memcpy(buffer + 40, &t->GPS_Data.HorizontalAccuracy, 4);
-		memcpy(buffer + 44, &t->GPS_Data.Speed, 4);
+		memcpy(buffer + 32, &t->GPS_Data.Longitude, 4);
+		memcpy(buffer + 36, &t->GPS_Data.Latitude, 4);
+		memcpy(buffer + 40, &t->GPS_Data.VerticalAccuracy, 4);
+		memcpy(buffer + 44, &t->GPS_Data.HorizontalAccuracy, 4);
+//		memcpy(buffer + 44, &t->GPS_Data.Speed, 4);
 		memcpy(buffer + 48, &t->GPS_Data.HeadingVehicle, 4);
 		memcpy(buffer + 52, &t->GPS_Data.FixType, 1);
 		memcpy(buffer + 53, &t->GPS_Data.FixAge, 1);
@@ -684,7 +685,7 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 		}
 		else
 		{
-			MIF.len = 28;
+			MIF.len = 33;
 		}
 
 		MIF.Master = M;

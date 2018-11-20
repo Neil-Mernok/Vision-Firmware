@@ -263,15 +263,19 @@ void VCResetModule(vision_device* v)
  * @param vision_device v to whom the message must be sent to
  * @return
  */
-void VCDrivingInfo(vision_device* v, uint8_t Reverse, uint8_t Stopping_distance)
+void VCDrivingInfo(vision_device* v, uint8_t Reverse, uint8_t Stopping_distance, uint32_t Speed)
 {
 	// --- Send message to the vision_device ---
-	uint8_t data[5];
+	uint8_t data[7];
 
 	data[0] = '@';
 	data[1] = Reverse;
 	data[2] = Stopping_distance;
-	VCSendMessage(v, data, 3);
+	data[3] = Speed;
+	data[4] = Speed>>8;
+	data[5] = Speed>>16;
+	data[6] = Speed>>24;
+	VCSendMessage(v, data, 7);
 }
 
 /**

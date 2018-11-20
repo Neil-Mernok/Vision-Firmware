@@ -467,6 +467,7 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 		to_master[0] = 'R';
 		Vision_Status.Reverse = parse_data[1];
 		Vision_Status.Stopping_dist = parse_data[2];
+		Vision_Status.Speed = *(uint32_t*) (&parse_data[3]);
 	}
 	break;
 

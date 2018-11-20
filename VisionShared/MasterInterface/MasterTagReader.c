@@ -79,6 +79,7 @@ void parse_message_into_TAG(_Transpondert* T, uint8_t* data, int len)
 		T->V_lenght = data[25];
 		T->V_Width = data[26];
 		T->Stopping_dist = data[27];
+		T->Speed = *(uint32_t*) (data + 28);
 
 		if (T->kind == Pulse)
 		{
@@ -87,7 +88,7 @@ void parse_message_into_TAG(_Transpondert* T, uint8_t* data, int len)
 				T->LF.RSSI++;
 			}
 #ifdef USE_TAG_NAME
-			if(len > 28)
+			if(len > 33)
 			{
 				strncpy(T->name, (char*)&data[28], MIN(STR_MAX, len-28));
 			}
@@ -97,11 +98,11 @@ void parse_message_into_TAG(_Transpondert* T, uint8_t* data, int len)
 		if (T->kind == Pulse_GPS)
 		{
 
-			memcpy(&T->GPS_Data.Longitude, data + 28, 4);
-			memcpy(&T->GPS_Data.Latitude, data + 32, 4);
-			memcpy(&T->GPS_Data.VerticalAccuracy, data + 36, 4);
-			memcpy(&T->GPS_Data.HorizontalAccuracy, data + 40, 4);
-			memcpy(&T->GPS_Data.Speed, data + 44, 4);
+			memcpy(&T->GPS_Data.Longitude, data + 32, 4);
+			memcpy(&T->GPS_Data.Latitude, data + 36, 4);
+			memcpy(&T->GPS_Data.VerticalAccuracy, data + 40, 4);
+			memcpy(&T->GPS_Data.HorizontalAccuracy, data + 44, 4);
+//			memcpy(&T->GPS_Data.Speed, data + 44, 4);
 			memcpy(&T->GPS_Data.HeadingVehicle, data + 48, 4);
 			memcpy(&T->GPS_Data.FixType, data + 52, 1);
 			memcpy(&T->GPS_Data.FixAge, data + 53, 1);

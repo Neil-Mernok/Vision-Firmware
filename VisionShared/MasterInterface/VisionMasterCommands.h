@@ -25,7 +25,7 @@ void VCGetTransponderLog(vision_device* v, uint8_t type, uint8_t age,  uint16_t 
 bool VCSaveSetting(vision_device* v, uint16_t setting_adr, uint8_t* d_in, uint8_t len);
 void VCGetSetting(vision_device* v, uint16_t setting_adr);
 void VCResetModule(vision_device* v);
-void VCDrivingInfo(vision_device* v, uint8_t Reverse, uint8_t Stopping_distance);
+void VCDrivingInfo(vision_device* v, uint8_t Reverse, uint8_t Stopping_distance, uint32_t Speed);
 void VCGetFWRev(vision_device* v);
 void VCSetReaderActivities(vision_device* v);
 void VCSetPulse500Activities(vision_device* v);

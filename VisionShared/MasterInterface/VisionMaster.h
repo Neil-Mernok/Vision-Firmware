@@ -69,6 +69,7 @@ typedef struct {
 
 	uint8_t Reverse;
 	uint8_t stopping_dist;
+	uint16_t Speed;
 
 } vision_device;
 
