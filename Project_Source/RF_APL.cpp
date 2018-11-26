@@ -87,6 +87,7 @@ int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 	RF_Buffer[17] = vision_settings.V_length;
 	RF_Buffer[18] = vision_settings.V_width;
 	RF_Buffer[19] = Vision_Status.Stopping_dist;
+	Vision_Status.Speed+=10;
 	*((uint16_t*) &RF_Buffer[20]) = Vision_Status.Speed/10;
 
 	return 22;
@@ -183,18 +184,17 @@ uint8_t Apl_report_name()
  */
 uint8_t Apl_report_name_var(uint8_t type, char* name)
 {
-	uint8_t packet_size = 0 ;
-	uint8_t info_packet_size;
+	uint8_t packet_size = rf_ID_Pulse_size ;
 	// don't send a name message if there is none. 
 	int len = strnlen(name, STR_MAX);
 
 	if(name == 0 || len == 0)
 		return Apl_report_ID(type);
 
-	packet_size = rf_ID_Pulse_size;
+//	packet_size = rf_ID_Pulse_size;
 
 	// ---- TAG Information ----
-	info_packet_size = Rf_Info_Packet(type, rf_ID_name);
+	Rf_Info_Packet(type, rf_ID_name);
 
 	// ---- TAG Name ----
 	memcpy(&RF_Buffer[packet_size], name, len);
@@ -582,7 +582,7 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		T->V_lenght = buffer[17];
 		T->V_Width = buffer[18];
 		T->Stopping_dist = buffer[19];
-		T->Speed = *((uint16_t*) (&buffer[20]));
+		T->Speed = *((uint16_t*) (&buffer[20]))*10;
 
 		switch (buffer[0])
 		{
