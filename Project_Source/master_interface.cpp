@@ -663,7 +663,7 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 		buffer[25] = t->V_lenght;
 		buffer[26] = t->V_Width;
 		buffer[27] = t->Stopping_dist;
-		memcpy(buffer + 28, &t->Speed, 4);
+		memcpy(&buffer[28], &t->Speed, 4);
 
 		////////////////////////////////////////////
 

@@ -61,7 +61,7 @@ typedef struct _Transpondert
 
 	//todo: Neil
 	// --- Added V14 - Mantag Acknowledge
-	uint16_t		Speed;
+	uint32_t		Speed;
 	uint8_t 		ManTagAck;
 	uint8_t			Reverse;
 	uint8_t			V_Width;

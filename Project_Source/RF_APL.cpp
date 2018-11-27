@@ -87,7 +87,6 @@ int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 	RF_Buffer[17] = vision_settings.V_length;
 	RF_Buffer[18] = vision_settings.V_width;
 	RF_Buffer[19] = Vision_Status.Stopping_dist;
-	Vision_Status.Speed+=10;
 	*((uint16_t*) &RF_Buffer[20]) = Vision_Status.Speed/10;
 
 	return 22;
@@ -95,14 +94,18 @@ int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 
 void Rf_GPS_info(uint8_t Array_start)
 {
-	*((int32_t*) &RF_Buffer[Array_start]) = Vision_Status.GPS_Data.Longitude;
-	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.Latitude;
-	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.SeaLevel;
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.VerticalAccuracy/10;
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.HorizontalAccuracy/10;
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = Vision_Status.GPS_Data.HeadingVehicle/10;
-	RF_Buffer[Array_start+=1] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[Array_start+=1] =	Vision_Status.GPS_Data.FixAge;
+	*((int32_t*) &RF_Buffer[22]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[26]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[30]) = Vision_Status.GPS_Data.SeaLevel;
+
+	*((uint16_t*) &RF_Buffer[34]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
+
+	*((uint16_t*) &RF_Buffer[36]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
+
+	*((uint16_t*) &RF_Buffer[38]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
+
+	RF_Buffer[40] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[41] =	Vision_Status.GPS_Data.FixAge;
 }
 
 /**
@@ -574,7 +577,7 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		T->last_seen = time_now();
 		T->status = buffer[8];
 		T->ManTagAck = buffer[9]&0x01;
-		T->Reverse = buffer[9]&0x02>>1;
+		T->Reverse = (buffer[9]&0x02)>>1;
 		T->volts = buffer[10];
 		T->FirmwareRev = (buffer[11] & 0x7F);
 		T->VehicleID = *((uint32_t*) (&buffer[12]));
@@ -603,8 +606,8 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 			T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
 			T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
 			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
-			T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[34])*10;
-			T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[36])*10;
+			T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[34])*10;
+			T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[36])*10;
 			T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[38])*10;
 			//T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
 			T->GPS_Data.FixType = buffer[40];
@@ -624,9 +627,9 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 				T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
 				T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
 				T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
-				T->GPS_Data.VerticalAccuracy = *((int16_t*) &buffer[34])*10;
-				T->GPS_Data.HorizontalAccuracy = *((int16_t*) &buffer[36])*10;
-				T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[38])*10;
+				T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[34])*10;
+				T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[36])*10;
+				T->GPS_Data.HeadingVehicle = *((uint16_t*) &buffer[38])*10;
 //				T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
 				T->GPS_Data.FixType = buffer[40];
 				T->GPS_Data.FixAge = buffer[41];
