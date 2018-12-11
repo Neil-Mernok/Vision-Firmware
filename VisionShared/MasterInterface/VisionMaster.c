@@ -379,12 +379,12 @@ uint8_t vision_share_message(vision_device* reader_from, vision_device* reader_t
 		data[42] = reader_from->GPS_Data.FixAge;
 		break;
 
-	case '@':
-		data_length = 4;
-		data[1] = reader_from->Reverse;
-		data[2] = reader_from->stopping_dist;
-		data[3] = reader_from->Speed;
-		break;
+//	case '@':
+//		data_length = 4;
+//		data[1] = reader_from->Reverse;
+//		data[2] = reader_from->stopping_dist;
+//		data[3] = reader_from->Speed;
+//		break;
 	default:
 		break;
 	}

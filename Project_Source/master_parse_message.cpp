@@ -459,7 +459,7 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 	}
 	break;
 
-	case '@':	// ----	Vehicle information share message (request) ----
+	case '@':	// ----	Vehicle information message (command) ----
 	{
 		command_valid = 1;
 		send_mess = 1;
