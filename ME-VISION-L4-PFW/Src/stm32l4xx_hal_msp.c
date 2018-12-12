@@ -35,7 +35,7 @@
 #include "stm32l4xx_hal.h"
 
 /* USER CODE BEGIN 0 */
-
+extern void _Error_Handler(char *, int);
 /* USER CODE END 0 */
 
 /**

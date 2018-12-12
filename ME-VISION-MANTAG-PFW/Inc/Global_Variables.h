@@ -203,10 +203,10 @@ extern int debug_counter;
 
 typedef  void (*pFunction)(void);
 
-
 //Todo: neil
 extern bool MernokAsset_GroupList_populated;
 extern bool sizeCalculated_flag;
+
 // RX data for CC1101 RF reception
 //////////////////////////////////////////////
 

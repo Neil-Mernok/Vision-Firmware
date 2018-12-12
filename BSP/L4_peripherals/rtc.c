@@ -44,39 +44,39 @@ RTC_HandleTypeDef hrtc;
 /* RTC init function */
 void MX_RTC_Init(void)
 {
-//  RTC_TimeTypeDef sTime;
-//  RTC_DateTypeDef sDate;
+	  RTC_TimeTypeDef sTime;
+	  RTC_DateTypeDef sDate;
 
-    /**Initialize RTC and set the Time and Date 
-    */
-  hrtc.Instance = RTC;
-  hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 127;
-  hrtc.Init.SynchPrediv = 255;
-  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
-  hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
-  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
-  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
-  HAL_RTC_Init(&hrtc);
+	    /**Initialize RTC and set the Time and Date
+	    */
+	  hrtc.Instance = RTC;
+	  hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
+	  hrtc.Init.AsynchPrediv = 127;
+	  hrtc.Init.SynchPrediv = 255;
+	  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+	  hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
+	  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+	  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+	  HAL_RTC_Init(&hrtc);
 
-//  sTime.Hours = 0x0;
-//  sTime.Minutes = 0x0;
-//  sTime.Seconds = 0x0;
-//  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-//  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-//  HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
-//
-//  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-//  sDate.Month = RTC_MONTH_JANUARY;
-//  sDate.Date = 0x1;
-//  sDate.Year = 0x0;
-//
-//  HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
+	//  sTime.Hours = 0x0;
+	//  sTime.Minutes = 0x0;
+	//  sTime.Seconds = 0x0;
+	//  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	//  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+	//  HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
+	//
+	//  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+	//  sDate.Month = RTC_MONTH_JANUARY;
+	//  sDate.Date = 0x1;
+	//  sDate.Year = 0x0;
+	//
+	//  HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
 
-    /**Enable the WakeUp 
-    */
-  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
-  HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 3000, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
+	    /**Enable the WakeUp
+	    */
+	  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
+	  HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 3000, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
 }
 
 void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)

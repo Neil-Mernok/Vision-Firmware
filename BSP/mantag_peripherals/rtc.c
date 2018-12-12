@@ -52,15 +52,6 @@ void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// 	RTC is not used to keep track of time. we use it to recover the systic after sleep.		/// 
-  /// 	consider moving over to STM32L152CC. this device has a sub-second register for more		///
-  ///	accurate control.   																	///
-  ///	the prescaler is set to 32; which means subseconds register holds milliseconds(roughly)	///
-  ///	then we set the synchronous divider to the largest possible value, so it doesn't 		///
-  ///	overflow more than once during sleep. 													///
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  
   hrtc.Init.AsynchPrediv = 127;
   hrtc.Init.SynchPrediv = 255;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
@@ -75,21 +66,21 @@ void MX_RTC_Init(void)
 //  sTime.Hours = 0;
 //  sTime.Minutes = 0;
 //  sTime.Seconds = 0;
-//  sTime.TimeFormat = RTC_HOURFORMAT12_AM;
 //  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
 //  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-//  HAL_RTC_SetTime(&hrtc, &sTime, FORMAT_BIN);
+//  HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
 //
 //  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-//  sDate.Month = RTC_MONTH_JANUARY;
-//  sDate.Date = 1;
-//  sDate.Year = 0;
-//  HAL_RTC_SetDate(&hrtc, &sDate, FORMAT_BIN);
+//  sDate.Month = RTC_MONTH_DECEMBER;
+//  sDate.Date = 0x0B;
+//  sDate.Year = 0x12;
+//
+//  HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
 
     /**Enable the WakeUp 
     */
   /* Disable Wakeup Counter */
-  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
+//  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
   HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 3000, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
   
   /* Enable RTC register bypass so we dont have to wait for registers to update after sleep */

@@ -67,6 +67,12 @@ typedef struct _Transpondert
 	uint8_t			V_Width;
 	uint8_t			V_lenght;
 	uint8_t			Stopping_dist;
+	uint8_t			Seconds;
+	uint8_t			Minutes;
+	uint8_t			Hours;
+	uint8_t			Day;
+	uint8_t			Month;
+	uint8_t			Year;
 
 #ifdef USE_TAG_NAME
 	char	 		name[STR_MAX];

@@ -545,7 +545,7 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 	_Q_MasterIF MIF;
 	int age;
 	uint16_t dist_lf;							// compound data for LF RSSI, RSSI and ranging distance
-	uint8_t buffer[75] = {0};
+	uint8_t buffer[80] = {0};
 	_Transpondert* t = (_Transpondert*) T;
 
 	bool shortened = false;
@@ -667,25 +667,35 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 
 		////////////////////////////////////////////
 
+		// ---- Time Info -------
+		buffer[32] = t->Seconds ;
+		buffer[33] = t->Minutes;
+		buffer[34] = t->Hours ;
+		buffer[35] = t->Day ;
+		buffer[36] = t->Month ;
+		buffer[37] = t->Year  ;
+
+		////////////////////////////////////////////
+
 		// ---- GPS functionality ----
-		memcpy(buffer + 32, &t->GPS_Data.Longitude, 4);
-		memcpy(buffer + 36, &t->GPS_Data.Latitude, 4);
-		memcpy(buffer + 40, &t->GPS_Data.VerticalAccuracy, 4);
-		memcpy(buffer + 44, &t->GPS_Data.HorizontalAccuracy, 4);
+		memcpy(buffer + 38, &t->GPS_Data.Longitude, 4);
+		memcpy(buffer + 42, &t->GPS_Data.Latitude, 4);
+		memcpy(buffer + 46, &t->GPS_Data.VerticalAccuracy, 4);
+		memcpy(buffer + 50, &t->GPS_Data.HorizontalAccuracy, 4);
 //		memcpy(buffer + 44, &t->GPS_Data.Speed, 4);
-		memcpy(buffer + 48, &t->GPS_Data.HeadingVehicle, 4);
-		memcpy(buffer + 52, &t->GPS_Data.FixType, 1);
-		memcpy(buffer + 53, &t->GPS_Data.FixAge, 1);
-		memcpy(buffer + 54, &t->GPS_Data.SeaLevel,4);
+		memcpy(buffer + 54, &t->GPS_Data.HeadingVehicle, 4);
+		memcpy(buffer + 58, &t->GPS_Data.FixType, 1);
+		memcpy(buffer + 59, &t->GPS_Data.FixAge, 1);
+		memcpy(buffer + 60, &t->GPS_Data.SeaLevel,4);
 
 		if (t->kind == Pulse_GPS)
 		{
 
-			MIF.len = 58;
+			MIF.len = 64;
 		}
 		else
 		{
-			MIF.len = 33;
+			MIF.len = 38;
 		}
 
 		MIF.Master = M;

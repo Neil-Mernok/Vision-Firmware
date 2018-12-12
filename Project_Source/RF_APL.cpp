@@ -10,6 +10,7 @@
 #include "Global_Variables.h"
 #include "master_interface.h"
 #include "Vision_Parameters.h"
+#include "Time_APL.h"
 
 uint8_t RF_Buffer[64];
 uint8_t ii;
@@ -230,12 +231,39 @@ void Apl_broadcast_ID(void)
 	ID_count++;
 }
 
+
+uint8_t Apl_broadcast_Time(void)
+{
+
+	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size;
+	packet_size = rf_Time_mess_size;
+
+	// ---- TAG Information ----
+	Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Time);
+
+	//----  Over-write with Time data ----
+//	Get_RTCTime();
+	RF_Buffer[22] = Vision_Status.DateTime.Seconds;
+	RF_Buffer[23] = Vision_Status.DateTime.Minutes;
+	RF_Buffer[24] = Vision_Status.DateTime.Hours;
+
+//	Get_RTCDate();
+	RF_Buffer[25] = Vision_Status.DateTime.Date;
+	RF_Buffer[26] = Vision_Status.DateTime.Month;
+	RF_Buffer[27] = Vision_Status.DateTime.Year;
+
+	// ---- Transmit RF packet ----
+	txSendPacket(RF_Buffer, packet_size);
+
+	return 0;
+}
+
 uint8_t Apl_report_LF(LF_message_type LF)
 {
 	uint8_t packet_size = 0 ;
 	uint8_t info_packet_size;
 	packet_size = rf_LF_resp_size;
-
 
 	// ---- TAG Information ----
 	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_LF_resp);
@@ -495,6 +523,16 @@ void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel
 			}
 			break;
 
+		case rf_Time:
+			if (len == rf_Time_mess_size)
+			{
+				// add the tag details to the list
+				TR = Transp_RF_handler(buffer, RSSI, len);
+				if (vision_settings.getActivities().forward_RF)
+					Send_POD_toMaster(TR, CODE, 1);
+			}
+			break;
+
 		default:
 			valid = false;
 			break;
@@ -652,6 +690,18 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 
 			// ---- TAG Information ----
 			T->Dist = 0;
+			break;
+
+		case rf_Time:			// ---- Time message ----
+
+			// ---- TAG Information ----
+			T->Seconds = buffer[22];
+			T->Minutes = buffer[23];
+			T->Hours = buffer[24];
+			T->Day = buffer[25];
+			T->Month = buffer[26];
+			T->Year = buffer[27];
+
 			break;
 
 		default:

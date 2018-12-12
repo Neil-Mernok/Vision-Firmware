@@ -15,6 +15,9 @@
 #include "LF_APL.h"
 #include "GPS_APL.h"
 #include "TagTypes/TagTypes.h"
+#ifdef __cplusplus
+#include "Time_APL.h"
+#endif
 
 #define Firmware_rev 14
 #define Firmware_subrev 0
@@ -178,6 +181,9 @@ typedef struct
 	uint8_t MernokAssetFile_Def;		// ---- Last mernok asset file loaded onto EEPROM ---- //
 	uint8_t Group_status;
 	uint16_t Speed;
+#ifdef __cplusplus
+	TimeDate_Data_Type DateTime;
+#endif
 
 } _Vision_Status;
 
@@ -215,6 +221,7 @@ union activities
 		uint32_t GPS_capable :1;		// Device will broadcast ID with coordinates
 		// -----V14-------------------
 		uint32_t CAN_Heartbeat_monitor :1;  //device will monitor heartbeat messaged over CAN									-bit 22
+		uint32_t broadcast_time :1;
 	};
 
 #ifdef __cplusplus
@@ -272,7 +279,7 @@ union activities
 	{
 		activities p;
 		p.tag_enable = 1;
-		p.broadcast_ID = 1; //TODO: Neil, change this back to commented if stuff breaks
+//		p.broadcast_ID = 1;
 		p.heartbeat = 1;
 //		p.send_LF_TX = 1;
 //		p.LF_response = 1; 

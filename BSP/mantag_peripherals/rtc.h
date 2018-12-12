@@ -43,7 +43,6 @@
 #include "stm32l1xx_hal.h"
 
 extern RTC_HandleTypeDef hrtc;
-
 void MX_RTC_Init(void);
 
 uint32_t RTC_gettick(int readall);

@@ -470,6 +470,10 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						Apl_report_GPS_Coordinates();
 						break;
 
+					case rf_Time:
+						Apl_broadcast_Time();
+						break;
+
 					default:
 						break;
 					}
@@ -490,6 +494,12 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 				{
 					SetLed(&LED1, Green, 0);
 					Apl_broadcast_ID();
+
+					if(vision_settings.getActivities().broadcast_time)
+					{
+						Apl_broadcast_Time();
+					}
+
 					SetLed(&LED1, LED1.last_color, 0);
 
 					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
