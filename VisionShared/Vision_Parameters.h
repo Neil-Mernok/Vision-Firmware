@@ -14,10 +14,8 @@
 #include "ParamValue.h" 
 #include "LF_APL.h"
 #include "GPS_APL.h"
-#include "TagTypes/TagTypes.h"
-#ifdef __cplusplus
 #include "Time_APL.h"
-#endif
+#include "TagTypes/TagTypes.h"
 
 #define Firmware_rev 14
 #define Firmware_subrev 0
@@ -182,11 +180,11 @@ typedef struct
 	uint8_t MernokAssetFile_Def;		// ---- Last mernok asset file loaded onto EEPROM ---- //
 	uint8_t Group_status;
 	uint16_t Speed;
-#ifdef __cplusplus
 	TimeDate_Data_Type DateTime;
-#endif
 
 } _Vision_Status;
+
+
 
 //------- Global Variables --------//
 

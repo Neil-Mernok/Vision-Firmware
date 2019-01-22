@@ -11,6 +11,7 @@
 #include "MasterTagReader.h"
 #include "Vision_Parameters.h"
 #include "GPS_APL.h"
+#include "Time_APL.h"
 
 // VisionShared folder location
 // PROJECT_LOC\..\VisionShared
@@ -70,6 +71,7 @@ typedef struct {
 	uint8_t Reverse;
 	uint8_t stopping_dist;
 	uint16_t Speed;
+	TimeDate_Data_Type DateTime;
 
 } vision_device;
 

@@ -11,13 +11,18 @@
 #include "Global_Variables.h"
 
 extern RTC_HandleTypeDef hrtc;
-extern RTC_DateTypeDef sDate;
-extern RTC_TimeTypeDef sTime;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 
 void Get_RTCTime(void);
 void Get_RTCDate(void);
+void Set_RTCDateTime(uint8_t parse_data[]);
 
-typedef struct _TimeDate_Data_Type
+typedef struct
 {
 	  uint8_t Hours;            /*!< Specifies the RTC Time Hour.
 	                                 This parameter must be a number between Min_Data = 0 and Max_Data = 12 if the RTC_HourFormat_12 is selected.
@@ -43,6 +48,8 @@ typedef struct _TimeDate_Data_Type
 
 } TimeDate_Data_Type;
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* TIME_APL_H_ */

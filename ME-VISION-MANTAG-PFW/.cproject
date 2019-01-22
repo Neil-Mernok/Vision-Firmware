@@ -222,6 +222,44 @@
 							<inputType id="com.atollic.truestudio.gcc.input.1274347818" superClass="com.atollic.truestudio.gcc.input"/>
 						</tool>
 					</fileInfo>
+					<folderInfo id="com.atollic.truestudio.exe.debug.1518366166.588106333" name="/" resourcePath="Project_Source">
+						<toolChain id="com.atollic.truestudio.exe.debug.toolchain.1499012156" name="Atollic ARM Tools" superClass="com.atollic.truestudio.exe.debug.toolchain" unusedChildren="">
+							<option id="com.atollic.truestudio.general.runtimelib.1482966509.1278113273" name="Runtime Library" superClass="com.atollic.truestudio.general.runtimelib.1482966509"/>
+							<option id="com.atollic.truestudio.toolchain_options.mcu.855382930.1387081242" name="Microcontroller" superClass="com.atollic.truestudio.toolchain_options.mcu.855382930"/>
+							<option id="com.atollic.truestudio.toolchain_options.vendor.1701787852.533453837" name="Vendor name" superClass="com.atollic.truestudio.toolchain_options.vendor.1701787852"/>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.as.268067178" name="Assembler" superClass="com.atollic.truestudio.exe.debug.toolchain.as.1545899283">
+								<inputType id="com.atollic.truestudio.as.input.1284960641" name="Input" superClass="com.atollic.truestudio.as.input"/>
+							</tool>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.321403733" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc.1836874447">
+								<option id="com.atollic.truestudio.gcc.directories.select.1728394304" superClass="com.atollic.truestudio.gcc.directories.select" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../Inc"/>
+									<listOptionValue builtIn="false" value="../../BSP/mantag_peripherals"/>
+									<listOptionValue builtIn="false" value="../../Project_Headers"/>
+									<listOptionValue builtIn="false" value="../../CC1101"/>
+									<listOptionValue builtIn="false" value="../../Libraries/Graphics"/>
+									<listOptionValue builtIn="false" value="../../Libraries/Graphics/Fonts"/>
+									<listOptionValue builtIn="false" value="../../Libraries/Graphics/Images"/>
+									<listOptionValue builtIn="false" value="../../BSP"/>
+									<listOptionValue builtIn="false" value="../../Drivers/STM32L1xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Device/ST/STM32L1xx/Include"/>
+									<listOptionValue builtIn="false" value="../../VisionShared"/>
+									<listOptionValue builtIn="false" value="../../uBlox/uBlox_Inc"/>
+									<listOptionValue builtIn="false" value="../../uBlox/nmea"/>
+									<listOptionValue builtIn="false" value="../../uBlox/parsers"/>
+									<listOptionValue builtIn="false" value="../../Project_Source"/>
+								</option>
+								<inputType id="com.atollic.truestudio.gcc.input.51970387" superClass="com.atollic.truestudio.gcc.input"/>
+							</tool>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.ld.1792751939" name="C Linker" superClass="com.atollic.truestudio.exe.debug.toolchain.ld.1444973427"/>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.gpp.1811479048" name="C++ Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gpp.981298185">
+								<inputType id="com.atollic.truestudio.gpp.input.434075764" superClass="com.atollic.truestudio.gpp.input"/>
+							</tool>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.ldcc.305868777" name="C++ Linker" superClass="com.atollic.truestudio.exe.debug.toolchain.ldcc.428260"/>
+							<tool id="com.atollic.truestudio.ar.base.1772022299" name="Archiver" superClass="com.atollic.truestudio.ar.base.1086007430"/>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.secoutput.41519823" name="Other" superClass="com.atollic.truestudio.exe.debug.toolchain.secoutput.839033486"/>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
 						<entry excluding="ME-PCB-217-02-Ports.c|ME-PCB-182-06-Ports.c|ME-PCB-138-03-Ports.c|ME-PCB-217-01-Ports.c|L4_peripherals|ME-PCB-182-04-Ports.c|ME-PCB-173-02-Ports.c|ME-PCB-173-01-Ports.c|ME-PCB-173-01-Ports.h|ME-PCB-182-01-Ports.c|ME-PCB-182-01-Ports.h|ME-PCB-182-02-Ports.c|ME-PCB-182-02-Ports.h" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="BSP"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="CC1101"/>

@@ -12,6 +12,7 @@
 
 #include "RF_APL.h"
 #include "GPS_APL.h"
+#include "Time_APL.h"
 
 uint8_t to_master[150];
 
@@ -672,6 +673,7 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 
 		if(parse_length>1)
 		{
+			Set_RTCDateTime(&parse_data[1]);
 			Vision_Status.DateTime.Seconds = parse_data[1];
 			Vision_Status.DateTime.Minutes = parse_data[2];
 			Vision_Status.DateTime.Hours = parse_data[3];

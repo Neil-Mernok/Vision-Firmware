@@ -238,12 +238,12 @@ uint8_t Apl_broadcast_Time(void)
 	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Time);
 
 	//----  Over-write with Time data ----
-//	Get_RTCTime();
+	Get_RTCTime();
 	RF_Buffer[info_packet_size] = Vision_Status.DateTime.Seconds;
 	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Minutes;
 	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Hours;
 
-//	Get_RTCDate();
+	Get_RTCDate();
 	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Date;
 	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Month;
 	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Year;

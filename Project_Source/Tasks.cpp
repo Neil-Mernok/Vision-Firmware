@@ -497,19 +497,20 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 								SetLed(&LED1, Violet, 400);
 					else
 					{
+						static int ID_i = 0;
 						SetLed(&LED1, Green, 0);
-						Apl_broadcast_ID();
+						if((ID_i&1)==1)
+							Apl_broadcast_ID();
+						else
+							Apl_broadcast_Time();
 						SetLed(&LED1, LED1.last_color, 0);
+						ID_i++;
 					}
 #else
 					SetLed(&LED1, Green, 0);
 					Apl_broadcast_ID();
 					SetLed(&LED1, LED1.last_color, 0);
 #endif
-//					if(vision_settings.getActivities().broadcast_time)
-//					{
-//						Apl_broadcast_Time();
-//					}
 
 
 
