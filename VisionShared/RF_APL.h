@@ -40,13 +40,13 @@ typedef enum rf_message_size
 {
 	rf_no_mess_size = 0,
 	rf_legacy_PDS_size = 8,				// this is not actually used as a message header, but the enum is useful
-	rf_ID_Pulse_size = 22,				// this is a Pulse ID ping
-	rf_LF_resp_size = 24,	 			// this is a response message after a tag saw an LF field
-	rf_LF_send_size = 21,				// this is a message indicating that someone is sending an LF message
-	rf_GPS_Coordinates_size   = 41,		// GPS coordinates
-	rf_ID_Pulse_GPS_size = 42,			// this is a Pulse_GPS ID ping
+	rf_ID_Pulse_size = 23,				// this is a Pulse ID ping
+	rf_LF_resp_size = 27,	 			// this is a response message after a tag saw an LF field
+	rf_LF_send_size = 24,				// this is a message indicating that someone is sending an LF message
+	rf_GPS_Coordinates_size   = 40,		// GPS coordinates
+	rf_ID_Pulse_GPS_size = 43,			// this is a Pulse_GPS ID ping
 	rf_Remote_message_size = 9,
-	rf_Time_mess_size = 28
+	rf_Time_mess_size = 29
 } rf_message_size;
 
 typedef struct

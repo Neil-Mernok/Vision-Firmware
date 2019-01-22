@@ -54,8 +54,9 @@ enum vision_param_adr
 	padr_CAN_heartbeat_time = 0x7c, //32 - byte for CAN heatbeat monitoring timeout
 	padr_CAN_revert = 0x80,      	//33 - byte to change tag type when heartbeat monitoring times out
 	padr_Asset_list_rev = 0x84,     //34 - byte used to show the version of the mernok asset file last read
-	padr_length 	= 0x88,
-	padr_Width  	= 0x8C,
+	padr_length 	= 0x88,			//35- byte used to set the vehicle length
+	padr_Width  	= 0x8C,			//36- byte used to set the vehicle width
+	padr_product	= 0x90			//37- byte used to set the product type
 };
 
 
@@ -483,6 +484,7 @@ public:
 	ParamValue Mernok_Asset_rev;
 	ParamValue V_length;
 	ParamValue V_width;
+	ParamValue Product_ID;
 
 
 	/// access a parameter based on ID.
@@ -532,7 +534,8 @@ public:
 		Type_revert = ParamValue(padr_CAN_revert,0,Loco, 255, "Tag Revert Type");
 		Mernok_Asset_rev = ParamValue(padr_Asset_list_rev,0,0,255,"Mernok Asset list rev");
 		V_length = ParamValue(padr_length,1,1,255,"Mernok Asset Lenght");
-		V_width  = ParamValue(padr_Width,1,1,255, "Mernok_Asset_Width");
+		V_width  = ParamValue(padr_Width,1,1,255, "Mernok Asset Width");
+		Product_ID = ParamValue(padr_product,0,1,254,"Product code");
 		
 
 		switch (board)
@@ -612,6 +615,7 @@ public:
 		Mernok_Asset_rev.add_to_list(list);
 		V_length.add_to_list(list);
 		V_width.add_to_list(list);
+		Product_ID.add_to_list(list);
 	}
 
 	activities getActivities(void)

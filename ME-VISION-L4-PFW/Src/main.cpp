@@ -79,7 +79,8 @@ void SystemClock_Config(void);
 int main(void)
 {
 	int cant_sleep, loopcounter = 0;
-
+	int32_t frequency, frequncy2, frequency3 = 0;
+	bool changed = false;
 	/* MCU Configuration----------------------------------------------------------*/
 	Config_Ports();
 	setup_coms_flag(&Vision_Status.last_master_coms);
@@ -153,6 +154,25 @@ int main(void)
 
 		Refresh_Settings_task(&settings);			// periodically read settings.
 		DetermineTagType();
+
+////automatic frequency adjustment for LF coil
+#ifdef LF_TX_Capable
+		frequency = as3933GetFrequency(0);
+		frequncy2 = vision_settings.lf_hertz._value;
+		if((frequency3!=0)&&(frequency3==vision_settings.lf_hertz._value))
+		{
+			changed = false;
+		}
+
+		if((frequency > frequncy2+2000)&&(!changed))
+		{
+			frequncy2 = frequency - vision_settings.lf_hertz._value-2000;
+			frequency3 = vision_settings.lf_hertz._value;
+			vision_settings.lf_hertz._value -= frequncy2;
+			changed = true;
+		}
+#endif
+
 
 		/// 	Ranger code		///////////////////////////////	
 		if(Vision_Status.board_id == ME_PCB_138_03)

@@ -76,37 +76,38 @@ int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 	RF_Buffer[9] = get_status_byte2();
 	RF_Buffer[10] = (Vision_Status.Vbat/50);
 	RF_Buffer[11] = Firmware_rev | 0x80;
+	RF_Buffer[12] = vision_settings.Product_ID;
 	if(type == Person)
 	{
-		*((uint32_t*) &RF_Buffer[12]) = Vision_Status.UID;
+		*((uint32_t*) &RF_Buffer[13]) = Vision_Status.UID;
 		vision_settings.vehic_id._value = Vision_Status.UID;
 	}
 	else
-		*((uint32_t*) &RF_Buffer[12]) = vision_settings.vehic_id;
+		*((uint32_t*) &RF_Buffer[13]) = vision_settings.vehic_id;
 
-	RF_Buffer[16] = vision_settings.slave_id;
-	RF_Buffer[17] = vision_settings.V_length;
-	RF_Buffer[18] = vision_settings.V_width;
-	RF_Buffer[19] = Vision_Status.Stopping_dist;
-	*((uint16_t*) &RF_Buffer[20]) = Vision_Status.Speed/10;
+	RF_Buffer[17] = vision_settings.slave_id;
+	RF_Buffer[18] = vision_settings.V_length;
+	RF_Buffer[19] = vision_settings.V_width;
+	RF_Buffer[20] = Vision_Status.Stopping_dist;
+	*((uint16_t*) &RF_Buffer[21]) = Vision_Status.Speed/10;
 
-	return 22;
+	return 23;
 }
 
 void Rf_GPS_info(uint8_t Array_start)
 {
-	*((int32_t*) &RF_Buffer[22]) = Vision_Status.GPS_Data.Longitude;
-	*((int32_t*) &RF_Buffer[26]) = Vision_Status.GPS_Data.Latitude;
-	*((int32_t*) &RF_Buffer[30]) = Vision_Status.GPS_Data.SeaLevel;
+	*((int32_t*) &RF_Buffer[Array_start]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.SeaLevel;
 
-	*((uint16_t*) &RF_Buffer[34]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[36]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[38]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
 
-	RF_Buffer[40] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[41] =	Vision_Status.GPS_Data.FixAge;
+	RF_Buffer[Array_start+=4] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[Array_start+=4] =	Vision_Status.GPS_Data.FixAge;
 }
 
 /**
@@ -150,10 +151,6 @@ uint8_t Apl_report_name()
 
 	uint8_t packet_size = 0 ;
 
-	// ---- Packet Identifier ----
-//	RF_Buffer[0] = rf_ID_name;
-//	RF_Buffer[1] = Vision_Status.kind;
-
 	if (Vision_Status.kind == Pulse_GPS)
 		packet_size = rf_ID_Pulse_GPS_size;
 	else
@@ -195,7 +192,6 @@ uint8_t Apl_report_name_var(uint8_t type, char* name)
 	if(name == 0 || len == 0)
 		return Apl_report_ID(type);
 
-//	packet_size = rf_ID_Pulse_size;
 
 	// ---- TAG Information ----
 	Rf_Info_Packet(type, rf_ID_name);
@@ -224,7 +220,6 @@ void Apl_broadcast_ID(void)
 	{
 		if (vision_settings.getActivities().legacy_PDS)
 			Apl_Send_PDS(Vision_Status.TagTypeHolder);
-		//Todo: Neil added for CAN heartbeat monitoring
 		else
 			Apl_report_ID(Vision_Status.TagTypeHolder);
 	}
@@ -240,18 +235,18 @@ uint8_t Apl_broadcast_Time(void)
 	packet_size = rf_Time_mess_size;
 
 	// ---- TAG Information ----
-	Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Time);
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Time);
 
 	//----  Over-write with Time data ----
 //	Get_RTCTime();
-	RF_Buffer[22] = Vision_Status.DateTime.Seconds;
-	RF_Buffer[23] = Vision_Status.DateTime.Minutes;
-	RF_Buffer[24] = Vision_Status.DateTime.Hours;
+	RF_Buffer[info_packet_size] = Vision_Status.DateTime.Seconds;
+	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Minutes;
+	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Hours;
 
 //	Get_RTCDate();
-	RF_Buffer[25] = Vision_Status.DateTime.Date;
-	RF_Buffer[26] = Vision_Status.DateTime.Month;
-	RF_Buffer[27] = Vision_Status.DateTime.Year;
+	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Date;
+	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Month;
+	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Year;
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -618,21 +613,22 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		T->Reverse = (buffer[9]&0x02)>>1;
 		T->volts = buffer[10];
 		T->FirmwareRev = (buffer[11] & 0x7F);
-		T->VehicleID = *((uint32_t*) (&buffer[12]));
-		T->SlaveID = buffer[16];
-		T->V_lenght = buffer[17];
-		T->V_Width = buffer[18];
-		T->Stopping_dist = buffer[19];
-		T->Speed = *((uint16_t*) (&buffer[20]))*10;
+		T->ProductID = buffer[12];
+		T->VehicleID = *((uint32_t*) (&buffer[13]));
+		T->SlaveID = buffer[17];
+		T->V_lenght = buffer[18];
+		T->V_Width = buffer[19];
+		T->Stopping_dist = buffer[20];
+		T->Speed = *((uint16_t*) (&buffer[21]))*10;
 
 		switch (buffer[0])
 		{
 		case rf_LF_resp:			// ---- LF response message ----
 
 			// ---- LF Information ----
-			T->LF.VehicleID = *((uint16_t*) (&buffer[22]));
-			T->LF.SlaveID = buffer[24];
-			T->LF.RSSI = buffer[25];
+			T->LF.VehicleID = *((uint16_t*) (&buffer[23]));
+			T->LF.SlaveID = buffer[25];
+			T->LF.RSSI = buffer[26];
 			T->LF.last_LF = time_now();
 			T->Dist = 35 - T->LF.RSSI;
 			T->range_needed = 0;
@@ -641,15 +637,15 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		case rf_GPS_C:				// ---- GPS coordinates broadcast message ----
 
 			// ---- GPS Information ----
-			T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
-			T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
-			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
-			T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[34])*10;
-			T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[36])*10;
-			T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[38])*10;
-			//T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
-			T->GPS_Data.FixType = buffer[40];
-			T->GPS_Data.FixAge = buffer[41];
+			T->GPS_Data.Longitude = *((int32_t*) &buffer[18]);
+			T->GPS_Data.Latitude = *((int32_t*) &buffer[22]);
+			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[26]);
+			T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[30])*10;
+			T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[32])*10;
+			T->GPS_Data.HeadingVehicle = *((int16_t*) &buffer[34])*10;
+			T->GPS_Data.Speed = *((int16_t*) &buffer[36])*10;
+			T->GPS_Data.FixType = buffer[38];
+			T->GPS_Data.FixAge = buffer[39];
 			break;
 
 		case rf_ID_name:			// ---- Name broadcast ID message ----
@@ -662,15 +658,15 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 			{
 
 				// ---- GPS Information ----
-				T->GPS_Data.Longitude = *((int32_t*) &buffer[22]);
-				T->GPS_Data.Latitude = *((int32_t*) &buffer[26]);
-				T->GPS_Data.SeaLevel = *((int32_t*) &buffer[30]);
-				T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[34])*10;
-				T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[36])*10;
-				T->GPS_Data.HeadingVehicle = *((uint16_t*) &buffer[38])*10;
+				T->GPS_Data.Longitude = *((int32_t*) &buffer[23]);
+				T->GPS_Data.Latitude = *((int32_t*) &buffer[27]);
+				T->GPS_Data.SeaLevel = *((int32_t*) &buffer[31]);
+				T->GPS_Data.VerticalAccuracy = *((uint16_t*) &buffer[35])*10;
+				T->GPS_Data.HorizontalAccuracy = *((uint16_t*) &buffer[37])*10;
+				T->GPS_Data.HeadingVehicle = *((uint16_t*) &buffer[39])*10;
 //				T->GPS_Data.Speed = *((int16_t*) &buffer[38])*10;
-				T->GPS_Data.FixType = buffer[40];
-				T->GPS_Data.FixAge = buffer[41];
+				T->GPS_Data.FixType = buffer[41];
+				T->GPS_Data.FixAge = buffer[42];
 
 			}
 			else
@@ -695,12 +691,12 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 		case rf_Time:			// ---- Time message ----
 
 			// ---- TAG Information ----
-			T->Seconds = buffer[22];
-			T->Minutes = buffer[23];
-			T->Hours = buffer[24];
-			T->Day = buffer[25];
-			T->Month = buffer[26];
-			T->Year = buffer[27];
+			T->Seconds = buffer[23];
+			T->Minutes = buffer[24];
+			T->Hours = buffer[25];
+			T->Day = buffer[26];
+			T->Month = buffer[27];
+			T->Year = buffer[28];
 
 			break;
 

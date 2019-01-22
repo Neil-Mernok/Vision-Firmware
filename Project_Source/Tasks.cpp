@@ -232,25 +232,25 @@ void Refresh_Settings_task(task* t)
 	}
 
 	Vision_Status.kind = get_TAG_kind();
-
-	if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
-	{
-		if ((Vision_Status.sts.USB_Active == false))
-		{
-			NVIC_SystemReset();
-		}
-	}
-	else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
-	{
-		if (Vision_Status.sts.USB_Active == false)
-		{
-			NVIC_SystemReset();
-		}
-	}
-	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
-	{
-		NVIC_SystemReset();
-	}
+//TODO: NEil check here to un-comment
+//	if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
+//	{
+//		if ((Vision_Status.sts.USB_Active == false))
+//		{
+//			NVIC_SystemReset();
+//		}
+//	}
+//	else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
+//	{
+//		if (Vision_Status.sts.USB_Active == false)
+//		{
+//			NVIC_SystemReset();
+//		}
+//	}
+//	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
+//	{
+//		NVIC_SystemReset();
+//	}
 
 	// tell the bootloader that we are running fine...
 #ifdef USE_HAL_DRIVER
@@ -492,15 +492,26 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 				// ---- Output LED only when broadcast ID is enabled ----
 				if (vision_settings.getActivities().broadcast_ID)
 				{
+#ifdef WARNING_OUTPUTS
+					if(Vision_Status.sts.EXT_Power && Vision_Status.sts.Charging)
+								SetLed(&LED1, Violet, 400);
+					else
+					{
+						SetLed(&LED1, Green, 0);
+						Apl_broadcast_ID();
+						SetLed(&LED1, LED1.last_color, 0);
+					}
+#else
 					SetLed(&LED1, Green, 0);
 					Apl_broadcast_ID();
-
-					if(vision_settings.getActivities().broadcast_time)
-					{
-						Apl_broadcast_Time();
-					}
-
 					SetLed(&LED1, LED1.last_color, 0);
+#endif
+//					if(vision_settings.getActivities().broadcast_time)
+//					{
+//						Apl_broadcast_Time();
+//					}
+
+
 
 					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
 					(*cant_sleep)++; 						// CC1101 chip still busy, so we can't sleep.
@@ -778,8 +789,8 @@ void LF_TX_Task(task* t)
 	if (t->state == 0)			// this is run the first time only. 
 	{
 		LF_form_packet(vision_settings.vehic_id, vision_settings.slave_id, true);
-		if ((int) vision_settings.lfPeriod < 200)
-			vision_settings.lfPeriod = 200;
+		if ((int) vision_settings.lfPeriod < 100)
+			vision_settings.lfPeriod = 100;
 
 		srand(Vision_Status.UID); // seed the random generator...
 		t->state = 1;
