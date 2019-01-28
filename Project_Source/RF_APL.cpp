@@ -321,6 +321,7 @@ uint8_t Apl_send_master_message(uint8_t* buffer, uint8_t len)
  */
 uint8_t Apl_send_master_response(uint8_t* buffer, uint8_t len)
 {
+	DelayUs(500);
 	uint8_t packet_size = len + 6 ;
 
 	packet_size = MIN(packet_size, 54);				// make sure it fits in an RF packet

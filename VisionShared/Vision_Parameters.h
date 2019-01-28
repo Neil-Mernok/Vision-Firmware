@@ -514,7 +514,7 @@ public:
 		activity = ParamValue(padr_activity, 0, 0, 0x7FFFFFFF, "Tag functions");
 	//	rf_chanl = ParamValue(padr_rf_chanl, 0, 0, 0, "RF channel select");
 	//	max_dist = ParamValue(padr_max_dist, 100, 10000, 32767, "Max dist passed");
-		lfPeriod = ParamValue(padr_lfPeriod, 200, 800, 1000, "LF ping interval");
+		lfPeriod = ParamValue(padr_lfPeriod, 100, 500, 1000, "LF ping interval");
 		lf_power = ParamValue(padr_lf_power, 0, 100, 100, "LF output power");
 		lf_hertz = ParamValue(padr_lf_hertz, 50000, 125000, 150000, "LF frequency");
 		name_str = ParamValue(padr_name_str, "", "Tag name");

@@ -80,7 +80,7 @@ void MX_RTC_Init(void)
     /**Enable the WakeUp 
     */
   /* Disable Wakeup Counter */
-//  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
+  HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
   HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 3000, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
   
   /* Enable RTC register bypass so we dont have to wait for registers to update after sleep */

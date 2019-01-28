@@ -118,7 +118,7 @@ void Refresh_Settings_task(task* t)
 	// dont modify the eeprom when the LF TX is active, or LF reception is underway.  
 	if (LF_Params.state || AS3933_LF_indication())
 	{
-		task_delay(t, 10);
+		task_delay(t, 20);
 		return;
 	}
 
@@ -232,25 +232,24 @@ void Refresh_Settings_task(task* t)
 	}
 
 	Vision_Status.kind = get_TAG_kind();
-//TODO: NEil check here to un-comment
-//	if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
-//	{
-//		if ((Vision_Status.sts.USB_Active == false))
-//		{
-//			NVIC_SystemReset();
-//		}
-//	}
-//	else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
-//	{
-//		if (Vision_Status.sts.USB_Active == false)
-//		{
-//			NVIC_SystemReset();
-//		}
-//	}
-//	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
-//	{
-//		NVIC_SystemReset();
-//	}
+	if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
+	{
+		if ((Vision_Status.sts.USB_Active == false))
+		{
+			NVIC_SystemReset();
+		}
+	}
+	else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
+	{
+		if (Vision_Status.sts.USB_Active == false)
+		{
+			NVIC_SystemReset();
+		}
+	}
+	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
+	{
+		NVIC_SystemReset();
+	}
 
 	// tell the bootloader that we are running fine...
 #ifdef USE_HAL_DRIVER
@@ -494,7 +493,7 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 				{
 #ifdef WARNING_OUTPUTS
 					if(Vision_Status.sts.EXT_Power && Vision_Status.sts.Charging)
-								SetLed(&LED1, Violet, 400);
+						SetLed(&LED1, Violet, 400);
 					else
 					{
 						static int ID_i = 0;
@@ -555,6 +554,7 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 
 			if (status == 0)		// packet received, no timeout
 			{
+
 				// ---- Check if packet received is valid ----
 				if (check_RF_frame_crc(data, (PayloadLength - 4)))
 				{
@@ -568,6 +568,7 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						push_to_master(RF_Debug_MIF);
 #endif
 					}
+
 					// ---- Output LED only when forward RF is enabled ----
 					if (vision_settings.getActivities().forward_RF)
 						SetLed(&LED1, Blue, 2);
@@ -612,7 +613,7 @@ void LF_Task(task* t, int* cant_sleep)
 	if (t->state == 0)
 	{
 		//		SPI_change_mode(AS_SPI, false);
-		DelayUs(10);
+		DelayUs(20);
 
 		if (as3933Initialize(vision_settings.lf_hertz) < 0)
 		{
@@ -691,7 +692,6 @@ void LF_Task(task* t, int* cant_sleep)
 			// tell the state-machine to go back to waiting. 
 			t->state = 1;
 
-			//			rssiMax = as3933GetStrongestRssi();
 			as3933SendCommand(clear_wake);
 
 			int LF_success = AS3933_LF_get_data(&LF_RX, vision_settings.getActivities().disable_LF_CRC);
@@ -758,14 +758,16 @@ void LF_RSSI_watcher(task* t, int count, int* cant_sleep)
 		if (GetButton())
 			Apl_acknowledge_LF();
 #endif 
+
 		if (count != count_last)
 		{
+
 			// TODO: RF_Zone_Indication flag
-			//			if(AS3933_LF_indication() == 0)
-			//			{
-			Apl_Checkzone_and_output();
-			count_last = count;
-			//			}
+			if(AS3933_LF_indication() == 0)
+			{
+				Apl_Checkzone_and_output();
+				count_last = count;
+			}
 			//			else								// prevent buzzing outputs when LF is actively detecting.
 			//				(*cant_sleep)++;
 		}

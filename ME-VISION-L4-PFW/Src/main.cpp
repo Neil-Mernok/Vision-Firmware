@@ -32,17 +32,14 @@
  */
 /* Includes ------------------------------------------------------------------*/
 
-/* USER CODE BEGIN Includes */
 #include "Global_Variables.h"
 #include "Vision_Parameters.h"
 #include "Tasks.h"
 #include "sys_clk.h"
 #include "sleep.h"
-/* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
-/* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 task settings;
 task status;
@@ -59,7 +56,6 @@ int wake_count;
 
 /// Container for all settings.
 _vision_settings vision_settings(vision_reader);
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 bool usb_starter(void);
@@ -79,8 +75,6 @@ void SystemClock_Config(void);
 int main(void)
 {
 	int cant_sleep, loopcounter = 0;
-	int32_t frequency, frequncy2, frequency3 = 0;
-	bool changed = false;
 	/* MCU Configuration----------------------------------------------------------*/
 	Config_Ports();
 	setup_coms_flag(&Vision_Status.last_master_coms);
@@ -154,25 +148,6 @@ int main(void)
 
 		Refresh_Settings_task(&settings);			// periodically read settings.
 		DetermineTagType();
-
-////automatic frequency adjustment for LF coil
-#ifdef LF_TX_Capable
-		frequency = as3933GetFrequency(0);
-		frequncy2 = vision_settings.lf_hertz._value;
-		if((frequency3!=0)&&(frequency3==vision_settings.lf_hertz._value))
-		{
-			changed = false;
-		}
-
-		if((frequency > frequncy2+2000)&&(!changed))
-		{
-			frequncy2 = frequency - vision_settings.lf_hertz._value-2000;
-			frequency3 = vision_settings.lf_hertz._value;
-			vision_settings.lf_hertz._value -= frequncy2;
-			changed = true;
-		}
-#endif
-
 
 		/// 	Ranger code		///////////////////////////////	
 		if(Vision_Status.board_id == ME_PCB_138_03)

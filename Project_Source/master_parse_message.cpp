@@ -667,30 +667,25 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 	}
 	break;
 
-	case '#':
+	case '#': //	---- Force RF time  message (command) -----
 	{
 		command_valid = 1;
 
 		if(parse_length>1)
 		{
 			Set_RTCDateTime(&parse_data[1]);
-			Vision_Status.DateTime.Seconds = parse_data[1];
-			Vision_Status.DateTime.Minutes = parse_data[2];
-			Vision_Status.DateTime.Hours = parse_data[3];
-			Vision_Status.DateTime.Date = parse_data[4];
-			Vision_Status.DateTime.Month = parse_data[5];
-			Vision_Status.DateTime.Year = parse_data[6];
+//			Vision_Status.DateTime.Seconds = parse_data[1];
+//			Vision_Status.DateTime.Minutes = parse_data[2];
+//			Vision_Status.DateTime.Hours = parse_data[3];
+//			Vision_Status.DateTime.Date = parse_data[4];
+//			Vision_Status.DateTime.Month = parse_data[5];
+//			Vision_Status.DateTime.Year = parse_data[6];
 		}
 
 
-		send_mess = 7;
+		send_mess = 2;
 		to_master[0] = '#';
-		to_master[1] =  Vision_Status.DateTime.Seconds;
-		to_master[2] =  Vision_Status.DateTime.Minutes;
-		to_master[3] =  Vision_Status.DateTime.Hours;
-		to_master[4] =  Vision_Status.DateTime.Date;
-		to_master[5] =  Vision_Status.DateTime.Month;
-		to_master[6] =  Vision_Status.DateTime.Year ;
+		to_master[1] =  send_mess;
 
 	}
 	break;

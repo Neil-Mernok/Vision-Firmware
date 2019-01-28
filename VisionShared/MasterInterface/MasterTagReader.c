@@ -71,26 +71,38 @@ void parse_message_into_TAG(_Transpondert* T, uint8_t* data, int len)
 			T->last_ranged = MAX((long )time_now() - data[21] * 1000, 0);
 			T->rssi = 0;
 		}
-
-		T->LF.last_LF = MAX((long )time_now() - data[21] * 1000, 0);
-		T->FirmwareRev = 0x7F & data[22];
-		T->ManTagAck = data[23];
-		T->Reverse = data[24];
-		T->V_lenght = data[25];
-		T->V_Width = data[26];
-		T->Stopping_dist = data[27];
-		T->Speed = *(uint32_t*) (data + 28);
-
-		if (T->kind == Pulse)
+		else if (T->kind == Pulse)
 		{
 			if (data[21] != 0xFF)
 			{
 				T->LF.RSSI++;
 			}
+		}
+
+		T->LF.last_LF = MAX((long )time_now() - data[21] * 1000, 0);
+		T->FirmwareRev = 0x7F & data[22];
+		T->ProductID = data[23];
+		T->ManTagAck = data[24];
+		T->Reverse = data[25];
+		T->V_lenght = data[26];
+		T->V_Width = data[27];
+		T->Stopping_dist = data[28];
+		T->Speed = *(uint32_t*) (data + 29);
+
+		T->Seconds = data[33];
+		T->Minutes = data[34];
+		T->Hours  = data[35];
+		T->Day = data[36];
+		T->Month = data[37];
+		T->Year = data[38];
+
+		if (T->kind == Pulse)
+		{
+
 #ifdef USE_TAG_NAME
-			if(len > 33)
+			if(len > 39)
 			{
-				strncpy(T->name, (char*)&data[28], MIN(STR_MAX, len-28));
+				strncpy(T->name, (char*)&data[39], MIN(STR_MAX, len-39));
 			}
 #endif
 		}
@@ -98,20 +110,20 @@ void parse_message_into_TAG(_Transpondert* T, uint8_t* data, int len)
 		if (T->kind == Pulse_GPS)
 		{
 
-			memcpy(&T->GPS_Data.Longitude, data + 32, 4);
-			memcpy(&T->GPS_Data.Latitude, data + 36, 4);
-			memcpy(&T->GPS_Data.VerticalAccuracy, data + 40, 4);
-			memcpy(&T->GPS_Data.HorizontalAccuracy, data + 44, 4);
+			memcpy(&T->GPS_Data.Longitude, data + 39, 4);
+			memcpy(&T->GPS_Data.Latitude, data + 43, 4);
+			memcpy(&T->GPS_Data.VerticalAccuracy, data + 47, 4);
+			memcpy(&T->GPS_Data.HorizontalAccuracy, data + 51, 4);
 //			memcpy(&T->GPS_Data.Speed, data + 44, 4);
-			memcpy(&T->GPS_Data.HeadingVehicle, data + 48, 4);
-			memcpy(&T->GPS_Data.FixType, data + 52, 1);
-			memcpy(&T->GPS_Data.FixAge, data + 53, 1);
-			memcpy(&T->GPS_Data.SeaLevel, data + 54, 4);
+			memcpy(&T->GPS_Data.HeadingVehicle, data + 55, 4);
+			memcpy(&T->GPS_Data.FixType, data + 59, 1);
+			memcpy(&T->GPS_Data.FixAge, data + 60, 1);
+			memcpy(&T->GPS_Data.SeaLevel, data + 61, 4);
 
 #ifdef USE_TAG_NAME
-			if(len > 58)
+			if(len > 65)
 			{
-				strncpy(T->name, (char*)&data[58], MIN(STR_MAX, len-58));
+				strncpy(T->name, (char*)&data[65], MIN(STR_MAX, len-65));
 			}
 #endif
 		}

@@ -278,6 +278,8 @@ void VCDrivingInfo(vision_device* v, uint8_t Reverse, uint8_t Stopping_distance,
 	VCSendMessage(v, data, 7);
 }
 
+
+
 /**
  * @brief This function request the setting of the VISION module.
  * @brief Only applicable to Pulse400, Ranging and GPS100 modules

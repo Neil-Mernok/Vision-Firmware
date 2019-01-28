@@ -15,12 +15,12 @@
 extern "C" {
 #endif
 
-typedef enum 
+typedef enum
 {
 	zone_none,
 	zone_pres,
 	zone_warn,
-	zone_crit	
+	zone_crit
 } zone;
 
 

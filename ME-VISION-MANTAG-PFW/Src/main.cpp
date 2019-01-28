@@ -34,7 +34,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "Global_Variables.h"
-
 #include "Vision_Parameters.h"
 #include "Tasks.h"
 #include "sleep.h"
@@ -66,20 +65,18 @@ void SystemClock_Config(void);
 
 int main(void)
 {
-	/* USER CODE BEGIN 1 */
+
 	uint32_t loopcounter = 0;
 	int cant_sleep;
-	/* USER CODE END 1 */
-
 	/* MCU Configuration----------------------------------------------------------*/
+	Config_Ports();
+	SetLed(&LED1, Off, 0);
+
 	/* Reset of all peripherals, Initialises the Flash interface and the Systick. */
 	HAL_Init();
 
 	/* Configure the system clock */
 	SystemClock_Config();
-
-	Config_Ports();
-	SetLed(&LED1, Off, 0);
 
 //	// ---- V12 GPS functionality ----
 //	GPIO_SetBits(uBlox_RST_PORT, uBlox_RST_PIN); // Pin is active low
@@ -166,8 +163,8 @@ int main(void)
 			loopcounter++;
 
 			__HAL_IWDG_RELOAD_COUNTER(&hiwdg);
-//			if (AS3933_LF_indication())
-//				cant_sleep++;			// check if LF has happened, if so prevent sleep.
+			if (AS3933_LF_indication())
+				cant_sleep++;			// check if LF has happened, if so prevent sleep.
 
 			CheckAllGPIO(&cant_sleep);					// checks the status of the GPIO and LEDs
 
