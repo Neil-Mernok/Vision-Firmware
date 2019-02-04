@@ -164,7 +164,7 @@
 								<option id="com.atollic.truestudio.secoutput.general.listfile.18198379" name="Generate list file" superClass="com.atollic.truestudio.secoutput.general.listfile" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="com.atollic.truestudio.secoutput.general.mapfile.1625160525" name="Create map file" superClass="com.atollic.truestudio.secoutput.general.mapfile" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="com.atollic.truestudio.secoutput.general.convert.252893860" name="Convert build output" superClass="com.atollic.truestudio.secoutput.general.convert" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="com.atollic.truestudio.mbs.convert.963757338" name="Format" superClass="com.atollic.truestudio.mbs.convert" useByScannerDiscovery="false" value="com.atollic.truestudio.mbs.convert.hex" valueType="enumerated"/>
+								<option id="com.atollic.truestudio.mbs.convert.963757338" name="Format" superClass="com.atollic.truestudio.mbs.convert" useByScannerDiscovery="false" value="com.atollic.truestudio.mbs.convert.bin" valueType="enumerated"/>
 								<option id="com.atollic.truestudio.secoutput.general.version.389567080" name="Show size information" superClass="com.atollic.truestudio.secoutput.general.version" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 							</tool>
 							<tool id="com.atollic.truestudio.ar.base.1663268547" name="Archiver" superClass="com.atollic.truestudio.ar.base"/>

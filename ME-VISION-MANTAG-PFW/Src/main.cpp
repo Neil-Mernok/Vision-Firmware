@@ -98,7 +98,7 @@ int main(void)
 		Vision_Status.board_id = ME_PCB_173_03;
 
 	Vision_Status.sts.USB_Active = false;
-	Vision_Status.exclusion = 2000;							// keep the tags silent for the first 2 seconds. prevents reset anomalies when excluded.
+	Vision_Status.exclusion = 1000;							// keep the tags silent for the first 2 seconds. prevents reset anomalies when excluded.
 
 	Delay(1);
 
@@ -119,15 +119,13 @@ int main(void)
 	//SystemPower_Config();
 	LEDInit(&LED1);
 
-	SetLed(&LED1, Red, 100);
+//	SetLed(&LED1, Red, 10);
 	srand(Vision_Status.UID); // seed the random generator...
 
 	SetLed(&LED1, Off, 0);
 	// run through all the state machine tasks
 	GPIO_ResetBits(CHRG_EN_PORT, CHRG_EN_PIN);
 	CheckAllGPIO(&cant_sleep);					// checks the status of the GPIO and LEDs
-
-	//Vision_Status.Force_RF = 1;
 
 	while (true)
 	{

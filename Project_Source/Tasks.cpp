@@ -138,7 +138,7 @@ void Refresh_Settings_task(task* t)
 #endif
 
 
-	// get data from the eeprom and store in the settings struct 
+	// get data from the eeprom and store in the settings struct
 	SetLed(&LED1, White, 0);
 #ifdef USE_HAL_DRIVER
 	HAL_NVIC_DisableIRQ(LF_CLK_IRQ_Channel);
@@ -196,7 +196,7 @@ void Refresh_Settings_task(task* t)
 		if((uint32_t) vision_settings.interval > 15000)
 			HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 4000, RTC_WAKEUPCLOCK_RTCCLK_DIV16);		// set clock for 2s if a very long time is required. we will construct it from numerous sleeps
 		else
-			HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, (uint16_t) vision_settings.interval * 2, RTC_WAKEUPCLOCK_RTCCLK_DIV16);		// set RTC wake for <interval> milliseconds  	
+			HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, (uint16_t) vision_settings.interval * 2, RTC_WAKEUPCLOCK_RTCCLK_DIV16);		// set RTC wake for <interval> milliseconds
 	}
 	interval_last = vision_settings.interval;
 #endif
@@ -469,9 +469,9 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						Apl_report_GPS_Coordinates();
 						break;
 
-					case rf_Time:
-						Apl_broadcast_Time();
-						break;
+//					case rf_Time:
+//						Apl_broadcast_Time();
+//						break;
 
 					default:
 						break;
@@ -482,7 +482,8 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 			t->state = CC_TX;
 		}
 
-		if (((*rf_wake_flag) != 0) || (time_now() > t->pause_until))					// timer for the task has expired. need to send ID ping.
+
+		if (((*rf_wake_flag) != 0) || (time_now() > t->pause_until))// timer for the task has expired. need to send ID ping.
 		{
 			if (Vision_Status.boot_mode_time == 0)
 			{
@@ -498,9 +499,9 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 					{
 						static int ID_i = 0;
 						SetLed(&LED1, Green, 0);
-						if((ID_i&1)==1)
+						if((ID_i&1)==1 || vision_settings.getActivities().broadcast_time == 0)
 							Apl_broadcast_ID();
-						else
+						else if (vision_settings.getActivities().broadcast_time)
 							Apl_broadcast_Time();
 						SetLed(&LED1, LED1.last_color, 0);
 						ID_i++;
@@ -512,8 +513,11 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 #endif
 
 
-
+#ifdef WARNING_OUTPUTS
+					task_delay(t, timeout/2 + 100);			// make sure in low power mode, wake_flag causes RF.
+#else
 					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
+#endif
 					(*cant_sleep)++; 						// CC1101 chip still busy, so we can't sleep.
 					t->state = CC_TX;
 				}

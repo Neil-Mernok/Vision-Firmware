@@ -670,7 +670,6 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 	case '#': //	---- Force RF time  message (command) -----
 	{
 		command_valid = 1;
-
 		if(parse_length>1)
 		{
 			Set_RTCDateTime(&parse_data[1]);
