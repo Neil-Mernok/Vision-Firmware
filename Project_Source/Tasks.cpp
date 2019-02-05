@@ -507,17 +507,25 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						ID_i++;
 					}
 #else
+//					SetLed(&LED1, Green, 0);
+//					Apl_broadcast_ID();
+//					SetLed(&LED1, LED1.last_color, 0);
+					static int ID_i = 0;
 					SetLed(&LED1, Green, 0);
-					Apl_broadcast_ID();
+					if((ID_i&1)==1 || vision_settings.getActivities().broadcast_time == 0)
+						Apl_broadcast_ID();
+					else if (vision_settings.getActivities().broadcast_time)
+						Apl_broadcast_Time();
 					SetLed(&LED1, LED1.last_color, 0);
+					ID_i++;
 #endif
 
 
-#ifdef WARNING_OUTPUTS
+
 					task_delay(t, timeout/2 + 100);			// make sure in low power mode, wake_flag causes RF.
-#else
-					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
-#endif
+
+//					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
+
 					(*cant_sleep)++; 						// CC1101 chip still busy, so we can't sleep.
 					t->state = CC_TX;
 				}

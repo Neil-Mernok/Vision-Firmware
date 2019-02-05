@@ -321,7 +321,7 @@ uint8_t Apl_send_master_message(uint8_t* buffer, uint8_t len)
  */
 uint8_t Apl_send_master_response(uint8_t* buffer, uint8_t len)
 {
-	DelayUs(500);
+	DelayUs(600);
 	uint8_t packet_size = len + 6 ;
 
 	packet_size = MIN(packet_size, 54);				// make sure it fits in an RF packet
@@ -505,6 +505,7 @@ void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel
 				MIF.Master = CODE;					// this needs to go back to the UART/USB master, so indicate that it comes form code...
 				MIF.data = buffer;
 				MIF.len = len;
+				DelayUs(600);
 				push_to_master(MIF);
 			}
 			break;

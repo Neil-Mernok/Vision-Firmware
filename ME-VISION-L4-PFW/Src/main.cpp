@@ -147,6 +147,15 @@ int main(void)
 		cant_sleep = 0;								// start off assuming we can sleep. then ask each task if they need to stay awake. 
 
 		Refresh_Settings_task(&settings);			// periodically read settings.
+
+		if(vision_settings.getActivities().Pulse400to300)
+		{
+			if(!Vision_Status.sts.EXT_Power)
+				vision_settings.activity = activities::C12pulse300_activities();
+			else
+				vision_settings.activity = activities::C12reader_activities();
+		}
+
 		DetermineTagType();
 
 		/// 	Ranger code		///////////////////////////////	

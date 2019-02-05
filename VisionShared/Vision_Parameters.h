@@ -207,8 +207,8 @@ union activities
 		uint32_t CAN_terminated :1;
 		uint32_t forward_RF :1; 		// this device will forward nay RF packet to master. for testing                                                                                                                                                        
 		uint32_t CAN_sync :1; 			// this device will send a sync message over the can when done sending LF.                                                                                                                           
-		uint32_t get_range_all :1; 		// not used by PULSE                                                                                                                                                   
-		uint32_t get_range_select :1; 	// not used by PULSE                                                                                                                                            
+		uint32_t get_range_all :1; 		// not used by PULSE
+		uint32_t get_range_select :1; 	// not used by PULSE
 		uint32_t forward_dists :1; 		// will pass applicable range results directly to master.                                                                                                                                            
 		uint32_t use_shortened_fw :1; 	// use a shortened autoforward message for the vision messages. 
 		uint32_t send_name :1; 			// this tag will send its name string with RF messages
@@ -221,6 +221,7 @@ union activities
 		// -----V14-------------------
 		uint32_t CAN_Heartbeat_monitor :1;  //device will monitor heartbeat messaged over CAN									-bit 22
 		uint32_t broadcast_time :1;
+		uint32_t Pulse400to300:1;
 	};
 
 #ifdef __cplusplus
@@ -301,6 +302,34 @@ union activities
 		return p;
 	}
 	
+	static activities C12reader_activities()
+	{
+		activities p;
+		p.tag_enable = 1;
+//		p.broadcast_ID = 1;
+		p.heartbeat = 1;
+//		p.send_LF_TX = 1;
+//		p.LF_response = 1;
+		p.receive_RF = 1;
+		p.Always_on = 1;
+//		p.accept_data = 1;
+//		p.output_critical = 1;
+//		p.CAN_terminated = 1;
+		p.forward_RF = 1;
+//		p.CAN_sync = 1;
+//		p.get_range_all = 1;
+//		p.get_range_select = 1;
+		p.forward_dists = 1;
+//		p.use_shortened_fw = 1;
+//		p.legacy_PDS = 1;
+//		p.forward_own_lf = 1;
+//		p.disable_exclusion = 1;
+//		p.disable_LF_CRC = 1;
+//		p.GPS_capable = 1;
+		p.Pulse400to300 = 1;
+		return p;
+	}
+
 	static activities can_reader_activities()
 	{
 		activities p;
@@ -356,6 +385,34 @@ union activities
 		return p;
 	}
 	
+	static activities C12pulse300_activities()
+	{
+		activities p;
+		p.tag_enable = 1;
+		p.broadcast_ID = 1;
+		p.heartbeat = 1;
+//		p.send_LF_TX = 1;
+		p.LF_response = 1;
+//		p.receive_RF = 1;
+//		p.Always_on = 1;
+//		p.accept_data = 1;
+		p.output_critical = 1;
+//		p.CAN_terminated = 1;
+//		p.forward_RF = 1;
+//		p.CAN_sync = 1;
+//		p.get_range_all = 1;
+//		p.get_range_select = 1;
+//		p.forward_dists = 1;
+		p.use_shortened_fw = 1;
+//		p.legacy_PDS = 1;
+//		p.forward_own_lf = 1;
+		p.disable_exclusion = 1;
+//		p.disable_LF_CRC = 1;
+//		p.GPS_capable = 1;
+		p.Pulse400to300 = 1;
+		return p;
+	}
+
 	static activities ranger_activities()
 	{
 		activities p;

@@ -66,7 +66,7 @@ int main(void)
 	// init the RTC so we can read the backup registers. 
 	MX_RTC_Init();
 	MX_IWDG_Init(3000);
-//	boot = HAL_RTCEx_BKUPRead(&hrtc, 1);
+	boot = HAL_RTCEx_BKUPRead(&hrtc, 1);
 	//	Try jump to code
 	jump();
 	
