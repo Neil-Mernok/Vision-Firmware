@@ -65,7 +65,7 @@ int main(void)
 	SystemClock_Config();
 	// init the RTC so we can read the backup registers. 
 	MX_RTC_Init();
-	MX_IWDG_Init(3000);
+//	MX_IWDG_Init(6000);
 	boot = HAL_RTCEx_BKUPRead(&hrtc, 1);
 	//	Try jump to code
 	jump();
@@ -76,7 +76,7 @@ int main(void)
 	MX_DMA_Init();
 //	MX_ADC_Init();
 //	MX_I2C1_Init();
-	MX_IWDG_Init(6000);
+//	MX_IWDG_Init(6000);
 	MX_SPI1_Init();
 	MX_SPI2_Init();
 	/*MX_TIM3_Init();*/
