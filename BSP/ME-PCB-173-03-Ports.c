@@ -56,7 +56,7 @@ int GetBoardVers(void)
 	new |= standalone;
 	
 	gps_reset =  GPIO_ReadInputDataBit(uBlox_RST_PORT, uBlox_RST_PIN);
-	gps_reset = true;
+//	gps_reset = true;
 
 	if ((gps_reset == true) && (new == false))
 	{

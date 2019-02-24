@@ -213,13 +213,13 @@ int main(void)
 		}
 
 		/* Enter Stop Mode */
-		if (cant_sleep == 0 && Vision_Status.board_id != ME_PCB_138_03)		// for now, entirely disable sleep for range boards. 
-		{
-			Vision_Status.sts.Sleeping = 1;
-			Sleep();
-			//			USB_started = false;			// this can be used to ensure USB is re-initialised if bus is present after sleep.
-			Vision_Status.sts.Sleeping = 0;
-		}
+//		if (cant_sleep == 0 && Vision_Status.board_id != ME_PCB_138_03)		// for now, entirely disable sleep for range boards.
+//		{
+//			Vision_Status.sts.Sleeping = 1;
+//			Sleep();
+//			//			USB_started = false;			// this can be used to ensure USB is re-initialised if bus is present after sleep.
+//			Vision_Status.sts.Sleeping = 0;
+//		}
 	}
 }
 

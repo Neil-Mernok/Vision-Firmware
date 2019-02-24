@@ -87,7 +87,10 @@ typedef struct _Transpondert
 	xListItem 		listI;
 } _Transpondert;
 
-
+#ifdef host
+_Transpondert TransponderPrint;
+uint32_t TransponderCount;
+#endif
 //------- Global Variables --------//
 extern _Transpondert transp_log[];
 extern uint32_t transp_timeout;

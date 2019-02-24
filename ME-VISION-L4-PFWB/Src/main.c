@@ -63,7 +63,7 @@ int main(void)
 	SystemClock_Config();
 	MX_RTC_Init();
 	MX_IWDG_Init(3000);
-
+//	HAL_RTCEx_BKUPWrite(&hrtc, 1, Boot_reason_none);
 	boot = HAL_RTCEx_BKUPRead(&hrtc, 1);
 		//	Try jump to code
 		jump();

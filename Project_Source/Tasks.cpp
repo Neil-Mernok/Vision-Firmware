@@ -17,6 +17,7 @@ extern Zone_Info_Type LF_CAN_Sync_List[5];
  * @ it can also accept messages from the code intended for the master and forward them along. 
  * @param pvParameters
  */
+uint32_t TimesinceSent = 0;
 void Master_task(task* t, int* cant_sleep)
 {
 	static uint32_t lastHeartBeat = 0;
@@ -33,7 +34,7 @@ void Master_task(task* t, int* cant_sleep)
 
 	if (MIF.len != 0) // not finished with current message, try sending again.
 	{
-		if (time_since(last_Sent) >= 1)	 // wait a few milliseconds between messages (Todo: Check why L4 DMA isnt working well...)
+		if ((TimesinceSent = time_since(last_Sent)) >= 1)	 // wait a few milliseconds between messages (Todo: Check why L4 DMA isnt working well...)
 		{
 			/// try sending some more data. make sure not to send non-boot related responses during boot bypass mode.
 			if(Vision_Status.boot_mode_time == 0 || MIF.data[0] == rf_Boot_R)
@@ -232,18 +233,21 @@ void Refresh_Settings_task(task* t)
 	}
 
 	Vision_Status.kind = get_TAG_kind();
-	if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
+	if(!vision_settings.getActivities().Always_on)
 	{
-		if ((Vision_Status.sts.USB_Active == false))
+		if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
 		{
-			NVIC_SystemReset();
+			if ((Vision_Status.sts.USB_Active == false))
+			{
+				NVIC_SystemReset();
+			}
 		}
-	}
-	else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
-	{
-		if (Vision_Status.sts.USB_Active == false)
+		else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
 		{
-			NVIC_SystemReset();
+			if (Vision_Status.sts.USB_Active == false)
+			{
+				NVIC_SystemReset();
+			}
 		}
 	}
 	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
@@ -542,44 +546,11 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 			(*cant_sleep)++; // CC1101 chip is receiving, so we can't sleep.
 			status = rxRecvReentrant(data, &PayloadLength, &RSSI, 4000);
 
-			// Debug 10/10/2017
-
-			/*	if ((data[2] == 'b') && (data[3] == 7))
-			{
-				if (PayloadLength == 6)
-					time_now();
-				else
-					time_now();
-				//PayloadLength = 6;
-				data[5] = 0 ;
-				status = 0 ;
-
-			}
-
-			if ((data[2] == 'b') && (data[3] == 9))
-			{
-				//PayloadLength = 6;
-				data[5] = 0xe1 ;
-				status = 0 ;
-			}*/
-
-
 			if (status == 0)		// packet received, no timeout
 			{
-
 				// ---- Check if packet received is valid ----
 				if (check_RF_frame_crc(data, (PayloadLength - 4)))
 				{
-					if ((data[2] == 'b'))
-					{
-#ifdef RF_DEBUG
-						_Q_MasterIF RF_Debug_MIF;
-						RF_Debug_MIF.Master = MUSB;
-						RF_Debug_MIF.data = data;
-						RF_Debug_MIF.len = PayloadLength;
-						push_to_master(RF_Debug_MIF);
-#endif
-					}
 
 					// ---- Output LED only when forward RF is enabled ----
 					if (vision_settings.getActivities().forward_RF)

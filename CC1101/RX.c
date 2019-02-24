@@ -287,14 +287,14 @@ uint8_t rxRecvReentrant(uint8_t* data, uint8_t* length, uint8_t* RSSI, int timeo
 			}
 			
 			// 2017/11/01 Debug
-//			if (time_now() > (start_time + timeout))
-//			{													// timed out, so start over
-//				status = RX_NO_PACKET;
-//				halRfStrobe(CC1100_SIDLE);						// turn off RX mode and flush fifo
-//				halRfStrobe(CC1100_SFRX);
-//				waiting = 0;									// reset the state machine the next time.
-//				return (status);
-//			}
+			if (time_now() > (start_time + timeout))
+			{													// timed out, so start over
+				status = RX_NO_PACKET;
+				halRfStrobe(CC1100_SIDLE);						// turn off RX mode and flush fifo
+				halRfStrobe(CC1100_SFRX);
+				waiting = 0;									// reset the state machine the next time.
+				return (status);
+			}
 
 			status = RX_WAITING;
 			return (status);
@@ -307,13 +307,13 @@ uint8_t rxRecvReentrant(uint8_t* data, uint8_t* length, uint8_t* RSSI, int timeo
 		{
 			status = halRfReadFifo(length, 1);
 
-			// Debug 11/10/2017
-			uint8_t length_Status, prev_length_Status;
-			length_Status = halRfReadStatusReg(CC1100_RXBYTES);
-			do {
-				prev_length_Status = length_Status;
-				length_Status = halRfReadStatusReg(CC1100_RXBYTES);
-				} while (length_Status<2 && length_Status!= prev_length_Status);
+//			// Debug 11/10/2017
+//			uint8_t length_Status, prev_length_Status;
+//			length_Status = halRfReadStatusReg(CC1100_RXBYTES);
+//			do {
+//				prev_length_Status = length_Status;
+//				length_Status = halRfReadStatusReg(CC1100_RXBYTES);
+//				} while (length_Status<2 && length_Status!= prev_length_Status);
 
 			if ((status & CC1100_STATUS_STATE_BM) == CC1100_STATE_RX_OVERFLOW)
 			{
