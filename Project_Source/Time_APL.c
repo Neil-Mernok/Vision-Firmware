@@ -6,7 +6,9 @@
  */
 
 #include "Time_APL.h"
+#include "rtc.h"
 #include "Vision_Parameters.h"
+extern RTC_HandleTypeDef hrtc;
 
 void Get_RTCTime(void)
 {
