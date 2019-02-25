@@ -8,9 +8,10 @@
 #ifndef TIME_APL_H_
 #define TIME_APL_H_
 
-#include "Global_Variables.h"
+//#include "Global_Variables.h"
 
-extern RTC_HandleTypeDef hrtc;
+#include <stddef.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {

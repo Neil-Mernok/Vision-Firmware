@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-//typedef enum
-//{
-//	zone_none,
-//	zone_pres,
-//	zone_warn,
-//	zone_crit
-//} zone;
+typedef enum
+{
+	zone_none,
+	zone_pres,
+	zone_warn,
+	zone_crit
+} zone;
 
 
 void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI);

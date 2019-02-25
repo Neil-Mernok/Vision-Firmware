@@ -156,6 +156,12 @@ int main(void)
 				vision_settings.activity = activities::C12reader_activities();
 		}
 
+		if(transp_count==0)
+		{
+			bool transponderlistlost;
+			transponderlistlost = true;
+		}
+
 		DetermineTagType();
 
 		/// 	Ranger code		///////////////////////////////	
