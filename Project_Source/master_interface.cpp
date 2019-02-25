@@ -378,7 +378,22 @@ int Send_to_Master(_Q_MasterIF* MIF)
 			Master_last = NONE;					// make sure we're not sending to USB while its inactive. 
 		else
 			if (Master_last == NONE)
-				MIF->Master = MCAN;
+			{
+//				if(Vision_Status.sts.CAN_Working==true)
+					MIF->Master = MCAN;
+//				else if(Vision_Status.sts.Uart_Working==true)
+//				{
+//					MIF->Master = COM;
+//				}
+//				else if(Vision_Status.sts.USB_Working==true)
+//				{
+//					MIF->Master = MUSB;
+//				}
+//				else
+//				{
+//					MIF->Master = RF;
+//				}
+			}
 			else
 				MIF->Master = Master_last;
 	}
@@ -817,10 +832,13 @@ void forward_LF_report(LF_message_type LF)
 }
 
 // Called from timer interrupt to signal that a uart packet has been received.
+
+uint32_t TimeSinceRecieved = 0;
 void UART_packet_handler(void)
 {
 	_Q_MasterIF MIF;
-
+	static uint32_t DebugTimer = 0;
+	TimeSinceRecieved = time_since(DebugTimer);
 	// interpret message from master
 	MIF.Master = COM;
 	MIF.data = uart_data;
@@ -842,10 +860,12 @@ void UART_packet_handler(void)
 	//	#endif
 	//		}
 	//	}
+
 	if (MIF_Parse(MIF))
 	{
 		uart_buf_counter = 0;
 		memset(uart_data,0,2048);
+		DebugTimer = time_now();
 
 #ifdef USE_USB
 #ifdef STM32F10X_CL
