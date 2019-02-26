@@ -674,43 +674,44 @@ int Send_POD_toMaster(void* T, Master_source M, char command)
 		buffer[22] = t->FirmwareRev;
 		buffer[23] = t->ProductID;
 		buffer[24] = t->ManTagAck;
-		buffer[25] = t->Reverse;
-		buffer[26] = t->V_lenght;
-		buffer[27] = t->V_Width;
-		buffer[28] = t->Stopping_dist;
-		memcpy(&buffer[29], &t->Speed, 4);
+		buffer[25] = t->Distress;
+		buffer[26] = t->Reverse;
+		buffer[27] = t->V_lenght;
+		buffer[28] = t->V_Width;
+		buffer[29] = t->Stopping_dist;
+		memcpy(&buffer[30], &t->Speed, 4);
 
 		////////////////////////////////////////////
 
 		// ---- Time Info -------
-		buffer[33] = t->Seconds ;
-		buffer[34] = t->Minutes;
-		buffer[35] = t->Hours ;
-		buffer[36] = t->Day ;
-		buffer[37] = t->Month ;
-		buffer[38] = t->Year  ;
+		buffer[34] = t->Seconds ;
+		buffer[35] = t->Minutes;
+		buffer[36] = t->Hours ;
+		buffer[37] = t->Day ;
+		buffer[38] = t->Month ;
+		buffer[39] = t->Year  ;
 
 		////////////////////////////////////////////
 
 		// ---- GPS functionality ----
-		memcpy(buffer + 39, &t->GPS_Data.Longitude, 4);
-		memcpy(buffer + 43, &t->GPS_Data.Latitude, 4);
-		memcpy(buffer + 47, &t->GPS_Data.VerticalAccuracy, 4);
-		memcpy(buffer + 51, &t->GPS_Data.HorizontalAccuracy, 4);
+		memcpy(buffer + 40, &t->GPS_Data.Longitude, 4);
+		memcpy(buffer + 44, &t->GPS_Data.Latitude, 4);
+		memcpy(buffer + 48, &t->GPS_Data.VerticalAccuracy, 4);
+		memcpy(buffer + 52, &t->GPS_Data.HorizontalAccuracy, 4);
 //		memcpy(buffer + 44, &t->GPS_Data.Speed, 4);
-		memcpy(buffer + 55, &t->GPS_Data.HeadingVehicle, 4);
-		memcpy(buffer + 59, &t->GPS_Data.FixType, 1);
-		memcpy(buffer + 60, &t->GPS_Data.FixAge, 1);
-		memcpy(buffer + 61, &t->GPS_Data.SeaLevel,4);
+		memcpy(buffer + 56, &t->GPS_Data.HeadingVehicle, 4);
+		memcpy(buffer + 60, &t->GPS_Data.FixType, 1);
+		memcpy(buffer + 61, &t->GPS_Data.FixAge, 1);
+		memcpy(buffer + 62, &t->GPS_Data.SeaLevel,4);
 
 		if (t->kind == Pulse_GPS)
 		{
 
-			MIF.len = 65;
+			MIF.len = 66;
 		}
 		else
 		{
-			MIF.len = 39;
+			MIF.len = 40;
 		}
 
 		MIF.Master = M;

@@ -34,6 +34,7 @@ typedef enum rf_messages
 	rf_RangCal	= 'C',		// Ranging distance report. Send after successful range to inform other parties of the distance.
 	rf_GPS_C	= 'g',		// GPS coordinates
 	rf_Time		= 't',		// this is a message indicating the time that is set on the device
+	rf_Distress = 'd',
 } rf_messages;
 
 typedef enum rf_message_size
@@ -46,7 +47,8 @@ typedef enum rf_message_size
 	rf_GPS_Coordinates_size   = 40,		// GPS coordinates
 	rf_ID_Pulse_GPS_size = 43,			// this is a Pulse_GPS ID ping
 	rf_Remote_message_size = 9,
-	rf_Time_mess_size = 29
+	rf_Time_mess_size = 29,
+	rf_Distress_broadcast = 38
 } rf_message_size;
 
 typedef struct
@@ -76,6 +78,9 @@ uint8_t Apl_send_data_message(uint8_t* buffer, uint8_t len);
 uint8_t Apl_master_boot_message(uint8_t* buffer, uint8_t len);
 //uint8_t Apl_send_zone_message(uint8_t* buffer);
 uint8_t Apl_report_GPS_Coordinates(void);
+
+uint8_t Apl_report_Distress(uint8_t distressByte);
+
 void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel);
 _Transpondert* Transp_RF_handler(uint8_t* buffer, uint8_t RSSI, uint8_t len);
 void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t len);

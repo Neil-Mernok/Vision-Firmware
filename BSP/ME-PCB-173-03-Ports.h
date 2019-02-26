@@ -189,7 +189,9 @@ extern RGB_LED_Typedef LED1;
 
 // GPIO for warning output
 #define GPO0_OUT_PIN					GPIO_PIN_8
+#ifdef NOTTIliT
 #define GPO1_OUT_PIN					GPIO_PIN_9
+#endif
 #define GPO2_OUT_PIN					GPIO_PIN_10
 #define GPO3_OUT_PIN					GPIO_PIN_11
 #define GPO_OUT_PORT					GPIOB
@@ -200,8 +202,13 @@ extern RGB_LED_Typedef LED1;
 #define LED_OUT_PORT					GPO_OUT_PORT
 #define LED_OUT_PIN						GPO0_OUT_PIN
 
+#ifdef NOTTIliT
 #define BUZ_OUT_PORT					GPO_OUT_PORT
 #define BUZ_OUT_PIN						GPO1_OUT_PIN
+#else
+#define TILT_IN_PORT					GPIOB
+#define TILT_IN_PIN						GPIO_PIN_9
+#endif
 
 #define VIB_OUT_PORT					GPO_OUT_PORT
 #define VIB_OUT_PIN						GPO2_OUT_PIN
@@ -253,8 +260,10 @@ typedef struct
 	uint32_t		set_to;
 } 	_GPO;
 
+#ifdef NOTTIliT
 #define BUZ_OUT_values 	{1, BUZ_OUT_PIN, BUZ_OUT_PORT, 0}
 extern _GPO		BUZ_OUT;	
+#endif
 
 #define VIB_OUT_values 	{1, VIB_OUT_PIN, VIB_OUT_PORT, 0}
 extern _GPO		VIB_OUT;	
@@ -278,6 +287,7 @@ void CheckAllGPIO(int* cant_sleep);
 int GetBoardVers();
 
 bool GetButton(void);
+bool GetTilt(void);
 
 void SET_CC_CS(uint8_t value);
 
