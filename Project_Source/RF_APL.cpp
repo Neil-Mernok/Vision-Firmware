@@ -99,14 +99,14 @@ void Rf_GPS_info(uint8_t Array_start)
 	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.Latitude;
 	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.SeaLevel;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=4]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
+	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
 
-	RF_Buffer[Array_start+=4] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[Array_start+=4] =	Vision_Status.GPS_Data.FixAge;
+	RF_Buffer[Array_start+=1] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[Array_start+=1] =	Vision_Status.GPS_Data.FixAge;
 }
 
 /**

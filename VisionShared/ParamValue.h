@@ -24,7 +24,7 @@
 //#define USE_MAP
 //#define USE_STRING
 
-#define STR_MAX	15	/*max length of a string*/
+#define STR_MAX	14	/*max length of a string*/
 #define max_params	35
 
 
