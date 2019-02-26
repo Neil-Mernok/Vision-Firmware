@@ -74,6 +74,7 @@ typedef struct _Transpondert
 	uint8_t			Month;
 	uint8_t			Year;
 	uint8_t			ProductID;
+	uint8_t			Distress;
 
 #ifdef USE_TAG_NAME
 	char	 		name[STR_MAX];

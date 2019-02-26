@@ -394,6 +394,30 @@ uint8_t Apl_report_GPS_Coordinates(void)
 	return 0;
 }
 
+uint8_t Apl_report_Distress(uint8_t distressByte)
+{
+	uint8_t packet_size = 0 ;
+	uint8_t info_packet_size;
+	packet_size = rf_Distress_broadcast;
+
+	// ---- TAG Information ----
+	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Distress);
+
+	//----  Over-write with LF data ----
+	RF_Buffer[info_packet_size] = distressByte;
+	*((int32_t*) &RF_Buffer[info_packet_size+=1]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[info_packet_size+=4]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[info_packet_size+=4]) = Vision_Status.GPS_Data.SeaLevel;
+	RF_Buffer[info_packet_size+=4] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[info_packet_size+=4] =	Vision_Status.GPS_Data.FixAge;
+
+	// ---- Transmit RF packet ----
+	txSendPacket(RF_Buffer, packet_size);
+
+	return 0;
+}
+
+
 void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel)
 {
 	_Transpondert* TR;
@@ -529,6 +553,16 @@ void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel
 			}
 			break;
 
+		case rf_Distress:
+			if (len == rf_Distress_broadcast)
+			{
+				// add the tag details to the list
+				TR = Transp_RF_handler(buffer, RSSI, len);
+				if (vision_settings.getActivities().forward_RF)
+					Send_POD_toMaster(TR, CODE, 1);
+			}
+			break;
+
 		default:
 			valid = false;
 			break;
@@ -537,10 +571,6 @@ void Apl_Parse_message(uint8_t* buffer, int len, uint8_t RSSI, bool boot_channel
 	if (valid)
 		Vision_Status.sts.RF_Working = true;
 }
-
-
-
-
 
 /**
  * @ the purpose of this task is to figure out what to do with transponder packets after they come in.
@@ -698,6 +728,18 @@ void parse_RF_into_tag(_Transpondert* T, uint8_t* buffer, uint8_t RSSI, uint8_t 
 			T->Day = buffer[26];
 			T->Month = buffer[27];
 			T->Year = buffer[28];
+
+			break;
+
+		case rf_Distress:			// ---- Time message ----
+
+			// ---- TAG Information ----
+			T->Distress = buffer[23];
+			T->GPS_Data.Longitude = *((int32_t*) &buffer[24]);
+			T->GPS_Data.Latitude = *((int32_t*) &buffer[28]);
+			T->GPS_Data.SeaLevel = *((int32_t*) &buffer[32]);
+			T->GPS_Data.FixType = buffer[36];
+			T->GPS_Data.FixAge = buffer[37];
 
 			break;
 
