@@ -265,12 +265,10 @@ bool GetButton(void)
 
 bool GetTilt(void)
 {
-#ifndef NOTTIliT
 	if(HAL_GPIO_ReadPin(TILT_IN_PORT, TILT_IN_PIN))
 		return false;
 	else
 		return true;
-#endif
 }
 
 
