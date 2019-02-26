@@ -41,7 +41,6 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep);
 void LF_Task(task* t, int* cant_sleep);
 void LF_TX_Task(task* t);
 void LF_RSSI_watcher(task* t, int count, int* cant_sleep);
-void Distress_watcher(task* t, int* cant_sleep);
 
 void uBlox_task(task* t, int* cant_sleep);
 void uBlox_Init(void);

@@ -48,7 +48,6 @@ task messages_to_master;
 task LF_TX;
 task LF_RX;
 task LF_RSSI;
-task Distressd;
 task uBlox;
 extern uint32_t uwTick;
 extern int wake_flag;
@@ -172,8 +171,6 @@ int main(void)
 
 			if (vision_settings.getActivities().Always_on)
 				cant_sleep++;			// prevent sleep if we need to stay alive.
-
-			Distress_watcher(&Distressd, &cant_sleep);
 		}
 
 //		/* Enter Stop Mode */

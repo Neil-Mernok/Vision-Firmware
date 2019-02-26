@@ -477,10 +477,6 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 //						Apl_broadcast_Time();
 //						break;
 
-					case rf_Distress:
-						Apl_report_Distress(to_send.buff[0]);
-						break;
-
 					default:
 						break;
 					}
@@ -759,41 +755,6 @@ void LF_RSSI_watcher(task* t, int count, int* cant_sleep)
 			//				(*cant_sleep)++;
 		}
 	}
-}
-
-/**
- * this task periodically checks the RSSI values and updates the IO and LEDs.
- */
-void Distress_watcher(task* t, int* cant_sleep)
-{
-
-#ifdef BUTTON_PIN
-	if (GetTilt())
-	{
-		Vision_Status.Distress = 1;
-	}
-	else
-	{
-		Vision_Status.Distress = 0;
-	}
-#endif
-
-	if(time_now() > t->pause_until)
-	{
-		uint8_t data[5];
-
-		data[0] = rf_Distress;
-		data[1] = Vision_Status.Distress;
-
-		RF_message RF;
-		RF.buff = buff_alloc(&data[1], 2, true);
-		RF.len = 0;
-		RF.type = rf_Distress;
-		RF.time_to_respond = time_now();
-		pipe_put(&cc1101.p, &RF);
-		task_delay(t, 1500);
-	}
-
 }
 
 //#define board_tester

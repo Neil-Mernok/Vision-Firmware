@@ -181,7 +181,6 @@ typedef struct
 	uint8_t Group_status;
 	uint16_t Speed;
 	TimeDate_Data_Type DateTime;
-	uint8_t Distress;
 
 } _Vision_Status;
 
