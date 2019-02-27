@@ -473,9 +473,9 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						Apl_report_GPS_Coordinates();
 						break;
 
-//					case rf_Time:
-//						Apl_broadcast_Time();
-//						break;
+					case rf_Time:
+						Apl_broadcast_Time();
+						break;
 
 					case rf_Distress:
 						Apl_report_Distress(to_send.buff[0]);
@@ -505,34 +505,17 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
 						SetLed(&LED1, Violet, 400);
 					else
 					{
-						static int ID_i = 0;
 						SetLed(&LED1, Green, 0);
-						if((ID_i&1)==1 || vision_settings.getActivities().broadcast_time == 0)
-							Apl_broadcast_ID();
-						else if (vision_settings.getActivities().broadcast_time)
-							Apl_broadcast_Time();
+						Apl_broadcast_ID();
 						SetLed(&LED1, LED1.last_color, 0);
-						ID_i++;
 					}
 #else
-//					SetLed(&LED1, Green, 0);
-//					Apl_broadcast_ID();
-//					SetLed(&LED1, LED1.last_color, 0);
-					static int ID_i = 0;
 					SetLed(&LED1, Green, 0);
-					if((ID_i&1)==1 || vision_settings.getActivities().broadcast_time == 0)
-						Apl_broadcast_ID();
-					else if (vision_settings.getActivities().broadcast_time)
-						Apl_broadcast_Time();
+					Apl_broadcast_ID();
 					SetLed(&LED1, LED1.last_color, 0);
-					ID_i++;
 #endif
 
-
-
-					task_delay(t, timeout/2 + 100);			// make sure in low power mode, wake_flag causes RF.
-
-//					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
+					task_delay(t, timeout + 100);			// make sure in low power mode, wake_flag causes RF.
 
 					(*cant_sleep)++; 						// CC1101 chip still busy, so we can't sleep.
 					t->state = CC_TX;
@@ -770,11 +753,11 @@ void Distress_watcher(task* t, int* cant_sleep)
 #ifdef BUTTON_PIN
 	if (GetTilt())
 	{
-		Vision_Status.Distress = 1;
+		Vision_Status.Distress = 0;
 	}
 	else
 	{
-		Vision_Status.Distress = 0;
+		Vision_Status.Distress = 1;
 	}
 #endif
 
@@ -792,6 +775,27 @@ void Distress_watcher(task* t, int* cant_sleep)
 		RF.time_to_respond = time_now();
 		pipe_put(&cc1101.p, &RF);
 		task_delay(t, 1500);
+	}
+
+}
+
+void TimeBroadcast(task* t, int* cant_sleep)
+{
+
+	if(time_now() > t->pause_until && vision_settings.getActivities().broadcast_time)
+	{
+		uint8_t data[5];
+
+		data[0] = rf_Time;
+		data[1] = Vision_Status.Distress;
+
+		RF_message RF;
+		RF.buff = buff_alloc(&data[1], 2, true);
+		RF.len = 0;
+		RF.type = rf_Time;
+		RF.time_to_respond = time_now();
+		pipe_put(&cc1101.p, &RF);
+		task_delay(t, 1020);
 	}
 
 }

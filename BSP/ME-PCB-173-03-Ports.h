@@ -188,10 +188,10 @@ extern RGB_LED_Typedef LED1;
 //#define LF_PWM2_PIN						GPIO_Pin_7
 
 // GPIO for warning output
-#define GPO0_OUT_PIN					GPIO_PIN_8
 #ifdef NOTTIliT
-#define GPO1_OUT_PIN					GPIO_PIN_9
+#define GPO0_OUT_PIN					GPIO_PIN_8
 #endif
+#define GPO1_OUT_PIN					GPIO_PIN_9
 #define GPO2_OUT_PIN					GPIO_PIN_10
 #define GPO3_OUT_PIN					GPIO_PIN_11
 #define GPO_OUT_PORT					GPIOB
@@ -199,15 +199,15 @@ extern RGB_LED_Typedef LED1;
 #define LAMP_OUT_PORT					GPO_OUT_PORT
 #define LAMP_OUT_PIN					GPO3_OUT_PIN
 
-#define LED_OUT_PORT					GPO_OUT_PORT
-#define LED_OUT_PIN						GPO0_OUT_PIN
-
-#ifdef NOTTIliT
 #define BUZ_OUT_PORT					GPO_OUT_PORT
 #define BUZ_OUT_PIN						GPO1_OUT_PIN
+
+#ifdef NOTTIliT
+#define LED_OUT_PORT					GPO_OUT_PORT
+#define LED_OUT_PIN						GPO0_OUT_PIN
 #else
 #define TILT_IN_PORT					GPIOB
-#define TILT_IN_PIN						GPIO_PIN_9
+#define TILT_IN_PIN						GPIO_PIN_8
 #endif
 
 #define VIB_OUT_PORT					GPO_OUT_PORT
@@ -260,16 +260,17 @@ typedef struct
 	uint32_t		set_to;
 } 	_GPO;
 
-#ifdef NOTTIliT
+
 #define BUZ_OUT_values 	{1, BUZ_OUT_PIN, BUZ_OUT_PORT, 0}
 extern _GPO		BUZ_OUT;	
-#endif
 
 #define VIB_OUT_values 	{1, VIB_OUT_PIN, VIB_OUT_PORT, 0}
-extern _GPO		VIB_OUT;	
+extern _GPO		VIB_OUT;
 
+#ifdef NOTTIliT
 #define LED_OUT_values 	{1, LED_OUT_PIN, LED_OUT_PORT, 0}
 extern _GPO		LED_OUT;			 
+#endif
 
 #define LAMP_OUT_values {0, LAMP_OUT_PIN, LAMP_OUT_PORT, 0}
 extern _GPO		LAMP_OUT;

@@ -65,7 +65,6 @@
 									<listOptionValue builtIn="false" value="PCB_173_03"/>
 									<listOptionValue builtIn="false" value="STM32L152xC"/>
 									<listOptionValue builtIn="false" value="GPS_CAPABLE"/>
-									<listOptionValue builtIn="false" value="NOTTIliT"/>
 								</option>
 								<option id="com.atollic.truestudio.common_options.target.endianess.1854274048" name="Endianess" superClass="com.atollic.truestudio.common_options.target.endianess" useByScannerDiscovery="false" value="com.atollic.truestudio.common_options.target.endianess.little" valueType="enumerated"/>
 								<option id="com.atollic.truestudio.common_options.target.mcpu.191909026" name="Microcontroller" superClass="com.atollic.truestudio.common_options.target.mcpu" useByScannerDiscovery="false" value="STM32L152CC" valueType="enumerated"/>

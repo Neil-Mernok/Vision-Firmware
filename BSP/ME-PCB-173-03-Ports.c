@@ -13,12 +13,11 @@ extern uint8_t packetReceived;
 extern uint8_t packetSent;
 
 RGB_LED_Typedef LED1 = LED_1_Values;
-
-_GPO LED_OUT = LED_OUT_values;
-_GPO LAMP_OUT = LAMP_OUT_values;
 #ifdef NOTTIliT
-_GPO BUZ_OUT = BUZ_OUT_values;
+_GPO LED_OUT = LED_OUT_values;
 #endif
+_GPO LAMP_OUT = LAMP_OUT_values;
+_GPO BUZ_OUT = BUZ_OUT_values;
 _GPO VIB_OUT = VIB_OUT_values;
 
 pFunction EXTI_LFDAT_CALLBACK = NULL;
@@ -243,13 +242,13 @@ int CheckGPO(_GPO* GPO)
  */
 void CheckAllGPIO(int* cant_sleep)
 {
+#ifdef NOTTIliT
 	*cant_sleep += CheckGPO(&LED_OUT);
+#endif
 	*cant_sleep += CheckGPO(&LAMP_OUT);
 	*cant_sleep += CheckGPO(&VIB_OUT);
-#ifdef NOTTIliT
 	*cant_sleep += CheckGPO(&BUZ_OUT);
-#endif
-	*cant_sleep += CheckLed(&LED1);	
+	*cant_sleep += CheckLed(&LED1);
 
 	if((*cant_sleep) != 0)
 		(*cant_sleep)++;
@@ -453,13 +452,13 @@ void MISC_IO_Init(void)
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 #else
 	/*Configure GPIO pins : PB10 PB11 PB8 PB9 */
-	GPIO_InitStruct.Pin = GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8;
+	GPIO_InitStruct.Pin = GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_9;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_VERY_LOW;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = GPIO_PIN_9;
+	GPIO_InitStruct.Pin = GPIO_PIN_8;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	GPIO_InitStruct.Speed = GPIO_SPEED_VERY_LOW;

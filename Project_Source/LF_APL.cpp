@@ -169,14 +169,14 @@ void Output_zone(zone c_zone)
 #ifdef WARNING_OUTPUTS
 		if (lamp)
 			SetGPO(&LAMP_OUT, lamp);
-#ifdef NOTTIliT
 		if (buz)
 			SetGPO(&BUZ_OUT, time);
-#endif
 		if (vib)
 			SetGPO(&VIB_OUT, time);
+#ifdef NOTTIliT
 		if (led)
 			SetGPO(&LED_OUT, time);
+#endif
 #endif 
 	}
 }
