@@ -121,7 +121,7 @@ int main(void)
 	//SystemPower_Config();
 	LEDInit(&LED1);
 
-//	SetLed(&LED1, Red, 10);
+	SetLed(&LED1, Red, 10);
 	srand(Vision_Status.UID); // seed the random generator...
 
 	SetLed(&LED1, Off, 0);
@@ -174,8 +174,8 @@ int main(void)
 			if (vision_settings.getActivities().Always_on)
 				cant_sleep++;			// prevent sleep if we need to stay alive.
 
-			//Distress_watcher(&Distressd, &cant_sleep);
-			//TimeBroadcast(&TimeSend, &cant_sleep);
+			Distress_watcher(&Distressd, &cant_sleep);
+			TimeBroadcast(&TimeSend, &cant_sleep);
 		}
 
 //		/* Enter Stop Mode */

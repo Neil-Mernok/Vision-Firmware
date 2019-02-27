@@ -95,18 +95,18 @@ int Rf_Info_Packet(uint8_t type, uint8_t Identifier)
 
 void Rf_GPS_info(uint8_t Array_start)
 {
-	*((int32_t*) &RF_Buffer[Array_start]) = Vision_Status.GPS_Data.Longitude;
-	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.Latitude;
-	*((int32_t*) &RF_Buffer[Array_start+=4]) = Vision_Status.GPS_Data.SeaLevel;
+	*((int32_t*) &RF_Buffer[23]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[27]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[31]) = Vision_Status.GPS_Data.SeaLevel;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[35]) = (Vision_Status.GPS_Data.VerticalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.VerticalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
+	*((uint16_t*) &RF_Buffer[37]) = (Vision_Status.GPS_Data.HorizontalAccuracy/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HorizontalAccuracy/10;
 
-	*((uint16_t*) &RF_Buffer[Array_start+=2]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
+	*((uint16_t*) &RF_Buffer[39]) = (Vision_Status.GPS_Data.HeadingVehicle/10>0xFFFF) ? 0xFFFF : Vision_Status.GPS_Data.HeadingVehicle/10;
 
-	RF_Buffer[Array_start+=1] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[Array_start+=1] =	Vision_Status.GPS_Data.FixAge;
+	RF_Buffer[41] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[42] =	Vision_Status.GPS_Data.FixAge;
 }
 
 /**
@@ -238,14 +238,14 @@ uint8_t Apl_broadcast_Time(void)
 
 	//----  Over-write with Time data ----
 	Get_RTCTime();
-	RF_Buffer[info_packet_size] = Vision_Status.DateTime.Seconds;
-	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Minutes;
-	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Hours;
+	RF_Buffer[23] = Vision_Status.DateTime.Seconds;
+	RF_Buffer[24] = Vision_Status.DateTime.Minutes;
+	RF_Buffer[25] = Vision_Status.DateTime.Hours;
 
 	Get_RTCDate();
-	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Date;
-	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Month;
-	RF_Buffer[info_packet_size+=1] = Vision_Status.DateTime.Year;
+	RF_Buffer[26] = Vision_Status.DateTime.Date;
+	RF_Buffer[27] = Vision_Status.DateTime.Month;
+	RF_Buffer[28] = Vision_Status.DateTime.Year;
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
@@ -404,12 +404,12 @@ uint8_t Apl_report_Distress(uint8_t distressByte)
 	info_packet_size = Rf_Info_Packet(Vision_Status.TagTypeHolder, rf_Distress);
 
 	//----  Over-write with LF data ----
-	RF_Buffer[info_packet_size] = distressByte;
-	*((int32_t*) &RF_Buffer[info_packet_size+=1]) = Vision_Status.GPS_Data.Longitude;
-	*((int32_t*) &RF_Buffer[info_packet_size+=4]) = Vision_Status.GPS_Data.Latitude;
-	*((int32_t*) &RF_Buffer[info_packet_size+=4]) = Vision_Status.GPS_Data.SeaLevel;
-	RF_Buffer[info_packet_size+=4] = Vision_Status.GPS_Data.FixType;
-	RF_Buffer[info_packet_size+=4] =	Vision_Status.GPS_Data.FixAge;
+	RF_Buffer[23] = distressByte;
+	*((int32_t*) &RF_Buffer[24]) = Vision_Status.GPS_Data.Longitude;
+	*((int32_t*) &RF_Buffer[28]) = Vision_Status.GPS_Data.Latitude;
+	*((int32_t*) &RF_Buffer[32]) = Vision_Status.GPS_Data.SeaLevel;
+	RF_Buffer[36] = Vision_Status.GPS_Data.FixType;
+	RF_Buffer[37] =	Vision_Status.GPS_Data.FixAge;
 
 	// ---- Transmit RF packet ----
 	txSendPacket(RF_Buffer, packet_size);
