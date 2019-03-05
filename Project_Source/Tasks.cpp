@@ -173,9 +173,9 @@ void Refresh_Settings_task(task* t)
 #endif
 			GPIO_ResetBits(VRFID_PORT, VRFID_PIN);			// power down eeprom.
 			task_delay(t, 1400);
-			if(settings_error_count++ > 10)
-				NVIC_SystemReset();
-			else
+//			if(settings_error_count++ > 10)
+//				//NVIC_SystemReset();
+//			else
 				return;
 		}
 	}
@@ -235,20 +235,20 @@ void Refresh_Settings_task(task* t)
 	Vision_Status.kind = get_TAG_kind();
 	if(!vision_settings.getActivities().Always_on)
 	{
-		if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
-		{
-			if ((Vision_Status.sts.USB_Active == false))
-			{
-				NVIC_SystemReset();
-			}
-		}
-		else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
-		{
-			if (Vision_Status.sts.USB_Active == false)
-			{
-				NVIC_SystemReset();
-			}
-		}
+//		if (time_since(Vision_Status.LastRF) > 300000)					// reset if we haven't seen any RF activity in 5 minutes. also for non-receiver devices.
+//		{
+//			if ((Vision_Status.sts.USB_Active == false))
+//			{
+//				NVIC_SystemReset();
+//			}
+//		}
+//		else if (time_since(Vision_Status.last_master_coms) > 300000)			// reset if we haven't seen any master activity in the last 5 minutes
+//		{
+//			if (Vision_Status.sts.USB_Active == false)
+//			{
+//				NVIC_SystemReset();
+//			}
+//		}
 	}
 	else if (time_now() > 2000000000)								// reset if we're close to systic overflow
 	{

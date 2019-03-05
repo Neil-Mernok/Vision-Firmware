@@ -109,7 +109,7 @@ int main(void)
 	MX_ADC_Init();
 //	MX_I2C1_Init();
 	MX_RTC_Init();
-	MX_IWDG_Init(32000);
+	MX_IWDG_Init(3000);
 	MX_SPI1_Init();
 	MX_SPI2_Init();
 	/*MX_TIM3_Init();*/

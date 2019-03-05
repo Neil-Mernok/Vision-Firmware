@@ -270,7 +270,7 @@ uint8_t UBX_Navigation_Config(void)
 	uBlox_TX.uBlox_Structure.Data[19] = 0x00;
 	uBlox_TX.uBlox_Structure.Data[20] = 0x2C; 	// tAcc = disabled (default: 0x012C) -> 300m
 	uBlox_TX.uBlox_Structure.Data[21] = 0x01;
-	uBlox_TX.uBlox_Structure.Data[22] = 0x96; 	// staticHoldThresh = 1.5 m/s -> 5.4 km/h
+	uBlox_TX.uBlox_Structure.Data[22] = 0x32; 	// staticHoldThresh = 0.5 m/s -> 2 km/h
 	uBlox_TX.uBlox_Structure.Data[23] = 0x00; 	// DGPS= disabled
 	uBlox_TX.uBlox_Structure.Data[24] = 0x10; 	// threshold disabled
 	uBlox_TX.uBlox_Structure.Data[25] = 0x27; 	// threshold disabled

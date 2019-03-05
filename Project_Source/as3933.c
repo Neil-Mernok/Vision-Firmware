@@ -402,7 +402,7 @@ uint8_t as3933RegisterDefaults[][2] =
 {
 // AS3933 default settings for approx. 9m LF range
 		{ 0x00, 0x6E },
-		{ 0x01, 0x6A },	// AGC_T-LIM = 0 Had improved stability (RSSI value constant), but was causing lost LF. Changed back
+		{ 0x01, 0x2A },	// AGC_T-LIM = 0 Had improved stability (RSSI value constant), but was causing lost LF. Changed back
 		{ 0x02, 0x20 },
 		{ 0x03, 0x3F },
 		{ 0x04, 0x30 },	// reduce Off time.

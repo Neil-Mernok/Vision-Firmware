@@ -30,7 +30,7 @@ pFunction EXTI_LFCLK_CALLBACK = NULL;
  */
 int GetBoardVers(void)
 {
-	bool new, standalone, gps_reset;
+	bool new, standalone, gps_reset, NEwest;
 	GPIO_InitTypeDef GPIO_InitStruct
 	;
 	//	 Configure the Version and mantag detect pins
@@ -49,13 +49,22 @@ int GetBoardVers(void)
 	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(uBlox_RST_PORT, &GPIO_InitStruct);
 
+	GPIO_InitStruct.Pin = uBlox_RST_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+	HAL_GPIO_Init(uBlox_RST_PORT, &GPIO_InitStruct);
+
 	HAL_Delay(10);
 	
 	new = !GPIO_ReadInputDataBit(VER_detct_PORT, VER_detct_PIN);
 	standalone = !GPIO_ReadInputDataBit(BRD_detct_PORT, BRD_detct_PIN);
 	
+	NEwest = GPIO_ReadInputDataBit(GPIOA, GPIO_PIN_3);
+
 	new |= standalone;
 	
+	new |= NEwest;
+
 	gps_reset =  GPIO_ReadInputDataBit(uBlox_RST_PORT, uBlox_RST_PIN);
 //	gps_reset = true;
 
