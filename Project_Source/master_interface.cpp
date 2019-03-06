@@ -379,20 +379,20 @@ int Send_to_Master(_Q_MasterIF* MIF)
 		else
 			if (Master_last == NONE)
 			{
-				if(Vision_Status.sts.CAN_Working==true)
+//				if(Vision_Status.sts.CAN_Working==true)
 					MIF->Master = MCAN;
-				else if(Vision_Status.sts.Uart_Working==true)
-				{
-					MIF->Master = COM;
-				}
-				else if(Vision_Status.sts.USB_Working==true)
-				{
-					MIF->Master = MUSB;
-				}
-				else
-				{
-					MIF->Master = RF;
-				}
+//				else if(Vision_Status.sts.Uart_Working==true)
+//				{
+//					MIF->Master = COM;
+//				}
+//				else if(Vision_Status.sts.USB_Working==true)
+//				{
+//					MIF->Master = MUSB;
+//				}
+//				else
+//				{
+//					MIF->Master = RF;
+//				}
 			}
 			else
 				MIF->Master = Master_last;

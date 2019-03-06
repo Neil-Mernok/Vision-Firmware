@@ -133,7 +133,7 @@ void Output_zone(zone c_zone)
 #endif
 					break;
 				case zone_warn:
-					SetLed(&LED1, Yellow, time);
+					SetLed(&LED1, Yellow, time+50);
 #ifdef WARNING_OUTPUTS
 					led = true;
 					buz = false;
@@ -147,7 +147,7 @@ void Output_zone(zone c_zone)
 					led = true;
 					buz = false;
 					vib = false;
-					lamp = 2;
+					//lamp = 2;
 #endif
 					break;
 				default:
