@@ -572,8 +572,12 @@ void CC1101_Task(task* t, int* rf_wake_flag, int* cant_sleep)
  * @brief: this task performs all necessary steps related to the AC3933 device. (SPI and GPIO pins need to be set up first)
  * @param pvParameters
  */
+int counterr = 0;
+uint32_t timerr = 0;
+uint32_t timerrSince = 0;
 void LF_Task(task* t, int* cant_sleep)
 {
+	timerrSince = time_since(timerr);
 	int i, LF_Q_message;										//, LF_TX_val;
 	static int8_t rssiMax;
 	static LF_message_type LF_RX;
@@ -636,7 +640,8 @@ void LF_Task(task* t, int* cant_sleep)
 					t->state = 2; 		// tell the system to wait for the end of message
 					//Vision_Status.Force_RF = time_now() + 6;	// Keep the RF receiver on for a bit to catch LF alerts.
 					Vision_Status.LF_alert.last_LF = 0;			// use the Last LF of the alert LF as indication of an alert.
-					Vision_Status.LF_alert.RSSI = rssiMax;		// Store the LF RSSI so we can send a resonse later, even if LF was missed. 
+					Vision_Status.LF_alert.RSSI = rssiMax;		// Store the LF RSSI so we can send a resonse later, even if LF was missed.
+
 				}
 			}
 			else
@@ -698,6 +703,7 @@ void LF_Task(task* t, int* cant_sleep)
 				RF.LF = LF_RX;
 				RF.time_to_respond = time_now() + (rand() % 50);			/// divide the responses randomly into a 50ms response period
 				RF.type = rf_LF_resp;
+				counterr++;
 
 				// Send RF response with Exclusion data
 				if((time_now() > Vision_Status.exclusion) || (LF_RX.VehicleID >= 0xFFE0))
@@ -705,6 +711,7 @@ void LF_Task(task* t, int* cant_sleep)
 					// send a message to the RF process to send my LF response.
 					if ((vision_settings.getActivities().LF_response))
 						pipe_put(&cc1101.p, &RF);
+					timerr = time_now();
 
 					// send a master message reporting the LF.  
 					if ((vision_settings.getActivities().forward_own_lf))
@@ -733,11 +740,11 @@ void LF_RSSI_watcher(task* t, int count, int* cant_sleep)
 		{
 
 			// TODO: RF_Zone_Indication flag
-			if(AS3933_LF_indication() == 0)
-			{
+//			if(AS3933_LF_indication() == 0)
+//			{
 				Apl_Checkzone_and_output();
 				count_last = count;
-			}
+//			}
 			//			else								// prevent buzzing outputs when LF is actively detecting.
 			//				(*cant_sleep)++;
 		}
@@ -761,7 +768,7 @@ void Distress_watcher(task* t, int* cant_sleep)
 	}
 #endif
 
-	if(time_now() > t->pause_until)
+	if(time_now() > t->pause_until && vision_settings.getActivities().broadcast_ID)
 	{
 		uint8_t data[5];
 

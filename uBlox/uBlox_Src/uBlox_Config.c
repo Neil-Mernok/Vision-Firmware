@@ -276,7 +276,7 @@ uint8_t UBX_Navigation_Config(void)
 	uBlox_TX.uBlox_Structure.Data[25] = 0x27; 	// threshold disabled
 	uBlox_TX.uBlox_Structure.Data[26] = 0x00; 	// reserved
 	uBlox_TX.uBlox_Structure.Data[27] = 0x00;
-	uBlox_TX.uBlox_Structure.Data[28] = 0x05; 	// staticHoldMaxDist = 5m
+	uBlox_TX.uBlox_Structure.Data[28] = 0x02; 	// staticHoldMaxDist = 5m //test this at 2m.. TODO: NEIl
 	uBlox_TX.uBlox_Structure.Data[29] = 0x00;
 	uBlox_TX.uBlox_Structure.Data[30] = 0x00; 	// UTC=0 (Automatic)
 	uBlox_TX.uBlox_Structure.Data[31] = 0x00; 	// Reserved

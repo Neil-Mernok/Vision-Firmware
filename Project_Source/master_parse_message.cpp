@@ -13,6 +13,7 @@
 #include "RF_APL.h"
 #include "GPS_APL.h"
 #include "Time_APL.h"
+#include "Tasks.h"
 
 uint8_t to_master[150];
 
@@ -622,7 +623,8 @@ int parse_message(uint8_t parse_data[], uint8_t parse_length, Master_source MIF_
 
 		to_master[0] = 'y';
 #ifdef GPS_MODULE
-		UBX_Reset_Odometer();
+		uBlox_Init();
+		//UBX_Reset_Odometer();
 #endif
 	}
 	break;
