@@ -138,7 +138,7 @@ void Output_zone(zone c_zone)
 					led = true;
 					buz = false;
 					vib = true;
-					lamp = 2;
+					lamp = 5;// TODO: NEil tune this value for yellow on the new alert module firmware
 #endif
 					break;
 				case zone_pres:
@@ -147,7 +147,7 @@ void Output_zone(zone c_zone)
 					led = true;
 					buz = false;
 					vib = false;
-					//lamp = 2;
+					lamp = 2;// TODO: NEil tune this value for yellow on the new alert module firmware
 #endif
 					break;
 				default:
